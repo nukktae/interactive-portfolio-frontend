@@ -5,16 +5,13 @@ const API_URL = 'https://anu-portfolio-backend-iequx7uxi-anu-bilegdemberels-proj
 export const chatService = {
   sendMessage: async (message: string) => {
     try {
-      console.log('API URL:', API_URL);
-      console.log('Full request URL:', `${API_URL}/chat`);
-      console.log('Request payload:', { message });
-      
       const response = await fetch(`${API_URL}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Accept': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           message,
           userType: typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor'
@@ -22,7 +19,8 @@ export const chatService = {
       });
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.text();
+        throw new Error(`HTTP error! status: ${response.status}, message: ${errorData}`);
       }
       
       const data = await response.json();
