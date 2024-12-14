@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 
 interface ChatMessageProps {
   message: ChatMessageType;
-  avatar?: string;
+  avatar: string;
+  avatarBg: string;
 }
 
-export const ChatMessage = ({ message, avatar = '🤖' }: ChatMessageProps) => {
+export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => {
   const isBot = message.sender === 'bot';
-  const avatarBg = localStorage.getItem('selectedAvatarBg') || 'bg-blue-500';
   
   const formatMessage = (content: string) => {
     // Split by bullet points or numbered lists

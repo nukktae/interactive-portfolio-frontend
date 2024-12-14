@@ -1,22 +1,28 @@
 "use client";
 
-import { Suspense } from 'react';
-import { ChatInterface } from '../../components/ChatInterface';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar';
+import { ChatInterface } from '../../components/ChatInterface';
 
-function ChatPage() {
+export default function ChatPage() {
+  const [initialPrompt, setInitialPrompt] = useState('');
+  const [userType, setUserType] = useState('');
+
+  useEffect(() => {
+    const storedUserType = localStorage.getItem('userType');
+    const storedPrompt = localStorage.getItem('chatPrompt');
+    
+    if (storedUserType) setUserType(storedUserType);
+    if (storedPrompt) setInitialPrompt(storedPrompt);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
       <Navbar />
-      <Suspense fallback={
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-pulse text-gray-400">Loading chat...</div>
-        </div>
-      }>
+      <div className="h-[calc(100vh-64px)] pt-16">
         <ChatInterface />
-      </Suspense>
+      </div>
     </div>
   );
-}
-
-export default ChatPage; 
+} 

@@ -1,35 +1,32 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://anu-portfolio-backend.vercel.app';
 
 export const chatService = {
   sendMessage: async (message: string) => {
     try {
-      const url = `${API_URL}/chat`;
-      console.log('Sending request to:', url);
+      console.log('Sending request to:', `${API_URL}/chat`);
       
-      const response = await axios.post(url, { message }, {
+      const response = await axios.post(`${API_URL}/chat`, {
+        message,
+        userType: typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor'
+      }, {
         headers: {
           'Content-Type': 'application/json'
-        },
-        timeout: 10000
+        }
       });
       
-      if (!response.data || !response.data.reply) {
-        throw new Error('Invalid response format from server');
+      console.log('Response:', response.data);
+      
+      if (response.data.error) {
+        throw new Error(response.data.error);
       }
       
       return response.data.reply;
-    } catch (error) {
-      console.error('Full error:', error);
-      if (axios.isAxiosError(error)) {
-        if (error.response) {
-          throw new Error(`Server error: ${error.response.data?.error || error.message}`);
-        } else if (error.request) {
-          throw new Error('No response from server. Please check your connection.');
-        }
-      }
-      throw new Error('Failed to send message. Please try again.');
+    } catch (error: any) {
+      console.error('Chat API Error:', error);
+      const errorMessage = error.response?.data?.error || error.message || 'Failed to get response';
+      throw new Error(errorMessage);
     }
   }
-}; 
+};
