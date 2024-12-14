@@ -9,26 +9,27 @@ export const chatService = {
       console.log('Full request URL:', `${API_URL}/chat`);
       console.log('Request payload:', { message });
       
-      const response = await axios.post(`${API_URL}/chat`, {
-        message,
-        userType: typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor'
-      }, {
+      const response = await fetch(`${API_URL}/chat`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+          message,
+          userType: typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor'
+        })
       });
       
-      return response.data.reply;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return data.reply;
     } catch (error: any) {
-      console.error('Detailed error:', {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-        headers: error.response?.headers,
-        config: error.config
-      });
-      throw new Error(error.response?.data?.error || error.message || 'Failed to get response');
+      console.error('Detailed error:', error);
+      throw new Error(error.message || 'Failed to get response');
     }
   }
 };
