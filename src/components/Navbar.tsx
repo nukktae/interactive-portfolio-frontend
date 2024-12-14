@@ -16,6 +16,12 @@ export default function Navbar() {
         </Link>
         <div className="flex items-center gap-4">
           <Link 
+            href="/about" 
+            className={`${isActive('/about')} transition-colors`}
+          >
+            About
+          </Link>
+          <Link 
             href="/projects" 
             className={`${isActive('/projects')} transition-colors`}
           >
