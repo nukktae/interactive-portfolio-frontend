@@ -6,6 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { chatService } from '../services/api';
 import { ChatMessage } from './ChatMessage';
 import type { ChatMessage as ChatMessageType } from '../types/chat';
+import { IoSend } from 'react-icons/io5';
+import { RiRobot2Line } from 'react-icons/ri';
+import { FiUser } from 'react-icons/fi';
 
 const INITIAL_QUESTIONS = [
   "What are Anu's main technical skills?",
@@ -140,63 +143,60 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gradient-to-b from-gray-900/50 to-black/50 backdrop-blur-sm">
+    <div className="h-full flex flex-col bg-gradient-to-br from-gray-900 via-purple-900/10 to-black">
       <motion.div 
-        className="flex items-center gap-4 p-6 border-b border-gray-800/50 backdrop-blur-md"
+        className="flex items-center gap-4 p-4 backdrop-blur-lg border-b border-white/5"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 260, damping: 20 }}
       >
         <motion.div 
-          className={`w-12 h-12 ${selectedBg} rounded-2xl flex items-center justify-center text-2xl`}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
+          className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl flex items-center justify-center text-xl shadow-lg"
+          whileHover={{ scale: 1.05 }}
         >
-          {selectedEmoji}
+          <RiRobot2Line className="text-white" />
         </motion.div>
         <div>
-          <h1 className="text-xl font-semibold text-white">Interactive Portfolio Chat</h1>
-          <p className="text-sm text-gray-400">Ask me anything about Anu's experience</p>
+          <h1 className="text-xl font-semibold text-white">AI Portfolio Assistant</h1>
+          <p className="text-sm text-gray-400">Powered by OpenAI</p>
         </div>
       </motion.div>
 
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         <AnimatePresence>
-          {messages.map((message, index) => (
+          {messages.map((message) => (
             <motion.div
               key={message.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ delay: index * 0.1 }}
+              exit={{ opacity: 0 }}
+              className={`flex items-start gap-3 ${
+                message.sender === 'user' ? 'flex-row-reverse' : ''
+              }`}
             >
-              <ChatMessage 
-                message={message} 
-                avatar={selectedEmoji}
-                avatarBg={selectedBg}
-              />
+              <div className={`p-3 rounded-2xl max-w-[80%] ${
+                message.sender === 'user' 
+                  ? 'bg-gradient-to-r from-violet-500 to-purple-600 text-white'
+                  : 'bg-white/5 backdrop-blur-sm'
+              }`}>
+                {message.content}
+              </div>
             </motion.div>
           ))}
         </AnimatePresence>
 
         {showSuggestions && (
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {INITIAL_QUESTIONS.map((question, index) => (
               <motion.button
                 key={index}
-                className="p-4 text-left rounded-xl bg-gray-800/30 hover:bg-gray-800/50 border border-gray-700/30 text-gray-300"
-                whileHover={{ 
-                  scale: 1.02,
-                  backgroundColor: 'rgba(75, 85, 99, 0.4)',
-                  transition: { type: "spring", stiffness: 400 }
-                }}
+                className="p-4 text-left rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10"
+                whileHover={{ scale: 1.02 }}
                 onClick={() => {
                   setInput(question);
-                  setShowSuggestions(false);
                   handleSubmit(new Event('submit') as any);
                 }}
               >
@@ -210,26 +210,34 @@ export const ChatInterface = () => {
 
       <motion.form 
         onSubmit={handleSubmit}
-        className="p-6 border-t border-gray-800/50 backdrop-blur-md"
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        className="p-4 backdrop-blur-lg border-t border-white/5"
       >
-        <div className="relative">
+        <div className="relative max-w-4xl mx-auto">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask anything..."
-            className="w-full px-6 py-4 bg-gray-800/30 rounded-xl border border-gray-700/30 text-white focus:ring-2 focus:ring-purple-500/20 transition-all"
+            placeholder="Ask anything about Anu's experience..."
+            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 text-white focus:ring-2 focus:ring-violet-500/50 transition-all pr-14"
           />
           <motion.button
             type="submit"
             disabled={loading}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-white hover:shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {loading ? "⟳" : "↑"}
+            {loading ? (
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="w-5 h-5 flex items-center justify-center"
+              >
+                ⟳
+              </motion.div>
+            ) : (
+              <IoSend className="w-5 h-5" />
+            )}
           </motion.button>
         </div>
       </motion.form>

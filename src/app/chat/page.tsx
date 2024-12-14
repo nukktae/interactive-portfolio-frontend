@@ -20,7 +20,7 @@ export default function ChatPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
       <Navbar />
-      <div className="h-[calc(100vh-64px)] pt-16">
+      <div className="h-[calc(100vh-64px)]">
         <ChatInterface />
       </div>
     </div>
