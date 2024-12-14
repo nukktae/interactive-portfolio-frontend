@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -32,12 +34,6 @@ export default function Navbar() {
             className={`${isActive('/chat')} transition-colors`}
           >
             AI Portfolio
-          </Link>
-          <Link 
-            href="/contact" 
-            className={`${isActive('/contact')} transition-colors`}
-          >
-            Contact
           </Link>
         </div>
       </div>

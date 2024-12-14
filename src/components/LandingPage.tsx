@@ -65,6 +65,7 @@ export default function LandingPage() {
           </motion.div>
           <div className="flex items-center gap-4 text-gray-400">
             {[
+              { href: '/about', text: 'About' },
               { href: '/projects', text: 'Projects' },
               { href: '/chat', text: 'AI Portfolio' },
               { href: '/contact', text: 'Contact' }
