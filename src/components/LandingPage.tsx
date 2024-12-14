@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Navbar from './Navbar';
 
 const avatars = [
   { id: 'avatar1', emoji: '👩🏻', bg: 'bg-pink-500' },
@@ -34,60 +34,12 @@ export default function LandingPage() {
     router.push(`/chat?avatar=${avatarId}`);
   };
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   const words = "My name is Anu and".split(" ");
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
-      {/* Animated Navbar */}
-      <motion.nav 
-        className="border-b border-gray-800 px-6 py-4"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link href="/" className="text-white text-xl font-semibold">Anu's Portfolio</Link>
-          </motion.div>
-          <div className="flex items-center gap-4 text-gray-400">
-            {[
-              { href: '/about', text: 'About' },
-              { href: '/projects', text: 'Projects' },
-              { href: '/chat', text: 'AI Portfolio' },
-              { href: '/contact', text: 'Contact' }
-            ].map((link, index) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-              >
-                <Link 
-                  href={link.href} 
-                  className="hover:text-white transition-colors"
-                >
-                  {link.text}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.nav>
-
+      <Navbar />
+      
       {/* Main Content */}
       <div className="flex flex-col items-center justify-center p-4 relative pt-20">
         {/* Profile Section with animation */}
@@ -133,7 +85,7 @@ export default function LandingPage() {
           </motion.span>
         </div>
 
-        {/* Avatar Selection with staggered animation */}
+        {/* Avatar Selection */}
         <motion.div 
           className="text-center mb-8"
           initial={{ opacity: 0 }}

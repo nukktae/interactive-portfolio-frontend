@@ -18,10 +18,10 @@ export default function Navbar() {
         </Link>
         <div className="flex items-center gap-4">
           <Link 
-            href="/about" 
-            className={`${isActive('/about')} transition-colors`}
+            href="/chat" 
+            className={`${isActive('/chat')} transition-colors`}
           >
-            About
+            AI Portfolio
           </Link>
           <Link 
             href="/projects" 
@@ -30,10 +30,10 @@ export default function Navbar() {
             Projects
           </Link>
           <Link 
-            href="/chat" 
-            className={`${isActive('/chat')} transition-colors`}
+            href="/about" 
+            className={`${isActive('/about')} transition-colors`}
           >
-            AI Portfolio
+            About
           </Link>
         </div>
       </div>
