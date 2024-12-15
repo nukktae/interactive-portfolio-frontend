@@ -63,6 +63,44 @@ const isLanguageQuestion = (question: string): boolean => {
   );
 };
 
+const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string): string[] => {
+  // Technical skills follow-ups
+  if (previousQuestion.toLowerCase().includes('technical skills') || 
+      previousQuestion.toLowerCase().includes('experience')) {
+    return [
+      "Can you elaborate on the AWS services used in your projects?",
+      "Tell me more about your Flutter development experience",
+      "What other projects have you worked on?"
+    ];
+  }
+
+  // Project-specific follow-ups
+  if (previousQuestion.toLowerCase().includes('project') || 
+      previousQuestion.toLowerCase().includes('iot')) {
+    return [
+      "What technical challenges did you face in this project?",
+      "How did you measure the project's success?",
+      "Would you like to hear about other projects?"
+    ];
+  }
+
+  // AWS-specific follow-ups
+  if (previousQuestion.toLowerCase().includes('aws')) {
+    return [
+      "How did you implement the Kinesis pipeline?",
+      "What other AWS services have you worked with?",
+      "Tell me about your non-AWS projects"
+    ];
+  }
+
+  // Default follow-ups
+  return [
+    "Can you tell me more about your technical skills?",
+    "What was your most challenging project?",
+    "What kind of role are you looking for?"
+  ];
+};
+
 export const ChatInterface = () => {
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [input, setInput] = useState('');
@@ -72,6 +110,7 @@ export const ChatInterface = () => {
   const [selectedEmoji, setSelectedEmoji] = useState('🤖');
   const [selectedBg, setSelectedBg] = useState('bg-blue-500');
   const [storedPrompt, setStoredPrompt] = useState('');
+  const [followUpQuestions, setFollowUpQuestions] = useState<string[]>([]);
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -128,6 +167,10 @@ export const ChatInterface = () => {
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botMessage]);
+      
+      const newFollowUps = getFollowUpQuestions(userMessage.content, response);
+      setFollowUpQuestions(newFollowUps);
+      
     } catch (error: any) {
       console.error('Chat error:', error);
       const errorMessage: ChatMessageType = {
@@ -137,6 +180,7 @@ export const ChatInterface = () => {
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
+      setFollowUpQuestions([]);
     } finally {
       setLoading(false);
     }
@@ -207,6 +251,31 @@ export const ChatInterface = () => {
         )}
         <div ref={messagesEndRef} />
       </div>
+
+      {followUpQuestions.length > 0 && (
+        <motion.div 
+          className="p-4 space-y-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          <p className="text-sm text-gray-400">Follow-up questions:</p>
+          <div className="flex flex-wrap gap-2">
+            {followUpQuestions.map((question, index) => (
+              <motion.button
+                key={index}
+                className="p-2 text-sm rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => {
+                  setInput(question);
+                  handleSubmit(new Event('submit') as any);
+                }}
+              >
+                {question}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+      )}
 
       <motion.form 
         onSubmit={handleSubmit}
