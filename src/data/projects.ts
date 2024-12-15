@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: "Rootin",
     description: "A sophisticated plant care automation system combining IoT hardware with a Flutter-powered iOS app for intelligent plant monitoring and maintenance.",
     detailedDescription: "An innovative IoT solution that transforms plant care through intelligent monitoring and automated maintenance. The system combines custom-built hardware sensors with an intuitive Flutter iOS interface, leveraging AI for plant identification and health diagnostics.",
-    image: "/assets/images/rootin.jpg",
+    image: "/assets/images/rootin.jpeg",
     images: [
       "/assets/images/add-plant-screen.jpg",
       "/assets/images/identify-plant-screen.jpg",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: "LLM Recipe Generator",
     description: "AI-powered recipe recommendation system with personalized dietary suggestions and meal planning capabilities.",
     detailedDescription: "An intelligent recipe recommendation platform that leverages Large Language Models to provide personalized meal planning and dietary suggestions. The system adapts to user preferences and dietary restrictions while offering creative cooking solutions.",
-    image: "/assets/images/recipe.jpg",
+    image: "/assets/images/recipe.jpeg",
     images: [
       "/assets/images/recipe-dashboard.jpg",
       "/assets/images/recipe-suggestions.jpg",

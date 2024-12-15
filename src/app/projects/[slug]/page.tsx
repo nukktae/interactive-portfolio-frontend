@@ -160,9 +160,9 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
             <FeaturesGrid features={project.features} />
           </section>
 
-          {/* Key Screenshots */}
+          {/* Key Screens */}
           <section className="py-12">
-            <h2 className="text-3xl font-bold text-white mb-8">Key Screenshots</h2>
+            <h2 className="text-3xl font-bold text-white mb-8">Key Screens</h2>
             <ImageGallery 
               images={project.images} 
               descriptions={project.imageDescriptions}
