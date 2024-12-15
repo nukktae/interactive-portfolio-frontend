@@ -5,8 +5,18 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Navbar from './Navbar';
+import { ParticleGame } from './ParticleGame';
 
-const avatars = [
+interface Avatar {
+  id: string;
+  icon: JSX.Element;
+  bg: string;
+  label: string;
+  description: string;
+  chatPrompt: string;
+}
+
+const avatars: Avatar[] = [
   { 
     id: 'recruiter',
     icon: (
@@ -32,7 +42,8 @@ const avatars = [
     ),
     bg: 'from-blue-500/20 to-cyan-500/20',
     label: 'Hiring Manager',
-    description: 'Looking to evaluate professional experience and skills'
+    description: 'Looking to evaluate professional experience and skills',
+    chatPrompt: 'You are speaking with a hiring manager interested in technical skills and experience.'
   },
   { 
     id: 'visitor',
@@ -59,7 +70,8 @@ const avatars = [
     ),
     bg: 'from-violet-500/20 to-fuchsia-500/20',
     label: 'Just Browsing',
-    description: 'Interested in exploring projects and achievements'
+    description: 'Interested in exploring projects and achievements',
+    chatPrompt: 'You are speaking with someone interested in learning about projects and achievements.'
   },
   { 
     id: 'friend',
@@ -85,12 +97,14 @@ const avatars = [
     ),
     bg: 'from-emerald-500/20 to-teal-500/20',
     label: 'Friend',
-    description: 'Want to know more about my journey and interests'
+    description: 'Want to know more about my journey and interests',
+    chatPrompt: 'You are speaking with a friend interested in personal journey and interests.'
   }
 ];
 
 export default function LandingPage() {
   const [hoveredAvatar, setHoveredAvatar] = useState<string | null>(null);
+  const [gameScore, setGameScore] = useState(0);
   const router = useRouter();
 
   const handleAvatarClick = (avatar: typeof avatars[0]) => {
@@ -100,8 +114,13 @@ export default function LandingPage() {
     router.push('/chat');
   };
 
+  const handleScoreUpdate = (newScore: number) => {
+    setGameScore(newScore);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white relative">
+      <ParticleGame onScoreUpdate={handleScoreUpdate} />
       <Navbar />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="flex flex-col items-center justify-center">
@@ -131,43 +150,56 @@ export default function LandingPage() {
               Full-Stack Engineer
             </h2>
           </motion.div>
-        </div>
 
-        <motion.p 
-          className="text-xl text-gray-400 text-center mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          Tell me what brings you here today
-        </motion.p>
-
-        <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
-          {avatars.map((avatar, index) => (
-            <motion.div
-              key={avatar.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              className="relative group"
-              onHoverStart={() => setHoveredAvatar(avatar.id)}
-              onHoverEnd={() => setHoveredAvatar(null)}
+          <div className="h-16 flex items-center justify-center">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleAvatarClick(avatar)}
-                className={`w-full bg-gradient-to-r ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
-                  hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm border border-white/10`}
-              >
-                {avatar.icon}
-                <h3 className="text-xl font-semibold">{avatar.label}</h3>
-                <p className="text-sm text-gray-300 text-center">
-                  {avatar.description}
-                </p>
-              </motion.button>
+              <span className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                Score: {gameScore}
+              </span>
             </motion.div>
-          ))}
+          </div>
+
+          <motion.p 
+            className="text-xl text-gray-400 text-center mb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            Tell me what brings you here today
+          </motion.p>
+
+          <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
+            {avatars.map((avatar, index) => (
+              <motion.div
+                key={avatar.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="relative group"
+                onHoverStart={() => setHoveredAvatar(avatar.id)}
+                onHoverEnd={() => setHoveredAvatar(null)}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleAvatarClick(avatar)}
+                  className={`w-full bg-gradient-to-r ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
+                    hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm border border-white/10`}
+                >
+                  {avatar.icon}
+                  <h3 className="text-xl font-semibold">{avatar.label}</h3>
+                  <p className="text-sm text-gray-300 text-center">
+                    {avatar.description}
+                  </p>
+                </motion.button>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
