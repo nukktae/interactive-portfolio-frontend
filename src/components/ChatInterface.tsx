@@ -385,18 +385,18 @@ export const ChatInterface = () => {
         onSubmit={handleSubmit}
         className="p-4 backdrop-blur-lg border-t border-white/5"
       >
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative flex items-center max-w-4xl mx-auto">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask anything about Anu's experience..."
-            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 text-white focus:ring-2 focus:ring-violet-500/50 transition-all pr-14"
+            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 text-white focus:ring-2 focus:ring-violet-500/50 transition-all"
           />
           <motion.button
             type="submit"
             disabled={loading}
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-white hover:shadow-lg"
+            className="ml-2 p-2.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-white hover:shadow-lg flex-shrink-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
