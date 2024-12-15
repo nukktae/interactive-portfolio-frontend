@@ -12,16 +12,15 @@ import { FiUser } from 'react-icons/fi';
 
 const INITIAL_QUESTIONS = [
   "What are Anu's main technical skills?",
-  "Tell me about Anu's Rootin project",
+  "Tell me about the Rootin plant care system project",
   "What experience does Anu have with AWS?",
   "What's Anu's approach to software development?",
-  "What kind of role is Anu looking for?",
   "Can you highlight Anu's key achievements?"
 ];
 
 const FOLLOW_UP_QUESTIONS = {
   technical: [
-    "How did Anu implement real-time data processing in projects?",
+    "How did Anu implement real-time data processing in Rootin?",
     "What's Anu's experience with cloud architecture?",
     "How does Anu approach system scalability?",
     "What's Anu's expertise in Flutter development?",
@@ -35,11 +34,11 @@ const FOLLOW_UP_QUESTIONS = {
     "What's Anu's approach to code quality?"
   ],
   projects: [
-    "What metrics did Anu use to measure success in the IoT project?",
-    "How did Anu implement the AWS backend architecture?",
-    "What were the key technical decisions in Anu's projects?",
-    "How did Anu improve system performance?",
-    "What was Anu's role in team projects?"
+    "What metrics did Anu achieve with the Rootin project?",
+    "How did Anu implement the IoT sensor integration in Rootin?",
+    "What were the key technical decisions in Rootin?",
+    "How did Anu improve system performance in Rootin?",
+    "What was Anu's role in the Rootin project?"
   ]
 };
 
@@ -64,40 +63,61 @@ const isLanguageQuestion = (question: string): boolean => {
 };
 
 const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string): string[] => {
+  // Rootin project-specific follow-ups
+  if (previousQuestion.toLowerCase().includes('rootin') || 
+      previousQuestion.toLowerCase().includes('plant care')) {
+    return [
+      "What technologies were used in the Rootin project?",
+      "Can you explain the IoT integration in Rootin?",
+      "What were the key performance metrics achieved?",
+      "How was the user experience designed?",
+      "Tell me about the technical architecture"
+    ];
+  }
+
   // Technical skills follow-ups
   if (previousQuestion.toLowerCase().includes('technical skills') || 
       previousQuestion.toLowerCase().includes('experience')) {
     return [
-      "Can you elaborate on the AWS services used in your projects?",
-      "Tell me more about your Flutter development experience",
-      "What other projects have you worked on?"
+      "Tell me about your Flutter development experience",
+      "What AWS services have you worked with?",
+      "How do you approach IoT development?",
+      "What's your experience with real-time data processing?",
+      "How do you handle system architecture?"
     ];
   }
 
-  // Project-specific follow-ups
-  if (previousQuestion.toLowerCase().includes('project') || 
-      previousQuestion.toLowerCase().includes('iot')) {
+  // Project metrics follow-ups
+  if (previousQuestion.toLowerCase().includes('metrics') || 
+      previousQuestion.toLowerCase().includes('achievements')) {
     return [
-      "What technical challenges did you face in this project?",
-      "How did you measure the project's success?",
-      "Would you like to hear about other projects?"
+      "How did you achieve 90% user satisfaction?",
+      "What led to the 30% improvement in notifications?",
+      "Can you explain the API optimization results?",
+      "What other performance improvements did you achieve?",
+      "How do you measure project success?"
     ];
   }
 
-  // AWS-specific follow-ups
-  if (previousQuestion.toLowerCase().includes('aws')) {
+  // Development process follow-ups
+  if (previousQuestion.toLowerCase().includes('development') || 
+      previousQuestion.toLowerCase().includes('process')) {
     return [
-      "How did you implement the Kinesis pipeline?",
-      "What other AWS services have you worked with?",
-      "Tell me about your non-AWS projects"
+      "How did you handle the IoT integration process?",
+      "What was your approach to mobile app development?",
+      "How did you manage the project timeline?",
+      "What development challenges did you overcome?",
+      "How did you ensure code quality?"
     ];
   }
 
   // Default follow-ups
   return [
-    "Can you tell me more about your technical skills?",
-    "What was your most challenging project?",
-    "What kind of role are you looking for?"
+    "Would you like to hear about the Rootin project?",
+    "What aspects of my technical skills interest you?",
+    "Should we discuss project metrics and achievements?",
+    "Would you like to know about my development process?",
+    "What specific area would you like to explore?"
   ];
 };
 
@@ -208,23 +228,12 @@ export const ChatInterface = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         <AnimatePresence>
           {messages.map((message) => (
-            <motion.div
+            <ChatMessage
               key={message.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className={`flex items-start gap-3 ${
-                message.sender === 'user' ? 'flex-row-reverse' : ''
-              }`}
-            >
-              <div className={`p-3 rounded-2xl max-w-[80%] ${
-                message.sender === 'user' 
-                  ? 'bg-gradient-to-r from-violet-500 to-purple-600 text-white'
-                  : 'bg-white/5 backdrop-blur-sm'
-              }`}>
-                {message.content}
-              </div>
-            </motion.div>
+              message={message}
+              avatar={message.sender === 'bot' ? selectedEmoji : '👤'}
+              avatarBg={message.sender === 'bot' ? selectedBg : 'bg-gradient-to-r from-violet-500 to-purple-600'}
+            />
           ))}
         </AnimatePresence>
 
