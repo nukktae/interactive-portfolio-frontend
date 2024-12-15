@@ -22,42 +22,28 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
       
       <main className="max-w-7xl mx-auto py-12 px-4">
         <div className="space-y-16">
-          {/* Image Gallery */}
-          <section className="py-12">
-            <h2 className="text-3xl font-bold text-white mb-8">Project Screenshots</h2>
-            <ImageGallery 
-              images={project.images} 
-              descriptions={[
-                {
-                  title: "Smart Plant Dashboard",
-                  text: "Real-time monitoring dashboard showing plant health metrics and environmental conditions at a glance."
-                },
-                {
-                  title: "Plant Care Instructions",
-                  text: "Personalized care guides with AI-powered recommendations based on your specific plant and environment."
-                },
-                {
-                  title: "Health Diagnostics",
-                  text: "Advanced disease detection and health monitoring using computer vision technology."
-                },
-                {
-                  title: "Watering Schedule",
-                  text: "Smart watering schedule that adapts to seasonal changes and plant growth patterns."
-                },
-                {
-                  title: "Environment Control",
-                  text: "Precise control over temperature, humidity, and lighting conditions for optimal plant growth."
-                },
-                {
-                  title: "Soil Moisture Analytics",
-                  text: "Detailed soil moisture tracking and analysis to ensure optimal watering conditions for each plant."
-                },
-                {
-                  title: "AI Plant Recognition",
-                  text: "Advanced machine learning system that can identify plant species and provide specific care instructions through image recognition."
-                }
-              ]}
-            />
+          {/* My Role Section */}
+          <section className="py-12 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-2xl border border-purple-500/10">
+            <h2 className="text-3xl font-bold text-white mb-8 px-8">My Role</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
+              {project.roles?.map((role, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-white">{role.percentage}%</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{role.area}</h3>
+                  </div>
+                  <p className="text-gray-300">{role.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </section>
 
           {/* Skills & Tools */}
@@ -72,12 +58,6 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
               skills={project.softSkills}
               className="bg-gradient-to-br from-purple-500/10 to-pink-500/10"
             />
-          </section>
-
-          {/* Features Grid */}
-          <section>
-            <h2 className="text-3xl font-bold text-white mb-8">Key Features</h2>
-            <FeaturesGrid features={project.features} />
           </section>
 
           {/* Technologies & Tools */}
@@ -101,48 +81,6 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                   </span>
                 ))}
               </div>
-            </div>
-          </section>
-
-          {/* Key Metrics Section */}
-          <section className="py-12">
-            <h2 className="text-3xl font-bold text-white mb-8">Key Metrics</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.metrics.map((metric, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300"
-                >
-                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">
-                    {metric.split(':')[0]}
-                  </h3>
-                  <p className="text-gray-400">{metric.split(':')[1]}</p>
-                </motion.div>
-              ))}
-            </div>
-          </section>
-
-          {/* Highlights Section */}
-          <section className="py-12">
-            <h2 className="text-3xl font-bold text-white mb-8">Project Highlights</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {project.highlights.map((highlight, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-xl border border-gray-800"
-                >
-                  <div className="flex-shrink-0 w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
-                    <span className="text-purple-400 text-lg">✦</span>
-                  </div>
-                  <p className="text-gray-300">{highlight}</p>
-                </motion.div>
-              ))}
             </div>
           </section>
 
@@ -172,6 +110,63 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
                 </motion.div>
               ))}
             </div>
+          </section>
+
+          {/* Project Highlights */}
+          <section className="py-12">
+            <h2 className="text-3xl font-bold text-white mb-8">Project Highlights</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {project.highlights.map((highlight, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-xl border border-gray-800"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <span className="text-purple-400 text-lg">✦</span>
+                  </div>
+                  <p className="text-gray-300">{highlight}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Key Metrics Section */}
+          <section className="py-12">
+            <h2 className="text-3xl font-bold text-white mb-8">Key Metrics</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {project.metrics.map((metric, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 rounded-xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300"
+                >
+                  <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-2">
+                    {metric.split(':')[0]}
+                  </h3>
+                  <p className="text-gray-400">{metric.split(':')[1]}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Features Grid */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-8">Key Features</h2>
+            <FeaturesGrid features={project.features} />
+          </section>
+
+          {/* Key Screenshots */}
+          <section className="py-12">
+            <h2 className="text-3xl font-bold text-white mb-8">Key Screenshots</h2>
+            <ImageGallery 
+              images={project.images} 
+              descriptions={project.imageDescriptions}
+            />
           </section>
         </div>
       </main>

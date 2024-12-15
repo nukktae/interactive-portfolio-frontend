@@ -2,9 +2,9 @@ import { Project } from '../types/project';
 
 export const projects: Project[] = [
   {
-    title: "IoT Plant Care System",
-    description: "A sophisticated plant care automation system combining IoT hardware with a Flutter-powered mobile app for intelligent plant monitoring and maintenance.",
-    detailedDescription: "An innovative IoT solution that transforms plant care through intelligent monitoring and automated maintenance. The system combines custom-built hardware sensors with an intuitive Flutter mobile interface, leveraging AI for plant identification and health diagnostics.",
+    title: "Rootin",
+    description: "A sophisticated plant care automation system combining IoT hardware with a Flutter-powered iOS app for intelligent plant monitoring and maintenance.",
+    detailedDescription: "An innovative IoT solution that transforms plant care through intelligent monitoring and automated maintenance. The system combines custom-built hardware sensors with an intuitive Flutter iOS interface, leveraging AI for plant identification and health diagnostics.",
     image: "/assets/images/rootin.jpg",
     images: [
       "/assets/images/add-plant-screen.jpg",
@@ -19,25 +19,23 @@ export const projects: Project[] = [
       "Flutter & Dart",
       "Firebase Realtime DB",
       "TensorFlow Lite",
-      "Raspberry Pi",
-      "Arduino",
-      "ESP32",
-      "IoT Sensors",
       "REST APIs",
-      "WebSockets"
+      "WebSockets",
+      "Material Design",
+      "Custom Animations"
     ],
     tools: [
       "VS Code",
-      "Android Studio",
+      "Xcode",
+      "Apple Developer Account",
       "Firebase Console",
       "Git & GitHub",
       "Figma",
-      "Arduino IDE",
-      "Raspberry Pi OS"
+      "Adobe XD"
     ],
     softSkills: [
-      "System Architecture Design",
       "UI/UX Design Principles",
+      "User Research",
       "Technical Documentation",
       "Problem-solving",
       "Cross-functional Collaboration",
@@ -45,54 +43,71 @@ export const projects: Project[] = [
     ],
     hardSkills: [
       "Mobile App Development",
-      "IoT System Integration",
-      "Sensor Data Processing",
-      "Real-time Data Streaming",
-      "Machine Learning Integration",
-      "Hardware Programming",
-      "API Development"
+      "State Management",
+      "API Integration",
+      "Custom Animations",
+      "Responsive Design",
+      "Cross-platform Development",
+      "UI Component Design"
     ],
     metrics: [
-      "30% improvement in plant survival rate",
-      "90% user satisfaction rate",
-      "50% reduction in water consumption",
-      "95% accuracy in plant identification",
-      "Real-time monitoring with <100ms latency"
+      "User Satisfaction: 90%",
+      "User Engagement: +40%",
+      "Error Rate: -30%",
+      "UI Response Time: -25%",
+      "Widget Reusability: 20+ components"
     ],
     highlights: [
-      "Developed a comprehensive Flutter app with 7 key screens for plant management",
-      "Integrated TensorFlow Lite for real-time plant identification",
-      "Implemented real-time soil moisture monitoring system",
-      "Created custom hardware solution with multiple sensor types",
-      "Built automated watering system with smart scheduling",
-      "Designed intuitive UI with animated transitions and micro-interactions"
+      "Led the complete UI/UX redesign of the plant care application",
+      "Developed comprehensive design system with reusable components",
+      "Implemented offline-first architecture for seamless user experience",
+      "Integrated real-time data from soil moisture sensors into the app",
+      "Created intuitive onboarding flow reducing user drop-off",
+      "Established automated UI testing framework"
     ],
     challenges: [
-      "Complex sensor data synchronization",
-      "Battery optimization for IoT devices",
-      "Real-time data reliability",
-      "Cross-platform compatibility",
-      "Sensor calibration accuracy"
+      "Complex UI state management",
+      "Real-time data visualization",
+      "Cross-platform UI consistency",
+      "Intuitive gesture controls",
+      "Seamless offline experience"
     ],
     solutions: [
-      "Implemented efficient data batching and WebSocket connections",
-      "Developed custom power management algorithms",
-      "Created robust error handling and data validation",
-      "Used Flutter's platform channels for native integration",
-      "Built automated calibration system with feedback loop"
+      "Implemented BLoC pattern for state management",
+      "Created custom animated charts and graphs",
+      "Developed platform-specific UI adaptations",
+      "Built intuitive gesture-based interactions",
+      "Designed efficient local data caching system"
     ],
     features: [
       "AI-powered plant identification",
-      "Real-time moisture monitoring",
-      "Automated watering schedules",
-      "Plant health diagnostics",
-      "Custom care recommendations",
-      "Historical data analytics",
-      "Push notifications",
-      "Offline functionality"
+      "Automated watering schedule creation",
+      "Real-time plant health monitoring",
+      "Customizable care reminders",
+      "Detailed plant care history",
+      "Offline mode functionality",
+      "Multi-plant management dashboard",
+      "Environmental condition tracking"
     ],
-    github: "https://github.com/yourusername/plant-care",
-    liveUrl: "https://plant-care-demo.vercel.app"
+    github: "https://github.com/nukktae/rootin",
+    liveUrl: "https://plant-care-demo.vercel.app",
+    roles: [
+      {
+        area: "UI/UX Design",
+        percentage: 45,
+        description: "User research, wireframing, and interaction design"
+      },
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of Flutter mobile app"
+      },
+      {
+        area: "System Architecture",
+        percentage: 70,
+        description: "IoT system design and integration"
+      }
+    ]
   },
   {
     title: "LLM Recipe Generator",
@@ -126,7 +141,45 @@ export const projects: Project[] = [
       "Created recipe verification pipeline"
     ],
     github: "https://github.com/nukktae/llm-recipe-generator",
-    liveUrl: "https://recipe-gen-demo.vercel.app"
+    liveUrl: "https://recipe-gen-demo.vercel.app",
+    hardSkills: [
+      "LLM Integration",
+      "Frontend Development",
+      "API Design",
+      "State Management",
+      "Performance Optimization"
+    ],
+    softSkills: [
+      "Project Leadership",
+      "Technical Planning",
+      "User Research",
+      "Team Collaboration",
+      "Problem Solving"
+    ],
+    features: [
+      "Personalized recipe recommendations",
+      "Dietary restriction handling",
+      "Meal planning calendar",
+      "Shopping list generation",
+      "Nutritional analysis"
+    ],
+    roles: [
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of React application"
+      },
+      {
+        area: "LLM Integration",
+        percentage: 80,
+        description: "API integration and prompt engineering"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 60,
+        description: "Interface design and user experience"
+      }
+    ]
   },
   {
     title: "AWS Content Moderation System",
@@ -138,28 +191,82 @@ export const projects: Project[] = [
       "/assets/images/moderation-metrics.jpg",
       "/assets/images/moderation-filters.jpg"
     ],
-    technologies: ["AWS Kinesis", "AWS Rekognition", "DynamoDB"],
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "AWS Amplify",
+      "GraphQL",
+      "WebSocket",
+      "Redux Toolkit"
+    ],
     metrics: [
-      "95% moderation accuracy",
-      "15% reduction in operational costs",
-      "20% reduction in false positives"
+      "40% improvement in UI response time",
+      "95% user satisfaction rate",
+      "30% reduction in data loading time",
+      "60% decrease in UI-related bug reports"
     ],
     highlights: [
-      "Designed real-time moderation pipeline",
-      "Optimized for peak traffic handling",
-      "Integrated multiple AWS services"
+      "Designed responsive dashboard with real-time updates",
+      "Implemented efficient state management with Redux",
+      "Created reusable component library",
+      "Built interactive data visualization components",
+      "Integrated real-time WebSocket notifications"
     ],
     challenges: [
-      "Scaling for high traffic loads",
-      "Reducing false positives",
-      "Managing real-time processing"
+      "Complex real-time data visualization",
+      "Performance optimization for large datasets",
+      "Cross-browser compatibility issues",
+      "Responsive design for multiple screen sizes",
+      "State management for real-time updates"
     ],
     solutions: [
-      "Implemented auto-scaling policies",
-      "Developed ML-based verification",
-      "Optimized stream processing"
+      "Implemented data virtualization for large lists",
+      "Used React.memo and useMemo for performance",
+      "Created custom hooks for WebSocket management",
+      "Developed mobile-first responsive layouts",
+      "Implemented efficient caching strategies"
     ],
     github: "https://github.com/your-username/aws-content-moderation-system",
-    liveUrl: "https://content-mod-demo.vercel.app"
+    liveUrl: "https://content-mod-demo.vercel.app",
+    hardSkills: [
+      "React.js Development",
+      "TypeScript",
+      "State Management",
+      "UI/UX Implementation",
+      "Performance Optimization",
+      "Component Architecture"
+    ],
+    softSkills: [
+      "Frontend Architecture",
+      "UI/UX Principles",
+      "Technical Documentation",
+      "Team Collaboration",
+      "Agile Development"
+    ],
+    features: [
+      "Real-time content filtering",
+      "Multi-media support",
+      "Automated moderation",
+      "Performance analytics",
+      "Custom filter rules"
+    ],
+    roles: [
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of React dashboard"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 75,
+        description: "Dashboard design and user experience"
+      },
+      {
+        area: "Performance Optimization",
+        percentage: 85,
+        description: "Frontend optimization and state management"
+      }
+    ]
   }
 ]; 

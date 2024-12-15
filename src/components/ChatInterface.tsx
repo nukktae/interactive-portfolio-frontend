@@ -12,7 +12,7 @@ import { FiUser } from 'react-icons/fi';
 
 const INITIAL_QUESTIONS = [
   "What are Anu's main technical skills?",
-  "Tell me about Anu's IoT plant care system project",
+  "Tell me about Anu's Rootin project",
   "What experience does Anu have with AWS?",
   "What's Anu's approach to software development?",
   "What kind of role is Anu looking for?",

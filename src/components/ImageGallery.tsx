@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 
 interface ImageGalleryProps {
   images: string[];
@@ -13,98 +14,72 @@ interface ImageGalleryProps {
 }
 
 export default function ImageGallery({ images, descriptions = [] }: ImageGalleryProps) {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const imagePairs = images.reduce((result, item, index) => {
-    const chunkIndex = Math.floor(index / 2);
-    if (!result[chunkIndex]) {
-      result[chunkIndex] = [];
-    }
-    result[chunkIndex].push(item);
-    return result;
-  }, [] as string[][]);
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
-    <>
-      <div className="space-y-12">
-        {imagePairs.map((pair, pairIndex) => (
-          <div key={pairIndex} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {pair.map((image, index) => {
-              const actualIndex = pairIndex * 2 + index;
-              return (
-                <motion.div
-                  key={actualIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: actualIndex * 0.1 }}
-                  className="flex flex-row gap-6 items-center"
-                >
-                  <div className="w-[140px] flex-shrink-0">
-                    <div 
-                      className="group relative aspect-[9/19] bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-800 hover:border-purple-500/50 transition-all duration-300 cursor-pointer"
-                      onClick={() => setSelectedImage(image)}
-                    >
-                      <div className="absolute inset-[1px] rounded-2xl overflow-hidden">
-                        <Image
-                          src={image}
-                          alt={`Screenshot ${actualIndex + 1}`}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                      <motion.div 
-                        className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <div className="bg-gray-900/80 backdrop-blur-sm rounded-xl p-2 text-center">
-                          <p className="text-xs font-medium text-white">View Full Screen</p>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1 space-y-2">
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                      {descriptions[actualIndex]?.title}
-                    </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {descriptions[actualIndex]?.text}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
+    <div className="flex flex-col items-center space-y-8 py-12">
+      <div className="relative">
+        {/* Phone Frame */}
+        <div className="relative w-[280px] h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+          {/* Screen Content */}
+          <div className="relative w-full h-full bg-black rounded-[2.5rem] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={images[currentIndex]}
+                  alt={`Screenshot ${currentIndex + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
-        ))}
+          
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevImage}
+            className="absolute left-[-60px] top-1/2 -translate-y-1/2 p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-colors"
+          >
+            <IoChevronBack className="w-6 h-6 text-white" />
+          </button>
+          <button
+            onClick={nextImage}
+            className="absolute right-[-60px] top-1/2 -translate-y-1/2 p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-colors"
+          >
+            <IoChevronForward className="w-6 h-6 text-white" />
+          </button>
+        </div>
       </div>
 
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.div 
-              className="relative h-[70vh] max-w-[280px] aspect-[9/19] rounded-[2rem] overflow-hidden"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-            >
-              <Image
-                src={selectedImage}
-                alt="Full screen screenshot"
-                fill
-                className="object-contain"
-                quality={100}
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+      {/* Description */}
+      <motion.div 
+        key={currentIndex}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-md text-center space-y-3"
+      >
+        <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          {descriptions[currentIndex]?.title}
+        </h3>
+        <p className="text-sm text-gray-400 leading-relaxed">
+          {descriptions[currentIndex]?.text}
+        </p>
+      </motion.div>
+    </div>
   );
 } 

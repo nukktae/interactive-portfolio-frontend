@@ -123,7 +123,7 @@ export default function AboutPage() {
               <h3 className="text-2xl font-semibold mb-6">Find me on</h3>
               <div className="flex gap-6">
                 <motion.a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/nukktae"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
@@ -133,7 +133,7 @@ export default function AboutPage() {
                   <FaGithub className="w-6 h-6" />
                 </motion.a>
                 <motion.a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/nukktae"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
