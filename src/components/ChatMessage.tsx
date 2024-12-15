@@ -95,6 +95,51 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
     codeBlock: "bg-gray-800/50 rounded-lg p-4 font-mono text-sm my-4"
   }
 
+  const AIIndicator = () => {
+    return (
+      <div className="flex items-center gap-1">
+        <motion.div
+          className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-400 to-violet-600"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [1, 0.7, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-purple-600"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [1, 0.7, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            delay: 0.2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div
+          className="w-2 h-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-fuchsia-600"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [1, 0.7, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            delay: 0.4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      </div>
+    );
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -102,8 +147,8 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       className={`flex items-start gap-4 mb-6 ${isBot ? 'justify-start' : 'justify-end'}`}
     >
       {isBot && (
-        <div className={`w-10 h-10 rounded-xl ${avatarBg} flex items-center justify-center text-xl shrink-0`}>
-          {avatar}
+        <div className="flex flex-col items-center gap-2">
+          <AIIndicator />
         </div>
       )}
       <motion.div
@@ -112,7 +157,7 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
         className={`px-6 py-4 rounded-2xl max-w-[85%] ${
           isBot 
             ? 'bg-gradient-to-r from-gray-800/80 to-gray-800/50 backdrop-blur-sm border border-gray-700/30' 
-            : `${avatarBg} shadow-lg`
+            : 'bg-gradient-to-r from-violet-500 to-purple-600 shadow-lg'
         }`}
       >
         <div className="text-[15px] leading-relaxed text-white">

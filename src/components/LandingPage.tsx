@@ -9,27 +9,83 @@ import Navbar from './Navbar';
 const avatars = [
   { 
     id: 'recruiter',
-    emoji: '👔',
-    bg: 'bg-blue-500',
+    icon: (
+      <motion.div className="relative w-16 h-16">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div className="absolute inset-0 flex items-center justify-center">
+          <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </motion.div>
+      </motion.div>
+    ),
+    bg: 'from-blue-500/20 to-cyan-500/20',
     label: 'Hiring Manager',
-    description: 'Looking to evaluate professional experience and skills',
-    chatPrompt: "Hi! I'm here to assist you with evaluating Anu's professional experience and skills. Would you like to know about her technical expertise, project experience, or leadership roles?"
+    description: 'Looking to evaluate professional experience and skills'
   },
   { 
     id: 'visitor',
-    emoji: '🔍',
-    bg: 'bg-purple-500',
+    icon: (
+      <motion.div className="relative w-16 h-16">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-violet-400 to-fuchsia-300 rounded-xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, -5, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div className="absolute inset-0 flex items-center justify-center">
+          <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        </motion.div>
+      </motion.div>
+    ),
+    bg: 'from-violet-500/20 to-fuchsia-500/20',
     label: 'Just Browsing',
-    description: 'Interested in exploring projects and achievements',
-    chatPrompt: "Welcome! I'd be happy to guide you through Anu's projects and achievements. What interests you most - web development, AI projects, or full-stack applications?"
+    description: 'Interested in exploring projects and achievements'
   },
   { 
     id: 'friend',
-    emoji: '👋',
-    bg: 'bg-green-500',
+    icon: (
+      <motion.div className="relative w-16 h-16">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-300 rounded-xl"
+          animate={{
+            scale: [1, 0.9, 1.1, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        <motion.div className="absolute inset-0 flex items-center justify-center">
+          <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </motion.div>
+      </motion.div>
+    ),
+    bg: 'from-emerald-500/20 to-teal-500/20',
     label: 'Friend',
-    description: 'Want to know more about my journey and interests',
-    chatPrompt: "Hey there! I'd love to tell you more about Anu's journey and interests. Would you like to hear about her background, hobbies, or what she's currently working on?"
+    description: 'Want to know more about my journey and interests'
   }
 ];
 
@@ -101,10 +157,10 @@ export default function LandingPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleAvatarClick(avatar)}
-                className={`w-full ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
-                  hover:shadow-lg hover:shadow-${avatar.bg}/50 backdrop-blur-sm bg-opacity-20`}
+                className={`w-full bg-gradient-to-r ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
+                  hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm border border-white/10`}
               >
-                <span className="text-5xl mb-2">{avatar.emoji}</span>
+                {avatar.icon}
                 <h3 className="text-xl font-semibold">{avatar.label}</h3>
                 <p className="text-sm text-gray-300 text-center">
                   {avatar.description}

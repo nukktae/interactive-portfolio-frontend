@@ -10,14 +10,6 @@ import { IoSend } from 'react-icons/io5';
 import { RiRobot2Line } from 'react-icons/ri';
 import { FiUser } from 'react-icons/fi';
 
-const INITIAL_QUESTIONS = [
-  "What are Anu's main technical skills?",
-  "Tell me about the Rootin plant care system project",
-  "What experience does Anu have with AWS?",
-  "What's Anu's approach to software development?",
-  "Can you highlight Anu's key achievements?"
-];
-
 const FOLLOW_UP_QUESTIONS = {
   technical: [
     "How did Anu implement real-time data processing in Rootin?",
@@ -63,62 +55,153 @@ const isLanguageQuestion = (question: string): boolean => {
 };
 
 const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string): string[] => {
-  // Rootin project-specific follow-ups
-  if (previousQuestion.toLowerCase().includes('rootin') || 
-      previousQuestion.toLowerCase().includes('plant care')) {
-    return [
-      "What technologies were used in the Rootin project?",
-      "Can you explain the IoT integration in Rootin?",
-      "What were the key performance metrics achieved?",
-      "How was the user experience designed?",
-      "Tell me about the technical architecture"
-    ];
+  const userType = localStorage.getItem('userType') || 'visitor';
+  
+  const followUps = {
+    recruiter: {
+      technical: [
+        "What's the technical architecture of your most complex project?",
+        "How do you approach system scalability?",
+        "Tell me about your experience with cloud services",
+        "What's your approach to code quality and testing?",
+        "How do you handle technical debt?"
+      ],
+      project: [
+        "What metrics demonstrate your project's success?",
+        "How did you overcome technical challenges?",
+        "What was your role in team collaboration?",
+        "How did you ensure project deliverables?",
+        "What improvements did you implement?"
+      ]
+    },
+    visitor: {
+      technical: [
+        "What innovative technologies did you use?",
+        "How did you make the user experience engaging?",
+        "What's unique about your development approach?",
+        "Tell me about your creative solutions",
+        "How do you stay current with tech trends?"
+      ],
+      project: [
+        "What inspired this project idea?",
+        "How does it solve real-world problems?",
+        "What makes your solution unique?",
+        "How did users respond to the project?",
+        "What's next for this project?"
+      ]
+    },
+    friend: {
+      technical: [
+        "What was the most exciting part to build?",
+        "What did you learn from this project?",
+        "What would you do differently now?",
+        "What technologies do you want to explore next?",
+        "How did this project help you grow?"
+      ],
+      project: [
+        "What's the story behind this project?",
+        "What was your biggest 'aha' moment?",
+        "How did you come up with the solution?",
+        "What are you most proud of?",
+        "What inspired the design choices?"
+      ]
+    }
+  };
+
+  // Get the appropriate question set based on user type and context
+  const questions = followUps[userType as keyof typeof followUps] || followUps.visitor;
+
+  if (previousQuestion.toLowerCase().includes('technical') || 
+      previousQuestion.toLowerCase().includes('skills') ||
+      previousQuestion.toLowerCase().includes('development')) {
+    return questions.technical;
   }
 
-  // Technical skills follow-ups
-  if (previousQuestion.toLowerCase().includes('technical skills') || 
-      previousQuestion.toLowerCase().includes('experience')) {
-    return [
-      "Tell me about your Flutter development experience",
-      "What AWS services have you worked with?",
-      "How do you approach IoT development?",
-      "What's your experience with real-time data processing?",
-      "How do you handle system architecture?"
-    ];
+  if (previousQuestion.toLowerCase().includes('project') || 
+      previousQuestion.toLowerCase().includes('rootin') ||
+      previousQuestion.toLowerCase().includes('achievement')) {
+    return questions.project;
   }
 
-  // Project metrics follow-ups
-  if (previousQuestion.toLowerCase().includes('metrics') || 
-      previousQuestion.toLowerCase().includes('achievements')) {
-    return [
-      "How did you achieve 90% user satisfaction?",
-      "What led to the 30% improvement in notifications?",
-      "Can you explain the API optimization results?",
-      "What other performance improvements did you achieve?",
-      "How do you measure project success?"
-    ];
-  }
-
-  // Development process follow-ups
-  if (previousQuestion.toLowerCase().includes('development') || 
-      previousQuestion.toLowerCase().includes('process')) {
-    return [
-      "How did you handle the IoT integration process?",
-      "What was your approach to mobile app development?",
-      "How did you manage the project timeline?",
-      "What development challenges did you overcome?",
-      "How did you ensure code quality?"
-    ];
-  }
-
-  // Default follow-ups
+  // Default questions based on user type
   return [
-    "Would you like to hear about the Rootin project?",
-    "What aspects of my technical skills interest you?",
-    "Should we discuss project metrics and achievements?",
-    "Would you like to know about my development process?",
-    "What specific area would you like to explore?"
+    ...questions.technical.slice(0, 2),
+    ...questions.project.slice(0, 3)
   ];
+};
+
+const getPersonalizedGreeting = (userType: string) => {
+  const greetings = {
+    recruiter: {
+      message: `## Welcome to Anu's Professional Portfolio! 🚀
+
+Let's dive into what makes Anu stand out in the tech world. I can help you explore:
+
+* 💻 Technical expertise and project highlights
+* 🌱 Growth trajectory and learning mindset
+* 🎯 Impact-driven development approach
+* 🤝 Collaborative work style
+
+What would you like to know more about?`,
+      bg: 'from-blue-500/20 to-cyan-500/20'
+    },
+    visitor: {
+      message: `## Hey there, tech enthusiast! ✨
+
+Ready to explore some exciting projects? Here's what we can discover:
+
+* 🔮 Innovative solutions and creative approaches
+* 🛠️ Full-stack development journey
+* 🌟 Cutting-edge technologies
+* 🎨 User-centered design philosophy
+
+What catches your interest?`,
+      bg: 'from-violet-500/20 to-fuchsia-500/20'
+    },
+    friend: {
+      message: `## Hi there! Great to see you! 💫
+
+Let's have an engaging chat about Anu's journey:
+
+* 🌈 Passion projects and inspirations
+* 🚀 Learning adventures and experiences
+* 💡 Creative problem-solving approaches
+* 🌱 Personal growth and aspirations
+
+What would you like to hear about?`,
+      bg: 'from-emerald-500/20 to-teal-500/20'
+    }
+  };
+
+  return greetings[userType as keyof typeof greetings] || greetings.visitor;
+};
+
+const getInitialQuestions = (userType: string) => {
+  const questions = {
+    recruiter: [
+      "What are Anu's core technical competencies?",
+      "Can you detail Anu's most significant project achievements?",
+      "What's Anu's experience with enterprise-scale systems?",
+      "How does Anu approach technical leadership?",
+      "What methodologies does Anu use for project delivery?"
+    ],
+    visitor: [
+      "What innovative projects has Anu worked on?",
+      "Tell me about the Rootin plant care system project",
+      "What creative solutions has Anu developed?",
+      "How does Anu approach user experience?",
+      "What's unique about Anu's development style?"
+    ],
+    friend: [
+      "What's the coolest project Anu has built?",
+      "How did Anu get into tech?",
+      "What's Anu's favorite tech stack to work with?",
+      "Tell me about Anu's learning journey",
+      "What inspired the Rootin project?"
+    ]
+  };
+
+  return questions[userType as keyof typeof questions] || questions.visitor;
 };
 
 export const ChatInterface = () => {
@@ -131,12 +214,24 @@ export const ChatInterface = () => {
   const [selectedBg, setSelectedBg] = useState('bg-blue-500');
   const [storedPrompt, setStoredPrompt] = useState('');
   const [followUpQuestions, setFollowUpQuestions] = useState<string[]>([]);
+  const [initialQuestions, setInitialQuestions] = useState<string[]>([]);
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setSelectedEmoji(localStorage.getItem('selectedAvatar') || '🤖');
-      setSelectedBg(localStorage.getItem('selectedAvatarBg') || 'bg-blue-500');
-      setStoredPrompt(localStorage.getItem('chatPrompt') || '');
+      const userType = localStorage.getItem('userType') || 'visitor';
+      const { message, bg } = getPersonalizedGreeting(userType);
+      const questions = getInitialQuestions(userType);
+      
+      const initialMessage: ChatMessageType = {
+        id: uuidv4(),
+        content: message,
+        sender: 'bot',
+        timestamp: new Date()
+      };
+      
+      setMessages([initialMessage]);
+      setSelectedBg(bg);
+      setInitialQuestions(questions);
     }
   }, []);
 
@@ -243,7 +338,7 @@ export const ChatInterface = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            {INITIAL_QUESTIONS.map((question, index) => (
+            {initialQuestions.map((question, index) => (
               <motion.button
                 key={index}
                 className="p-4 text-left rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10"
