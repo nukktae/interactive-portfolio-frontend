@@ -110,10 +110,10 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "LLM Recipe Generator",
+    title: "MakeEat",
     description: "AI-powered recipe recommendation system with personalized dietary suggestions and meal planning capabilities.",
     detailedDescription: "An intelligent recipe recommendation platform that leverages Large Language Models to provide personalized meal planning and dietary suggestions. The system adapts to user preferences and dietary restrictions while offering creative cooking solutions.",
-    image: "/assets/images/recipe.jpeg",
+    image: "/assets/images/recipe.jpg",
     images: [
       "/assets/images/recipe-dashboard.jpg",
       "/assets/images/recipe-suggestions.jpg",
@@ -182,9 +182,9 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "AWS Content Moderation System",
-    description: "Real-time content moderation platform utilizing AWS services for scalable and accurate content filtering.",
-    detailedDescription: "A sophisticated content moderation system built on AWS infrastructure, providing real-time content filtering for large-scale applications. The platform combines multiple AWS services to deliver accurate and efficient content moderation.",
+    title: "AWS Content Moderation",
+    description: "A sophisticated content moderation system leveraging AWS services for real-time content filtering and analysis.",
+    detailedDescription: "A real-time content moderation system built on AWS infrastructure, utilizing services like Kinesis, Rekognition, and Lambda for efficient content analysis and filtering.",
     image: "/assets/images/content-mod.png",
     images: [
       "/assets/images/moderation-dashboard.jpg",
@@ -192,13 +192,13 @@ export const projects: Project[] = [
       "/assets/images/moderation-filters.jpg"
     ],
     technologies: [
-      "React.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "AWS Amplify",
-      "GraphQL",
-      "WebSocket",
-      "Redux Toolkit"
+      "AWS Kinesis",
+      "AWS Lambda",
+      "AWS Rekognition",
+      "DynamoDB",
+      "EventBridge",
+      "SNS",
+      "CloudWatch"
     ],
     metrics: [
       "40% improvement in UI response time",
@@ -227,8 +227,7 @@ export const projects: Project[] = [
       "Developed mobile-first responsive layouts",
       "Implemented efficient caching strategies"
     ],
-    github: "https://github.com/your-username/aws-content-moderation-system",
-    liveUrl: "https://content-mod-demo.vercel.app",
+    github: "https://github.com/2024PBL-AWS-project/ContentModeration",
     hardSkills: [
       "React.js Development",
       "TypeScript",

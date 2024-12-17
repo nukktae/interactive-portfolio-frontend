@@ -29,16 +29,16 @@ export default function Navbar() {
         </div>
         <div className="flex items-center gap-4">
           <Link 
-            href="/chat" 
-            className={`${isActive('/chat')} transition-colors`}
-          >
-            AI Portfolio
-          </Link>
-          <Link 
             href="/projects" 
             className={`${isActive('/projects')} transition-colors`}
           >
             Projects
+          </Link>
+          <Link 
+            href="/chat" 
+            className={`${isActive('/chat')} transition-colors`}
+          >
+            AI Portfolio
           </Link>
           <Link 
             href="/about" 

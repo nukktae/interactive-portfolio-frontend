@@ -29,6 +29,13 @@ export const ParticleGame = ({ onScoreUpdate }: ParticleGameProps) => {
     const newScore = score + 1;
     setScore(newScore);
     onScoreUpdate(newScore);
+
+    // Add collection animation
+    controls.start({
+      scale: [1, 1.2, 0],
+      opacity: [1, 0.8, 0],
+      transition: { duration: 0.3 }
+    });
   };
 
   return (
@@ -37,22 +44,29 @@ export const ParticleGame = ({ onScoreUpdate }: ParticleGameProps) => {
         <motion.div
           key={particle.id}
           className="absolute w-4 h-4 cursor-pointer pointer-events-auto"
-          initial={{ x: particle.x, y: particle.y, opacity: 0 }}
+          initial={{ x: particle.x, y: particle.y, opacity: 0, scale: 0 }}
           animate={{
             y: window.innerHeight + 20,
             opacity: [0, 1, 1, 0],
             rotate: [0, 180, 360],
+            scale: [0, 1, 1, 0],
           }}
           transition={{
             duration: 8,
             ease: "linear",
           }}
           onClick={() => collectParticle(particle.id)}
+          whileHover={{ scale: 1.5 }}
         >
           <motion.div
             className="w-full h-full bg-gradient-to-br from-violet-400 to-fuchsia-300 rounded-full"
             animate={{
               scale: [1, 1.2, 1],
+              boxShadow: [
+                '0 0 20px rgba(139, 92, 246, 0)',
+                '0 0 20px rgba(139, 92, 246, 0.2)',
+                '0 0 20px rgba(139, 92, 246, 0)'
+              ],
             }}
             transition={{
               duration: 2,

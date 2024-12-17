@@ -146,75 +146,25 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
     codeBlock: "bg-gray-800/50 rounded-lg p-4 font-mono text-sm my-4"
   }
 
-  const AIIndicator = () => {
-    return (
-      <div className="flex items-center gap-1">
-        <motion.div
-          className="w-2 h-2 rounded-full bg-gradient-to-r from-violet-400 to-violet-600"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [1, 0.7, 1],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-purple-600"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [1, 0.7, 1],
-          }}
-          transition={{
-            duration: 1.5,
-            delay: 0.2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-        <motion.div
-          className="w-2 h-2 rounded-full bg-gradient-to-r from-fuchsia-400 to-fuchsia-600"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [1, 0.7, 1],
-          }}
-          transition={{
-            duration: 1.5,
-            delay: 0.4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      </div>
-    );
-  };
-
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       className={`flex items-start gap-4 mb-6 ${isBot ? 'justify-start' : 'justify-end'}`}
     >
-      {isBot && (
-        <div className="flex flex-col items-center gap-2">
-          <AIIndicator />
-        </div>
-      )}
       <motion.div
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}
-        className={`px-6 py-4 rounded-2xl max-w-[85%] ${
+        className={`px-5 py-3 rounded-2xl max-w-[85%] ${
           isBot 
-            ? 'bg-gradient-to-r from-gray-800/80 to-gray-800/50 backdrop-blur-sm border border-gray-700/30' 
-            : 'bg-gradient-to-r from-violet-500 to-purple-600 shadow-lg'
+            ? 'bg-gradient-to-r from-gray-800/50 to-gray-800/30 backdrop-blur-sm border border-white/5' 
+            : 'bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg'
         }`}
       >
-        <div className="text-[15px] leading-relaxed text-white">
+        <div className="text-sm leading-relaxed text-gray-100">
           {formatMessage(message.content)}
         </div>
-        <div className={`text-[11px] mt-3 ${isBot ? 'text-gray-500' : 'text-white/70'}`}>
+        <div className={`text-[10px] mt-2 ${isBot ? 'text-gray-500' : 'text-white/50'}`}>
           {new Date(message.timestamp).toLocaleTimeString()}
         </div>
       </motion.div>

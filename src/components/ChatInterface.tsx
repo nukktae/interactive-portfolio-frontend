@@ -9,6 +9,7 @@ import type { ChatMessage as ChatMessageType } from '../types/chat';
 import { IoSend } from 'react-icons/io5';
 import { RiRobot2Line } from 'react-icons/ri';
 import { FiUser } from 'react-icons/fi';
+import { IoIosArrowUp } from 'react-icons/io';
 
 const FOLLOW_UP_QUESTIONS = {
   technical: [
@@ -215,6 +216,9 @@ export const ChatInterface = () => {
   const [storedPrompt, setStoredPrompt] = useState('');
   const [followUpQuestions, setFollowUpQuestions] = useState<string[]>([]);
   const [initialQuestions, setInitialQuestions] = useState<string[]>([]);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -232,6 +236,9 @@ export const ChatInterface = () => {
       setMessages([initialMessage]);
       setSelectedBg(bg);
       setInitialQuestions(questions);
+
+      // Reset scroll position of the entire window
+      window.scrollTo(0, 0);
     }
   }, []);
 
@@ -247,13 +254,34 @@ export const ChatInterface = () => {
     }
   }, [storedPrompt]);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    if (!isInitialLoad && messagesEndRef.current) {
+      // Only auto-scroll for new messages after initial load
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  }, [messages, isInitialLoad]);
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      setShowScrollTop(container.scrollTop > 500);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    messagesContainerRef.current?.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -302,53 +330,41 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gradient-to-br from-gray-900 via-purple-900/10 to-black">
-      <motion.div 
-        className="flex items-center gap-4 p-4 backdrop-blur-lg border-b border-white/5"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+    <div className="h-full flex flex-col bg-gradient-to-br from-gray-900 via-gray-900 to-black">
+      <div 
+        ref={messagesContainerRef}
+        className="flex-1 px-4 py-6 space-y-6 relative overflow-y-auto"
       >
-        <motion.div 
-          className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl flex items-center justify-center text-xl shadow-lg"
-          whileHover={{ scale: 1.05 }}
-        >
-          <RiRobot2Line className="text-white" />
-        </motion.div>
-        <div>
-          <h1 className="text-xl font-semibold text-white">AI Portfolio Assistant</h1>
-          <p className="text-sm text-gray-400">Powered by OpenAI</p>
-        </div>
-      </motion.div>
-
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         <AnimatePresence>
           {messages.map((message) => (
             <ChatMessage
               key={message.id}
               message={message}
               avatar={message.sender === 'bot' ? selectedEmoji : '👤'}
-              avatarBg={message.sender === 'bot' ? selectedBg : 'bg-gradient-to-r from-violet-500 to-purple-600'}
+              avatarBg={message.sender === 'bot' ? selectedBg : 'bg-gradient-to-r from-indigo-500 to-purple-600'}
             />
           ))}
         </AnimatePresence>
 
         {showSuggestions && (
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-3"
+            className="grid grid-cols-1 gap-2 mt-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {initialQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="p-4 text-left rounded-xl bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10"
-                whileHover={{ scale: 1.02 }}
+                className="p-3 text-left rounded-lg bg-gray-800/50 hover:bg-gray-700/50 
+                         border border-gray-700 text-gray-300 hover:text-white
+                         transition-all duration-200"
+                whileHover={{ scale: 1.01 }}
                 onClick={() => {
                   setInput(question);
                   handleSubmit(new Event('submit') as any);
                 }}
               >
-                {question}
+                <span className="text-sm">{question}</span>
               </motion.button>
             ))}
           </motion.div>
@@ -358,16 +374,18 @@ export const ChatInterface = () => {
 
       {followUpQuestions.length > 0 && (
         <motion.div 
-          className="p-4 space-y-2"
+          className="px-6 py-4 bg-black/20 border-t border-white/5"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-sm text-gray-400">Follow-up questions:</p>
+          <p className="text-xs text-gray-400 mb-3">Suggested questions:</p>
           <div className="flex flex-wrap gap-2">
             {followUpQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="p-2 text-sm rounded-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10"
+                className="px-4 py-2 text-sm rounded-lg bg-gray-800/50 hover:bg-gray-700/50 
+                         border border-gray-700 text-gray-300 hover:text-white
+                         transition-all duration-200"
                 whileHover={{ scale: 1.02 }}
                 onClick={() => {
                   setInput(question);
@@ -383,20 +401,23 @@ export const ChatInterface = () => {
 
       <motion.form 
         onSubmit={handleSubmit}
-        className="p-4 backdrop-blur-lg border-t border-white/5"
+        className="p-6 backdrop-blur-lg border-t border-white/5 bg-black/20"
       >
-        <div className="relative flex items-center max-w-4xl mx-auto">
+        <div className="relative flex items-center max-w-3xl mx-auto">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask anything about Anu's experience..."
-            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 text-white focus:ring-2 focus:ring-violet-500/50 transition-all"
+            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 
+                     text-white text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500/50 
+                     transition-all placeholder:text-gray-500"
           />
           <motion.button
             type="submit"
             disabled={loading}
-            className="ml-2 p-2.5 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full text-white hover:shadow-lg flex-shrink-0"
+            className="absolute right-2 p-2 bg-gradient-to-r from-indigo-500 to-purple-600 
+                     rounded-full text-white shadow-lg disabled:opacity-50"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -409,7 +430,7 @@ export const ChatInterface = () => {
                 ⟳
               </motion.div>
             ) : (
-              <IoSend className="w-5 h-5" />
+              <IoSend className="w-4 h-4" />
             )}
           </motion.button>
         </div>

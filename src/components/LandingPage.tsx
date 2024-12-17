@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import { ParticleGame } from './ParticleGame';
 
@@ -105,7 +105,12 @@ const avatars: Avatar[] = [
 export default function LandingPage() {
   const [hoveredAvatar, setHoveredAvatar] = useState<string | null>(null);
   const [gameScore, setGameScore] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleAvatarClick = (avatar: typeof avatars[0]) => {
     // Store the selected user type and chat prompt in localStorage or state management
@@ -119,89 +124,137 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white relative">
-      <ParticleGame onScoreUpdate={handleScoreUpdate} />
-      <Navbar />
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        <div className="flex flex-col items-center justify-center">
-          <motion.div 
-            className="relative w-48 h-48 mb-8"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image
-              src="/assets/images/profile.jpg"
-              alt="Anu Bilegdemberel"
-              fill
-              className="rounded-full object-cover border-4 border-gray-800/50"
-            />
-          </motion.div>
-
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-black to-black text-white relative overflow-hidden">
+      <ParticleGame onScoreUpdate={setGameScore} />
+      
+      <motion.div 
+        className="fixed top-24 right-8 z-10"
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1 }}
+      >
+        <motion.div 
+          className="bg-gradient-to-r from-violet-500/10 to-indigo-500/10 backdrop-blur-sm 
+                     rounded-full px-4 py-2 border border-violet-500/20"
+          whileHover={{ scale: 1.05 }}
+          animate={{
+            boxShadow: ['0 0 20px rgba(139, 92, 246, 0)', '0 0 20px rgba(139, 92, 246, 0.2)', '0 0 20px rgba(139, 92, 246, 0)'],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
           <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-5xl font-bold mb-4">
-              Hi, I'm Anu
-            </h1>
-            <h2 className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-semibold mb-16">
-              Full-Stack Engineer
-            </h2>
-          </motion.div>
-
-          <div className="h-16 flex items-center justify-center">
-            <motion.div 
-              className="text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              <span className="text-xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-                Score: {gameScore}
-              </span>
-            </motion.div>
-          </div>
-
-          <motion.p 
-            className="text-xl text-gray-400 text-center mb-12"
+            className="flex items-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
           >
-            Tell me what brings you here today
-          </motion.p>
+            <svg 
+              className="w-4 h-4 text-violet-400" 
+              viewBox="0 0 24 24" 
+              fill="currentColor"
+            >
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+            <span className="text-sm font-medium text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-400">
+              {gameScore} particles collected
+            </span>
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
-            {avatars.map((avatar, index) => (
-              <motion.div
-                key={avatar.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="relative group"
-                onHoverStart={() => setHoveredAvatar(avatar.id)}
-                onHoverEnd={() => setHoveredAvatar(null)}
+      <Navbar />
+
+      <AnimatePresence>
+        {mounted && (
+          <motion.div 
+            className="max-w-7xl mx-auto px-4 py-24"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="flex flex-col items-center justify-center">
+              <motion.div 
+                className="relative w-48 h-48 mb-8"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
               >
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleAvatarClick(avatar)}
-                  className={`w-full bg-gradient-to-r ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
-                    hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm border border-white/10`}
-                >
-                  {avatar.icon}
-                  <h3 className="text-xl font-semibold">{avatar.label}</h3>
-                  <p className="text-sm text-gray-300 text-center">
-                    {avatar.description}
-                  </p>
-                </motion.button>
+                <Image
+                  src="/assets/images/profile.jpg"
+                  alt="Anu Bilegdemberel"
+                  fill
+                  className="rounded-full object-cover border-4 border-gray-800/50"
+                />
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+
+              <div className="text-center space-y-6">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <h1 className="text-6xl font-bold mb-4 tracking-tight">
+                    Hi, I'm{' '}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-400">
+                      Anu
+                    </span>
+                  </h1>
+                  <motion.div
+                    className="flex items-center justify-center gap-3"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <h2 className="text-2xl font-medium text-gray-400">
+                      Full-Stack Engineer
+                    </h2>
+                  </motion.div>
+                </motion.div>
+
+                <motion.p 
+                  className="text-xl text-gray-400 text-center mb-12"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  Tell me what brings you here today
+                </motion.p>
+
+                <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
+                  {avatars.map((avatar, index) => (
+                    <motion.div
+                      key={avatar.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.2 }}
+                      className="relative group"
+                      onHoverStart={() => setHoveredAvatar(avatar.id)}
+                      onHoverEnd={() => setHoveredAvatar(null)}
+                    >
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => handleAvatarClick(avatar)}
+                        className={`w-full bg-gradient-to-r ${avatar.bg} rounded-2xl p-8 flex flex-col items-center gap-4 transform transition-all duration-200
+                          hover:shadow-lg hover:shadow-white/10 backdrop-blur-sm border border-white/10`}
+                      >
+                        {avatar.icon}
+                        <h3 className="text-xl font-semibold">{avatar.label}</h3>
+                        <p className="text-sm text-gray-300 text-center">
+                          {avatar.description}
+                        </p>
+                      </motion.button>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
