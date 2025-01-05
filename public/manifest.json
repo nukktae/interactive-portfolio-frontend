@@ -1,0 +1,14 @@
+{
+  "name": "Anu's Portfolio",
+  "short_name": "Anu",
+  "icons": [
+    {
+      "src": "/assets/icons/bubble.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ],
+  "theme_color": "#498FD8",
+  "background_color": "#DDCCD0",
+  "display": "standalone"
+} 
