@@ -24,10 +24,10 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
         const [header, ...content] = section.split('\n');
         return (
           <div key={index} className="mb-6">
-            <h2 className="text-2xl font-bold text-white mb-3">
+            <h2 className="text-2xl font-bold text-gray-800 mb-3">
               {header.replace('## ', '')}
             </h2>
-            <div className="pl-4 border-l-2 border-violet-500/20">
+            <div className="pl-4 border-l-2 border-[#498FD8]/20">
               {formatSection(content.join('\n'))}
             </div>
           </div>
@@ -46,7 +46,7 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
         const [subheader, ...content] = part.split('\n');
         return (
           <div key={index} className="mb-4">
-            <h3 className="text-lg font-medium text-violet-200 mb-2">
+            <h3 className="text-lg font-medium text-gray-700 mb-2">
               {subheader.replace('### ', '')}
             </h3>
             <div className="pl-4">
@@ -135,15 +135,15 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
   };
 
   const messageStyles = {
-    container: "px-6 py-4 rounded-2xl max-w-[85%] space-y-4",
-    header: "text-xl font-semibold text-violet-300 mb-3",
-    subheader: "text-lg font-medium text-violet-200 mb-2",
-    bulletPoint: "flex items-start gap-2 my-1.5 text-gray-200",
-    numberedList: "flex items-start gap-2 my-1.5 text-gray-200",
-    table: "min-w-full divide-y divide-gray-700 my-4",
-    tableHeader: "px-4 py-2 text-left text-violet-300 font-medium",
-    tableCell: "px-4 py-2 text-gray-300",
-    codeBlock: "bg-gray-800/50 rounded-lg p-4 font-mono text-sm my-4"
+    container: "px-6 py-4 rounded-2xl max-w-[95%] space-y-4",
+    header: "text-2xl font-bold bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent mb-3",
+    subheader: "text-lg font-medium text-gray-700 mb-2",
+    bulletPoint: "flex items-start gap-2 my-2 text-gray-700",
+    numberedList: "flex items-start gap-2 my-2 text-gray-700",
+    table: "min-w-full divide-y divide-[#498FD8]/20 my-4",
+    tableHeader: "px-4 py-2 text-left font-medium bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent",
+    tableCell: "px-4 py-2 text-gray-700",
+    codeBlock: "bg-white/80 rounded-xl p-4 font-mono text-sm text-gray-700 my-4 border border-[#498FD8]/10"
   }
 
   return (
@@ -155,16 +155,16 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       <motion.div
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}
-        className={`px-5 py-3 rounded-2xl max-w-[85%] ${
+        className={`px-6 py-4 rounded-2xl max-w-[95%] ${
           isBot 
-            ? 'bg-gradient-to-r from-gray-800/50 to-gray-800/30 backdrop-blur-sm border border-white/5' 
-            : 'bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg'
+            ? 'bg-white/90 backdrop-blur-sm border border-[#498FD8]/10 shadow-sm' 
+            : 'bg-gradient-to-r from-[#498FD8] to-[#D86089] text-white shadow-md'
         }`}
       >
-        <div className="text-sm leading-relaxed text-gray-100">
+        <div className={`text-sm leading-relaxed ${isBot ? 'text-gray-700' : 'text-white'}`}>
           {formatMessage(message.content)}
         </div>
-        <div className={`text-[10px] mt-2 ${isBot ? 'text-gray-500' : 'text-white/50'}`}>
+        <div className={`text-[10px] mt-2 ${isBot ? 'text-gray-400' : 'text-white/70'}`}>
           {new Date(message.timestamp).toLocaleTimeString()}
         </div>
       </motion.div>

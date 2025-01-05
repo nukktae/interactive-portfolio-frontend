@@ -3,21 +3,110 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-lola: #DDCCD0;
+  --color-havelock: #498FD8;
+  --color-cranberry: #D86089;
+  --color-tan: #FB9D5B;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-lola text-gray-800;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .glass-card {
+    @apply bg-white/50 backdrop-blur-lg border border-white/20 rounded-3xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(221, 204, 208, 0.5));
+  }
+
+  .primary-button {
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-havelock to-cranberry 
+           hover:from-cranberry hover:to-tan text-white transition-all duration-300
+           shadow-lg shadow-havelock/20;
+  }
+
+  .secondary-button {
+    @apply px-6 py-3 rounded-full bg-white/50 border border-havelock/20
+           hover:border-cranberry/50 text-gray-800 transition-all duration-300;
+  }
+
+  .gradient-card {
+    @apply relative overflow-hidden rounded-3xl;
+    background: linear-gradient(135deg, 
+      rgba(73, 143, 216, 0.1),
+      rgba(216, 96, 137, 0.1),
+      rgba(251, 157, 91, 0.1)
+    );
+  }
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-havelock via-cranberry to-tan bg-clip-text text-transparent;
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    -45deg,
+    var(--color-havelock),
+    var(--color-cranberry),
+    var(--color-tan)
+  );
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.bubble-pattern {
+  @apply absolute inset-0 opacity-15;
+  background-image: url('/assets/icons/bubble.jpg');
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  background-position: center;
+  mix-blend-mode: soft-light;
+  animation: floatBubbles 20s linear infinite;
+}
+
+@keyframes floatBubbles {
+  0% { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
+
+.bubble-overlay {
+  @apply absolute inset-0;
+  background: radial-gradient(circle at center,
+    rgba(221, 204, 208, 0.95) 0%,
+    rgba(221, 204, 208, 0.85) 50%,
+    rgba(221, 204, 208, 0.95) 100%
+  );
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-size: 400% 400%;
+    background-position: left top;
+  }
+  25% {
+    background-size: 400% 400%;
+    background-position: right top;
+  }
+  50% {
+    background-size: 400% 400%;
+    background-position: right bottom;
+  }
+  75% {
+    background-size: 400% 400%;
+    background-position: left bottom;
+  }
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
 }

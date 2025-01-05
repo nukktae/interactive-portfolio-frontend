@@ -1,53 +1,114 @@
 "use client";
 
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
-import { SiTypescript, SiTailwindcss } from 'react-icons/si';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
+  const router = useRouter();
   const pathname = usePathname();
+  const [activeItem, setActiveItem] = useState('Home');
+  const { scrollY } = useScroll();
 
-  const isActive = (path: string) => {
-    return pathname === path ? "text-white" : "text-gray-400 hover:text-white";
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['hero', 'projects', 'tech-stack', 'about'];
+      let currentSection = 'Home';
+
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = section === 'hero' ? 'Home' : section.charAt(0).toUpperCase() + section.slice(1);
+          }
+        }
+      });
+
+      setActiveItem(currentSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const backgroundColor = useTransform(
+    scrollY,
+    [0, 100],
+    ["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 0.95)"]
+  );
+
+  const boxShadow = useTransform(
+    scrollY,
+    [0, 100],
+    ["none", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"]
+  );
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const navItems = [
+    { name: 'Home', href: '#' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'About', href: '#about' },
+  ];
+
+  const handleNavClick = (e: React.MouseEvent, item: { name: string; href: string }) => {
+    e.preventDefault();
+    setActiveItem(item.name);
+    
+    if (item.name === 'Home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      scrollToSection(item.name.toLowerCase());
+    }
   };
 
   return (
-    <nav className="border-b border-gray-800 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="text-white text-xl font-semibold">
-            Anu's Portfolio
-          </Link>
-          <div className="hidden sm:flex items-center gap-2 border-l border-gray-700/50 pl-2 ml-2">
-            <SiTypescript className="w-5 h-5 text-blue-400" />
-            <FaReact className="w-5 h-5 text-cyan-400" />
-            <SiTailwindcss className="w-5 h-5 text-teal-400" />
-            <FaNodeJs className="w-5 h-5 text-green-400" />
-            <FaDatabase className="w-5 h-5 text-yellow-400" />
+    <motion.nav 
+      className="fixed top-0 w-full z-[9999]"
+      style={{
+        backgroundColor,
+        boxShadow,
+        backdropFilter: 'blur(8px)',
+      }}
+    >
+      <div className="max-w-screen-xl mx-auto px-6 py-4">
+        <div className="relative flex justify-center items-center">
+          <div className="absolute inset-0 rounded-full border border-gray-200/20" />
+          
+          <div className="relative flex items-center gap-4 p-1">
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                className="relative"
+                onHoverStart={() => setActiveItem(item.name)}
+              >
+                <a
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item)}
+                  className={`px-6 py-2 rounded-full relative z-10 transition-colors duration-200 text-sm font-medium
+                    ${activeItem === item.name ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'}`}
+                >
+                  {item.name}
+                </a>
+                {activeItem === item.name && (
+                  <motion.div
+                    className="absolute inset-0 bg-gray-100 rounded-full -z-10"
+                    layoutId="navbar-active"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
-        <div className="flex items-center gap-4">
-          <Link 
-            href="/projects" 
-            className={`${isActive('/projects')} transition-colors`}
-          >
-            Projects
-          </Link>
-          <Link 
-            href="/chat" 
-            className={`${isActive('/chat')} transition-colors`}
-          >
-            AI Portfolio
-          </Link>
-          <Link 
-            href="/about" 
-            className={`${isActive('/about')} transition-colors`}
-          >
-            About
-          </Link>
-        </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 } 

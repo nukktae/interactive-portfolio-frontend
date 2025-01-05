@@ -58,119 +58,48 @@ const isLanguageQuestion = (question: string): boolean => {
 const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string): string[] => {
   const userType = localStorage.getItem('userType') || 'visitor';
   
-  const followUps = {
-    recruiter: {
-      technical: [
-        "What's the technical architecture of your most complex project?",
-        "How do you approach system scalability?",
-        "Tell me about your experience with cloud services",
-        "What's your approach to code quality and testing?",
-        "How do you handle technical debt?"
-      ],
-      project: [
-        "What metrics demonstrate your project's success?",
-        "How did you overcome technical challenges?",
-        "What was your role in team collaboration?",
-        "How did you ensure project deliverables?",
-        "What improvements did you implement?"
-      ]
-    },
-    visitor: {
-      technical: [
-        "What innovative technologies did you use?",
-        "How did you make the user experience engaging?",
-        "What's unique about your development approach?",
-        "Tell me about your creative solutions",
-        "How do you stay current with tech trends?"
-      ],
-      project: [
-        "What inspired this project idea?",
-        "How does it solve real-world problems?",
-        "What makes your solution unique?",
-        "How did users respond to the project?",
-        "What's next for this project?"
-      ]
-    },
-    friend: {
-      technical: [
-        "What was the most exciting part to build?",
-        "What did you learn from this project?",
-        "What would you do differently now?",
-        "What technologies do you want to explore next?",
-        "How did this project help you grow?"
-      ],
-      project: [
-        "What's the story behind this project?",
-        "What was your biggest 'aha' moment?",
-        "How did you come up with the solution?",
-        "What are you most proud of?",
-        "What inspired the design choices?"
-      ]
-    }
-  };
+  // Reference to existing follow-up questions
+  const allQuestions = userType === 'recruiter' ? 
+    [...FOLLOW_UP_QUESTIONS.technical, ...FOLLOW_UP_QUESTIONS.professional] :
+    [...FOLLOW_UP_QUESTIONS.projects, ...FOLLOW_UP_QUESTIONS.technical];
 
-  // Get the appropriate question set based on user type and context
-  const questions = followUps[userType as keyof typeof followUps] || followUps.visitor;
-
-  if (previousQuestion.toLowerCase().includes('technical') || 
-      previousQuestion.toLowerCase().includes('skills') ||
-      previousQuestion.toLowerCase().includes('development')) {
-    return questions.technical;
-  }
-
-  if (previousQuestion.toLowerCase().includes('project') || 
-      previousQuestion.toLowerCase().includes('rootin') ||
-      previousQuestion.toLowerCase().includes('achievement')) {
-    return questions.project;
-  }
-
-  // Default questions based on user type
-  return [
-    ...questions.technical.slice(0, 2),
-    ...questions.project.slice(0, 3)
-  ];
+  // Return only 2 random questions
+  return allQuestions
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 2);
 };
 
 const getPersonalizedGreeting = (userType: string) => {
   const greetings = {
     recruiter: {
-      message: `## Welcome to Anu's Professional Portfolio! 🚀
+      message: `## Hi! 🚀
+Let's explore:
+* 💻 Technical expertise
+* 🎯 Project impact
+* 🤝 Team collaboration
 
-Let's dive into what makes Anu stand out in the tech world. I can help you explore:
-
-* 💻 Technical expertise and project highlights
-* 🌱 Growth trajectory and learning mindset
-* 🎯 Impact-driven development approach
-* 🤝 Collaborative work style
-
-What would you like to know more about?`,
-      bg: 'from-blue-500/20 to-cyan-500/20'
+What would you like to know?`,
+      bg: 'from-[#498FD8]/20 to-[#D86089]/20'
     },
     visitor: {
-      message: `## Hey there, tech enthusiast! ✨
+      message: `## Hello! ✨
+Let's discuss:
+* 🔮 Solutions built
+* 🌟 Tech stack
+* 🎨 Development
 
-Ready to explore some exciting projects? Here's what we can discover:
-
-* 🔮 Innovative solutions and creative approaches
-* 🛠️ Full-stack development journey
-* 🌟 Cutting-edge technologies
-* 🎨 User-centered design philosophy
-
-What catches your interest?`,
-      bg: 'from-violet-500/20 to-fuchsia-500/20'
+What interests you?`,
+      bg: 'from-[#498FD8]/20 to-[#FB9D5B]/20'
     },
     friend: {
-      message: `## Hi there! Great to see you! 💫
+      message: `## Hey! 💫
+Let's chat about:
+* 🌈 Projects
+* 🚀 Journey
+* 💡 Innovation
 
-Let's have an engaging chat about Anu's journey:
-
-* 🌈 Passion projects and inspirations
-* 🚀 Learning adventures and experiences
-* 💡 Creative problem-solving approaches
-* 🌱 Personal growth and aspirations
-
-What would you like to hear about?`,
-      bg: 'from-emerald-500/20 to-teal-500/20'
+What's up?`,
+      bg: 'from-[#D86089]/20 to-[#FB9D5B]/20'
     }
   };
 
@@ -180,25 +109,19 @@ What would you like to hear about?`,
 const getInitialQuestions = (userType: string) => {
   const questions = {
     recruiter: [
-      "What are Anu's core technical competencies?",
-      "Can you detail Anu's most significant project achievements?",
-      "What's Anu's experience with enterprise-scale systems?",
-      "How does Anu approach technical leadership?",
-      "What methodologies does Anu use for project delivery?"
+      "What are Anu's key achievements in full-stack development?",
+      "How does Anu approach complex technical challenges?",
+      "What's Anu's experience with scalable system architecture?"
     ],
     visitor: [
-      "What innovative projects has Anu worked on?",
-      "Tell me about the Rootin plant care system project",
-      "What creative solutions has Anu developed?",
-      "How does Anu approach user experience?",
-      "What's unique about Anu's development style?"
+      "What innovative solutions has Anu developed?",
+      "Tell me about the Rootin project architecture",
+      "How does Anu handle system optimization?"
     ],
     friend: [
-      "What's the coolest project Anu has built?",
-      "How did Anu get into tech?",
-      "What's Anu's favorite tech stack to work with?",
-      "Tell me about Anu's learning journey",
-      "What inspired the Rootin project?"
+      "What's Anu's most impactful project?",
+      "How does Anu approach technical leadership?",
+      "What's Anu's expertise in cloud solutions?"
     ]
   };
 
@@ -330,10 +253,10 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gradient-to-br from-gray-900 via-gray-900 to-black">
+    <div className="h-full flex flex-col bg-gradient-to-br from-[#498FD8]/5 via-[#D86089]/5 to-[#FB9D5B]/5">
       <div 
         ref={messagesContainerRef}
-        className="flex-1 px-4 py-6 space-y-6 relative overflow-y-auto"
+        className="flex-1 px-6 py-6 space-y-6 relative overflow-y-auto scrollbar-thin scrollbar-thumb-[#498FD8]/20 scrollbar-track-transparent"
       >
         <AnimatePresence>
           {messages.map((message) => (
@@ -341,30 +264,31 @@ export const ChatInterface = () => {
               key={message.id}
               message={message}
               avatar={message.sender === 'bot' ? selectedEmoji : '👤'}
-              avatarBg={message.sender === 'bot' ? selectedBg : 'bg-gradient-to-r from-indigo-500 to-purple-600'}
+              avatarBg={message.sender === 'bot' ? 'bg-gradient-to-r from-[#498FD8] to-[#D86089]' : 'bg-gradient-to-r from-[#D86089] to-[#FB9D5B]'}
             />
           ))}
         </AnimatePresence>
 
         {showSuggestions && (
           <motion.div 
-            className="grid grid-cols-1 gap-2 mt-4"
+            className="grid grid-cols-1 gap-3 mt-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {initialQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="p-3 text-left rounded-lg bg-gray-800/50 hover:bg-gray-700/50 
-                         border border-gray-700 text-gray-300 hover:text-white
+                className="p-4 text-left rounded-2xl bg-white/80 hover:bg-white 
+                         border border-[#498FD8]/10 hover:border-[#498FD8]/30
+                         text-gray-600 hover:text-gray-800 shadow-sm hover:shadow-md
                          transition-all duration-200"
-                whileHover={{ scale: 1.01 }}
+                whileHover={{ scale: 1.01, y: -2 }}
                 onClick={() => {
                   setInput(question);
                   handleSubmit(new Event('submit') as any);
                 }}
               >
-                <span className="text-sm">{question}</span>
+                <span className="text-sm font-medium">{question}</span>
               </motion.button>
             ))}
           </motion.div>
@@ -374,19 +298,19 @@ export const ChatInterface = () => {
 
       {followUpQuestions.length > 0 && (
         <motion.div 
-          className="px-6 py-4 bg-black/20 border-t border-white/5"
+          className="px-6 py-4 bg-white/80 border-t border-[#498FD8]/10 backdrop-blur-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <p className="text-xs text-gray-400 mb-3">Suggested questions:</p>
+          <p className="text-xs font-medium text-gray-500 mb-3">Follow-up questions</p>
           <div className="flex flex-wrap gap-2">
             {followUpQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="px-4 py-2 text-sm rounded-lg bg-gray-800/50 hover:bg-gray-700/50 
-                         border border-gray-700 text-gray-300 hover:text-white
-                         transition-all duration-200"
-                whileHover={{ scale: 1.02 }}
+                className="px-4 py-2 text-sm rounded-xl bg-white hover:bg-[#498FD8]/5
+                         border border-[#498FD8]/20 text-gray-600 hover:text-[#498FD8]
+                         transition-all duration-200 shadow-sm"
+                whileHover={{ scale: 1.02, y: -1 }}
                 onClick={() => {
                   setInput(question);
                   handleSubmit(new Event('submit') as any);
@@ -401,23 +325,24 @@ export const ChatInterface = () => {
 
       <motion.form 
         onSubmit={handleSubmit}
-        className="p-6 backdrop-blur-lg border-t border-white/5 bg-black/20"
+        className="p-6 bg-white/90 border-t border-[#498FD8]/10 backdrop-blur-md"
       >
         <div className="relative flex items-center max-w-3xl mx-auto">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask anything about Anu's experience..."
-            className="w-full px-6 py-3 bg-white/5 rounded-full border border-white/10 
-                     text-white text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500/50 
-                     transition-all placeholder:text-gray-500"
+            placeholder="Ask about Anu's experience..."
+            className="w-full px-5 py-3 bg-white rounded-2xl border border-[#498FD8]/20 
+                     text-gray-700 text-sm focus:ring-2 focus:ring-[#D86089]/20 
+                     focus:border-[#D86089]/30 shadow-sm
+                     transition-all duration-200 placeholder:text-gray-400"
           />
           <motion.button
             type="submit"
             disabled={loading}
-            className="absolute right-2 p-2 bg-gradient-to-r from-indigo-500 to-purple-600 
-                     rounded-full text-white shadow-lg disabled:opacity-50"
+            className="absolute right-3 p-2.5 bg-gradient-to-r from-[#498FD8] to-[#D86089] 
+                     rounded-xl text-white shadow-md disabled:opacity-50"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -430,7 +355,7 @@ export const ChatInterface = () => {
                 ⟳
               </motion.div>
             ) : (
-              <IoSend className="w-4 h-4" />
+              <IoSend className="w-5 h-5" />
             )}
           </motion.button>
         </div>
