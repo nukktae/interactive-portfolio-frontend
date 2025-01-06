@@ -9,14 +9,14 @@ import SectionWrapper from './SectionWrapper';
 
 export default function HeroSection() {
   return (
-    <SectionWrapper className="min-h-screen flex items-center justify-center">
+    <SectionWrapper className="min-h-screen flex items-start pt-40 justify-center">
       <div className="relative w-full max-w-7xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="space-y-8"
+            className="space-y-8 pt-12"
           >
             {/* Main Title */}
             <motion.div
@@ -86,6 +86,11 @@ export default function HeroSection() {
                 className="secondary-button"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  const contactSection = document.querySelector('#contact-form');
+                  contactSection?.scrollIntoView({ behavior: 'smooth' });
+                }}
               >
                 Contact Me
               </motion.button>
@@ -97,7 +102,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="relative h-[800px] hidden lg:block translate-y-[400px]"
+            className="relative h-[800px] hidden lg:block translate-y-[300px]"
           >
             <div className="absolute inset-0">
               <Model3D />

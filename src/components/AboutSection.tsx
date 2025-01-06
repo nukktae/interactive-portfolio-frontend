@@ -40,8 +40,8 @@ export default function AboutSection() {
   };
 
   return (
-    <SectionWrapper>
-      <div className="max-w-7xl mx-auto px-4 py-20">
+    <SectionWrapper className="py-24">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Intro Section */}
         <motion.div 
           className="text-center space-y-4 mb-24"
@@ -140,6 +140,7 @@ export default function AboutSection() {
 
         {/* Contact Section */}
         <motion.div 
+          id="contact-form"
           className="relative"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
