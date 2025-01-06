@@ -97,7 +97,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="relative h-[800px] hidden lg:block translate-y-32"
+            className="relative h-[800px] hidden lg:block translate-y-[400px]"
           >
             <div className="absolute inset-0">
               <Model3D />

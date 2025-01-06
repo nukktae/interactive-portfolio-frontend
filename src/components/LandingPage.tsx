@@ -6,6 +6,7 @@ import HeroSection from './HeroSection';
 import ProjectsSection from './ProjectsSection';
 import TechStackSection from './TechStackSection';
 import AboutSection from './AboutSection';
+import AIChatButton from './AIChatButton';
 
 export default function LandingPage() {
   const containerRef = useRef(null);
@@ -47,6 +48,8 @@ export default function LandingPage() {
           <AboutSection />
         </section>
       </motion.div>
+      
+      <AIChatButton />
     </div>
   );
 }
