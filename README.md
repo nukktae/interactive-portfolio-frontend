@@ -9,15 +9,15 @@ This portfolio is designed to provide a visually appealing and engaging experien
 ## Technical Stack
 
 ### Frontend
-- **Next.js**: A powerful React framework that enables server-side rendering and static site generation, providing optimal performance and SEO benefits.
-- **TypeScript**: A superset of JavaScript that adds static types, enhancing code quality and maintainability.
-- **Tailwind CSS**: A utility-first CSS framework that allows for rapid UI development with a focus on responsiveness and customization.
-- **Framer Motion**: A library for creating smooth animations and transitions, enhancing the user experience with engaging visual effects.
-- **React Three Fiber**: A React renderer for Three.js, enabling the integration of 3D graphics and animations into the portfolio.
+- **Next.js** ![Next.js](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg)
+- **TypeScript** ![TypeScript](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg)
+- **Tailwind CSS** ![Tailwind CSS](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg)
+- **Framer Motion** ![Framer Motion](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framer/framer-original.svg)
+- **React Three Fiber** ![React](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg)
 
 ### Backend (Brief Overview)
-- **Node.js**: The backend is powered by Node.js, providing a robust environment for building scalable applications.
-- **Express**: A minimal and flexible Node.js web application framework that serves as the backbone for the backend API.
+- **Node.js** ![Node.js](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg)
+- **Express** ![Express](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg)
 
 ## Features
 
@@ -25,6 +25,7 @@ This portfolio is designed to provide a visually appealing and engaging experien
 - **Smooth Scrolling and Navigation**: The site features smooth scrolling and navigation, allowing users to easily explore different sections.
 - **Responsive Design**: The layout is fully responsive, ensuring a seamless experience across devices, from desktops to mobile phones.
 - **Downloadable Resume**: Visitors can easily download my resume directly from the portfolio, making it convenient for potential employers.
+- **Colorful Icons and Animations**: The tech stack section features vibrant icons and animations that enhance visibility and create a modern aesthetic.
 
 ## Getting Started
 
