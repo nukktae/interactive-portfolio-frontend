@@ -99,21 +99,7 @@ To run this project locally, follow these steps:
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-## 📱 Screenshots
-
-<div class="screenshot-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 40px 0;">
-    <div style="border-radius: 12px; overflow: hidden;">
-        <img src="frontend/src/assets/demo/home.png" alt="Home Dashboard" style="width: 100%; height: auto;" />
-    </div>
-    <div style="border-radius: 12px; overflow: hidden;">
-        <img src="frontend/src/assets/demo/aiassistant.png" alt="AI Assistant Interface" style="width: 100%; height: auto;" />
-    </div>
-    <div style="border-radius: 12px; overflow: hidden;">
-        <img src="frontend/src/assets/demo/careerchallenges.png" alt="Career Challenges" style="width: 100%; height: auto;" />
-    </div>
-</div>
-
-## 🛡️ License
+## 📱️ License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
