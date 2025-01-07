@@ -14,6 +14,7 @@ This portfolio is designed to provide a visually appealing and engaging experien
 - **Tailwind CSS** ![Tailwind CSS](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg)
 - **Framer Motion** ![Framer Motion](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framer/framer-original.svg)
 - **React Three Fiber** ![React](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg)
+- **OpenAI GPT** ![OpenAI](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg)
 
 ### Backend (Brief Overview)
 - **Node.js** ![Node.js](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg)
