@@ -267,5 +267,399 @@ export const projects: Project[] = [
         description: "Frontend optimization and state management"
       }
     ]
+  },
+  {
+    title: "MajorMatch",
+    description: "An intelligent career guidance platform helping students discover their ideal academic path using AI-powered assessments and personalized mentorship.",
+    detailedDescription: "MajorMatch is a comprehensive career guidance platform that leverages GPT-4 for personalized major recommendations, interactive career challenges, and real-time mentorship connections. The platform features a responsive design and detailed analytics tracking.",
+    image: "/assets/images/projects/majormatch.png",
+    images: [
+      "/assets/images/demo/home.png",
+      "/assets/images/demo/aiassistant.png",
+      "/assets/images/demo/careerchallenges.png",
+      "/assets/images/demo/assessmentquestions.png",
+      "/assets/images/demo/assessmentresult.png",
+      "/assets/images/demo/profile.png"
+    ],
+    technologies: [
+      "Flutter",
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "Firebase",
+      "AWS",
+      "TensorFlow",
+      "GPT-4 API"
+    ],
+    tools: [
+      "VS Code",
+      "Git",
+      "Firebase Console",
+      "AWS Console",
+      "Figma",
+      "Postman"
+    ],
+    hardSkills: [
+      "Full Stack Development",
+      "AI Integration",
+      "Cloud Architecture",
+      "API Development",
+      "Database Design",
+      "UI/UX Implementation"
+    ],
+    softSkills: [
+      "Project Management",
+      "User Research",
+      "Technical Documentation",
+      "Problem Solving",
+      "Team Leadership"
+    ],
+    features: [
+      "AI-Powered Assessments",
+      "Interactive Career Challenges",
+      "Mentor Matching System",
+      "Real-time Progress Tracking",
+      "Responsive Dashboard",
+      "Video Call Integration"
+    ],
+    metrics: [
+      "90% user satisfaction rate",
+      "45% improvement in career decision confidence",
+      "30% reduction in assessment time",
+      "85% mentor-student match success rate"
+    ],
+    highlights: [
+      "Developed custom GPT-4 assessment engine",
+      "Built real-time mentorship platform",
+      "Implemented interactive challenge system",
+      "Created analytics dashboard",
+      "Designed responsive UI/UX"
+    ],
+    challenges: [
+      "Complex AI model integration",
+      "Real-time video streaming",
+      "Data privacy compliance",
+      "Scalable matching algorithm",
+      "Cross-platform compatibility"
+    ],
+    solutions: [
+      "Implemented efficient API caching",
+      "Used WebRTC for video calls",
+      "Enhanced data encryption",
+      "Optimized matching algorithms",
+      "Created responsive design system"
+    ],
+    github: "https://github.com/nukktae/major-match-ai",
+    liveUrl: "https://majormatch-demo.vercel.app",
+    roles: [
+      {
+        area: "Full Stack Development",
+        percentage: 100,
+        description: "Led end-to-end development of the platform"
+      },
+      {
+        area: "AI Integration",
+        percentage: 85,
+        description: "Implemented GPT-4 assessment system"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 70,
+        description: "Designed user interface and experience"
+      }
+    ]
+  },
+  {
+    title: "KMU Global Campus",
+    description: "A modern web platform connecting Silicon Valley companies with KMU's tech talent, featuring interactive portfolios and streamlined hiring processes.",
+    detailedDescription: "KMU Global Campus serves as a bridge between Silicon Valley tech companies and talented developers. The platform showcases students' technical excellence and innovative capabilities while providing an intuitive interface for companies to connect with potential candidates.",
+    image: "/assets/images/projects/kmuglobalcampus.png",
+    images: [
+      "/assets/images/kmu-dashboard.jpg",
+      "/assets/images/kmu-portfolios.jpg",
+      "/assets/images/kmu-projects.jpg",
+      "/assets/images/kmu-contact.jpg"
+    ],
+    technologies: [
+      "Nuxt.js 3",
+      "TypeScript",
+      "VueUse Motion",
+      "CSS Grid/Flexbox",
+      "Nodemailer",
+      "Server-side Rendering"
+    ],
+    tools: [
+      "Git",
+      "npm/yarn",
+      "Nuxt DevTools",
+      "Vercel",
+      "Font Awesome"
+    ],
+    hardSkills: [
+      "Frontend Development",
+      "UI/UX Design",
+      "Animation Implementation",
+      "Server-side Development",
+      "Responsive Design",
+      "API Integration"
+    ],
+    softSkills: [
+      "Project Management",
+      "Cross-cultural Communication",
+      "Technical Documentation",
+      "Team Collaboration",
+      "Problem Solving"
+    ],
+    features: [
+      "Interactive student portfolios",
+      "Real-time project showcases",
+      "Streamlined hiring process",
+      "Animated UI components",
+      "Contact form with email integration",
+      "Responsive glass-morphism design"
+    ],
+    metrics: [
+      "95% mobile responsiveness score",
+      "40% increase in student engagement",
+      "50% faster portfolio creation time",
+      "30% improvement in page load speed"
+    ],
+    highlights: [
+      "Implemented modern glass-morphism UI design",
+      "Created custom animation system",
+      "Developed responsive portfolio templates",
+      "Built secure email integration system",
+      "Designed intuitive navigation flow"
+    ],
+    challenges: [
+      "Complex animation performance",
+      "Cross-browser compatibility",
+      "Email system security",
+      "Responsive design implementation",
+      "Content management system"
+    ],
+    solutions: [
+      "Optimized animations with VueUse",
+      "Implemented progressive enhancement",
+      "Created secure server-side handlers",
+      "Used mobile-first approach",
+      "Developed custom CMS solution"
+    ],
+    github: "https://github.com/nukktae/kmu-global-campus",
+    liveUrl: "https://kmu-global.vercel.app",
+    roles: [
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of Nuxt.js application"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 90,
+        description: "Design system and animation implementation"
+      },
+      {
+        area: "Backend Integration",
+        percentage: 70,
+        description: "Server routes and email system development"
+      }
+    ]
+  },
+  {
+    title: "VORI",
+    description: "A next-generation meeting management platform featuring AI-powered transcription, smart task generation, and comprehensive analytics.",
+    detailedDescription: "VORI revolutionizes meeting management with real-time AI transcription, automated task generation, and deep analytics. Built with enterprise-grade security and scalability in mind, it offers seamless cross-platform functionality and intuitive team collaboration features.",
+    image: "/assets/images/projects/vorifrontend.png",
+    images: [
+      "/assets/images/screenshots/loginpage.png",
+      "/assets/images/screenshots/dashboard.png",
+      "/assets/images/screenshots/meetingpage.png",
+      "/assets/images/screenshots/kanban.png",
+      "/assets/images/screenshots/ticketspage.png",
+      "/assets/images/screenshots/profilepage.png"
+    ],
+    technologies: [
+      "Next.js 14",
+      "TypeScript",
+      "FastAPI",
+      "Apache Kafka",
+      "PostgreSQL",
+      "Apache Spark",
+      "Whisper API",
+      "Claude API"
+    ],
+    tools: [
+      "Tailwind CSS",
+      "ESLint",
+      "Docker",
+      "Prisma",
+      "Framer Motion"
+    ],
+    hardSkills: [
+      "Full Stack Development",
+      "AI Integration",
+      "System Architecture",
+      "Database Design",
+      "Real-time Processing",
+      "API Development"
+    ],
+    softSkills: [
+      "Technical Leadership",
+      "Project Planning",
+      "Team Coordination",
+      "Problem Solving",
+      "Documentation"
+    ],
+    features: [
+      "Voice Recording with Noise Cancellation",
+      "Real-time AI Transcription",
+      "Automated Task Generation",
+      "Cross-Platform Compatibility",
+      "Meeting Analytics Dashboard",
+      "Role-based Access Control"
+    ],
+    metrics: [
+      "99% transcription accuracy",
+      "50% reduction in meeting follow-up time",
+      "40% increase in task completion rate",
+      "95% user satisfaction score"
+    ],
+    highlights: [
+      "Developed real-time transcription system",
+      "Implemented smart task generation",
+      "Created analytics dashboard",
+      "Built enterprise security features",
+      "Designed modern UI/UX system"
+    ],
+    challenges: [
+      "Real-time audio processing",
+      "Scalable transcription system",
+      "Complex state management",
+      "Multi-user collaboration",
+      "Cross-platform compatibility"
+    ],
+    solutions: [
+      "Optimized audio streaming",
+      "Implemented distributed processing",
+      "Used advanced state management",
+      "Created robust WebSocket system",
+      "Developed responsive design system"
+    ],
+    github: "https://github.com/nukktae/VoriReborn-Frontend",
+    liveUrl: "https://vori-demo.vercel.app",
+    roles: [
+      {
+        area: "Full Stack Development",
+        percentage: 100,
+        description: "Led end-to-end development of the platform"
+      },
+      {
+        area: "System Architecture",
+        percentage: 90,
+        description: "Designed scalable system architecture"
+      },
+      {
+        area: "AI Integration",
+        percentage: 85,
+        description: "Implemented AI transcription and analysis"
+      }
+    ]
+  },
+  {
+    title: "AI Job Parser",
+    description: "An intelligent job application tracking system that uses AI to parse job postings and automatically organize them in Notion.",
+    detailedDescription: "Built with Python and Flask, this application leverages GPT-4 to automatically extract key information from job postings and seamlessly integrate with Notion for organization. Features include multiple input methods, smart extraction of job details, and a modern glass-morphism UI design.",
+    image: "/assets/images/projects/jobparser.png",
+    images: [
+      "/assets/images/demo/jobparser-main.png",
+      "/assets/images/demo/jobparser-result.png",
+      "/assets/images/demo/jobparser-notion.png"
+    ],
+    technologies: [
+      "Python",
+      "Flask",
+      "OpenAI GPT-4",
+      "Notion API",
+      "Three.js",
+      "TailwindCSS"
+    ],
+    tools: [
+      "VS Code",
+      "Git",
+      "Notion",
+      "Postman",
+      "Docker"
+    ],
+    hardSkills: [
+      "AI Integration",
+      "API Development",
+      "Backend Architecture",
+      "Data Parsing",
+      "UI/UX Implementation",
+      "System Integration"
+    ],
+    softSkills: [
+      "Problem Solving",
+      "Technical Documentation",
+      "User Experience Design",
+      "Project Planning",
+      "Attention to Detail"
+    ],
+    features: [
+      "AI-Powered Job Parsing",
+      "Multiple Input Methods",
+      "Notion Integration",
+      "Smart Data Extraction",
+      "Modern Glass-morphism UI",
+      "Responsive Design"
+    ],
+    metrics: [
+      "95% parsing accuracy",
+      "60% time saved in job tracking",
+      "Support for 5+ job board formats",
+      "4.8/5 user satisfaction rating"
+    ],
+    highlights: [
+      "Implemented GPT-4 parsing system",
+      "Created Notion integration",
+      "Built responsive UI/UX",
+      "Developed multiple input handlers",
+      "Designed modern interface"
+    ],
+    challenges: [
+      "Complex text parsing",
+      "API rate limiting",
+      "Data standardization",
+      "Cross-platform support",
+      "User experience optimization"
+    ],
+    solutions: [
+      "Used AI for intelligent parsing",
+      "Implemented caching system",
+      "Created unified data schema",
+      "Built responsive design",
+      "Added user feedback system"
+    ],
+    github: "https://github.com/nukktae/ai-job-parser",
+    liveUrl: "https://jobparser-demo.vercel.app",
+    roles: [
+      {
+        area: "Backend Development",
+        percentage: 100,
+        description: "Developed complete backend architecture"
+      },
+      {
+        area: "AI Integration",
+        percentage: 90,
+        description: "Implemented GPT-4 parsing system"
+      },
+      {
+        area: "Frontend Design",
+        percentage: 80,
+        description: "Created modern UI/UX design"
+      }
+    ]
   }
-]; 
+];
+
+export default projects; 
