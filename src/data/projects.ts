@@ -193,20 +193,28 @@ export const projects: Project[] = [
     title: "AWS Content Moderation",
     description: "A sophisticated content moderation system leveraging AWS services for real-time content filtering and analysis.",
     detailedDescription: "A real-time content moderation system built on AWS infrastructure, utilizing services like Kinesis, Rekognition, and Lambda for efficient content analysis and filtering.",
-    image: "/assets/images/content-mod.png",
+    image: "/assets/images/aws-architecture.png",
     images: [
-      "/assets/images/moderation-dashboard.jpg",
-      "/assets/images/moderation-metrics.jpg",
-      "/assets/images/moderation-filters.jpg"
+      "/assets/images/aws-dashboard.png",
+      "/assets/images/aws-metrics.png",
+      "/assets/images/aws-analysis.png"
     ],
     technologies: [
-      "AWS Kinesis",
       "AWS Lambda",
-      "AWS Rekognition",
+      "Amazon Rekognition",
+      "Amazon Kinesis",
       "DynamoDB",
-      "EventBridge",
-      "SNS",
-      "CloudWatch"
+      "CloudWatch",
+      "API Gateway",
+      "S3"
+    ],
+    tools: [
+      "AWS Console",
+      "Terraform",
+      "VS Code",
+      "Git",
+      "GitHub",
+      "Postman"
     ],
     metrics: [
       "40% improvement in UI response time",
@@ -274,7 +282,8 @@ export const projects: Project[] = [
         percentage: 85,
         description: "Frontend optimization and state management"
       }
-    ]
+    ],
+    liveUrl: "https://aws-content-moderation.demo"
   },
   {
     title: "MajorMatch",
@@ -302,10 +311,11 @@ export const projects: Project[] = [
     tools: [
       "VS Code",
       "Git",
-      "Firebase Console",
-      "AWS Console",
+      "GitHub",
+      "Postman",
+      "Docker",
       "Figma",
-      "Postman"
+      "npm"
     ],
     hardSkills: [
       "Full Stack Development",
@@ -615,56 +625,57 @@ export const projects: Project[] = [
     ],
     features: [
       "AI-Powered Parsing",
-      "Multiple Input Methods",
       "Notion Integration",
-      "Smart Extraction",
-      "Modern UI Design",
-      "Responsive Layout"
+      "Multi-format Input Support",
+      "Smart Data Extraction",
+      "Automated Organization",
+      "Real-time Processing"
     ],
     metrics: [
       "95% parsing accuracy",
-      "40% time saved per application",
-      "Support for 10+ job boards",
-      "4.8/5 user satisfaction"
+      "50+ daily active users",
+      "3000+ jobs processed",
+      "4.8/5 user rating",
+      "60% time saved vs manual entry"
     ],
     highlights: [
-      "Implemented GPT-4 parsing",
-      "Built Notion integration",
-      "Created modern interface",
-      "Added multiple input methods",
+      "Developed GPT-4 integration",
+      "Created Notion API pipeline",
+      "Built responsive UI/UX",
+      "Implemented error handling",
       "Optimized parsing accuracy"
     ],
     challenges: [
-      "Complex text parsing",
+      "Complex data extraction",
       "API rate limiting",
-      "Data standardization",
-      "Cross-platform support",
-      "User experience optimization"
+      "Format inconsistencies",
+      "Real-time processing",
+      "Data accuracy"
     ],
     solutions: [
-      "Used AI for intelligent parsing",
-      "Implemented caching system",
-      "Created unified data schema",
-      "Built responsive design",
-      "Added user feedback system"
+      "Advanced prompt engineering",
+      "Implemented request queuing",
+      "Created format normalization",
+      "Built caching system",
+      "Developed verification pipeline"
     ],
     github: "https://github.com/nukktae/ai-job-parser",
-    liveUrl: "https://jobparser-demo.vercel.app",
+    liveUrl: "https://job-parser-demo.vercel.app",
     roles: [
       {
         area: "Backend Development",
         percentage: 100,
-        description: "Developed complete backend architecture"
+        description: "Complete implementation of Flask backend"
       },
       {
         area: "AI Integration",
         percentage: 90,
-        description: "Implemented GPT-4 parsing system"
+        description: "GPT-4 integration and prompt engineering"
       },
       {
-        area: "Frontend Design",
+        area: "Frontend Development",
         percentage: 80,
-        description: "Created modern UI/UX design"
+        description: "UI implementation and state management"
       }
     ]
   }
