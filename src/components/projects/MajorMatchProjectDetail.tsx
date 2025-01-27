@@ -76,7 +76,7 @@ export default function MajorMatchProjectDetail({ project }: { project: Project 
           Tech Stack & Tools
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {project.technologies.map((tech, index) => (
+          {[...project.technologies, ...(project.tools || [])].map((tech, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}

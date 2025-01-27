@@ -120,6 +120,14 @@ export const projects: Project[] = [
       "/assets/images/recipe-planner.jpg"
     ],
     technologies: ["LLM", "Frontend Development", "UI/UX Design"],
+    tools: [
+      "VS Code",
+      "Git",
+      "GitHub",
+      "Postman",
+      "Figma",
+      "npm"
+    ],
     metrics: [
       "20% improvement in recommendation accuracy",
       "25% reduction in development cycles",
