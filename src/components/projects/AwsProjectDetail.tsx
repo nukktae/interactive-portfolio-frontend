@@ -19,7 +19,7 @@ export default function AwsProjectDetail({ project }: { project: Project }) {
         <div className="mt-8 px-8">
           <h3 className="text-xl font-semibold text-[#B39EB1] mb-4">Key Components</h3>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.technologies.map((component, index) => (
+            {[...project.technologies, ...(project.tools || [])].map((component, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -20 }}

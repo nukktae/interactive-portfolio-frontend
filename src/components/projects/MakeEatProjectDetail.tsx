@@ -111,28 +111,7 @@ export default function MakeEatProjectDetail({ project }: { project: Project }) 
           Tech Stack & Tools
         </motion.h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[
-            // Backend & Database
-            "Node.js",
-            "Express.js",
-            "PostgreSQL",
-            "DataGrip",
-            // Development Tools
-            "Visual Studio Code",
-            "Git",
-            "GitHub",
-            "Postman",
-            // Frontend & Design
-            "React.js",
-            "Next.js",
-            "Tailwind CSS",
-            "Figma",
-            // AI & Cloud
-            "OpenAI API",
-            "AWS Lambda",
-            "Docker",
-            "Vercel"
-          ].map((item, index) => (
+          {[...project.technologies, ...(project.tools || [])].map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}
