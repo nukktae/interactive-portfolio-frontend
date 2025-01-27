@@ -5,16 +5,16 @@ export interface Project {
   image: string;
   images: string[];
   technologies: string[];
-  tools?: string[];
+  tools: string[];
   hardSkills: string[];
   softSkills: string[];
+  features: string[];
   metrics: string[];
   highlights: string[];
   challenges: string[];
   solutions: string[];
-  features: string[];
-  github?: string;
-  liveUrl?: string;
+  github: string;
+  liveUrl: string;
   imageDescriptions?: {
     title: string;
     text: string;

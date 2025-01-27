@@ -606,25 +606,25 @@ export const projects: Project[] = [
       "Attention to Detail"
     ],
     features: [
-      "AI-Powered Job Parsing",
+      "AI-Powered Parsing",
       "Multiple Input Methods",
       "Notion Integration",
-      "Smart Data Extraction",
-      "Modern Glass-morphism UI",
-      "Responsive Design"
+      "Smart Extraction",
+      "Modern UI Design",
+      "Responsive Layout"
     ],
     metrics: [
       "95% parsing accuracy",
-      "60% time saved in job tracking",
-      "Support for 5+ job board formats",
-      "4.8/5 user satisfaction rating"
+      "40% time saved per application",
+      "Support for 10+ job boards",
+      "4.8/5 user satisfaction"
     ],
     highlights: [
-      "Implemented GPT-4 parsing system",
-      "Created Notion integration",
-      "Built responsive UI/UX",
-      "Developed multiple input handlers",
-      "Designed modern interface"
+      "Implemented GPT-4 parsing",
+      "Built Notion integration",
+      "Created modern interface",
+      "Added multiple input methods",
+      "Optimized parsing accuracy"
     ],
     challenges: [
       "Complex text parsing",
