@@ -101,7 +101,7 @@
 @layer base {
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
     h1 {
-      font-size: clamp(4rem, 15vw, 12rem);
+      font-size: clamp(2.5rem, 12vw, 12rem);
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.04em;
@@ -109,7 +109,7 @@
     }
 
     h2 {
-      font-size: clamp(2rem, 8vw, 6rem);
+      font-size: clamp(1.5rem, 6vw, 6rem);
       font-weight: 900;
       line-height: 0.9;
       letter-spacing: -0.03em;
@@ -117,21 +117,21 @@
     }
 
     h3 {
-      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-size: clamp(1.25rem, 3vw, 3rem);
       font-weight: 700;
       line-height: 1;
       letter-spacing: -0.02em;
     }
 
     h4 {
-      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-size: clamp(1.125rem, 2.5vw, 2rem);
       font-weight: 600;
       line-height: 1.1;
       letter-spacing: -0.01em;
     }
 
     h5 {
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.5vw, 1rem);
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: 0.02em;
@@ -139,35 +139,35 @@
     }
 
     p {
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: 0;
     }
 
     .text-small {
-      font-size: 0.875rem;
+      font-size: clamp(0.75rem, 1vw, 0.875rem);
       font-weight: 400;
       line-height: 1.5;
       letter-spacing: 0.01em;
     }
 
     label {
-      font-size: 0.875rem;
+      font-size: clamp(0.75rem, 1vw, 0.875rem);
       font-weight: 500;
       line-height: 1.5;
       letter-spacing: 0.01em;
     }
 
     button {
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
       font-weight: 500;
       line-height: 1.2;
       letter-spacing: 0;
     }
 
     input {
-      font-size: 1rem;
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
       font-weight: 400;
       line-height: 1.5;
       letter-spacing: 0;
@@ -178,7 +178,7 @@
 /* Utility Classes */
 @layer utilities {
   .text-huge {
-    font-size: clamp(6rem, 20vw, 16rem);
+    font-size: clamp(3rem, 15vw, 16rem);
     font-weight: 900;
     line-height: 0.8;
     letter-spacing: -0.05em;
@@ -186,7 +186,7 @@
   }
 
   .text-mega {
-    font-size: clamp(4rem, 12vw, 10rem);
+    font-size: clamp(2.5rem, 10vw, 10rem);
     font-weight: 900;
     line-height: 0.85;
     letter-spacing: -0.04em;
@@ -194,14 +194,14 @@
   }
 
   .text-display {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: clamp(1.75rem, 6vw, 6rem);
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.03em;
   }
 
   .text-section-title {
-    font-size: 0.75rem;
+    font-size: clamp(0.625rem, 1vw, 0.75rem);
     font-weight: 600;
     line-height: 1.2;
     letter-spacing: 0.1em;
@@ -218,6 +218,25 @@
 
   .aspect-square {
     aspect-ratio: 1/1;
+  }
+
+  /* Mobile-specific utilities */
+  @media (max-width: 640px) {
+    .touch-manipulation {
+      touch-action: manipulation;
+    }
+
+    .mobile-padding {
+      padding: 1rem;
+    }
+
+    .mobile-text-sm {
+      font-size: 0.875rem;
+    }
+
+    .mobile-hidden {
+      display: none;
+    }
   }
 }
 

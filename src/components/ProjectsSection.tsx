@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { ImageWithFallback } from './ImageWithFallback';
+import Image from 'next/image';
 
 export default function ProjectsSection() {
   const ref = useRef(null);
@@ -57,16 +58,16 @@ export default function ProjectsSection() {
   ];
 
   return (
-    <section id="projects" className="py-24 md:py-32" ref={ref}>
-      <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto">
+    <section id="projects" className="py-16 md:py-24 lg:py-32" ref={ref}>
+      <div className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto">
         {/* Header */}
         <motion.div
-          className="mb-16 md:mb-24"
+          className="mb-12 md:mb-16 lg:mb-24"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="text-section-title text-muted-foreground mb-6">
+          <div className="text-section-title text-muted-foreground mb-4 md:mb-6">
             SELECTED WORK
           </div>
           <h2 className="text-display leading-none">
@@ -75,11 +76,11 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-12 md:space-y-16 lg:space-y-24">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              className={`grid grid-cols-1 ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-8 lg:gap-16 items-center group cursor-pointer`}
+              className={`grid grid-cols-1 ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-6 md:gap-8 lg:gap-16 items-center group cursor-pointer`}
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
@@ -89,89 +90,65 @@ export default function ProjectsSection() {
               }}
             >
               {/* Project Image */}
-              <div className={`${project.featured ? 'lg:order-1' : 'lg:order-1'} relative overflow-hidden`}>
-                <div className={`${project.featured ? 'aspect-landscape' : 'aspect-square'} relative`}>
-                  <ImageWithFallback
+              <div className={`${project.featured ? 'lg:col-span-1' : 'lg:col-span-2'} ${index % 2 === 0 ? 'order-1' : 'order-1 lg:order-2'}`}>
+                <div className="relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[4/3] group-hover:shadow-2xl transition-all duration-700">
+                  <Image
                     src={project.image}
-                    alt={`${project.title} - ${project.role}`}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-700" />
-                  
-                  {/* Hover Actions */}
-                  <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {project.liveUrl && (
-                      <a 
-                        href={project.liveUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 bg-background text-foreground flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    )}
-                    <a 
-                      href={project.githubUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 bg-background text-foreground flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors duration-300"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                  </div>
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
                 </div>
               </div>
 
               {/* Project Info */}
-              <div className={`${project.featured ? 'lg:order-2 lg:col-span-1' : 'lg:order-2 lg:col-span-2'} space-y-6`}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="text-section-title text-muted-foreground mb-2">
-                      {project.period} • {project.role}
-                    </div>
-                    <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight">
-                      {project.title}
-                    </h3>
+              <div className={`${project.featured ? 'lg:col-span-1' : 'lg:col-span-1'} ${index % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'} space-y-4 md:space-y-6`}>
+                <div>
+                  <div className="text-section-title text-muted-foreground mb-2 md:mb-3">
+                    {project.role || project.period}
                   </div>
-                  <ArrowUpRight className="w-6 h-6 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                    {project.title}
+                  </h3>
                 </div>
 
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-md">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="text-section-title text-muted-foreground border border-muted-foreground/20 px-3 py-1"
+                  {(project.tags || []).slice(0, 3).map((tech: string, techIndex: number) => (
+                    <span 
+                      key={techIndex}
+                      className="text-xs md:text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full font-medium"
                     >
-                      {tag}
+                      {tech}
                     </span>
                   ))}
+                  {(project.tags || []).length > 3 && (
+                    <span className="text-xs md:text-sm px-3 py-1 bg-gray-100 text-gray-700 rounded-full font-medium">
+                      +{(project.tags || []).length - 3} more
+                    </span>
+                  )}
                 </div>
+
+                <motion.div 
+                  className="inline-flex items-center gap-2 text-sm md:text-base font-medium text-black group-hover:text-yellow-400 transition-colors duration-300"
+                  whileHover={{ x: 10 }}
+                >
+                  View Project
+                  <motion.span
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </motion.span>
+                </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* View More */}
-        <motion.div
-          className="text-center mt-16 md:mt-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <a
-            href="https://github.com/nukktae"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-4 text-lg font-medium border-b-2 border-transparent hover:border-accent transition-colors duration-300 group"
-          >
-            <span>VIEW ALL PROJECTS</span>
-            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-          </a>
-        </motion.div>
       </div>
     </section>
   );
