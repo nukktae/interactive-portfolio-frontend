@@ -80,9 +80,9 @@ export default function RootinScreenCarousel() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Phone Frame */}
-          <div className="relative w-[280px] md:w-[300px] h-[560px] md:h-[600px] flex-shrink-0">
+          <div className="relative w-[300px] h-[600px] flex-shrink-0">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-gray-900 to-purple-500/10 rounded-[3rem] shadow-2xl">
               {/* Notch */}
               <div className="absolute top-3 left-1/2 -translate-x-1/2 w-36 h-6 bg-black rounded-full" />
@@ -113,32 +113,16 @@ export default function RootinScreenCarousel() {
               </div>
             </div>
 
-            {/* Mobile Navigation - Positioned below phone on mobile */}
-            <div className="flex lg:hidden justify-center gap-4 mt-6">
-              <button
-                onClick={prevSlide}
-                className="p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm touch-manipulation"
-              >
-                <FaChevronLeft size={20} />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm touch-manipulation"
-              >
-                <FaChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* Desktop Navigation - Positioned to sides on desktop */}
+            {/* Navigation Buttons */}
             <button
               onClick={prevSlide}
-              className="hidden lg:block absolute left-[-60px] top-1/2 -translate-y-1/2 p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm"
+              className="absolute left-[-60px] top-1/2 -translate-y-1/2 p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm"
             >
               <FaChevronLeft size={24} />
             </button>
             <button
               onClick={nextSlide}
-              className="hidden lg:block absolute right-[-60px] top-1/2 -translate-y-1/2 p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm"
+              className="absolute right-[-60px] top-1/2 -translate-y-1/2 p-3 bg-purple-500/10 hover:bg-purple-500/20 rounded-full text-white transition-colors backdrop-blur-sm"
             >
               <FaChevronRight size={24} />
             </button>

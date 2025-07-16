@@ -5,20 +5,20 @@ import { ImageWithFallback } from './ImageWithFallback';
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-hidden">
+    <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gray-100/30" />
       
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center max-w-[1800px] mx-auto w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center max-w-[1800px] mx-auto w-full">
         {/* Left Side - Text */}
         <div className="lg:col-span-7 xl:col-span-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-6 md:mb-8 lg:mb-12"
+            className="mb-8 md:mb-12"
           >
-            <p className="text-xs sm:text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">
+            <p className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">
               👋 Let me introduce,
             </p>
           </motion.div>
@@ -29,12 +29,12 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 0.4 }}
             className="mb-4 md:mb-6"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none text-gray-900">
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black leading-none text-gray-900">
               I'M A<br />
               <span className="relative">
                 UI/UX
                 <motion.div
-                  className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 bg-yellow-400"
+                  className="absolute -bottom-2 left-0 w-full h-3 bg-yellow-400"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
@@ -49,9 +49,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mb-6 md:mb-8 lg:mb-12"
+            className="mb-8 md:mb-12"
           >
-            <p className="text-base md:text-lg lg:text-xl max-w-md text-gray-600 leading-relaxed">
+            <p className="text-lg md:text-xl max-w-md text-gray-600">
               UI/UX designer who loves crafting intuitive and beautiful user experiences
             </p>
           </motion.div>
@@ -60,17 +60,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="mb-8 md:mb-12 lg:mb-16"
+            className="mb-12 md:mb-16"
           >
             <button 
               onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group bg-black text-white 
-                         px-6 py-3 md:px-8 md:py-4 
-                         text-xs md:text-sm font-bold uppercase tracking-wider 
-                         hover:bg-yellow-400 hover:text-black 
-                         transition-all duration-300 
-                         flex items-center gap-3
-                         touch-manipulation"
+              className="group bg-black text-white px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-yellow-400 hover:text-black transition-all duration-300 flex items-center gap-3"
             >
               View My Work
               <motion.span

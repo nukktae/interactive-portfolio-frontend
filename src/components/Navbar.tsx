@@ -86,7 +86,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors duration-300 touch-manipulation"
+              className="md:hidden p-3 hover:bg-gray-100 rounded-full transition-colors duration-300"
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -107,7 +107,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/20"
               onClick={() => setIsOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -115,50 +115,49 @@ export default function Navbar() {
             />
             
             <motion.div
-              className="absolute right-0 top-0 h-full w-[min(80vw,320px)] bg-white shadow-xl"
+              className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             >
               <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                  <div className="text-xl font-black text-gray-900">ANU</div>
+                <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                  <div className="text-2xl font-black text-gray-900">ANU</div>
                   <motion.button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-300 touch-manipulation"
+                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-300"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-6 h-6" />
                   </motion.button>
                 </div>
                 
-                <div className="flex-1 py-4">
-                  {navItems.map((item, index) => (
-                    <motion.button
-                      key={item.href}
-                      onClick={() => handleNavClick(item.href)}
-                      className="w-full px-4 py-4 text-left text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 uppercase tracking-wider touch-manipulation"
-                      initial={{ opacity: 0, x: 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + index * 0.1 }}
-                      whileHover={{ x: 10 }}
-                      whileTap={{ backgroundColor: '#f9fafb' }}
-                    >
-                      {item.label}
-                    </motion.button>
-                  ))}
-                </div>
-                
-                <div className="p-4 border-t border-gray-200">
-                  <motion.div
-                    className="text-xs font-bold tracking-wider text-gray-500 uppercase text-center"
-                    whileHover={{ color: '#111827' }}
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className="px-6 py-4 text-left text-lg font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 uppercase tracking-wider"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.1 }}
+                    whileHover={{ x: 10 }}
                   >
+                    {item.label}
+                  </motion.button>
+                ))}
+                
+                <motion.div
+                  className="pt-8 px-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="text-sm font-bold tracking-widest text-gray-500 uppercase">
                     anu.bnda@gmail.com
-                  </motion.div>
-                </div>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
