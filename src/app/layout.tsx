@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   description: "Full-stack developer passionate about creating intuitive and impactful digital solutions",
   icons: {
     icon: [
-      { url: '/assets/icons/bubble.jpg', type: 'image/jpeg' },
+      { url: '/assets/icons/circleai.png', type: 'image/jpeg' },
       { url: '/favicon.ico', type: 'image/x-icon' },
     ],
-    shortcut: [{ url: '/assets/icons/bubble.jpg', type: 'image/jpeg' }],
-    apple: [{ url: '/assets/icons/bubble.jpg', type: 'image/jpeg' }],
+    shortcut: [{ url: '/assets/icons/circleai.png', type: 'image/jpeg' }],
+    apple: [{ url: '/assets/icons/circleai.png', type: 'image/jpeg' }],
     other: [
       {
         rel: 'apple-touch-icon-precomposed',
-        url: '/assets/icons/bubble.jpg',
+        url: '/assets/icons/circleai.png',
       },
     ],
   },
@@ -31,10 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/jpeg" href="/assets/icons/bubble.jpg" sizes="any" />
+        <link rel="icon" type="image/jpeg" href="/assets/icons/circleai.png" sizes="any" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/icons/bubble.jpg" />
-        <link rel="mask-icon" href="/assets/icons/bubble.jpg" color="#498FD8" />
+        <link rel="apple-touch-icon" href="/assets/icons/circleai.png" />
+        <link rel="mask-icon" href="/assets/icons/circleai.png" color="#498FD8" />
       </head>
       <body className={inter.className}>{children}</body>
     </html>

@@ -2,175 +2,299 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Project } from '../../types/project';
 import MakeEatScreenCarousel from './MakeEatScreenCarousel';
+import { ChefHat, Smartphone, Bot, BarChart3, Zap, Camera } from 'lucide-react';
 
 export default function MakeEatProjectDetail({ project }: { project: Project }) {
   return (
     <>
-      {/* My Role - Horizontal scrolling cards with 3D effect */}
-      <section className="py-12 overflow-hidden">
+      {/* AI Recipe Generator Hero */}
+      <section className="py-16 bg-gradient-to-br from-orange-50 via-white to-amber-50 rounded-3xl">
+        <div className="px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <ChefHat className="w-8 h-8 text-orange-600" />
+              <h2 className="text-4xl font-black text-gray-900">AI Recipe Generator</h2>
+            </div>
+            <div className="w-24 h-1 bg-orange-600 mx-auto"></div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Smart Culinary Assistant</h3>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                MakeEat transforms cooking with AI-powered recipe recommendations based on your 
+                available ingredients. Features dietary preferences, nutritional tracking, 
+                and step-by-step cooking guidance for a seamless culinary experience.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-4 bg-white rounded-xl border border-orange-200 shadow-sm">
+                  <Bot className="w-8 h-8 text-orange-600 mx-auto mb-2" />
+                  <div className="font-bold text-gray-900">AI-Powered</div>
+                  <div className="text-sm text-gray-600">Recipe Generation</div>
+                </div>
+                <div className="text-center p-4 bg-white rounded-xl border border-amber-200 shadow-sm">
+                  <Smartphone className="w-8 h-8 text-amber-600 mx-auto mb-2" />
+                  <div className="font-bold text-gray-900">Flutter App</div>
+                  <div className="text-sm text-gray-600">Cross-platform</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4 }}
+              className="relative"
+            >
+              <div className="aspect-square bg-gradient-to-br from-orange-600 to-amber-600 rounded-3xl p-8 text-white">
+                <div className="h-full flex flex-col justify-between">
+                  <div>
+                    <h4 className="text-xl font-bold mb-4">Smart Features</h4>
+                    <ul className="space-y-3">
+                      <li className="flex items-center gap-3">
+                        <Camera className="w-5 h-5 text-orange-300" />
+                        Ingredient Recognition
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <BarChart3 className="w-5 h-5 text-orange-300" />
+                        Nutrition Tracking
+                      </li>
+                      <li className="flex items-center gap-3">
+                        <Zap className="w-5 h-5 text-orange-300" />
+                        Smart Recommendations
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="text-4xl font-black opacity-20">AI</div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Development Approach */}
+      <section className="py-16">
         <motion.h2 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          className="text-4xl font-bold text-white mb-8 pl-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-black text-gray-900 mb-12 text-center"
         >
-          My Role
+          Development Process
         </motion.h2>
-        <div className="flex space-x-6 px-4 pb-8 overflow-x-auto scrollbar-hide">
-          {project.roles.map((role, index) => (
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              phase: "AI Integration",
+              description: "OpenAI API for recipe generation and nutritional analysis",
+              icon: <Bot className="w-8 h-8" />
+            },
+            {
+              phase: "App Development",
+              description: "Flutter with clean architecture and offline capabilities",
+              icon: <Smartphone className="w-8 h-8" />
+            },
+            {
+              phase: "Food Recognition",
+              description: "Computer vision for ingredient identification",
+              icon: <Camera className="w-8 h-8" />
+            }
+          ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20, rotateX: 30 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              whileHover={{ 
-                scale: 1.05, 
-                rotateY: 5,
-                transition: { duration: 0.2 }
-              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="flex-shrink-0 w-[380px] bg-gradient-to-br from-[#BE8A62]/10 via-[#0A0A0F] to-[#BE8A62]/5 p-6 rounded-2xl border border-[#BE8A62]/20 backdrop-blur-sm"
+              className="text-center group"
             >
-              <div className="relative">
-                <div className="absolute -top-10 -right-6 w-24 h-24 bg-[#BE8A62]/10 rounded-full blur-2xl" />
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-20 h-20 bg-[#BE8A62]/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-3xl font-bold text-[#BE8A62]">{role.percentage}%</span>
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 group-hover:border-orange-400 hover:shadow-lg transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <div className="text-white">
+                    {item.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white">{role.area}</h3>
                 </div>
-                <p className="text-gray-400 text-lg">{role.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{item.phase}</h3>
+                <p className="text-gray-700 leading-relaxed">{item.description}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Skills - Split screen with floating elements */}
-      <section className="py-12 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#BE8A62]/5 via-transparent to-transparent" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-          {/* Technical Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
+      {/* Technology Stack */}
+      <section className="py-16 bg-gradient-to-br from-gray-900 to-black rounded-3xl">
+        <div className="px-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl font-black text-white mb-12 text-center"
           >
-            <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#BE8A62]/10 rounded-full blur-3xl" />
-            <h2 className="text-3xl font-bold text-white mb-8">Technical Skills</h2>
-            <div className="space-y-4">
-              {project.hardSkills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  whileHover={{ x: 10 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group flex items-center gap-4 p-4 rounded-xl hover:bg-[#BE8A62]/10 transition-all duration-300"
-                >
-                  <span className="w-2 h-2 bg-[#BE8A62] rounded-full group-hover:scale-150 transition-transform" />
-                  <span className="text-gray-400 text-lg group-hover:text-white transition-colors">{skill}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Soft Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#BE8A62]/10 rounded-full blur-3xl" />
-            <h2 className="text-3xl font-bold text-white mb-8">Soft Skills</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {project.softSkills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-xl bg-[#0A0A0F]/50 border border-[#BE8A62]/20 backdrop-blur-sm"
-                >
-                  <span className="text-gray-400">{skill}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Technologies & Tools */}
-      <section className="py-12">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-white mb-12 text-center"
-        >
-          Tech Stack & Tools
-        </motion.h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {[...project.technologies, ...(project.tools || [])].map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ 
-                scale: 1.1,
-                rotateY: 10,
-                transition: { duration: 0.2 }
-              }}
-              transition={{ delay: index * 0.05 }}
-              className="group relative p-6 rounded-2xl bg-gradient-to-br from-[#BE8A62]/10 via-[#0A0A0F] to-[#BE8A62]/5 border border-[#BE8A62]/20 backdrop-blur-sm"
-            >
-              <div className="absolute inset-0 bg-[#BE8A62]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              <p className="text-gray-400 text-center group-hover:text-white transition-colors relative z-10">
-                {item}
-              </p>
-            </motion.div>
-          ))}
+            Technology Stack
+          </motion.h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {project.technologies.map((tech, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center border border-white/20 hover:border-orange-400 transition-all duration-300"
+              >
+                <div className="text-sm font-medium text-white">{tech}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Key Features */}
-      <section className="py-8">
-        <h2 className="text-3xl font-bold text-white mb-6">Key Features</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="py-16">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-black text-gray-900 mb-12 text-center"
+        >
+          App Features
+        </motion.h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {project.features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#0A0A0F] p-6 rounded-2xl border border-[#BE8A62]/20 backdrop-blur-sm"
+              className="group"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-[#BE8A62]/20 rounded-full flex items-center justify-center">
-                  <span className="text-[#BE8A62] text-lg">✦</span>
+              <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full hover:border-orange-400 hover:shadow-lg transition-all duration-300">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-amber-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <ChefHat className="w-6 h-6 text-white" />
                 </div>
-                <p className="text-gray-400">{feature}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{feature}</h3>
+                <div className="w-full h-1 bg-gray-200 rounded-full overflow-hidden">
+                  <motion.div 
+                    className="h-full bg-gradient-to-r from-orange-600 to-amber-600"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                  />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Key Screens */}
-      <section className="relative">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10"
+      {/* Performance Metrics */}
+      <section className="py-16 bg-gradient-to-r from-orange-600 to-amber-600 rounded-3xl text-white">
+        <div className="px-8 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl font-black mb-12"
+          >
+            App Performance
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {project.metrics.map((metric, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2 }}
+                className="text-center"
+              >
+                <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
+                  <div className="text-3xl font-black text-white mb-2">{metric.split(':')[0]}</div>
+                  <div className="text-sm opacity-80">{metric.split(':')[1]}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Screen Carousel */}
+      <section className="py-16">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl font-black text-gray-900 mb-12 text-center"
         >
-          <MakeEatScreenCarousel />
-        </motion.div>
-        
-        {/* Background Decorative Elements */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#BE8A62]/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-[#BE8A62]/5 rounded-full blur-3xl" />
+          App Interface
+        </motion.h2>
+        <MakeEatScreenCarousel />
+      </section>
+
+      {/* AI Technology */}
+      <section className="py-16 bg-gray-50 rounded-3xl">
+        <div className="px-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl font-black text-gray-900 mb-12 text-center"
+          >
+            AI-Powered Features
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="bg-white rounded-2xl p-8 border border-gray-200"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Machine Learning</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Computer vision for ingredient recognition</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Natural language processing for recipes</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Recommendation algorithms</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl p-8 border border-gray-200"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">User Intelligence</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Personalized dietary preferences</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Adaptive learning from user behavior</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700">Smart nutritional tracking</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </section>
     </>

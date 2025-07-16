@@ -1,114 +1,168 @@
-"use client";
+'use client';
 
-import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
-  const router = useRouter();
-  const pathname = usePathname();
-  const [activeItem, setActiveItem] = useState('Home');
-  const { scrollY } = useScroll();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const navItems = [
+    { href: '#projects', label: 'Work' },
+    { href: '#about', label: 'About' },
+    { href: '#tech-stack', label: 'Services' },
+    { href: '#contact', label: 'Contact' }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'projects', 'tech-stack', 'about'];
-      let currentSection = 'Home';
-
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            currentSection = section === 'hero' ? 'Home' : section.charAt(0).toUpperCase() + section.slice(1);
-          }
-        }
-      });
-
-      setActiveItem(currentSection);
+      setIsScrolled(window.scrollY > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 255, 0.95)"]
-  );
-
-  const boxShadow = useTransform(
-    scrollY,
-    [0, 100],
-    ["none", "0 4px 6px -1px rgba(0, 0, 0, 0.1)"]
-  );
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+  const handleNavClick = (href: string) => {
+    const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
-
-  const navItems = [
-    { name: 'Home', href: '#' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'About', href: '#about' },
-  ];
-
-  const handleNavClick = (e: React.MouseEvent, item: { name: string; href: string }) => {
-    e.preventDefault();
-    setActiveItem(item.name);
-    
-    if (item.name === 'Home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      scrollToSection(item.name.toLowerCase());
-    }
+    setIsOpen(false);
   };
 
   return (
-    <motion.nav 
-      className="fixed top-0 w-full z-[9999]"
-      style={{
-        backgroundColor,
-        boxShadow,
-        backdropFilter: 'blur(8px)',
-      }}
-    >
-      <div className="max-w-screen-xl mx-auto px-6 py-4">
-        <div className="relative flex justify-center items-center">
-          <div className="absolute inset-0 rounded-full border border-gray-200/20" />
-          
-          <div className="relative flex items-center gap-4 p-1">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                className="relative"
-                onHoverStart={() => setActiveItem(item.name)}
-              >
-                <a
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item)}
-                  className={`px-6 py-2 rounded-full relative z-10 transition-colors duration-200 text-sm font-medium
-                    ${activeItem === item.name ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900'}`}
+    <>
+      <motion.nav
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white/90 backdrop-blur-md border-b border-gray-200' 
+            : 'bg-transparent'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <motion.div
+              className="text-2xl font-black text-gray-900"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              ANU
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-12">
+              <div className="flex items-center gap-8">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors duration-300 uppercase tracking-wider"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    whileHover={{ y: -2 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4">
+                <motion.div
+                  className="text-sm font-bold tracking-widest text-gray-500 uppercase"
+                  whileHover={{ color: '#111827' }}
                 >
-                  {item.name}
-                </a>
-                {activeItem === item.name && (
-                  <motion.div
-                    className="absolute inset-0 bg-gray-100 rounded-full -z-10"
-                    layoutId="navbar-active"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </motion.div>
-            ))}
+                  anu.bnda@gmail.com
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              className="md:hidden p-3 hover:bg-gray-100 rounded-full transition-colors duration-300"
+              onClick={() => setIsOpen(!isOpen)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </motion.button>
           </div>
         </div>
-      </div>
-    </motion.nav>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="absolute inset-0 bg-black/20"
+              onClick={() => setIsOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+            
+            <motion.div
+              className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            >
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                  <div className="text-2xl font-black text-gray-900">ANU</div>
+                  <motion.button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-300"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.button>
+                </div>
+                
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className="px-6 py-4 text-left text-lg font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 uppercase tracking-wider"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + index * 0.1 }}
+                    whileHover={{ x: 10 }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+                
+                <motion.div
+                  className="pt-8 px-6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="text-sm font-bold tracking-widest text-gray-500 uppercase">
+                    anu.bnda@gmail.com
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 } 

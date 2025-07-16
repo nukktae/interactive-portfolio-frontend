@@ -2,6 +2,110 @@ import { Project } from '../types/project';
 
 export const projects: Project[] = [
   {
+    title: "Handiers Inc",
+    description: "UI/UX Designer leading frontend development for mobile apps and marketing website, delivering consistent user experiences across platforms.",
+    detailedDescription: "Led comprehensive UI/UX design and frontend development for Handiers Inc, a service marketplace platform. Designed and developed frontend for two mobile apps and a marketing website, delivering consistent UI across platforms. Spearheaded major UX redesigns for chat, booking, and quote request features, enhancing clarity and conversion through data-backed decisions.",
+    image: "/assets/images/projects/handiers.png",
+    images: [
+      "/assets/images/handiers-mobile-app.jpg",
+      "/assets/images/handiers-website.jpg",
+      "/assets/images/handiers-chat-redesign.jpg",
+      "/assets/images/handiers-booking-flow.jpg",
+      "/assets/images/handiers-quote-request.jpg"
+    ],
+    technologies: [
+      "Flutter & Dart",
+      "Figma",
+      "React/Next.js",
+      "TypeScript",
+      "Responsive Design",
+      "Mobile UI",
+      "Real-time Features",
+      "AI Integration"
+    ],
+    tools: [
+      "Figma",
+      "Flutter",
+      "VS Code",
+      "Git & GitHub",
+      "Analytics Tools",
+      "Design Systems",
+      "Prototyping Tools"
+    ],
+    hardSkills: [
+      "Mobile App Development",
+      "Frontend Development",
+      "UI/UX Design",
+      "Cross-platform Development",
+      "Real-time Implementation",
+      "Camera Integration",
+      "AI Feature Integration",
+      "Responsive Web Design"
+    ],
+    softSkills: [
+      "Leadership",
+      "Cross-functional Collaboration",
+      "Data-driven Decision Making",
+      "Project Management",
+      "Stakeholder Communication",
+      "Design Thinking",
+      "User Research"
+    ],
+    features: [
+      "Consistent UI across mobile apps and web platform",
+      "Real-time chat functionality with enhanced UX",
+      "Streamlined booking flow with improved conversion",
+      "Intuitive quote request system",
+      "Camera input integration for service requests",
+      "AI-powered estimation features",
+      "Responsive design across all devices",
+      "Data-driven UI optimizations"
+    ],
+    metrics: [
+      "Improved conversion rates through UX redesigns",
+      "Enhanced user clarity and engagement",
+      "Consistent UI delivery across 3 platforms",
+      "Real-time feature implementation",
+      "Cross-platform design system adoption"
+    ],
+    highlights: [
+      "Led major UX redesigns for core user flows",
+      "Designed and developed frontend for multiple platforms",
+      "Collaborated directly with CEO on feature priorities",
+      "Implemented real-time features with backend team",
+      "Delivered data-backed design decisions",
+      "Created consistent design language across platforms"
+    ],
+    challenges: [
+      "Maintaining UI consistency across multiple platforms",
+      "Redesigning complex user flows for better conversion",
+      "Integrating real-time features seamlessly",
+      "Balancing user needs with business requirements",
+      "Implementing camera and AI features in mobile apps"
+    ],
+    solutions: [
+      "Developed comprehensive design system for consistency",
+      "Conducted user research and A/B testing for redesigns",
+      "Collaborated closely with backend team for real-time features",
+      "Used data analytics to inform design decisions",
+      "Built robust mobile components for camera and AI integration"
+    ],
+    github: "",
+    liveUrl: "https://handiers.com",
+    roles: [
+      {
+        area: "UI/UX Design",
+        percentage: 60,
+        description: "Leading design strategy, user research, and interface design"
+      },
+      {
+        area: "Frontend Development",
+        percentage: 40,
+        description: "Mobile app development and website implementation"
+      }
+    ]
+  },
+  {
     title: "Rootin",
     description: "A sophisticated plant care automation system combining IoT hardware with a Flutter-powered iOS app for intelligent plant monitoring and maintenance.",
     detailedDescription: "An innovative IoT solution that transforms plant care through intelligent monitoring and automated maintenance. The system combines custom-built hardware sensors with an intuitive Flutter iOS interface, leveraging AI for plant identification and health diagnostics.",

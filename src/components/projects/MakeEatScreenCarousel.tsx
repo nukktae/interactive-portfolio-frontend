@@ -26,7 +26,7 @@ const screens: ScreenDescription[] = [
     description: "Smart pantry tracking system that helps you manage ingredients, reduce food waste, and plan meals efficiently. Automatic shopping list generation based on selected recipes."
   },
   {
-    image: "/assets/images/makeeat-profile.jpg",
+    image: "/assets/images/makeeat-profile2.jpg",
     title: "Personalized Profile",
     description: "Customizable user profiles with dietary preferences, allergies, and cooking skill level. Track your cooking journey and favorite recipes."
   },

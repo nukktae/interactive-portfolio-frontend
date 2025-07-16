@@ -23,11 +23,11 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       if (section.startsWith('## ')) {
         const [header, ...content] = section.split('\n');
         return (
-          <div key={index} className="mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-3">
+          <div key={index} className="mb-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-3">
               {header.replace('## ', '')}
             </h2>
-            <div className="pl-4 border-l-2 border-[#498FD8]/20">
+            <div className="space-y-2">
               {formatSection(content.join('\n'))}
             </div>
           </div>
@@ -45,11 +45,11 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       if (part.startsWith('### ')) {
         const [subheader, ...content] = part.split('\n');
         return (
-          <div key={index} className="mb-4">
-            <h3 className="text-lg font-medium text-gray-700 mb-2">
+          <div key={index} className="mb-3">
+            <h3 className="text-base font-semibold text-gray-800 mb-2">
               {subheader.replace('### ', '')}
             </h3>
-            <div className="pl-4">
+            <div className="pl-3 border-l-2 border-gray-200">
               {formatContent(content.join('\n'))}
             </div>
           </div>
@@ -78,9 +78,9 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
     return null;
   };
 
+  let lastProjectSlug = '';
+  
   const formatContent = (content: string) => {
-    let lastProjectSlug: string | null = null;
-    
     return content.split('\n').map((line, index) => {
       // Check if this is a numbered list item with a project name
       const projectSlug = getProjectSlug(line);
@@ -89,19 +89,19 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       // Handle bold text formatting by replacing **text** with proper styling
       const formattedLine = line.replace(
         /\*\*(.*?)\*\*/g,
-        '<span class="font-bold">$1</span>'
+        '<span class="font-semibold">$1</span>'
       );
       
       if (projectSlug && projectSlug !== lastProjectSlug) {
         lastProjectSlug = projectSlug;
         return (
-          <div key={index} className="my-4">
-            <p className="my-1.5" dangerouslySetInnerHTML={{ __html: formattedLine }} />
+          <div key={index} className="my-3">
+            <p className="my-1.5 text-gray-700" dangerouslySetInnerHTML={{ __html: formattedLine }} />
             <Link 
               href={`/projects/${projectSlug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 mt-2 bg-violet-500/20 hover:bg-violet-500/30 rounded-full text-sm text-violet-300 transition-all"
+              className="inline-flex items-center gap-2 px-3 py-1.5 mt-2 bg-black text-white hover:bg-yellow-400 hover:text-black rounded-md text-xs font-medium transition-all duration-300"
             >
-              <span>View Project Details</span>
+              <span>View Details</span>
               <FaExternalLinkAlt className="w-3 h-3" />
             </Link>
           </div>
@@ -112,8 +112,8 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
       if (line.trim().startsWith('* ')) {
         return (
           <div key={index} className="flex items-start gap-2 my-1.5">
-            <span className="text-violet-400 mt-1">•</span>
-            <span dangerouslySetInnerHTML={{ __html: formattedLine.substring(2) }} />
+            <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></span>
+            <span className="text-gray-700" dangerouslySetInnerHTML={{ __html: formattedLine.substring(2) }} />
           </div>
         );
       }
@@ -122,43 +122,37 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
         const [num, ...text] = line.trim().split('. ');
         return (
           <div key={index} className="flex items-start gap-2 my-1.5">
-            <span className="text-violet-400 min-w-[20px]">{num}.</span>
-            <span dangerouslySetInnerHTML={{ __html: text.join('. ') }} />
+            <span className="text-gray-900 font-medium min-w-[20px]">{num}.</span>
+            <span className="text-gray-700" dangerouslySetInnerHTML={{ __html: text.join('. ') }} />
           </div>
         );
       }
       
       return line.trim() && (
-        <p key={index} className="my-1.5" dangerouslySetInnerHTML={{ __html: formattedLine }} />
+        <p key={index} className="my-1.5 text-gray-700" dangerouslySetInnerHTML={{ __html: formattedLine }} />
       );
     });
   };
-
-  const messageStyles = {
-    container: "px-6 py-4 rounded-2xl max-w-[95%] space-y-4",
-    header: "text-2xl font-bold bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent mb-3",
-    subheader: "text-lg font-medium text-gray-700 mb-2",
-    bulletPoint: "flex items-start gap-2 my-2 text-gray-700",
-    numberedList: "flex items-start gap-2 my-2 text-gray-700",
-    table: "min-w-full divide-y divide-[#498FD8]/20 my-4",
-    tableHeader: "px-4 py-2 text-left font-medium bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent",
-    tableCell: "px-4 py-2 text-gray-700",
-    codeBlock: "bg-white/80 rounded-xl p-4 font-mono text-sm text-gray-700 my-4 border border-[#498FD8]/10"
-  }
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`flex items-start gap-4 mb-6 ${isBot ? 'justify-start' : 'justify-end'}`}
+      className={`flex items-start gap-3 mb-6 ${isBot ? 'justify-start' : 'justify-end'}`}
     >
+      {isBot && (
+        <div className={`w-8 h-8 rounded-full ${avatarBg} flex items-center justify-center flex-shrink-0`}>
+          <span className="text-white text-xs font-bold">{avatar}</span>
+        </div>
+      )}
+      
       <motion.div
         initial={{ scale: 0.95 }}
         animate={{ scale: 1 }}
-        className={`px-6 py-4 rounded-2xl max-w-[95%] ${
+        className={`px-4 py-3 rounded-lg max-w-[85%] ${
           isBot 
-            ? 'bg-white/90 backdrop-blur-sm border border-[#498FD8]/10 shadow-sm' 
-            : 'bg-gradient-to-r from-[#498FD8] to-[#D86089] text-white shadow-md'
+            ? 'bg-white border border-gray-200 shadow-sm' 
+            : 'bg-black text-white shadow-sm'
         }`}
       >
         <div className={`text-sm leading-relaxed ${isBot ? 'text-gray-700' : 'text-white'}`}>
@@ -168,6 +162,12 @@ export const ChatMessage = ({ message, avatar, avatarBg }: ChatMessageProps) => 
           {new Date(message.timestamp).toLocaleTimeString()}
         </div>
       </motion.div>
+      
+      {!isBot && (
+        <div className={`w-8 h-8 rounded-full ${avatarBg} flex items-center justify-center flex-shrink-0`}>
+          <span className="text-black text-xs font-bold">{avatar}</span>
+        </div>
+      )}
     </motion.div>
   );
 }; 

@@ -2,10 +2,13 @@
 
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { useRef } from 'react';
+import Navbar from './Navbar';
 import HeroSection from './HeroSection';
 import ProjectsSection from './ProjectsSection';
 import TechStackSection from './TechStackSection';
 import AboutSection from './AboutSection';
+import ContactForm from './ContactForm';
+import Footer from './Footer';
 import AIChatButton from './AIChatButton';
 import ResumeSection from './ResumeSection';
 
@@ -24,8 +27,10 @@ export default function LandingPage() {
 
   return (
     <div ref={containerRef} className="relative bg-white">
+      <Navbar />
+      
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-havelock via-cranberry to-tan origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-gray-600 to-black origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -52,7 +57,11 @@ export default function LandingPage() {
         <section id="resume">
           <ResumeSection />
         </section>
+
+        <ContactForm />
       </motion.div>
+
+      <Footer />
       
       <AIChatButton />
     </div>

@@ -16,7 +16,7 @@ module.exports = {
         'gradient-main': 'linear-gradient(135deg, rgba(73, 143, 216, 0.1), rgba(216, 96, 137, 0.1))',
         'gradient-hover': 'linear-gradient(135deg, rgba(216, 96, 137, 0.2), rgba(251, 157, 91, 0.2))',
         'gradient-text': 'linear-gradient(to right, #498FD8, #D86089, #FB9D5B)',
-        'bubble-pattern': "url('/assets/icons/bubble.jpg')",
+        'bubble-pattern': "url('/assets/icons/circleai.png')",
         'gradient-conic': 'conic-gradient(var(--tw-gradient-stops))',
       },
       animation: {

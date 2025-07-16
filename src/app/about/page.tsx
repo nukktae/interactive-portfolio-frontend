@@ -163,7 +163,7 @@ export default function AboutPage() {
                     <FaGithub className="w-6 h-6" />
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com/in/nukktae"
+                    href="https://www.linkedin.com/in/anu-bilegdemberel-445366318/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors"

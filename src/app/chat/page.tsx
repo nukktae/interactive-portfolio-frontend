@@ -16,7 +16,7 @@ export default function ChatPage() {
         >
           <h1 className="text-5xl font-bold text-gray-800 mb-4">
             AI{' '}
-            <span className="bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent">
+            <span className="bg-yellow-400 text-black px-3 py-1">
               Assistant
             </span>
           </h1>
@@ -27,8 +27,7 @@ export default function ChatPage() {
         <motion.div
           className="relative max-w-5xl mx-auto"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#498FD8]/10 via-[#D86089]/10 to-[#FB9D5B]/10 rounded-3xl blur-3xl" />
-          <div className="relative bg-white/90 rounded-3xl border border-[#498FD8]/20 backdrop-blur-sm overflow-hidden">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden">
             <ChatInterface />
           </div>
         </motion.div>

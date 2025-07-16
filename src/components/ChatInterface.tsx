@@ -72,34 +72,34 @@ const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string):
 const getPersonalizedGreeting = (userType: string) => {
   const greetings = {
     recruiter: {
-      message: `## Hi! 🚀
+      message: `## Hello!
 Let's explore:
-* 💻 Technical expertise
-* 🎯 Project impact
-* 🤝 Team collaboration
+* Technical expertise
+* Project impact
+* Team collaboration
 
 What would you like to know?`,
-      bg: 'from-[#498FD8]/20 to-[#D86089]/20'
+      bg: 'bg-gray-50'
     },
     visitor: {
-      message: `## Hello! ✨
+      message: `## Hello!
 Let's discuss:
-* 🔮 Solutions built
-* 🌟 Tech stack
-* 🎨 Development
+* Solutions built
+* Tech stack
+* Development
 
 What interests you?`,
-      bg: 'from-[#498FD8]/20 to-[#FB9D5B]/20'
+      bg: 'bg-gray-50'
     },
     friend: {
-      message: `## Hey! 💫
+      message: `## Hey!
 Let's chat about:
-* 🌈 Projects
-* 🚀 Journey
-* 💡 Innovation
+* Projects
+* Journey
+* Innovation
 
 What's up?`,
-      bg: 'from-[#D86089]/20 to-[#FB9D5B]/20'
+      bg: 'bg-gray-50'
     }
   };
 
@@ -253,18 +253,18 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-gradient-to-br from-[#498FD8]/5 via-[#D86089]/5 to-[#FB9D5B]/5">
+    <div className="h-full flex flex-col bg-white">
       <div 
         ref={messagesContainerRef}
-        className="flex-1 px-6 py-6 space-y-6 relative overflow-y-auto scrollbar-thin scrollbar-thumb-[#498FD8]/20 scrollbar-track-transparent"
+        className="flex-1 px-6 py-6 space-y-6 relative overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
       >
         <AnimatePresence>
           {messages.map((message) => (
             <ChatMessage
               key={message.id}
               message={message}
-              avatar={message.sender === 'bot' ? selectedEmoji : '👤'}
-              avatarBg={message.sender === 'bot' ? 'bg-gradient-to-r from-[#498FD8] to-[#D86089]' : 'bg-gradient-to-r from-[#D86089] to-[#FB9D5B]'}
+              avatar={message.sender === 'bot' ? 'AI' : 'YOU'}
+              avatarBg={message.sender === 'bot' ? 'bg-black' : 'bg-yellow-400'}
             />
           ))}
         </AnimatePresence>
@@ -278,8 +278,8 @@ export const ChatInterface = () => {
             {initialQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="p-4 text-left rounded-2xl bg-white/80 hover:bg-white 
-                         border border-[#498FD8]/10 hover:border-[#498FD8]/30
+                className="p-4 text-left rounded-xl bg-gray-50 hover:bg-gray-100 
+                         border border-gray-200 hover:border-gray-300
                          text-gray-600 hover:text-gray-800 shadow-sm hover:shadow-md
                          transition-all duration-200"
                 whileHover={{ scale: 1.01, y: -2 }}
@@ -298,7 +298,7 @@ export const ChatInterface = () => {
 
       {followUpQuestions.length > 0 && (
         <motion.div 
-          className="px-6 py-4 bg-white/80 border-t border-[#498FD8]/10 backdrop-blur-sm"
+          className="px-6 py-4 bg-gray-50 border-t border-gray-200"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -307,9 +307,9 @@ export const ChatInterface = () => {
             {followUpQuestions.map((question, index) => (
               <motion.button
                 key={index}
-                className="px-4 py-2 text-sm rounded-xl bg-white hover:bg-[#498FD8]/5
-                         border border-[#498FD8]/20 text-gray-600 hover:text-[#498FD8]
-                         transition-all duration-200 shadow-sm"
+                className="px-4 py-2 text-sm rounded-lg bg-white hover:bg-yellow-50
+                         border border-gray-200 text-gray-600 hover:text-black
+                         transition-all duration-200 shadow-sm hover:border-yellow-400"
                 whileHover={{ scale: 1.02, y: -1 }}
                 onClick={() => {
                   setInput(question);
@@ -325,7 +325,7 @@ export const ChatInterface = () => {
 
       <motion.form 
         onSubmit={handleSubmit}
-        className="p-6 bg-white/90 border-t border-[#498FD8]/10 backdrop-blur-md"
+        className="p-6 bg-white border-t border-gray-200"
       >
         <div className="relative flex items-center max-w-3xl mx-auto">
           <input
@@ -333,16 +333,17 @@ export const ChatInterface = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about Anu's experience..."
-            className="w-full px-5 py-3 bg-white rounded-2xl border border-[#498FD8]/20 
-                     text-gray-700 text-sm focus:ring-2 focus:ring-[#D86089]/20 
-                     focus:border-[#D86089]/30 shadow-sm
+            className="w-full px-5 py-3 bg-gray-50 rounded-xl border border-gray-200 
+                     text-gray-700 text-sm focus:ring-2 focus:ring-yellow-400/20 
+                     focus:border-yellow-400 shadow-sm
                      transition-all duration-200 placeholder:text-gray-400"
           />
           <motion.button
             type="submit"
             disabled={loading}
-            className="absolute right-3 p-2.5 bg-gradient-to-r from-[#498FD8] to-[#D86089] 
-                     rounded-xl text-white shadow-md disabled:opacity-50"
+            className="absolute right-3 p-2.5 bg-black hover:bg-yellow-400 
+                     rounded-lg text-white hover:text-black shadow-md disabled:opacity-50
+                     transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

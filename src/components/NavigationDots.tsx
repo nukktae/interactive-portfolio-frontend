@@ -7,7 +7,7 @@ interface NavigationDotsProps {
   onSectionChange: (sectionIndex: number) => void;
 }
 
-const sections = ['Home', 'About', 'Projects', 'Contact'];
+const sections = ['Home', 'About', 'Experiences', 'Contact'];
 
 export function NavigationDots({ currentSection, onSectionChange }: NavigationDotsProps) {
   return (

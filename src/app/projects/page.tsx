@@ -15,11 +15,11 @@ export default function ProjectsPage() {
           <h1 className="text-5xl font-bold text-gray-800 mb-4">
             Featured{' '}
             <span className="bg-gradient-to-r from-[#498FD8] to-[#D86089] bg-clip-text text-transparent">
-              Projects
+              Experiences
             </span>
           </h1>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            A collection of my recent work in software development and design
+            A collection of my recent experiences in UI/UX design and development
           </p>
         </motion.div>
         
