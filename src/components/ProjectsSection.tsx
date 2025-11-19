@@ -13,9 +13,20 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
+      title: "Bestia",
+      role: "UI/UX Designer & Frontend Developer",
+      period: "September 2025 - Now",
+      description: "CRM tech for real estate agents that saves 2.5-4 hours per day and enables handling 2-3× more leads",
+      tags: ["React", "Next.js", "Figma", "CRM", "UI/UX", "Postman", "HTML", "LLM Model", "Twilio"],
+      image: "/assets/images/projects/Bestia/bestia1.png",
+      githubUrl: "",
+      featured: true
+    },
+    {
+      id: 2,
       title: "Handiers Inc.",
       role: "UI/UX Designer",
-      period: "2025",
+      period: "March 2025 - September 2025",
       description: "Mobile apps & marketing website design with UX research and data-driven improvements",
       tags: ["Figma", "Flutter", "UI Design", "UX Research"],
       image: "/assets/images/projects/handiers.png",
@@ -24,7 +35,7 @@ export default function ProjectsSection() {
       featured: true
     },
     {
-      id: 2,
+      id: 3,
       title: "Rootin",
       role: "Frontend Developer",
       period: "2024",
@@ -34,7 +45,7 @@ export default function ProjectsSection() {
       githubUrl: "https://github.com/nukktae/rootin"
     },
     {
-      id: 3,
+      id: 4,
       title: "KMU Global",
       role: "Full Stack Developer",
       period: "2024",
@@ -45,7 +56,7 @@ export default function ProjectsSection() {
       liveUrl: "https://kmuglobal.dev"
     },
     {
-      id: 4,
+      id: 5,
       title: "MakeEat",
       role: "Full Stack Developer", 
       period: "2024",

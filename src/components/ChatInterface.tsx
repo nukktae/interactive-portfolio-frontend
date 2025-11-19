@@ -72,33 +72,15 @@ const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string):
 const getPersonalizedGreeting = (userType: string) => {
   const greetings = {
     recruiter: {
-      message: `## Hello!
-Let's explore:
-* Technical expertise
-* Project impact
-* Team collaboration
-
-What would you like to know?`,
+      message: `Hello! Ask about technical expertise, project impact, or team collaboration.`,
       bg: 'bg-gray-50'
     },
     visitor: {
-      message: `## Hello!
-Let's discuss:
-* Solutions built
-* Tech stack
-* Development
-
-What interests you?`,
+      message: `Hello! Ask about solutions built, tech stack, or development experience.`,
       bg: 'bg-gray-50'
     },
     friend: {
-      message: `## Hey!
-Let's chat about:
-* Projects
-* Journey
-* Innovation
-
-What's up?`,
+      message: `Hey! Ask about projects, journey, or innovation.`,
       bg: 'bg-gray-50'
     }
   };
@@ -253,17 +235,16 @@ export const ChatInterface = () => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-white min-h-0">
       <div 
         ref={messagesContainerRef}
-        className="flex-1 px-6 py-6 space-y-6 relative overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+        className="flex-1 px-4 py-4 space-y-4 relative overflow-y-auto min-h-0"
       >
         <AnimatePresence>
           {messages.map((message) => (
             <ChatMessage
               key={message.id}
               message={message}
-              avatar={message.sender === 'bot' ? 'AI' : 'YOU'}
               avatarBg={message.sender === 'bot' ? 'bg-black' : 'bg-yellow-400'}
             />
           ))}
@@ -271,25 +252,23 @@ export const ChatInterface = () => {
 
         {showSuggestions && (
           <motion.div 
-            className="grid grid-cols-1 gap-3 mt-6"
-            initial={{ opacity: 0, y: 20 }}
+            className="grid grid-cols-1 gap-2 mt-4"
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
             {initialQuestions.map((question, index) => (
-              <motion.button
+              <button
                 key={index}
-                className="p-4 text-left rounded-xl bg-gray-50 hover:bg-gray-100 
-                         border border-gray-200 hover:border-gray-300
-                         text-gray-600 hover:text-gray-800 shadow-sm hover:shadow-md
-                         transition-all duration-200"
-                whileHover={{ scale: 1.01, y: -2 }}
+                className="p-3 text-left rounded-lg bg-gray-50 hover:bg-gray-100 
+                         text-gray-700 hover:text-gray-900
+                         transition-colors duration-150 text-sm"
                 onClick={() => {
                   setInput(question);
                   handleSubmit(new Event('submit') as any);
                 }}
               >
-                <span className="text-sm font-medium">{question}</span>
-              </motion.button>
+                {question}
+              </button>
             ))}
           </motion.div>
         )}
@@ -298,69 +277,58 @@ export const ChatInterface = () => {
 
       {followUpQuestions.length > 0 && (
         <motion.div 
-          className="px-6 py-4 bg-gray-50 border-t border-gray-200"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="px-4 py-3 border-t border-gray-100"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
         >
-          <p className="text-xs font-medium text-gray-500 mb-3">Follow-up questions</p>
           <div className="flex flex-wrap gap-2">
             {followUpQuestions.map((question, index) => (
-              <motion.button
+              <button
                 key={index}
-                className="px-4 py-2 text-sm rounded-lg bg-white hover:bg-yellow-50
-                         border border-gray-200 text-gray-600 hover:text-black
-                         transition-all duration-200 shadow-sm hover:border-yellow-400"
-                whileHover={{ scale: 1.02, y: -1 }}
+                className="px-3 py-1.5 text-xs rounded-md bg-gray-50 hover:bg-black
+                         text-gray-600 hover:text-white
+                         transition-colors duration-150"
                 onClick={() => {
                   setInput(question);
                   handleSubmit(new Event('submit') as any);
                 }}
               >
                 {question}
-              </motion.button>
+              </button>
             ))}
           </div>
         </motion.div>
       )}
 
-      <motion.form 
+      <form 
         onSubmit={handleSubmit}
-        className="p-6 bg-white border-t border-gray-200"
+        className="p-4 border-t border-gray-100"
       >
-        <div className="relative flex items-center max-w-3xl mx-auto">
+        <div className="relative flex items-center">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about Anu's experience..."
-            className="w-full px-5 py-3 bg-gray-50 rounded-xl border border-gray-200 
-                     text-gray-700 text-sm focus:ring-2 focus:ring-yellow-400/20 
-                     focus:border-yellow-400 shadow-sm
-                     transition-all duration-200 placeholder:text-gray-400"
+            className="w-full px-4 py-2.5 bg-black rounded-lg border-0
+                     text-white text-sm focus:outline-none
+                     transition-all duration-200 placeholder:text-gray-500"
           />
-          <motion.button
+          <button
             type="submit"
             disabled={loading}
-            className="absolute right-3 p-2.5 bg-black hover:bg-yellow-400 
-                     rounded-lg text-white hover:text-black shadow-md disabled:opacity-50
-                     transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="absolute right-2 p-2 bg-black hover:bg-gray-800 
+                     rounded-md text-white disabled:opacity-50
+                     transition-colors duration-200"
           >
             {loading ? (
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-5 h-5 flex items-center justify-center"
-              >
-                ⟳
-              </motion.div>
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
             ) : (
-              <IoSend className="w-5 h-5" />
+              <IoSend className="w-4 h-4" />
             )}
-          </motion.button>
+          </button>
         </div>
-      </motion.form>
+      </form>
     </div>
   );
 }; 

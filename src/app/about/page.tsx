@@ -173,7 +173,7 @@ export default function AboutPage() {
                     <FaLinkedin className="w-6 h-6" />
                   </motion.a>
                   <motion.a
-                    href="mailto:anu.bnda@gmail.com"
+                    href="mailto:anu.bn@yahoo.com"
                     className="text-gray-400 hover:text-white transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}

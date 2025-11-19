@@ -16,9 +16,9 @@ export default function AIChatButton() {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="absolute bottom-20 right-0 w-[550px] h-[600px] bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden"
+            className="absolute bottom-20 right-0 w-[550px] max-h-[calc(100vh-8rem)] bg-white rounded-2xl border border-gray-200 shadow-xl overflow-hidden flex flex-col"
           >
-            <div className="relative h-full">
+            <div className="relative h-full flex flex-col min-h-0">
               <ChatInterface />
             </div>
           </motion.div>

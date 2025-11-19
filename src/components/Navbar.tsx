@@ -11,7 +11,6 @@ export default function Navbar() {
   const navItems = [
     { href: '#projects', label: 'Work' },
     { href: '#about', label: 'About' },
-    { href: '#tech-stack', label: 'Services' },
     { href: '#contact', label: 'Contact' }
   ];
 
@@ -79,7 +78,7 @@ export default function Navbar() {
                   className="text-sm font-bold tracking-widest text-gray-500 uppercase"
                   whileHover={{ color: '#111827' }}
                 >
-                  anu.bnda@gmail.com
+                  anu.bn@yahoo.com
                 </motion.div>
               </div>
             </div>
@@ -155,7 +154,7 @@ export default function Navbar() {
                   transition={{ delay: 0.5 }}
                 >
                   <div className="text-sm font-bold tracking-widest text-gray-500 uppercase">
-                    anu.bnda@gmail.com
+                    anu.bn@yahoo.com
                   </div>
                 </motion.div>
               </div>

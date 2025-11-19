@@ -38,7 +38,7 @@ export default function ResumeSection() {
               className="inline-block"
             >
               <a
-                href="/assets/files/AnuBilegdemberel_Resume.pdf"
+                href="/assets/files/AnuBilegdemberelCV.pdf"
                 download
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#498FD8] via-[#D86089] to-[#FB9D5B] rounded-full text-white font-medium text-lg hover:shadow-xl hover:shadow-[#498FD8]/20 transition-all duration-300"
               >

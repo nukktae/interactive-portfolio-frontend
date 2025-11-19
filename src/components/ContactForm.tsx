@@ -41,10 +41,10 @@ export default function ContactForm() {
 
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
               <a
-                href="mailto:anu.bnda@gmail.com"
+                href="mailto:anu.bn@yahoo.com"
                 className="group inline-flex items-center gap-4 text-2xl md:text-3xl font-black uppercase tracking-tight hover:text-black/80 transition-colors duration-300"
               >
-                <span>anu.bnda@gmail.com</span>
+                <span>anu.bn@yahoo.com</span>
                 <ArrowUpRight className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
               </a>
             </div>

@@ -4,6 +4,33 @@ import { Project } from '@/types/project';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 export default function ProjectDetailHero({ project }: { project: Project }) {
+  // For Bestia, use a cleaner layout without image
+  if (project.title === "Bestia") {
+    return (
+      <div className="pt-20 pb-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+              <span className="text-gray-500 text-sm font-medium uppercase tracking-wider">
+                Featured Project
+              </span>
+            </div>
+            
+            <h1 className="text-6xl md:text-8xl font-black text-gray-900 leading-none">
+              {project.title}
+            </h1>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  // For other projects, keep the original design
   return (
     <div className="pt-20">
       <motion.div 

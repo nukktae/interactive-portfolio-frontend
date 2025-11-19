@@ -2,6 +2,116 @@ import { Project } from '../types/project';
 
 export const projects: Project[] = [
   {
+    title: "Bestia",
+    description: "CRM tech for real estate agents that revolutionizes workflow efficiency, reducing manual work and enabling agents to handle significantly more leads.",
+    detailedDescription: "Bestia is a cutting-edge CRM platform designed specifically for real estate agents. As the designer and frontend developer, I led the design and frontend integration, working closely with real estate agents weekly for design feedback. The platform was showcased at LA Tech Week, where it generated 300 real estate agents on the waiting list through compelling design and seamless frontend integration. The system dramatically improves agent productivity by automating workflows and eliminating manual data entry.",
+    image: "/assets/images/projects/Bestia/bestia1.png",
+    images: [
+      "/assets/images/bestia-dashboard.jpg",
+      "/assets/images/bestia-leads.jpg",
+      "/assets/images/bestia-offers.jpg",
+      "/assets/images/bestia-workflow.jpg"
+    ],
+    technologies: [
+      "React/Next.js",
+      "TypeScript",
+      "Figma",
+      "UI/UX Design",
+      "Frontend Integration",
+      "CRM Systems",
+      "Real-time Features",
+      "Responsive Design"
+    ],
+    tools: [
+      "Figma",
+      "React",
+      "Next.js",
+      "VS Code",
+      "Git & GitHub",
+      "Design Systems",
+      "Prototyping Tools",
+      "User Research Tools"
+    ],
+    hardSkills: [
+      "UI/UX Design",
+      "Frontend Development",
+      "CRM Integration",
+      "User Research",
+      "Design Systems",
+      "Rapid Prototyping",
+      "Cross-functional Collaboration",
+      "Fast Delivery"
+    ],
+    softSkills: [
+      "Client Collaboration",
+      "User Feedback Integration",
+      "Fast Delivery",
+      "Design Thinking",
+      "Stakeholder Communication",
+      "Agile Development",
+      "Problem Solving"
+    ],
+    features: [
+      "Automated lead workflow management",
+      "Streamlined offer preparation system",
+      "Intelligent data entry automation",
+      "Real-time lead tracking and management",
+      "Comprehensive CRM dashboard",
+      "Mobile-responsive design",
+      "Integration with real estate platforms",
+      "Analytics and reporting tools"
+    ],
+    metrics: [
+      "Saves 2.5–4 hours per agent per day",
+      "Cuts lead workflow time by 40–60%",
+      "Reduces offer preparation time by 85–90%",
+      "Eliminates 70–90% of manual data entry",
+      "Enables agents to handle 2–3× more leads per day",
+      "300 real estate agents on waiting list from LA Tech Week"
+    ],
+    highlights: [
+      "Led design and frontend development for CRM platform",
+      "Generated 300 real estate agents on waiting list at LA Tech Week",
+      "Worked directly with real estate agents weekly for design feedback",
+      "Delivered fast integration and rapid deployment to companies",
+      "Created intuitive user experience for complex CRM workflows",
+      "Established design system for consistent user experience"
+    ],
+    challenges: [
+      "Understanding complex real estate agent workflows",
+      "Balancing automation with user control",
+      "Fast delivery while maintaining quality",
+      "Integrating feedback from multiple stakeholders",
+      "Designing for efficiency and ease of use"
+    ],
+    solutions: [
+      "Conducted weekly design feedback sessions with real estate agents",
+      "Iterated quickly based on user needs and pain points",
+      "Created streamlined workflows reducing manual steps",
+      "Implemented design system for rapid development",
+      "Focused on user-centric design principles"
+    ],
+    github: "",
+    liveUrl: "",
+    roles: [
+      {
+        area: "UI/UX Design",
+        percentage: 70,
+        description: "Led design strategy, user research, and interface design with weekly agent feedback"
+      },
+      {
+        area: "Frontend Development",
+        percentage: 80,
+        description: "Fast integration and frontend implementation with rapid delivery"
+      },
+      {
+        area: "User Research",
+        percentage: 90,
+        description: "Weekly collaboration with real estate agents for design feedback and iteration"
+      }
+    ]
+  },
+  {
     title: "Handiers Inc",
     description: "UI/UX Designer leading frontend development for mobile apps and marketing website, delivering consistent user experiences across platforms.",
     detailedDescription: "Led comprehensive UI/UX design and frontend development for Handiers Inc, a service marketplace platform. Designed and developed frontend for two mobile apps and a marketing website, delivering consistent UI across platforms. Spearheaded major UX redesigns for chat, booking, and quote request features, enhancing clarity and conversion through data-backed decisions.",

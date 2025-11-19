@@ -12,6 +12,7 @@ import KmuProjectDetail from '../../../components/projects/KmuProjectDetail';
 import VoriProjectDetail from '../../../components/projects/VoriProjectDetail';
 import MajorMatchProjectDetail from '../../../components/projects/MajorMatchProjectDetail';
 import JobParserProjectDetail from '../../../components/projects/JobParserProjectDetail';
+import BestiaProjectDetail from '../../../components/projects/BestiaProjectDetail';
 
 export default function ProjectDetail({ params }: { params: { slug: string } }) {
   const project = projects.find(
@@ -53,6 +54,8 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         return <MajorMatchProjectDetail project={project} />;
       case "AI Job Parser":
         return <JobParserProjectDetail project={project} />;
+      case "Bestia":
+        return <BestiaProjectDetail project={project} />;
       default:
         return (
           <div className="py-16 text-center">

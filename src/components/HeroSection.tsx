@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Download } from 'lucide-react';
 import { ImageWithFallback } from './ImageWithFallback';
 
 export default function HeroSection() {
@@ -51,8 +52,8 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 1 }}
             className="mb-8 md:mb-12"
           >
-            <p className="text-lg md:text-xl max-w-md text-gray-600">
-              UI/UX designer who loves crafting intuitive and beautiful user experiences
+            <p className="text-lg md:text-xl max-w-lg text-gray-600 leading-tight">
+              UI developer handling design to frontend to backend, delivering fast and always respected for quick delivery.
             </p>
           </motion.div>
 
@@ -60,7 +61,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
-            className="mb-12 md:mb-16"
+            className="mb-12 md:mb-16 flex flex-col sm:flex-row gap-4"
           >
             <button 
               onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
@@ -73,6 +74,14 @@ export default function HeroSection() {
                 →
               </motion.span>
             </button>
+            <a
+              href="/assets/files/AnuBilegdemberelCV.pdf"
+              download
+              className="group bg-transparent border-2 border-black text-black px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-300 flex items-center gap-3"
+            >
+              <Download className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+              Download Resume
+            </a>
           </motion.div>
 
           <motion.div
@@ -107,7 +116,7 @@ export default function HeroSection() {
             <div className="aspect-[3/4] relative overflow-hidden bg-gray-200">
               <ImageWithFallback
                 src="/assets/images/profile2.jpg"
-                alt="Anu - UI/UX Designer & Full-Stack Developer"
+                alt="Anu - UI Developer & Full-Stack Developer"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-all duration-700" />
