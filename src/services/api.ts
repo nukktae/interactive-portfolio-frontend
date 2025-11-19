@@ -1,8 +1,30 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
-  ? 'http://localhost:5001' 
-  : 'https://anu-portfolio-backend.vercel.app');
+// Determine API URL - prioritize environment variable, then use production domain
+const getApiUrl = () => {
+  // For local development
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+  }
+  
+  // Check if environment variable is set
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    const envUrl = process.env.NEXT_PUBLIC_API_URL;
+    // Ignore old deployment URLs (they change with each deploy)
+    if (envUrl.includes('anu-portfolio-backend-iequx7uxi') || 
+        envUrl.includes('anu-portfolio-backend-') && envUrl.includes('-anu-bilegdemberels-projects')) {
+      console.warn('⚠️ Ignoring old deployment URL from environment variable. Using production domain instead.');
+      return 'https://anu-portfolio-backend.vercel.app';
+    }
+    // Use the environment variable if it's a valid production URL
+    return envUrl;
+  }
+  
+  // Production - use the stable Vercel domain
+  return 'https://anu-portfolio-backend.vercel.app';
+};
+
+const API_URL = getApiUrl();
 
 export const chatService = {
   sendMessage: async (message: string) => {
