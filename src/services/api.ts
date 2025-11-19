@@ -2,9 +2,7 @@ import axios from 'axios';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
   ? 'http://localhost:5001' 
-  : typeof window !== 'undefined' && window.location.hostname === 'anubilegdemberel.com'
-  ? 'https://anu-portfolio-backend-iequx7uxi-anu-bilegdemberels-projects.vercel.app'
-  : 'https://anu-portfolio-backend-iequx7uxi-anu-bilegdemberels-projects.vercel.app');
+  : 'https://anu-portfolio-backend.vercel.app');
 
 export const chatService = {
   sendMessage: async (message: string) => {
