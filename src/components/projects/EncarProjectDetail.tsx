@@ -29,7 +29,7 @@ export default function EncarProjectDetail({ project }: { project: Project }) {
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Deep Learning Competition</h3>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Encar Track 1 is a computer vision classification competition project achieving >90% accuracy 
+                Encar Track 1 is a computer vision classification competition project achieving &gt;90% accuracy 
                 on an extremely small dataset (~100 images per class). The project demonstrates advanced 
                 deep learning techniques including ensemble methods, cross-validation, and vision-language models 
                 to overcome the challenge of limited training data.
