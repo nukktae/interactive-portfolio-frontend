@@ -33,7 +33,7 @@ export default function HeroSection() {
             <h1 className="text-7xl md:text-8xl lg:text-9xl font-black leading-none text-gray-900">
               I'M A<br />
               <span className="relative">
-                UI/UX
+                FULL STACK
                 <motion.div
                   className="absolute -bottom-2 left-0 w-full h-3 bg-yellow-400"
                   initial={{ scaleX: 0 }}
@@ -42,7 +42,7 @@ export default function HeroSection() {
                   style={{ transformOrigin: 'left' }}
                 />
               </span><br />
-              DESIGNER
+              DEVELOPER
             </h1>
           </motion.div>
 
@@ -53,7 +53,7 @@ export default function HeroSection() {
             className="mb-8 md:mb-12"
           >
             <p className="text-lg md:text-xl max-w-lg text-gray-600 leading-tight">
-              UI developer handling design to frontend to backend, delivering fast and always respected for quick delivery.
+              Full stack developer handling frontend to backend, delivering fast and always respected for quick delivery.
             </p>
           </motion.div>
 
@@ -116,7 +116,7 @@ export default function HeroSection() {
             <div className="aspect-[3/4] relative overflow-hidden bg-gray-200">
               <ImageWithFallback
                 src="/assets/images/profile2.jpg"
-                alt="Anu - UI Developer & Full-Stack Developer"
+                alt="Anu - Full Stack Developer"
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-all duration-700" />

@@ -80,7 +80,7 @@ export default function AboutSection() {
             >
               <div className="bg-yellow-400 text-black px-6 py-4 inline-block">
                 <div className="text-sm font-bold tracking-widest uppercase">CURRENTLY</div>
-                <div className="font-bold">UI/UX Designer at Handiers Inc.</div>
+                <div className="font-bold">Full Stack Developer at Handiers Inc.</div>
               </div>
             </motion.div>
           </motion.div>

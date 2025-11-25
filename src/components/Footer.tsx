@@ -52,7 +52,7 @@ export default function Footer() {
           transition={{ duration: 1.2, delay: 0.4 }}
         >
           <div className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-black text-gray-900/5 leading-none">
-            DESIGNER
+            DEVELOPER
           </div>
         </motion.div>
       </div>
