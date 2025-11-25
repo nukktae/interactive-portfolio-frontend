@@ -25,7 +25,7 @@ export default function AboutSection() {
 
             <div className="space-y-8">
               <div>
-                <div className="text-6xl md:text-7xl font-black text-gray-900 mb-2">2+</div>
+                <div className="text-6xl md:text-7xl font-black text-gray-900 mb-2">3+</div>
                 <div className="text-sm font-bold tracking-widest text-gray-500 uppercase">YEARS EXPERIENCE</div>
               </div>
               

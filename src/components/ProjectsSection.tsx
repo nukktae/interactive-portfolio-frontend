@@ -45,7 +45,49 @@ export default function ProjectsSection() {
       githubUrl: "https://github.com/nukktae/rootin"
     },
     {
-      id: 4,
+      id: 6,
+      title: "Encar Track 1",
+      role: "Deep Learning Engineer",
+      period: "2024",
+      description: "Computer vision classification achieving >90% accuracy on small dataset using ensemble methods and CLIP",
+      tags: ["PyTorch", "CLIP", "Computer Vision", "Deep Learning", "Ensemble Learning"],
+      image: "/assets/images/encar.png",
+      githubUrl: ""
+    },
+    {
+      id: 7,
+      title: "Friendly",
+      role: "Full-Stack Developer",
+      period: "2024",
+      description: "Cross-platform student productivity app with AI-powered transcription, schedule management, and PDF analysis",
+      tags: ["React Native", "Node.js", "OpenAI", "Firebase", "Cross-Platform", "AI"],
+      image: "/assets/images/friendly/coverfriendly.png",
+      githubUrl: "",
+      featured: true
+    },
+    {
+      id: 8,
+      title: "ClearGuide",
+      role: "Full-Stack Developer",
+      period: "2024",
+      description: "AI-powered web app helping Korean residents understand public documents with OCR, AI analysis, and chatbot",
+      tags: ["Next.js 16", "React 19", "OpenAI", "Firebase", "TypeScript", "AI"],
+      image: "/assets/images/clearguide/coverclearguide.png",
+      githubUrl: "",
+      featured: true
+    },
+    {
+      id: 9,
+      title: "MakeEat",
+      role: "Full Stack Developer", 
+      period: "2024",
+      description: "AI-powered recipe generation app with cross-platform support",
+      tags: ["Flutter", "AI", "OpenAI", "Firebase"],
+      image: "/assets/images/projects/makeeat.png",
+      githubUrl: "https://github.com/nukktae"
+    },
+    {
+      id: 10,
       title: "KMU Global",
       role: "Full Stack Developer",
       period: "2024",
@@ -54,16 +96,6 @@ export default function ProjectsSection() {
       image: "/assets/images/projects/kmuglobalcampus.png",
       githubUrl: "https://github.com/nukktae",
       liveUrl: "https://kmuglobal.dev"
-    },
-    {
-      id: 5,
-      title: "MakeEat",
-      role: "Full Stack Developer", 
-      period: "2024",
-      description: "AI-powered recipe generation app with cross-platform support",
-      tags: ["Flutter", "AI", "OpenAI", "Firebase"],
-      image: "/assets/images/projects/makeeat.png",
-      githubUrl: "https://github.com/nukktae"
     }
   ];
 

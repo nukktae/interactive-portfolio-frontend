@@ -13,11 +13,18 @@ export const projects: Project[] = [
       "/assets/images/bestia-workflow.jpg"
     ],
     technologies: [
-      "React/Next.js",
-      "TypeScript",
+      "Next.js 15.4.6",
+      "React 19.1.0",
+      "TypeScript 5.9.3",
+      "Tailwind CSS 4.1.12",
+      "Turbopack",
       "Figma",
       "UI/UX Design",
-      "Frontend Integration",
+      "RESTful APIs",
+      "JWT Authentication",
+      "Twilio Integration",
+      "Google Maps API",
+      "Recharts",
       "CRM Systems",
       "Real-time Features",
       "Responsive Design"
@@ -33,14 +40,22 @@ export const projects: Project[] = [
       "User Research Tools"
     ],
     hardSkills: [
+      "Full-Stack Development",
+      "Next.js App Router",
+      "React 19 with Hooks",
+      "TypeScript (Strict Mode)",
       "UI/UX Design",
-      "Frontend Development",
-      "CRM Integration",
+      "RESTful API Design",
+      "JWT Authentication",
+      "Third-Party API Integration",
+      "State Management (Context API)",
+      "Component Architecture",
+      "Performance Optimization",
+      "CRM Systems",
       "User Research",
       "Design Systems",
       "Rapid Prototyping",
-      "Cross-functional Collaboration",
-      "Fast Delivery"
+      "Cross-functional Collaboration"
     ],
     softSkills: [
       "Client Collaboration",
@@ -52,14 +67,23 @@ export const projects: Project[] = [
       "Problem Solving"
     ],
     features: [
-      "Automated lead workflow management",
-      "Streamlined offer preparation system",
-      "Intelligent data entry automation",
-      "Real-time lead tracking and management",
-      "Comprehensive CRM dashboard",
-      "Mobile-responsive design",
-      "Integration with real estate platforms",
-      "Analytics and reporting tools"
+      "Full Lead CRUD operations with advanced filtering",
+      "20+ custom configurable lead statuses with drag-and-drop reordering",
+      "Property management with MLS integration and Zestimate",
+      "Financial version tracking with MAO calculator",
+      "Contact management with multiple contacts per lead",
+      "Email system with templates and tracking",
+      "SMS and Voice integration via Twilio",
+      "Call recordings and conference call support",
+      "Notes and activity tracking with comprehensive logs",
+      "Template management for emails and SMS",
+      "Team management with role-based access control",
+      "Analytics dashboard with Recharts visualization",
+      "60+ React components with feature-based architecture",
+      "40+ API endpoints with RESTful design",
+      "20+ custom hooks for business logic",
+      "JWT authentication with token refresh",
+      "Google Maps API integration for address autocomplete"
     ],
     metrics: [
       "Saves 2.5–4 hours per agent per day",
@@ -324,86 +348,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "MakeEat",
-    description: "AI-powered recipe recommendation system with personalized dietary suggestions and meal planning capabilities.",
-    detailedDescription: "An intelligent recipe recommendation platform that leverages Large Language Models to provide personalized meal planning and dietary suggestions. The system adapts to user preferences and dietary restrictions while offering creative cooking solutions.",
-    image: "/assets/images/recipe.jpg",
-    images: [
-      "/assets/images/recipe-dashboard.jpg",
-      "/assets/images/recipe-suggestions.jpg",
-      "/assets/images/recipe-planner.jpg"
-    ],
-    technologies: ["LLM", "Frontend Development", "UI/UX Design"],
-    tools: [
-      "VS Code",
-      "Git",
-      "GitHub",
-      "Postman",
-      "Figma",
-      "npm"
-    ],
-    metrics: [
-      "20% improvement in recommendation accuracy",
-      "25% reduction in development cycles",
-      "15% workflow efficiency boost"
-    ],
-    highlights: [
-      "Led frontend development and design",
-      "Implemented efficient app architecture",
-      "Designed collaborative Figma wireframes"
-    ],
-    challenges: [
-      "Handling complex dietary restrictions",
-      "Optimizing LLM response time",
-      "Ensuring recipe accuracy"
-    ],
-    solutions: [
-      "Developed custom dietary filtering system",
-      "Implemented response caching",
-      "Created recipe verification pipeline"
-    ],
-    github: "https://github.com/nukktae/llm-recipe-generator",
-    liveUrl: "https://recipe-gen-demo.vercel.app",
-    hardSkills: [
-      "LLM Integration",
-      "Frontend Development",
-      "API Design",
-      "State Management",
-      "Performance Optimization"
-    ],
-    softSkills: [
-      "Project Leadership",
-      "Technical Planning",
-      "User Research",
-      "Team Collaboration",
-      "Problem Solving"
-    ],
-    features: [
-      "Personalized recipe recommendations",
-      "Dietary restriction handling",
-      "Meal planning calendar",
-      "Shopping list generation",
-      "Nutritional analysis"
-    ],
-    roles: [
-      {
-        area: "Frontend Development",
-        percentage: 100,
-        description: "Complete implementation of React application"
-      },
-      {
-        area: "LLM Integration",
-        percentage: 80,
-        description: "API integration and prompt engineering"
-      },
-      {
-        area: "UI/UX Design",
-        percentage: 60,
-        description: "Interface design and user experience"
-      }
-    ]
-  },
-  {
     title: "AWS Content Moderation",
     description: "A sophisticated content moderation system leveraging AWS services for real-time content filtering and analysis.",
     detailedDescription: "A real-time content moderation system built on AWS infrastructure, utilizing services like Kinesis, Rekognition, and Lambda for efficient content analysis and filtering.",
@@ -602,102 +546,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "KMU Global Campus",
-    description: "A modern web platform connecting Silicon Valley companies with KMU's tech talent, featuring interactive portfolios and streamlined hiring processes.",
-    detailedDescription: "KMU Global Campus serves as a bridge between Silicon Valley tech companies and talented developers. The platform showcases students' technical excellence and innovative capabilities while providing an intuitive interface for companies to connect with potential candidates.",
-    image: "/assets/images/projects/kmuglobalcampus.png",
-    images: [
-      "/assets/images/kmu-dashboard.jpg",
-      "/assets/images/kmu-portfolios.jpg",
-      "/assets/images/kmu-projects.jpg",
-      "/assets/images/kmu-contact.jpg"
-    ],
-    technologies: [
-      "Nuxt.js 3",
-      "TypeScript",
-      "VueUse Motion",
-      "CSS Grid/Flexbox",
-      "Nodemailer",
-      "Server-side Rendering"
-    ],
-    tools: [
-      "Git",
-      "npm/yarn",
-      "Nuxt DevTools",
-      "Vercel",
-      "Font Awesome"
-    ],
-    hardSkills: [
-      "Frontend Development",
-      "UI/UX Design",
-      "Animation Implementation",
-      "Server-side Development",
-      "Responsive Design",
-      "API Integration"
-    ],
-    softSkills: [
-      "Project Management",
-      "Cross-cultural Communication",
-      "Technical Documentation",
-      "Team Collaboration",
-      "Problem Solving"
-    ],
-    features: [
-      "Interactive student portfolios",
-      "Real-time project showcases",
-      "Streamlined hiring process",
-      "Animated UI components",
-      "Contact form with email integration",
-      "Responsive glass-morphism design"
-    ],
-    metrics: [
-      "95% mobile responsiveness score",
-      "40% increase in student engagement",
-      "50% faster portfolio creation time",
-      "30% improvement in page load speed"
-    ],
-    highlights: [
-      "Implemented modern glass-morphism UI design",
-      "Created custom animation system",
-      "Developed responsive portfolio templates",
-      "Built secure email integration system",
-      "Designed intuitive navigation flow"
-    ],
-    challenges: [
-      "Complex animation performance",
-      "Cross-browser compatibility",
-      "Email system security",
-      "Responsive design implementation",
-      "Content management system"
-    ],
-    solutions: [
-      "Optimized animations with VueUse",
-      "Implemented progressive enhancement",
-      "Created secure server-side handlers",
-      "Used mobile-first approach",
-      "Developed custom CMS solution"
-    ],
-    github: "https://github.com/nukktae/kmu-global-campus",
-    liveUrl: "https://kmu-global.vercel.app",
-    roles: [
-      {
-        area: "Frontend Development",
-        percentage: 100,
-        description: "Complete implementation of Nuxt.js application"
-      },
-      {
-        area: "UI/UX Design",
-        percentage: 90,
-        description: "Design system and animation implementation"
-      },
-      {
-        area: "Backend Integration",
-        percentage: 70,
-        description: "Server routes and email system development"
-      }
-    ]
-  },
-  {
     title: "VORI",
     description: "A next-generation meeting management platform featuring AI-powered transcription, smart task generation, and comprehensive analytics.",
     detailedDescription: "VORI revolutionizes meeting management with real-time AI transcription, automated task generation, and deep analytics. Built with enterprise-grade security and scalability in mind, it offers seamless cross-platform functionality and intuitive team collaboration features.",
@@ -890,6 +738,555 @@ export const projects: Project[] = [
         area: "Frontend Development",
         percentage: 80,
         description: "UI implementation and state management"
+      }
+    ]
+  },
+  {
+    title: "Encar Track 1",
+    description: "Computer vision classification competition project achieving >90% accuracy on small dataset (~100 images/class) using advanced ensemble methods, cross-validation, and vision-language models.",
+    detailedDescription: "Encar Track 1 is a computer vision classification competition project focused on classifying car images into 10 distinct angle/view categories: front, front_left, front_right, inside, left, rear, rear_left, rear_right, right, and tire. This project demonstrates advanced deep learning techniques, ensemble methods, and robust training strategies optimized for small datasets. The key challenge was overcoming an extremely small dataset requiring sophisticated regularization, augmentation, and ensemble techniques to achieve >90% accuracy.",
+    image: "/assets/images/encar.png",
+    images: [
+      "/assets/images/projects/encar-model-training.png",
+      "/assets/images/projects/encar-results.png",
+      "/assets/images/projects/encar-architecture.png"
+    ],
+    technologies: [
+      "PyTorch",
+      "TorchVision",
+      "OpenAI CLIP",
+      "TIMM",
+      "EfficientNet-B0",
+      "MobileNetV3",
+      "Computer Vision",
+      "Deep Learning",
+      "Ensemble Learning"
+    ],
+    tools: [
+      "PyTorch",
+      "Jupyter Notebooks",
+      "NumPy",
+      "Pandas",
+      "scikit-learn",
+      "OpenCV",
+      "tqdm",
+      "Git & GitHub"
+    ],
+    hardSkills: [
+      "Deep Learning",
+      "Computer Vision",
+      "Transfer Learning",
+      "Model Fine-tuning",
+      "Ensemble Methods",
+      "Cross-Validation",
+      "Data Augmentation",
+      "Vision-Language Models"
+    ],
+    softSkills: [
+      "Research & Experimentation",
+      "Problem Solving",
+      "Technical Documentation",
+      "Performance Analysis",
+      "Hyperparameter Optimization",
+      "Reproducibility"
+    ],
+    features: [
+      "5-Fold Cross-Validation with 3 seeds per fold (15 models)",
+      "Dual Ensemble Strategy (EfficientNet-B0 + MobileNetV3)",
+      "CLIP Zero-Shot + Fine-Tuned Ensemble",
+      "Test-Time Augmentation (8 variants per image)",
+      "Epoch-Based Augmentation Schedule",
+      "Mixup & CutMix Augmentation",
+      "Advanced Regularization Techniques",
+      "Production-Ready Evaluation Pipeline"
+    ],
+    metrics: [
+      "95%+ validation accuracy (Dual Ensemble + TTA)",
+      "95-99% expected test accuracy",
+      "Overcame small dataset challenge (~100 images/class)",
+      "15+ models in cross-validation ensemble",
+      "8-variant test-time augmentation"
+    ],
+    highlights: [
+      "Achieved >90% accuracy on extremely small dataset",
+      "Implemented robust 5-fold cross-validation pipeline",
+      "Created production-ready ensemble evaluation system",
+      "Integrated vision-language models (CLIP) for semantic understanding",
+      "Developed advanced augmentation strategies (Mixup, CutMix, RandAugment)",
+      "Built comprehensive training infrastructure with checkpoint management"
+    ],
+    challenges: [
+      "Extremely small dataset (~100 images per class)",
+      "Preventing overfitting with limited data",
+      "Optimizing ensemble performance",
+      "Balancing augmentation intensity",
+      "Managing multiple model checkpoints"
+    ],
+    solutions: [
+      "Implemented sophisticated regularization (label smoothing, dropout, weight decay)",
+      "Used cross-validation to maximize data utilization",
+      "Created dual ensemble combining different architectures",
+      "Developed epoch-based augmentation schedule",
+      "Built comprehensive checkpoint and logging system"
+    ],
+    github: "",
+    liveUrl: "",
+    roles: [
+      {
+        area: "Deep Learning",
+        percentage: 100,
+        description: "Complete implementation of deep learning models and training pipelines"
+      },
+      {
+        area: "Computer Vision",
+        percentage: 95,
+        description: "Image classification, data augmentation, and test-time augmentation"
+      },
+      {
+        area: "ML Engineering",
+        percentage: 90,
+        description: "Cross-validation, ensemble methods, and production-ready evaluation"
+      }
+    ]
+  },
+  {
+    title: "Friendly",
+    description: "Comprehensive student productivity platform featuring AI-powered lecture transcription, intelligent schedule management, PDF analysis, GPA tracking, and school-verified community. Built as cross-platform mobile app (iOS, Android, Web).",
+    detailedDescription: "Friendly is a comprehensive student productivity platform that combines AI-powered features with seamless mobile experience. Built as a cross-platform React Native application with a Node.js/Express backend, it helps students manage lectures, schedules, academic documents, GPA tracking, and community engagement. The platform features real-time AI transcription, intelligent schedule extraction, PDF analysis with chatbots, GPA calculation, and a school-verified community platform.",
+    image: "/assets/images/friendly/coverfriendly.png",
+    images: [
+      "/assets/images/friendly/1.png",
+      "/assets/images/friendly/2.png",
+      "/assets/images/friendly/3.png",
+      "/assets/images/friendly/4.png",
+      "/assets/images/friendly/5.png",
+      "/assets/images/friendly/6.png"
+    ],
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "Firebase",
+      "OpenAI API",
+      "Google Calendar API",
+      "PDF.js",
+      "NativeWind",
+      "Cross-Platform"
+    ],
+    tools: [
+      "React Native",
+      "Expo",
+      "VS Code",
+      "Git & GitHub",
+      "Firebase Console",
+      "Postman",
+      "PM2",
+      "OpenAI Platform"
+    ],
+    hardSkills: [
+      "Full-Stack Development",
+      "Cross-Platform Mobile Development",
+      "RESTful API Design",
+      "AI/ML Integration",
+      "Real-time Features",
+      "File Processing",
+      "Database Design",
+      "Third-Party API Integration",
+      "Authentication & Authorization",
+      "TypeScript Development"
+    ],
+    softSkills: [
+      "System Architecture Design",
+      "Complex Problem Solving",
+      "Performance Optimization",
+      "Security Best Practices",
+      "User Experience Design",
+      "Technical Documentation",
+      "Project Management"
+    ],
+    features: [
+      "AI-powered real-time lecture transcription (Korean & English)",
+      "Live transcription during recording with chunk-based processing",
+      "AI-generated lecture summaries and action item checklists",
+      "Context-aware lecture chatbot with persistent chat history",
+      "Image-based schedule upload with AI extraction",
+      "Google Calendar integration and synchronization",
+      "Drag-and-drop calendar interface",
+      "PDF upload with text extraction and analysis",
+      "AI-powered PDF analysis (full document + page-by-page)",
+      "PDF chatbot with selected text context support",
+      "GPA calculator with semester and course management",
+      "Graduation requirements analysis from PDFs/images",
+      "Korean academic document support",
+      "School-verified community platform",
+      "Post creation with images, likes, and comments",
+      "Class management system with assignment tracking"
+    ],
+    metrics: [
+      "80+ RESTful API endpoints",
+      "11 backend routes with service layer pattern",
+      "12 service modules for business logic",
+      "17+ screen components",
+      "50+ reusable components",
+      "4 AI services integrated (GPT-4o-mini, GPT-3.5-turbo, Whisper, Vision)",
+      "3 context-aware chatbots",
+      "Cross-platform support: iOS, Android, Web"
+    ],
+    highlights: [
+      "Built comprehensive cross-platform mobile application (iOS, Android, Web)",
+      "Integrated 4 different OpenAI services for AI-powered features",
+      "Implemented real-time audio transcription with live updates",
+      "Created intelligent schedule extraction from images using Vision API",
+      "Developed context-aware chatbots for lectures and PDFs",
+      "Built production-ready RESTful API with 80+ endpoints",
+      "Implemented Google Calendar integration with sync functionality",
+      "Designed scalable architecture with service layer pattern"
+    ],
+    challenges: [
+      "Real-time audio processing and transcription synchronization",
+      "Cross-platform compatibility across iOS, Android, and Web",
+      "Managing multiple AI services and API rate limits",
+      "Complex PDF text extraction and processing",
+      "Google Calendar API integration and data transformation",
+      "School verification system implementation",
+      "Performance optimization for large file uploads",
+      "State management across multiple features"
+    ],
+    solutions: [
+      "Implemented chunk-based audio processing for live transcription updates",
+      "Used Expo for unified cross-platform development",
+      "Created efficient API abstraction layer for AI services",
+      "Integrated PDF.js for client-side text extraction",
+      "Built robust data transformation pipelines for calendar sync",
+      "Developed email-based verification system with Firebase",
+      "Implemented image compression and text truncation for performance",
+      "Used React Context API for global state management"
+    ],
+    github: "",
+    liveUrl: "",
+    roles: [
+      {
+        area: "Full-Stack Development",
+        percentage: 100,
+        description: "Complete implementation of React Native frontend and Node.js backend"
+      },
+      {
+        area: "AI Integration",
+        percentage: 95,
+        description: "Integration of 4 OpenAI services (GPT, Whisper, Vision) with context-aware chatbots"
+      },
+      {
+        area: "Cross-Platform Development",
+        percentage: 100,
+        description: "Single codebase deployment for iOS, Android, and Web platforms"
+      }
+    ]
+  },
+  {
+    title: "ClearGuide",
+    description: "AI-powered web application helping Korean residents understand and manage public documents (tax notices, fines, community announcements). Features intelligent document analysis, chatbot assistant, and deadline management.",
+    detailedDescription: "ClearGuide (클리어가이드) is a comprehensive AI-powered web application designed to help Korean residents understand and manage public documents (세금고지서, 과태료, 주민센터 안내문 등). The platform uses advanced AI to extract, analyze, and provide actionable insights from government documents, making bureaucratic processes more accessible. Built with Next.js 16, React 19, TypeScript, Firebase, and OpenAI GPT-4o.",
+    image: "/assets/images/clearguide/coverclearguide.png",
+    images: [
+      "/assets/images/clearguide/1.png",
+      "/assets/images/clearguide/2.png",
+      "/assets/images/clearguide/3.png",
+      "/assets/images/clearguide/4.png",
+      "/assets/images/clearguide/5.png",
+      "/assets/images/clearguide/6.png",
+      "/assets/images/clearguide/7.png"
+    ],
+    technologies: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Firebase",
+      "OpenAI GPT-4o",
+      "Tailwind CSS v4",
+      "Radix UI",
+      "next-intl",
+      "PDF.js",
+      "Firestore"
+    ],
+    tools: [
+      "Next.js",
+      "VS Code",
+      "Git & GitHub",
+      "Firebase Console",
+      "OpenAI Platform",
+      "Vercel",
+      "Postman"
+    ],
+    hardSkills: [
+      "Full-Stack Development",
+      "Next.js App Router",
+      "React 19",
+      "TypeScript",
+      "AI Integration",
+      "OCR Processing",
+      "Authentication Systems",
+      "Database Design",
+      "Internationalization",
+      "API Development"
+    ],
+    softSkills: [
+      "System Architecture Design",
+      "Complex Problem Solving",
+      "User Experience Design",
+      "Performance Optimization",
+      "Security Best Practices",
+      "Technical Documentation",
+      "Accessibility Design"
+    ],
+    features: [
+      "Multi-format document support (PDF, JPG, PNG)",
+      "Advanced OCR using GPT-4 Vision API",
+      "AI-powered document analysis and summarization",
+      "Automatic action checklist generation",
+      "Risk detection and deadline alerts",
+      "Context-aware chatbot assistant with conversation history",
+      "Calendar and deadline management with automatic extraction",
+      "Document storage with full-text search and filtering",
+      "Multi-provider authentication (Email, Google, Kakao)",
+      "User account management with preferences",
+      "Internationalization (Korean/English)",
+      "Dark mode with system preference detection"
+    ],
+    metrics: [
+      "150+ files in codebase",
+      "77 React components",
+      "18 API endpoints",
+      "7 Firestore collections",
+      "~15,000+ lines of code",
+      "2 languages supported (Korean, English)",
+      "3 authentication providers",
+      "Multi-stage AI processing pipeline"
+    ],
+    highlights: [
+      "Built complete AI-powered document analysis system with OCR and AI summarization",
+      "Implemented multi-provider authentication including custom Kakao OAuth integration",
+      "Created intelligent context-aware chatbot with document-specific conversations",
+      "Developed calendar system with automatic deadline extraction from documents",
+      "Designed comprehensive user account management with preferences and settings",
+      "Implemented full internationalization with dynamic language switching",
+      "Created responsive, accessible UI with dark mode support",
+      "Optimized performance with parallel processing, caching, and code splitting"
+    ],
+    challenges: [
+      "Complex OCR pipeline for multiple document formats (PDF + Images)",
+      "Multi-provider authentication integration (Firebase + Kakao REST API)",
+      "Context-aware chatbot with document-specific conversations",
+      "Automatic deadline extraction and calendar integration",
+      "Internationalization with dynamic language switching",
+      "Performance optimization for large document processing",
+      "Security implementation for multi-layer authentication",
+      "Real-time state synchronization across components"
+    ],
+    solutions: [
+      "Implemented hybrid OCR pipeline using pdf-lib for PDFs and GPT-4 Vision for images",
+      "Created custom Kakao OAuth flow with REST API and secure cookie sessions",
+      "Built context management system combining document text, summaries, and chat history",
+      "Developed intelligent parsing system to extract deadlines from document analysis",
+      "Used next-intl for i18n with locale-based routing and persistence",
+      "Implemented parallel API calls, client-side caching, and database indexing",
+      "Designed middleware-based route protection with token validation",
+      "Used React Context API for global state management with persistence"
+    ],
+    github: "",
+    liveUrl: "",
+    roles: [
+      {
+        area: "Full-Stack Development",
+        percentage: 100,
+        description: "Complete implementation of Next.js frontend and API routes with Firebase backend"
+      },
+      {
+        area: "AI Integration",
+        percentage: 95,
+        description: "OpenAI GPT-4o integration for document analysis, OCR, and chatbot with prompt engineering"
+      },
+      {
+        area: "Authentication Systems",
+        percentage: 90,
+        description: "Multi-provider authentication (Firebase Email/Google + custom Kakao OAuth)"
+      }
+    ]
+  },
+  {
+    title: "MakeEat",
+    description: "AI-powered recipe recommendation system with personalized dietary suggestions and meal planning capabilities.",
+    detailedDescription: "An intelligent recipe recommendation platform that leverages Large Language Models to provide personalized meal planning and dietary suggestions. The system adapts to user preferences and dietary restrictions while offering creative cooking solutions.",
+    image: "/assets/images/recipe.jpg",
+    images: [
+      "/assets/images/recipe-dashboard.jpg",
+      "/assets/images/recipe-suggestions.jpg",
+      "/assets/images/recipe-planner.jpg"
+    ],
+    technologies: ["LLM", "Frontend Development", "UI/UX Design"],
+    tools: [
+      "VS Code",
+      "Git",
+      "GitHub",
+      "Postman",
+      "Figma",
+      "npm"
+    ],
+    metrics: [
+      "20% improvement in recommendation accuracy",
+      "25% reduction in development cycles",
+      "15% workflow efficiency boost"
+    ],
+    highlights: [
+      "Led frontend development and design",
+      "Implemented efficient app architecture",
+      "Designed collaborative Figma wireframes"
+    ],
+    challenges: [
+      "Handling complex dietary restrictions",
+      "Optimizing LLM response time",
+      "Ensuring recipe accuracy"
+    ],
+    solutions: [
+      "Developed custom dietary filtering system",
+      "Implemented response caching",
+      "Created recipe verification pipeline"
+    ],
+    github: "https://github.com/nukktae/llm-recipe-generator",
+    liveUrl: "https://recipe-gen-demo.vercel.app",
+    hardSkills: [
+      "LLM Integration",
+      "Frontend Development",
+      "API Design",
+      "State Management",
+      "Performance Optimization"
+    ],
+    softSkills: [
+      "Project Leadership",
+      "Technical Planning",
+      "User Research",
+      "Team Collaboration",
+      "Problem Solving"
+    ],
+    features: [
+      "Personalized recipe recommendations",
+      "Dietary restriction handling",
+      "Meal planning calendar",
+      "Shopping list generation",
+      "Nutritional analysis"
+    ],
+    roles: [
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of React application"
+      },
+      {
+        area: "LLM Integration",
+        percentage: 80,
+        description: "API integration and prompt engineering"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 60,
+        description: "Interface design and user experience"
+      }
+    ]
+  },
+  {
+    title: "KMU Global Campus",
+    description: "A modern web platform connecting Silicon Valley companies with KMU's tech talent, featuring interactive portfolios and streamlined hiring processes.",
+    detailedDescription: "KMU Global Campus serves as a bridge between Silicon Valley tech companies and talented developers. The platform showcases students' technical excellence and innovative capabilities while providing an intuitive interface for companies to connect with potential candidates.",
+    image: "/assets/images/projects/kmuglobalcampus.png",
+    images: [
+      "/assets/images/kmu-dashboard.jpg",
+      "/assets/images/kmu-portfolios.jpg",
+      "/assets/images/kmu-projects.jpg",
+      "/assets/images/kmu-contact.jpg"
+    ],
+    technologies: [
+      "Nuxt.js 3",
+      "TypeScript",
+      "VueUse Motion",
+      "CSS Grid/Flexbox",
+      "Nodemailer",
+      "Server-side Rendering"
+    ],
+    tools: [
+      "Git",
+      "npm/yarn",
+      "Nuxt DevTools",
+      "Vercel",
+      "Font Awesome"
+    ],
+    hardSkills: [
+      "Frontend Development",
+      "UI/UX Design",
+      "Animation Implementation",
+      "Server-side Development",
+      "Responsive Design",
+      "API Integration"
+    ],
+    softSkills: [
+      "Project Management",
+      "Cross-cultural Communication",
+      "Technical Documentation",
+      "Team Collaboration",
+      "Problem Solving"
+    ],
+    features: [
+      "Interactive student portfolios",
+      "Real-time project showcases",
+      "Streamlined hiring process",
+      "Animated UI components",
+      "Contact form with email integration",
+      "Responsive glass-morphism design"
+    ],
+    metrics: [
+      "95% mobile responsiveness score",
+      "40% increase in student engagement",
+      "50% faster portfolio creation time",
+      "30% improvement in page load speed"
+    ],
+    highlights: [
+      "Implemented modern glass-morphism UI design",
+      "Created custom animation system",
+      "Developed responsive portfolio templates",
+      "Built secure email integration system",
+      "Designed intuitive navigation flow"
+    ],
+    challenges: [
+      "Complex animation performance",
+      "Cross-browser compatibility",
+      "Email system security",
+      "Responsive design implementation",
+      "Content management system"
+    ],
+    solutions: [
+      "Optimized animations with VueUse",
+      "Implemented progressive enhancement",
+      "Created secure server-side handlers",
+      "Used mobile-first approach",
+      "Developed custom CMS solution"
+    ],
+    github: "https://github.com/nukktae/kmu-global-campus",
+    liveUrl: "https://kmu-global.vercel.app",
+    roles: [
+      {
+        area: "Frontend Development",
+        percentage: 100,
+        description: "Complete implementation of Nuxt.js application"
+      },
+      {
+        area: "UI/UX Design",
+        percentage: 90,
+        description: "Design system and animation implementation"
+      },
+      {
+        area: "Backend Integration",
+        percentage: 70,
+        description: "Server routes and email system development"
       }
     ]
   }

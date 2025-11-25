@@ -9,7 +9,7 @@ import TechStackSection from './TechStackSection';
 import AboutSection from './AboutSection';
 import ContactForm from './ContactForm';
 import Footer from './Footer';
-import AIChatButton from './AIChatButton';
+// import AIChatButton from './AIChatButton';
 import ResumeSection from './ResumeSection';
 
 export default function LandingPage() {
@@ -63,7 +63,7 @@ export default function LandingPage() {
 
       <Footer />
       
-      <AIChatButton />
+      {/* <AIChatButton /> */}
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 md:mb-12"
+            className="mt-16 md:mt-24 mb-8 md:mb-12"
           >
             <p className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">
               👋 Let me introduce,
@@ -30,12 +30,12 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 0.4 }}
             className="mb-4 md:mb-6"
           >
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black leading-none text-gray-900">
+            <h1 className="text-[3.15rem] md:text-[4.2rem] lg:text-[5.6rem] font-black leading-none text-gray-900">
               I'M A<br />
               <span className="relative">
                 FULL STACK
                 <motion.div
-                  className="absolute -bottom-2 left-0 w-full h-3 bg-yellow-400"
+                  className="absolute -bottom-1 left-0 w-full h-3 bg-yellow-400"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 0.8, delay: 1.2 }}
@@ -53,7 +53,7 @@ export default function HeroSection() {
             className="mb-8 md:mb-12"
           >
             <p className="text-lg md:text-xl max-w-lg text-gray-600 leading-tight">
-              Full stack developer handling frontend to backend, delivering fast and always respected for quick delivery.
+              Full stack developer and UI/UX designer handling frontend to backend, delivering fast and always respected for quick delivery.
             </p>
           </motion.div>
 
@@ -99,7 +99,7 @@ export default function HeroSection() {
               <div className="text-xs text-gray-500 uppercase tracking-wider">Projects</div>
             </div>
             <div>
-              <div className="text-2xl md:text-3xl font-black text-gray-900">2+</div>
+              <div className="text-2xl md:text-3xl font-black text-gray-900">3+</div>
               <div className="text-xs text-gray-500 uppercase tracking-wider">Years Exp</div>
             </div>
           </motion.div>

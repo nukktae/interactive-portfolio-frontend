@@ -13,6 +13,9 @@ import VoriProjectDetail from '../../../components/projects/VoriProjectDetail';
 import MajorMatchProjectDetail from '../../../components/projects/MajorMatchProjectDetail';
 import JobParserProjectDetail from '../../../components/projects/JobParserProjectDetail';
 import BestiaProjectDetail from '../../../components/projects/BestiaProjectDetail';
+import EncarProjectDetail from '../../../components/projects/EncarProjectDetail';
+import FriendlyProjectDetail from '../../../components/projects/FriendlyProjectDetail';
+import ClearGuideProjectDetail from '../../../components/projects/ClearGuideProjectDetail';
 
 export default function ProjectDetail({ params }: { params: { slug: string } }) {
   const project = projects.find(
@@ -56,6 +59,12 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
         return <JobParserProjectDetail project={project} />;
       case "Bestia":
         return <BestiaProjectDetail project={project} />;
+      case "Encar Track 1":
+        return <EncarProjectDetail project={project} />;
+      case "Friendly":
+        return <FriendlyProjectDetail project={project} />;
+      case "ClearGuide":
+        return <ClearGuideProjectDetail project={project} />;
       default:
         return (
           <div className="py-16 text-center">

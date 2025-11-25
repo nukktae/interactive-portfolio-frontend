@@ -9,7 +9,7 @@ import { Skills } from '../components/Skills';
 import { Work } from '../components/Work';
 import { Contact } from '../components/Contact';
 import Footer from '../components/Footer';
-import AIChatButton from '../components/AIChatButton';
+// import AIChatButton from '../components/AIChatButton';
 
 export default function App() {
   const containerRef = useRef(null);
@@ -56,7 +56,7 @@ export default function App() {
       </main>
       
       <Footer />
-      <AIChatButton />
+      {/* <AIChatButton /> */}
     </div>
   );
 }
