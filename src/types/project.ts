@@ -3,6 +3,7 @@ export interface Project {
   description: string;
   detailedDescription: string;
   image: string;
+  coverVideo?: string; // Optional video cover (mp4, webm, etc.)
   images: string[];
   technologies: string[];
   tools: string[];

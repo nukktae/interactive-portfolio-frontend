@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Navbar from '../../components/Navbar';
-import { ChatInterface } from '../../components/ChatInterface';
+import Navbar from '../../components/layout/Navbar';
+import { ChatInterface } from '../../components/chat/ChatInterface';
 
 export default function ChatPage() {
   return (

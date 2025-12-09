@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/layout/Navbar';
 import { useRouter } from 'next/navigation';
 
 export default function AboutPage() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/layout/Navbar';
 import { FaNewspaper, FaSignLanguage, FaUsers, FaHeart, FaTimes } from 'react-icons/fa';
 import { GiSewingNeedle } from 'react-icons/gi';
 import { MdPhotoCamera } from 'react-icons/md';
