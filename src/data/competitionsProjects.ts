@@ -68,6 +68,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["Next.js 15", "NestJS", "FastAPI", "GPT-4o", "Supabase", "AI/ML"],
     image: "/assets/images/sports/sportscover.png",
     githubUrl: "",
+    liveUrl: "https://frontend-ruby-xi-69.vercel.app/home",
     featured: true
   },
   {

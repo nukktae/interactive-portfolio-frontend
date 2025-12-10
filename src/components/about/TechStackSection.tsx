@@ -40,7 +40,7 @@ export default function TechStackSection() {
           <motion.div
             className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-black text-foreground/5 text-center mb-16 overflow-hidden leading-none"
             initial={{ opacity: 0, y: 100 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
           >
             ANU
@@ -50,7 +50,7 @@ export default function TechStackSection() {
             {/* Left Side - Title */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
@@ -69,7 +69,7 @@ export default function TechStackSection() {
                   key={index}
                   className="group"
                   initial={{ opacity: 0, y: 40 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
                   whileHover={{ y: -8 }}
                 >

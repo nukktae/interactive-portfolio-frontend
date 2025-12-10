@@ -15,7 +15,7 @@ export default function AboutSection() {
           {/* Left Side - Stats */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-12"
           >
@@ -44,7 +44,7 @@ export default function AboutSection() {
           {/* Right Side - Story */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8"
           >
@@ -75,7 +75,7 @@ export default function AboutSection() {
             <motion.div
               className="pt-8"
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="bg-foreground/10 dark:bg-white/10 backdrop-blur-sm border border-border text-foreground px-6 py-4 inline-block rounded-lg">

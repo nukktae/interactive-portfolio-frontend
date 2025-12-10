@@ -18,7 +18,7 @@ export default function ProjectsSection() {
       key={project.id}
       className={`grid grid-cols-1 ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-8 lg:gap-16 items-center group cursor-pointer`}
       initial={{ opacity: 0, y: 60 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
       onClick={() => {
         const slug = project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -136,7 +136,7 @@ export default function ProjectsSection() {
           <motion.div
             className="mb-12 md:mb-16"
             initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="text-section-title text-foreground/60 mb-4">
@@ -157,7 +157,7 @@ export default function ProjectsSection() {
           <motion.div
             className="mb-12 md:mb-16"
             initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="text-section-title text-foreground/60 mb-4">
@@ -177,7 +177,7 @@ export default function ProjectsSection() {
         <motion.div
           className="text-center mt-16 md:mt-24"
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <a

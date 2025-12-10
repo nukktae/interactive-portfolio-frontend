@@ -149,12 +149,7 @@ export const projectSummaries: Project[] = [
     detailedDescription: "ChildNet Korea is a comprehensive child-protection platform built with enterprise-grade zero-trust security architecture. The platform implements PostgreSQL Row-Level Security (RLS) with 46 policies, strict Role-Based Access Control (RBAC), field-level data masking, and event-level visibility rules. Built as a modern full-stack application with Next.js 15 frontend, NestJS backend API, and a separate FastAPI microservice for AI processing, ChildNet Korea demonstrates best practices in secure application development, microservices architecture, and database-level security enforcement.",
     image: "/assets/images/projects/childnet.png",
     coverVideo: "/assets/images/childnetcover.mp4",
-    images: [
-      "/assets/images/projects/childnet-1.png",
-      "/assets/images/projects/childnet-2.png",
-      "/assets/images/projects/childnet-3.png",
-      "/assets/images/projects/childnet-4.png"
-    ],
+    images: [],
     technologies: [
       "Next.js 15",
       "React 19",
@@ -363,7 +358,7 @@ export const projectSummaries: Project[] = [
       "Created ML-based algorithms using scikit-learn and pandas"
     ],
     github: "",
-    liveUrl: "",
+    liveUrl: "https://frontend-ruby-xi-69.vercel.app/home",
     roles: [
       {
         area: "Full-Stack Development",
