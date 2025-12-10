@@ -17,8 +17,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') as Theme;
       if (savedTheme === 'light' || savedTheme === 'dark') {
-        // Set immediately to prevent flash
-        document.documentElement.setAttribute('data-theme', savedTheme);
         return savedTheme;
       }
     }
@@ -28,13 +26,22 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
+    // Sync with the theme that might have been set by the blocking script
+    if (typeof window !== 'undefined') {
+      const currentTheme = document.documentElement.getAttribute('data-theme') as Theme;
+      if (currentTheme === 'light' || currentTheme === 'dark') {
+        setTheme(currentTheme);
+      }
+    }
   }, []);
 
   useEffect(() => {
     // Apply theme to document
-    document.documentElement.setAttribute('data-theme', theme);
-    if (mounted) {
-      localStorage.setItem('theme', theme);
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (mounted) {
+        localStorage.setItem('theme', theme);
+      }
     }
   }, [theme, mounted]);
 

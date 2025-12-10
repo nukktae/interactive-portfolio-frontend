@@ -23,6 +23,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["React Native", "Node.js", "OpenAI", "Firebase", "Cross-Platform", "AI"],
     image: "/assets/images/friendly/coverfriendly.png",
     githubUrl: "",
+    liveUrl: "https://www.friendlykr.com",
     featured: true
   },
   {
@@ -44,6 +45,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["Next.js 16", "React 19", "OpenAI", "Firebase", "TypeScript", "AI"],
     image: "/assets/images/clearguide/coverclearguide.png",
     githubUrl: "",
+    liveUrl: "https://clearguide.vercel.app",
     featured: true
   },
   {
@@ -98,7 +100,6 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "OpenAI GPT-4", "Firebase"],
     image: "/assets/images/majorai/majoraicover.png",
     githubUrl: "https://github.com/nukktae/major-match-ai",
-    liveUrl: "https://majormatch-demo.vercel.app",
     featured: true
   },
   {

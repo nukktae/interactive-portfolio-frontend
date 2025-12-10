@@ -122,10 +122,10 @@ export default function BookACallPage() {
           onClick={() => setSelectedDate(new Date(currentYear, currentMonth, day))}
           className={`w-10 h-10 rounded-lg text-sm font-medium transition-all duration-300 ${
             isSelected
-              ? 'bg-white text-black'
+              ? 'bg-primary text-primary-foreground'
               : isToday
-              ? 'bg-white/20 text-white'
-              : 'text-white/70 hover:bg-white/10 hover:text-white'
+              ? 'bg-primary/20 text-foreground'
+              : 'text-foreground/70 hover:bg-primary/10 hover:text-foreground'
           }`}
         >
           {day}
@@ -151,8 +151,8 @@ export default function BookACallPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="text-section-title text-white/60 mb-4">CONTACT</div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-8">
+            <div className="text-section-title text-foreground/60 mb-4">CONTACT</div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8">
               Let's Get{' '}
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
                 In Touch
@@ -160,8 +160,8 @@ export default function BookACallPage() {
             </h1>
             
             <div className="flex items-center justify-center gap-2 mb-6">
-              <Mail className="w-5 h-5 text-white/70" />
-              <a href="mailto:anu.bn@yahoo.com" className="text-lg text-white/90 hover:text-white transition-colors">
+              <Mail className="w-5 h-5 text-foreground/70" />
+              <a href="mailto:anu.bn@yahoo.com" className="text-lg text-foreground/90 hover:text-foreground transition-colors">
                 anu.bn@yahoo.com
               </a>
             </div>
@@ -180,33 +180,33 @@ export default function BookACallPage() {
                 <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
                   AB
                 </div>
-                <span className="text-white font-medium">Anu Bilegdemberel</span>
+                <span className="text-foreground font-medium">Anu Bilegdemberel</span>
               </div>
               
-              <h2 className="text-2xl font-bold text-white">30 Min Meeting</h2>
+              <h2 className="text-2xl font-bold text-foreground">30 Min Meeting</h2>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-white/70">
+                <div className="flex items-center gap-2 text-foreground/70">
                   <Check className="w-4 h-4" />
                   <span className="text-sm">Requires confirmation</span>
                 </div>
                 
-                <div className="flex items-center gap-2 text-white/70">
+                <div className="flex items-center gap-2 text-foreground/70">
                   <Clock className="w-4 h-4" />
                   <span className="text-sm">30m</span>
                 </div>
                 
-                <div className="flex items-center gap-2 text-white/70">
+                <div className="flex items-center gap-2 text-foreground/70">
                   <Video className="w-4 h-4" />
                   <span className="text-sm">Google Meet</span>
                 </div>
                 
-                <div className="flex items-center gap-2 text-white/70">
+                <div className="flex items-center gap-2 text-foreground/70">
                   <Globe className="w-4 h-4" />
                   <select 
                     value={timezone}
                     onChange={(e) => setTimezone(e.target.value)}
-                    className="bg-transparent text-white/70 text-sm border-none outline-none cursor-pointer"
+                    className="bg-transparent text-foreground/70 text-sm border-none outline-none cursor-pointer"
                   >
                     <option value="Asia/Seoul">Asia/Seoul</option>
                     <option value="UTC">UTC</option>
@@ -219,20 +219,20 @@ export default function BookACallPage() {
             </div>
 
             {/* Middle Column - Calendar */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+            <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <button
                   onClick={() => navigateMonth('prev')}
-                  className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  className="w-8 h-8 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-primary/10 rounded-lg transition-colors"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <h3 className="text-white font-semibold">
+                <h3 className="text-foreground font-semibold">
                   {selectedDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                 </h3>
                 <button
                   onClick={() => navigateMonth('next')}
-                  className="w-8 h-8 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  className="w-8 h-8 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-primary/10 rounded-lg transition-colors"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -240,7 +240,7 @@ export default function BookACallPage() {
               
               <div className="grid grid-cols-7 gap-2 mb-2">
                 {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day) => (
-                  <div key={day} className="text-center text-xs text-white/60 font-medium py-2">
+                  <div key={day} className="text-center text-xs text-foreground/60 font-medium py-2">
                     {day}
                   </div>
                 ))}
@@ -252,9 +252,9 @@ export default function BookACallPage() {
             </div>
 
             {/* Right Column - Time Slots */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+            <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-white font-semibold">
+                <h3 className="text-foreground font-semibold">
                   {selectedDate.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' })}
                 </h3>
                 <div className="flex gap-2">
@@ -262,8 +262,8 @@ export default function BookACallPage() {
                     onClick={() => setTimeFormat('12h')}
                     className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                       timeFormat === '12h'
-                        ? 'bg-white/20 text-white'
-                        : 'bg-white/5 text-white/70 hover:bg-white/10'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-primary/10 text-foreground/70 hover:bg-primary/20 hover:text-foreground'
                     }`}
                   >
                     12h
@@ -272,8 +272,8 @@ export default function BookACallPage() {
                     onClick={() => setTimeFormat('24h')}
                     className={`px-3 py-1 rounded text-xs font-medium transition-colors ${
                       timeFormat === '24h'
-                        ? 'bg-white/20 text-white'
-                        : 'bg-white/5 text-white/70 hover:bg-white/10'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-primary/10 text-foreground/70 hover:bg-primary/20 hover:text-foreground'
                     }`}
                   >
                     24h
@@ -288,8 +288,8 @@ export default function BookACallPage() {
                     onClick={() => setSelectedTime(time)}
                     className={`w-full px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
                       selectedTime === time
-                        ? 'bg-white text-black'
-                        : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-primary/10 text-foreground/70 hover:bg-primary/20 hover:text-foreground'
                     }`}
                   >
                     {formatTime(time)}
@@ -305,9 +305,9 @@ export default function BookACallPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mt-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8"
+              className="mt-12 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-8"
             >
-              <h3 className="text-2xl font-bold text-white mb-6">Complete Your Booking</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Complete Your Booking</h3>
               
               {isSuccess && (
                 <motion.div
@@ -333,7 +333,7 @@ export default function BookACallPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-foreground/70 mb-2">
                       Name <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -342,13 +342,13 @@ export default function BookACallPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                      className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors"
                       placeholder="Your name"
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white/70 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-foreground/70 mb-2">
                       Email <span className="text-red-400">*</span>
                     </label>
                     <input
@@ -357,14 +357,14 @@ export default function BookACallPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors"
+                      className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors"
                       placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground/70 mb-2">
                     Message (Optional)
                   </label>
                   <textarea
@@ -372,14 +372,14 @@ export default function BookACallPage() {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
                     placeholder="Tell me about what you'd like to discuss..."
                   />
                 </div>
 
-                <div className="bg-white/5 p-4 rounded-lg">
-                  <p className="text-sm text-white/70 mb-2">Selected Meeting Time:</p>
-                  <p className="text-white font-medium">
+                <div className="bg-muted/50 p-4 rounded-lg">
+                  <p className="text-sm text-foreground/70 mb-2">Selected Meeting Time:</p>
+                  <p className="text-foreground font-medium">
                     {selectedDate.toLocaleDateString('en-US', { 
                       weekday: 'long', 
                       year: 'numeric', 
@@ -392,7 +392,7 @@ export default function BookACallPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>

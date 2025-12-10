@@ -487,15 +487,5 @@ export const majorMatchAiContent: ProjectDetailContent = {
         }
       ]
     },
-    {
-      id: 'links',
-      type: 'links',
-      links: [
-        { label: 'GitHub Repository', url: 'https://github.com/nukktae/major-match-ai', icon: ExternalLink },
-        { label: 'Live Demo', url: 'https://majormatch-demo.vercel.app', icon: ExternalLink }
-      ],
-      figmaUrl: '',
-      caseStudyUrl: ''
-    }
   ]
 };

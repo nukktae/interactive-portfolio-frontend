@@ -383,7 +383,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                                 delay: flowIndex * 0.1,
                                 ease: [0.22, 1, 0.36, 1],
                               }}
-                              className="rounded-xl bg-white/60 dark:bg-[rgba(15,23,42,0.6)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7"
+                            className="rounded-xl bg-card/75 dark:bg-card/65 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 border border-border/60"
                             >
                               {/* Icon + Flow Title */}
                               <div className="flex items-start gap-3 mb-5">
@@ -415,7 +415,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                                           delay: flowIndex * 0.1 + stepIndex * 0.05,
                                           ease: [0.22, 1, 0.36, 1],
                                         }}
-                                        className="px-3 py-1 rounded-full bg-[#F4F7FF] dark:bg-[rgba(79,70,229,0.15)] text-sm font-medium text-foreground/85 border border-[#E6ECFF] dark:border-[rgba(79,70,229,0.3)] whitespace-nowrap shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]"
+                                        className="px-3 py-1 rounded-full bg-foreground/5 dark:bg-foreground/10 text-sm font-medium text-foreground/85 border border-border/60 dark:border-border/40 whitespace-nowrap shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]"
                                       >
                                         {step}
                                       </motion.div>
@@ -479,7 +479,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
                         {item.content.colors.map((color, colorIndex) => (
                           <motion.div
-                            key={color.hex}
+                            key={`${color.hex}-${colorIndex}`}
                             custom={colorIndex}
                             variants={fadeInUp}
                             initial="hidden"
@@ -818,9 +818,8 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                     key={index}
                     {...sectionAnimation}
                     transition={{ ...sectionAnimation.transition, delay: index * 0.05 }}
-                    className="group relative overflow-hidden rounded-2xl bg-card/85 dark:bg-card/70 backdrop-blur shadow-[0_14px_40px_-32px_rgba(15,23,42,0.45)] dark:shadow-[0_14px_40px_-32px_rgba(0,0,0,0.5)] ring-1 ring-transparent transition duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-30px_rgba(15,23,42,0.35)] dark:hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.6)]"
+                    className="relative overflow-hidden rounded-2xl bg-card/85 dark:bg-card/70 backdrop-blur shadow-[0_14px_40px_-32px_rgba(15,23,42,0.45)] dark:shadow-[0_14px_40px_-32px_rgba(0,0,0,0.5)] ring-1 ring-transparent"
                   >
-                    <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-gradient-to-br from-indigo-50 dark:from-indigo-900/20 via-white dark:via-card/50 to-sky-50 dark:to-sky-900/20" />
                     <div className="relative flex h-full flex-col gap-5 p-6">
                       <div className="flex items-start gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted dark:bg-muted/80 text-muted-foreground shadow-inner">
@@ -888,7 +887,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: '-40px' }}
                         transition={{ duration: 0.4, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                        className="rounded-xl bg-white/70 dark:bg-[rgba(15,23,42,0.7)] backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] p-5 flex flex-col items-center text-center gap-2"
+                        className="rounded-xl bg-card/80 dark:bg-card/65 backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] p-5 flex flex-col items-center text-center gap-2 border border-border/60"
                       >
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 via-blue-500 to-purple-500 text-white shadow-sm">
                           <Award className="h-6 w-6" />
@@ -906,7 +905,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
               {section.description && (
                 <div className="mt-10 space-y-6">
                   <div className="h-px bg-foreground/5" />
-                  <div className="bg-[#FAFAFA] dark:bg-foreground/[0.04] rounded-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.04)] leading-relaxed text-[15px] text-foreground/80">
+                  <div className="bg-card/80 dark:bg-card/65 rounded-xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] border border-border/60 leading-relaxed text-[15px] text-foreground/80">
                     {typeof section.description === 'string' ? (
                       <p className="space-y-1">
                         {section.description.split(/(\d[\d.,-]*\s*(?:[–-]\s*\d[\d.,-]*)?\s*(?:minutes?|minute|min|s|ms|agents|clicks|waiting list|waitlist|%)?)/gi).map((part, idx) => {
@@ -1085,7 +1084,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-80px' }}
-                    className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-gradient-to-b from-white/70 via-white/70 to-[#FAFAFF]/70 dark:from-[rgba(15,23,42,0.7)] dark:via-[rgba(15,23,42,0.7)] dark:to-[rgba(20,25,45,0.7)]"
+                        className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-card/80 dark:bg-card/65 border border-border/60"
                   >
                     <div className="flex items-center gap-3 mb-4">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 shadow-inner">
@@ -1115,7 +1114,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true, margin: '-60px' }}
-                              className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm"
+                              className="flex items-center gap-2 rounded-lg bg-foreground/5 dark:bg-foreground/10 px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm border border-border/60 dark:border-border/40"
                             >
                               <div className="flex h-6 w-6 items-center justify-center flex-shrink-0">
                                 <IconComponent className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
@@ -1141,7 +1140,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true, margin: '-60px' }}
-                              className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm"
+                              className="flex items-center gap-2 rounded-lg bg-foreground/5 dark:bg-foreground/10 px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm border border-border/60 dark:border-border/40"
                             >
                               <div className="flex h-6 w-6 items-center justify-center flex-shrink-0">
                                 <IconComponent className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
@@ -1170,7 +1169,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       whileInView="visible"
                       viewport={{ once: true, margin: '-80px' }}
                       custom={groupIndex + 1}
-                      className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-gradient-to-b from-white/70 via-white/70 to-[#FAFAFF]/70 dark:from-[rgba(15,23,42,0.7)] dark:via-[rgba(15,23,42,0.7)] dark:to-[rgba(20,25,45,0.7)]"
+                        className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-card/80 dark:bg-card/65 border border-border/60"
                     >
                       <div className="flex items-center gap-3 mb-4">
                         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted dark:bg-muted/80 text-muted-foreground shadow-inner">
@@ -1197,7 +1196,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                               initial="hidden"
                               whileInView="visible"
                               viewport={{ once: true, margin: '-60px' }}
-                              className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm"
+                              className="flex items-center gap-2 rounded-lg bg-foreground/5 dark:bg-foreground/10 px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm border border-border/60 dark:border-border/40"
                             >
                               <div className="flex h-6 w-6 items-center justify-center flex-shrink-0">
                                 <ItemIcon className="h-4 w-4 text-foreground/70" />
@@ -1222,7 +1221,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       whileInView="visible"
                       viewport={{ once: true, margin: '-60px' }}
                       custom={index + 2}
-                      className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-gradient-to-b from-white/70 via-white/70 to-[#FAFAFF]/70 dark:from-[rgba(15,23,42,0.7)] dark:via-[rgba(15,23,42,0.7)] dark:to-[rgba(20,25,45,0.7)]"
+                        className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-card/80 dark:bg-card/65 border border-border/60"
                     >
                       <h3 className="text-lg font-semibold text-foreground mb-3">{stack.category}</h3>
                       <div className="flex flex-col gap-y-3">
@@ -1413,9 +1412,6 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
         className="relative z-10 scroll-mt-24 py-16 md:py-24"
         {...sectionAnimation}
       >
-        {/* Soft gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC] via-transparent to-transparent dark:from-[rgba(15,23,42,0.3)] dark:via-transparent pointer-events-none" />
-        
         <div className="relative max-w-[1300px] mx-auto px-6 md:px-10">
           {/* Section Header */}
           <div className="mb-12 md:mb-16">

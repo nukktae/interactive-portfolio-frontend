@@ -64,26 +64,30 @@ export default function ProjectsSection() {
           )}
           <div className="absolute inset-0 bg-white/20 dark:bg-black/20 group-hover:bg-transparent transition-all duration-700" />
           
-          {/* Hover Actions */}
-          <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Action Buttons Container */}
+          <div className="absolute top-4 right-4 flex gap-2 z-20">
+            {/* Website Link Button - Always Visible */}
             {project.liveUrl && (
               <a 
                 href={project.liveUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-10 h-10 bg-foreground/10 dark:bg-white/10 backdrop-blur-sm border border-border text-foreground flex items-center justify-center hover:bg-foreground/20 dark:hover:bg-white/20 transition-colors duration-300 rounded-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white shadow-[0_10px_25px_-12px_rgba(59,130,246,0.55)] hover:brightness-110 hover:scale-105 transition-all duration-300 group/link border border-white/30 backdrop-blur-md"
               >
+                <span className="text-sm font-medium">Visit Site</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             )}
+            
+            {/* GitHub Button - Visible on Hover */}
             {project.githubUrl && (
               <a 
                 href={project.githubUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-10 h-10 bg-foreground/10 dark:bg-white/10 backdrop-blur-sm border border-border text-foreground flex items-center justify-center hover:bg-foreground/20 dark:hover:bg-white/20 transition-colors duration-300 rounded-lg"
+                className="w-10 h-10 bg-foreground/10 dark:bg-white/10 backdrop-blur-sm border border-border text-foreground flex items-center justify-center hover:bg-foreground/20 dark:hover:bg-white/20 transition-all duration-300 rounded-lg opacity-0 group-hover:opacity-100"
               >
                 <Github className="w-4 h-4" />
               </a>

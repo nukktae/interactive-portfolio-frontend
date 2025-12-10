@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import ProjectDetailHero from '@/components/projects/ProjectDetailHero';
 import ProjectDetail from '@/components/projects/ProjectDetail';
@@ -11,11 +11,12 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { projectSummaries } from '@/data/projectSummaries';
 import { getProjectDetailContent, createDefaultContent, generateSlug } from '@/content/projects';
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
+export default function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { slug } = use(params);
   const project = projectSummaries.find(
-    (p) => generateSlug(p.title) === params.slug
+    (p) => generateSlug(p.title) === slug
   );
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function ProjectDetailPage({ params }: { params: { slug: string }
   }
 
   // Get project detail content or create default
-  const detailContent = getProjectDetailContent(params.slug) || createDefaultContent(params.slug, project.title);
+  const detailContent = getProjectDetailContent(slug) || createDefaultContent(slug, project.title);
 
   // Generate sidebar navigation based on available sections
   // Concise labels optimized for Korean recruiter scanning (8-10 sections)

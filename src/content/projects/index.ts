@@ -9,6 +9,7 @@ import { amoreAgentContent } from './amore-agent-05';
 import { majorMatchAiContent } from './major-match-ai';
 import { moveparkContent } from './movepark';
 import { makeeatContent } from './makeaat';
+import { clearguideContent } from './clearguide';
 
 // Helper function to generate slug from project title
 export function generateSlug(title: string): string {
@@ -41,6 +42,7 @@ const projectContentMap: Record<string, ProjectDetailContent> = {
   'majormatch-ai': majorMatchAiContent,
   movepark: moveparkContent,
   makeeat: makeeatContent,
+  clearguide: clearguideContent,
   // Add other projects here as they are created
 };
 

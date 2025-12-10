@@ -19,12 +19,7 @@ export const projectSummaries: Project[] = [
     description: "CRM tech for real estate agents that revolutionizes workflow efficiency, reducing manual work and enabling agents to handle significantly more leads.",
     detailedDescription: "Bestia is a cutting-edge CRM platform designed specifically for real estate agents. As the designer and frontend developer, I led the design and frontend integration, working closely with real estate agents weekly for design feedback. The platform was showcased at LA Tech Week, where it generated 300 real estate agents on the waiting list through compelling design and seamless frontend integration. The system dramatically improves agent productivity by automating workflows and eliminating manual data entry.",
     image: "/assets/images/projects/Bestia/bestia1.png",
-    images: [
-      "/assets/images/bestia-dashboard.jpg",
-      "/assets/images/bestia-leads.jpg",
-      "/assets/images/bestia-offers.jpg",
-      "/assets/images/bestia-workflow.jpg"
-    ],
+    images: [],
     technologies: [
       "Next.js 15.4.6",
       "React 19.1.0",
@@ -495,13 +490,7 @@ export const projectSummaries: Project[] = [
     description: "UI/UX Designer leading frontend development for mobile apps and marketing website, delivering consistent user experiences across platforms.",
     detailedDescription: "Led comprehensive UI/UX design and frontend development for Handiers Inc, a service marketplace platform. Designed and developed frontend for two mobile apps and a marketing website, delivering consistent UI across platforms. Spearheaded major UX redesigns for chat, booking, and quote request features, enhancing clarity and conversion through data-backed decisions.",
     image: "/assets/images/projects/handiers.png",
-    images: [
-      "/assets/images/handiers-mobile-app.jpg",
-      "/assets/images/handiers-website.jpg",
-      "/assets/images/handiers-chat-redesign.jpg",
-      "/assets/images/handiers-booking-flow.jpg",
-      "/assets/images/handiers-quote-request.jpg"
-    ],
+    images: [],
     technologies: [
       "Flutter & Dart",
       "Figma",
@@ -907,8 +896,8 @@ export const projectSummaries: Project[] = [
       "Integrated Nodemailer with proper email templating",
       "Used Framer Motion for optimized declarative animations"
     ],
-    github: "https://github.com/nukktae/major-match-ai",
-    liveUrl: "https://majormatch-demo.vercel.app",
+    github: "",
+    liveUrl: "",
     roles: [
       {
         area: "Full-Stack Developer",
@@ -1333,14 +1322,7 @@ export const projectSummaries: Project[] = [
     description: "Comprehensive student productivity platform featuring AI-powered lecture transcription, intelligent schedule management, PDF analysis, GPA tracking, and school-verified community. Built as cross-platform mobile app (iOS, Android, Web).",
     detailedDescription: "Friendly is a comprehensive student productivity platform that combines AI-powered features with seamless mobile experience. Built as a cross-platform React Native application with a Node.js/Express backend, it helps students manage lectures, schedules, academic documents, GPA tracking, and community engagement. The platform features real-time AI transcription, intelligent schedule extraction, PDF analysis with chatbots, GPA calculation, and a school-verified community platform.",
     image: "/assets/images/friendly/coverfriendly.png",
-    images: [
-      "/assets/images/friendly/1.png",
-      "/assets/images/friendly/2.png",
-      "/assets/images/friendly/3.png",
-      "/assets/images/friendly/4.png",
-      "/assets/images/friendly/5.png",
-      "/assets/images/friendly/6.png"
-    ],
+    images: [],
     technologies: [
       "React Native",
       "Expo",
@@ -1574,7 +1556,7 @@ export const projectSummaries: Project[] = [
       "Used React Context API for global state management with persistence"
     ],
     github: "",
-    liveUrl: "",
+    liveUrl: "https://clearguide.vercel.app",
     roles: [
       {
         area: "Full-Stack Development",

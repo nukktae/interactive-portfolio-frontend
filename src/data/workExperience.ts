@@ -32,7 +32,7 @@ export const workExperience: WorkExperienceProject[] = [
     description: "Mobile apps & marketing website design with UX research and data-driven improvements",
     tags: ["Figma", "Flutter", "UI Design", "UX Research"],
     image: "/assets/images/projects/handiers.png",
-    githubUrl: "https://github.com/nukktae",
+    githubUrl: "",
     liveUrl: "https://handiers.com",
     featured: true
   }
