@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -14,6 +14,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   const navItems = [
     { href: '#projects', labelKey: 'nav.work' },
@@ -23,6 +24,16 @@ export default function Navbar() {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Force fixed positioning using direct DOM manipulation
+    if (navRef.current) {
+      navRef.current.style.position = 'fixed';
+      navRef.current.style.top = '0';
+      navRef.current.style.left = '0';
+      navRef.current.style.right = '0';
+      navRef.current.style.width = '100%';
+      navRef.current.style.zIndex = '40';
+    }
   }, []);
 
   useEffect(() => {
@@ -33,6 +44,53 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Debug: Check navbar positioning on mount and scroll
+  useEffect(() => {
+    const navElement = document.querySelector('nav[style*="position: fixed"]') as HTMLElement;
+    if (navElement) {
+      const computedStyle = window.getComputedStyle(navElement);
+      const rect = navElement.getBoundingClientRect();
+      
+      console.log('🔍 Navbar Debug Info:');
+      console.log('  - Computed position:', computedStyle.position);
+      console.log('  - Computed top:', computedStyle.top);
+      console.log('  - Computed left:', computedStyle.left);
+      console.log('  - Computed right:', computedStyle.right);
+      console.log('  - Bounding rect top:', rect.top);
+      console.log('  - Bounding rect left:', rect.left);
+      console.log('  - ScrollY:', window.scrollY);
+      console.log('  - Parent element:', navElement.parentElement?.tagName, navElement.parentElement?.className);
+      
+      // Check for transform on parent
+      let parent = navElement.parentElement;
+      while (parent && parent !== document.body) {
+        const parentStyle = window.getComputedStyle(parent);
+        if (parentStyle.transform !== 'none' || parentStyle.perspective !== 'none' || 
+            parentStyle.filter !== 'none' || parentStyle.willChange !== 'auto') {
+          console.warn('⚠️ Parent element has transform/perspective/filter:', {
+            element: parent.tagName,
+            className: parent.className,
+            transform: parentStyle.transform,
+            perspective: parentStyle.perspective,
+            filter: parentStyle.filter,
+            willChange: parentStyle.willChange
+          });
+        }
+        parent = parent.parentElement;
+      }
+    }
+
+    const handleScrollDebug = () => {
+      if (navElement) {
+        const rect = navElement.getBoundingClientRect();
+        console.log('📜 Scroll Debug - Navbar rect.top:', rect.top, 'scrollY:', window.scrollY);
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollDebug);
+    return () => window.removeEventListener('scroll', handleScrollDebug);
+  }, [mounted]);
 
   // Handle hash navigation on page load
   useEffect(() => {
@@ -71,17 +129,29 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav
+      <nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? 'backdrop-blur-xl bg-background/80 shadow-[0_1px_6px_rgba(0,0,0,0.06)] border-b border-border'
-            : 'bg-transparent backdrop-blur-none border-b border-transparent shadow-none'
+            ? 'backdrop-blur-xl bg-background/80 shadow-[0_1px_6px_rgba(0,0,0,0.06)]'
+            : 'bg-transparent backdrop-blur-none shadow-none'
         }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8 }}
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          zIndex: 40,
+          borderBottom: 'none'
+        }}
       >
-        <div className="px-6 lg:px-10 max-w-[1800px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="px-6 lg:px-10 max-w-[1800px] mx-auto">
           <div className="flex items-center justify-between h-[64px]">
             {/* Logo */}
             <motion.div
@@ -137,7 +207,11 @@ export default function Navbar() {
                 
                 <motion.button
                   onClick={() => router.push('/book-a-call')}
-                  className="ml-4 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white text-sm font-medium hover:brightness-105 transition-all duration-200 shadow-[0_8px_20px_-10px_rgba(59,130,246,0.8)]"
+                  className={`ml-4 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    theme === 'dark'
+                      ? 'bg-white text-[#0F0F12] hover:bg-white/90 shadow-[0_8px_20px_-10px_rgba(255,255,255,0.3)]'
+                      : 'bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white hover:brightness-105 shadow-[0_8px_20px_-10px_rgba(59,130,246,0.8)]'
+                  }`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
@@ -158,7 +232,8 @@ export default function Navbar() {
             </motion.button>
           </div>
         </div>
-      </motion.nav>
+        </motion.div>
+      </nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>

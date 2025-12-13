@@ -33,12 +33,12 @@ export default function LandingPage() {
   });
 
   return (
-    <div ref={containerRef} className="relative min-h-screen">
-      {/* Background - switches based on theme (only after mount to prevent hydration mismatch) */}
-      {mounted && (theme === 'dark' ? <SpaceBackground /> : <LightBackground />)}
-      {!mounted && <SpaceBackground />}
-      
+    <>
       <Navbar />
+      <div ref={containerRef} className="relative min-h-screen">
+        {/* Background - switches based on theme (only after mount to prevent hydration mismatch) */}
+        {mounted && (theme === 'dark' ? <SpaceBackground /> : <LightBackground />)}
+        {!mounted && <SpaceBackground />}
       
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-white/30 via-white/50 to-white/30 origin-left z-50"
@@ -69,6 +69,7 @@ export default function LandingPage() {
       </motion.div>
       
       {/* <AIChatButton /> */}
-    </div>
+      </div>
+    </>
   );
 }

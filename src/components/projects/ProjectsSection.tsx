@@ -7,10 +7,12 @@ import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { ImageWithFallback } from '../ui/ImageWithFallback';
 import { workExperience, type WorkExperienceProject } from '../../data/workExperience';
 import { competitionsProjects, type CompetitionProject } from '../../data/competitionsProjects';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function ProjectsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
+  const { theme } = useTheme();
 
   // Helper component to render project cards
   const renderProjectCard = (project: WorkExperienceProject | CompetitionProject, index: number) => (
@@ -73,7 +75,11 @@ export default function ProjectsSection() {
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white shadow-[0_10px_25px_-12px_rgba(59,130,246,0.55)] hover:brightness-110 hover:scale-105 transition-all duration-300 group/link border border-white/30 backdrop-blur-md"
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg hover:scale-105 transition-all duration-300 group/link backdrop-blur-md ${
+                  theme === 'dark'
+                    ? 'bg-white text-[#0F0F12] shadow-[0_10px_25px_-12px_rgba(255,255,255,0.3)] border border-white/30 hover:bg-white/90'
+                    : 'bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white shadow-[0_10px_25px_-12px_rgba(59,130,246,0.55)] hover:brightness-110 border border-white/30'
+                }`}
               >
                 <span className="text-sm font-medium">Visit Site</span>
                 <ExternalLink className="w-4 h-4" />

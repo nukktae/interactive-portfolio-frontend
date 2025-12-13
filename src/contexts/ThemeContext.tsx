@@ -38,9 +38,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Apply theme to document
     if (typeof window !== 'undefined') {
-      document.documentElement.setAttribute('data-theme', theme);
-      if (mounted) {
-        localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    if (mounted) {
+      localStorage.setItem('theme', theme);
       }
     }
   }, [theme, mounted]);
