@@ -73,44 +73,24 @@ function createGlowingIcon() {
   });
 }
 
-// Global atomic lock to prevent double initialization (Strict Mode protection)
-// Only one instance can acquire this lock
-let mapInitializationLock = false;
+// Global map instance counter - only first instance renders
+let mapInstanceCount = 0;
 
 // Inner map component that only mounts once
 const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
-  // #region agent log
-  fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:80',message:'MapInner render start',data:{visitsCount:visits.length,lockAcquired:mapInitializationLock},timestamp:Date.now(),sessionId:'debug-session',runId:'run4',hypothesisId:'A,B'})}).catch(()=>{});
-  // #endregion
   const containerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
-  const acquiredLockRef = useRef<boolean | null>(null);
+  const instanceIdRef = useRef<number | null>(null);
   
-  // Check lock synchronously during render (before any state updates)
-  // This ensures only one instance can acquire the lock
-  if (acquiredLockRef.current === null) {
-    // First time checking - try to acquire lock
-    if (!mapInitializationLock) {
-      // Acquire lock atomically
-      mapInitializationLock = true;
-      acquiredLockRef.current = true;
-      // #region agent log
-      fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:91',message:'Lock acquired synchronously, will render map',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B'})}).catch(()=>{});
-      // #endregion
-    } else {
-      acquiredLockRef.current = false;
-      // #region agent log
-      fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:97',message:'Lock already acquired, skipping render',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B'})}).catch(()=>{});
-      // #endregion
-    }
+  // Assign instance ID on first render - only first instance (ID 0) should render
+  if (instanceIdRef.current === null) {
+    instanceIdRef.current = mapInstanceCount++;
   }
   
-  const shouldRender = acquiredLockRef.current === true;
+  // Only the first instance (ID 0) should render the map
+  const shouldRender = instanceIdRef.current === 0;
   const [mapKey] = useState(() => {
     const key = `map-${Date.now()}-${Math.random()}`;
-    // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:99',message:'mapKey generated',data:{mapKey:key},timestamp:Date.now(),sessionId:'debug-session',runId:'run4',hypothesisId:'E'})}).catch(()=>{});
-    // #endregion
     return key;
   });
   
@@ -145,29 +125,14 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
     if (containerRef.current && shouldRender) {
       const hasMap = (containerRef.current as any)._leaflet_id !== undefined;
       if (hasMap) {
-        // #region agent log
-        fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:115',message:'Container has map in useEffect, releasing lock',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B'})}).catch(()=>{});
-        // #endregion
-        mapInitializationLock = false; // Release lock
-        // Note: We can't change shouldRender here as it's a const, but the component won't re-render MapContainer
+        // Map already exists - this shouldn't happen if instance ID logic works
       }
     }
   }, [shouldRender]);
 
-  // #region agent log
-  fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:103',message:'Before render check',data:{shouldRender:shouldRender,acquiredLock:acquiredLockRef.current,mapInitializationLock:mapInitializationLock,containerRefExists:!!containerRef.current,containerHasMap:containerRef.current ? !!(containerRef.current as any)?._leaflet_id : false},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B,D'})}).catch(()=>{});
-  // #endregion
-
   if (!shouldRender) {
-    // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:124',message:'Rendering placeholder (shouldRender=false)',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B'})}).catch(()=>{});
-    // #endregion
     return <div ref={containerRef} style={{ height: '100%', width: '100%', backgroundColor: '#000' }} />;
   }
-
-  // #region agent log
-  fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:130',message:'Rendering MapContainer',data:{mapKey:mapKey,containerRefExists:!!containerRef.current,containerHasMap:containerRef.current ? !!(containerRef.current as any)?._leaflet_id : false},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'A,B,D,E'})}).catch(()=>{});
-  // #endregion
 
   return (
     <div ref={containerRef} style={{ height: '100%', width: '100%' }}>
@@ -180,9 +145,6 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
         className="z-0"
         scrollWheelZoom={true}
         ref={(map) => {
-          // #region agent log
-          fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:139',message:'MapContainer ref callback',data:{mapExists:!!map,mapInstanceRefExists:!!mapInstanceRef.current,containerHasMap:containerRef.current ? !!(containerRef.current as any)?._leaflet_id : false},timestamp:Date.now(),sessionId:'debug-session',runId:'run5',hypothesisId:'E'})}).catch(()=>{});
-          // #endregion
           if (map) {
             mapInstanceRef.current = map;
           }
@@ -269,24 +231,16 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
     </div>
   );
 }, (prevProps, nextProps) => {
-  // #region agent log
-  fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:210',message:'MapInner memo comparison',data:{prevLength:prevProps.visits.length,nextLength:nextProps.visits.length,shouldSkip:prevProps.visits.length === nextProps.visits.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-  // #endregion
   // Only re-render if visits length changes significantly
   // This prevents unnecessary re-renders that cause map re-initialization
   return prevProps.visits.length === nextProps.visits.length;
 });
 
 export default function VisitorMap({ visits }: VisitorMapProps) {
-  // #region agent log
-  fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:216',message:'VisitorMap render',data:{visitsCount:visits.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-  // #endregion
   const [mounted, setMounted] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/591a3ef1-a9a9-4563-945c-e095f1502c7d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'VisitorMap.tsx:220',message:'Setting mounted=true',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-    // #endregion
     setMounted(true);
   }, []);
 
@@ -298,6 +252,14 @@ export default function VisitorMap({ visits }: VisitorMapProps) {
     ),
     [visits]
   );
+
+  // Check if wrapper already has a Leaflet map (prevents double initialization in Strict Mode)
+  // Must be called before any conditional returns to follow Rules of Hooks
+  useEffect(() => {
+    if (wrapperRef.current) {
+      const hasMap = wrapperRef.current.querySelector('.leaflet-container') !== null;
+    }
+  }, []);
 
   if (visitsWithCoords.length === 0) {
     return (
@@ -316,7 +278,11 @@ export default function VisitorMap({ visits }: VisitorMapProps) {
   }
 
   return (
-    <div className="w-full h-full rounded-lg overflow-hidden" key="visitor-map-wrapper">
+    <div 
+      ref={wrapperRef}
+      className="w-full h-full rounded-lg overflow-hidden" 
+      key="visitor-map-wrapper"
+    >
       <MapInner visits={visits} />
       <style jsx global>{`
         .map-tiles {

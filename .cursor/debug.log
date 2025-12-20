@@ -1172,3 +1172,372 @@
 {"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255459950,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
 {"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255459952,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
 {"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255459952,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533324,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533324,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533360,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533361,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533555,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533556,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":false},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:91","message":"Lock acquired synchronously, will render map","data":{},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533918-0.8382474816510277"},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533918-0.456459535039882"},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533918-0.8382474816510277","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":true},"timestamp":1766255533923,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255533917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533923,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533918-0.8382474816510277","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533923,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":37},"timestamp":1766255533918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":false},"timestamp":1766255533919,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":false},"timestamp":1766255533919,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:91","message":"Lock acquired synchronously, will render map","data":{},"timestamp":1766255533920,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:91","message":"Lock acquired synchronously, will render map","data":{},"timestamp":1766255533920,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533920-0.7547754939165096"},"timestamp":1766255533920,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533945,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533946,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533920-0.4812436236887032"},"timestamp":1766255533920,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533946,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533921-0.3792334973503658"},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:99","message":"mapKey generated","data":{"mapKey":"map-1766255533920-0.4385854215161542"},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run4","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533920-0.7547754939165096","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533957,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533958,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533920-0.4812436236887032","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533921,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533962,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":true},"timestamp":1766255533927,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:80","message":"MapInner render start","data":{"visitsCount":37,"lockAcquired":true},"timestamp":1766255533926,"sessionId":"debug-session","runId":"run4","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533927,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:103","message":"Before render check","data":{"shouldRender":true,"acquiredLock":true,"mapInitializationLock":true,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255533927,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533920-0.7547754939165096","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533927,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:130","message":"Rendering MapContainer","data":{"mapKey":"map-1766255533920-0.4812436236887032","containerRefExists":false,"containerHasMap":false},"timestamp":1766255533927,"sessionId":"debug-session","runId":"run5","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533940,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533940,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533941,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533941,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533941,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533941,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533945,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533946,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533947,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533948,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:318","message":"Wrapper ref callback - checking for existing map","data":{"hasMap":true,"nodeExists":true},"timestamp":1766255533948,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B"}
+{"location":"VisitorMap.tsx:139","message":"MapContainer ref callback","data":{"mapExists":false,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255533950,"sessionId":"debug-session","runId":"run5","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544587,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544587,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544586,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544586,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544831,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544831,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255544917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255544917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255544917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255544917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544922,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255544922,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255545916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255545916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255545917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":39},"timestamp":1766255545920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255560951,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255560951,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255560952,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255560952,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561174,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561174,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561921,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255561917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561926,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255561927,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564528,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564528,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564531,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564531,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564729,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564729,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255564917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255564917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255564918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255564918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255564926,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255565787,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255565788,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255565916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255565917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255565919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255565923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566049,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566049,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255566917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255566916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255566918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255566918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566922,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255566923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568461,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568461,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568570,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568570,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568664,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568664,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255568918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255568918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255568918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255568919,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568927,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255568928,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255569917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255569918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255569919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255569926,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255571968,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255571969,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572022,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572022,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572159,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572159,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572922,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572925,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572922,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572923,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255572923,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572929,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255572929,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255587493,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255587494,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255587775,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255587776,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255587777,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255587784,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605142,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605142,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605256,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605256,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605485,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605485,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255605918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605921,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605924,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255605926,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255608904,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255608904,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255608907,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255608907,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609096,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609097,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609921,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255609917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609924,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255609924,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612555,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612556,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612598,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612599,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612794,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612795,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255612917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255612917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255612918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255612918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612923,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255612927,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255613916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255613916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255613917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255613921,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255614753,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255614753,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255614836,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255614836,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615182,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615182,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615919,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615921-0.3484262642497844","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615921,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615919-0.5565765263998039","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615919,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615921-0.3484262642497844","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615925,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615925,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615919-0.5565765263998039","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615927,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255615925,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615926,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255615927,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615928-0.6409007624249442","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615928,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615953,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615954,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615972,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615975,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255615928-0.6409007624249442","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255615935,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615941,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615942,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615949,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615953,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615957,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615957,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615963,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255615967,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617733,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617733,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617737,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617737,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617947,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255617947,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618918-0.2836626049636326","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255618918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618918-0.2836626049636326","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618924,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255618919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618920-0.7668190607773187","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618920,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618920-0.200499421523068","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618920,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618920-0.7668190607773187","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618925,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:116","message":"Rendering MapContainer","data":{"mapKey":"map-1766255618920-0.200499421523068","instanceId":0,"containerRefExists":false,"containerHasMap":false},"timestamp":1766255618925,"sessionId":"debug-session","runId":"run6","hypothesisId":"A,B,D,E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618937,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618937,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618938,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618938,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618939,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618940,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618942,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618942,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618945,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618945,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618948,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255618951,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621341,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621342,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621377,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621377,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621567,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621568,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255621917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255621918,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621938,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621939,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621940,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621940,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621941,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621941,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621946,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621948,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621949,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621950,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621949,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:125","message":"MapContainer ref callback","data":{"mapExists":false,"instanceId":0,"mapInstanceRefExists":false,"containerHasMap":false},"timestamp":1766255621952,"sessionId":"debug-session","runId":"run6","hypothesisId":"E"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624076,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624076,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624077,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624078,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624260,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624260,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624917,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255624919,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255624920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627196,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627196,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627248,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627248,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627449,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627450,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627481,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627482,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627482,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627483,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255627918,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627919,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:280","message":"VisitorMap render","data":{"visitsCount":40},"timestamp":1766255627920,"sessionId":"debug-session","runId":"run6","hypothesisId":"C"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255629675,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255629676,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255629917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255629917,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255630916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
+{"location":"VisitorMap.tsx:286","message":"Setting mounted=true","data":{},"timestamp":1766255630916,"sessionId":"debug-session","runId":"run6","hypothesisId":"A"}
