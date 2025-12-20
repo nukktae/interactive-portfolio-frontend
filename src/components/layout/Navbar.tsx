@@ -210,8 +210,8 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="absolute inset-0 rounded-full bg-foreground/5 dark:bg-white/5 group-hover:bg-foreground/10 dark:group-hover:bg-white/10 transition-all duration-300 backdrop-blur-sm" />
-                  <span className="relative z-10 text-xs font-medium tracking-wide">
-                    {language === 'en' ? '한' : 'EN'}
+                  <span className="relative z-10 text-lg leading-none">
+                    {language === 'en' ? '🇰🇷' : '🇺🇸'}
                   </span>
                 </motion.button>
                 
@@ -319,7 +319,10 @@ export default function Navbar() {
                     className="relative w-full px-4 py-3 rounded-xl bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:text-foreground text-sm font-medium hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300 group overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10">{language === 'en' ? '한국어' : 'English'}</span>
+                    <span className="relative z-10 flex items-center gap-2">
+                      <span className="text-lg">{language === 'en' ? '🇰🇷' : '🇺🇸'}</span>
+                      <span>{language === 'en' ? '한국어' : 'English'}</span>
+                    </span>
                   </button>
                   <button
                     onClick={() => {

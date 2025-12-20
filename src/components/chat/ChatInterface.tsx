@@ -139,7 +139,11 @@ const getInitialQuestions = (userType: string, lang: 'en' | 'ko' = 'en') => {
   return questionSet[lang];
 };
 
-export const ChatInterface = () => {
+interface ChatInterfaceProps {
+  onClose?: () => void;
+}
+
+export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
   const { language, t } = useLanguage();
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [input, setInput] = useState('');
@@ -516,8 +520,26 @@ export const ChatInterface = () => {
       {/* Left: Chat Column (Control Layer) - Redesigned minimal */}
       <div className={`flex flex-col min-h-0 bg-white relative z-10 ${contextProject ? 'w-full md:w-[400px] border-r border-gray-200' : 'w-full'}`}>
         {/* Zone A - Identity: Very small, no border, whitespace only */}
-        <div className="h-12 px-4 flex items-center bg-white relative z-20">
+        <div className="h-12 px-4 flex items-center justify-between bg-white relative z-20">
           <span className="text-sm font-medium text-gray-700">Anu — Portfolio Assistant</span>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="md:hidden p-2 -mr-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Close chat"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-gray-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
         </div>
         
         {/* Message Area */}

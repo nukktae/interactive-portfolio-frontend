@@ -49,7 +49,7 @@ const translations = {
     
     // About Section
     'about.title': 'ABOUT ME',
-    'about.yearsExperience': 'YEARS EXPERIENCE',
+    'about.yearsExperience': 'YEARS PROGRAMMING EXPERIENCE',
     'about.companiesWorked': 'COMPANIES WORKED WITH',
     'about.projectsCompleted': 'PROJECTS COMPLETED',
     'about.headline': 'FROM BACKEND TO',
@@ -149,7 +149,7 @@ const translations = {
     
     // About Section
     'about.title': '소개',
-    'about.yearsExperience': '년 경력',
+    'about.yearsExperience': '년 프로그래밍 경력',
     'about.companiesWorked': '협력 기업',
     'about.projectsCompleted': '완료 프로젝트',
     'about.headline': '백엔드에서',
