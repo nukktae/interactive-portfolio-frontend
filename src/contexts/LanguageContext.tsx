@@ -121,11 +121,11 @@ const translations = {
     'nav.bookCall': '통화 예약',
     
     // Hero Section
-    'hero.headlinePart1': '아이디어에서',
-    'hero.headlineItalic': '출시까지,',
-    'hero.headlinePart2': '사용자 경험을 만듭니다',
-    'hero.greeting': '안녕하세요, 저는 아노',
-    'hero.role': '제품 엔지니어 (풀스택 & 디자인)',
+    'hero.headlinePart1': '기획부터',
+    'hero.headlineItalic': '런칭까지,',
+    'hero.headlinePart2': '전 과정에서 사용자 경험을 설계합니다.',
+    'hero.greeting': '아노 빌렉뎀베렐',
+    'hero.role': '프로덕트 엔지니어 (풀스택 & 디자인)',
     
     // Projects Section
     'projects.workExperience': '경력',

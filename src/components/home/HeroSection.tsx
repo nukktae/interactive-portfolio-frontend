@@ -86,7 +86,9 @@ export default function HeroSection() {
         >
           <div className="space-y-1 text-left" style={{ fontFamily: '"sans serif"' }}>
             <p className="text-lg sm:text-xl md:text-3xl font-semibold text-foreground">{t('hero.greeting')}</p>
-            <p className="text-base sm:text-lg md:text-2xl text-foreground/80">{t('hero.role')}</p>
+            {t('hero.role') && (
+              <p className="text-base sm:text-lg md:text-2xl text-foreground/80">{t('hero.role')}</p>
+            )}
           </div>
         </motion.div>
 

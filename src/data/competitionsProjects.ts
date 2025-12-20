@@ -86,9 +86,11 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 9,
     title: "MakeEat",
-    role: "Full Stack Developer", 
+    role: "Full Stack Developer",
+    roleKo: "풀스택 개발자",
     period: "2024",
     description: "AI-powered recipe generation app with cross-platform support",
+    descriptionKo: "크로스 플랫폼 지원을 갖춘 AI 기반 레시피 생성 앱",
     tags: ["Flutter", "AI", "OpenAI", "Firebase"],
     image: "/assets/images/projects/makeeat.png",
     githubUrl: "https://github.com/nukktae"
@@ -136,8 +138,10 @@ export const competitionsProjects: CompetitionProject[] = [
     id: 6,
     title: "Encar Track 1",
     role: "Deep Learning Engineer",
+    roleKo: "딥러닝 엔지니어",
     period: "2025",
     description: "Computer vision classification achieving >90% accuracy on small dataset using ensemble methods and CLIP",
+    descriptionKo: "앙상블 방법과 CLIP을 사용하여 소규모 데이터셋에서 >90% 정확도를 달성한 컴퓨터 비전 분류",
     tags: ["PyTorch", "CLIP", "Computer Vision", "Deep Learning", "Ensemble Learning"],
     image: "/assets/images/encar.png",
     githubUrl: ""
