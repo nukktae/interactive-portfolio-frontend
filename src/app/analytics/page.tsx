@@ -24,6 +24,9 @@ function AnalyticsContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [unauthorized, setUnauthorized] = useState(false);
+  const [autoRefresh, setAutoRefresh] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
   useEffect(() => {
     const key = searchParams.get('key');
@@ -35,9 +38,29 @@ function AnalyticsContent() {
     fetchInsights(key);
   }, [searchParams]);
 
-  const fetchInsights = async (key: string) => {
+  // Auto-refresh every 30 seconds
+  useEffect(() => {
+    if (!autoRefresh || !insights) return;
+
+    const interval = setInterval(() => {
+      const key = searchParams.get('key');
+      if (key) {
+        setRefreshing(true);
+        fetchInsights(key, true).finally(() => {
+          setRefreshing(false);
+          setLastRefresh(new Date());
+        });
+      }
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [autoRefresh, insights, searchParams]);
+
+  const fetchInsights = async (key: string, silent: boolean = false) => {
     try {
-      setLoading(true);
+      if (!silent) {
+        setLoading(true);
+      }
       setError(null);
       
       // Fetch both analytics and chat logs
@@ -64,10 +87,15 @@ function AnalyticsContent() {
         const chatLogsData = await chatLogsResponse.json();
         setChatLogs(chatLogsData);
       }
+      
+      setLastRefresh(new Date());
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
-      setLoading(false);
+      if (!silent) {
+        setLoading(false);
+      }
+      setRefreshing(false);
     }
   };
 
@@ -134,8 +162,30 @@ function AnalyticsContent() {
           transition={{ duration: 0.6 }}
           className="mb-12 md:mb-16"
         >
-          <div className="text-xs font-semibold tracking-widest text-white/40 mb-4 uppercase">
-            Analytics Dashboard
+          <div className="flex items-start justify-between mb-4">
+            <div className="text-xs font-semibold tracking-widest text-white/40 uppercase">
+              Analytics Dashboard
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setAutoRefresh(!autoRefresh)}
+                  className={`px-3 py-1.5 text-xs border rounded transition-colors ${
+                    autoRefresh
+                      ? 'border-white/40 text-white bg-white/10'
+                      : 'border-white/20 text-white/60 hover:border-white/30'
+                  }`}
+                >
+                  {autoRefresh ? '🔄 Auto' : '⏸️ Paused'}
+                </button>
+                {refreshing && (
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/20 border-t-white/60"></div>
+                )}
+              </div>
+              <div className="text-xs text-white/30">
+                {lastRefresh.toLocaleTimeString()}
+              </div>
+            </div>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-white mb-6">
             Visitor Insights
@@ -453,13 +503,27 @@ function AnalyticsContent() {
             onClick={() => {
               const key = searchParams.get('key');
               if (key) {
-                fetchInsights(key);
+                setRefreshing(true);
+                fetchInsights(key, true);
               }
             }}
-            className="px-6 py-3 text-sm border border-white/20 text-white/80 hover:border-white/40 hover:text-white transition-colors uppercase tracking-wider"
+            disabled={refreshing}
+            className="px-6 py-3 text-sm border border-white/20 text-white/80 hover:border-white/40 hover:text-white transition-colors uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto"
           >
-            Refresh Data
+            {refreshing ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/20 border-t-white/60"></div>
+                Refreshing...
+              </>
+            ) : (
+              'Refresh Now'
+            )}
           </button>
+          {autoRefresh && (
+            <p className="text-white/30 text-xs mt-2">
+              Auto-refreshing every 30 seconds
+            </p>
+          )}
         </motion.div>
       </div>
     </div>
