@@ -24,6 +24,22 @@ async function saveAnalytics(visits: VisitData[]): Promise<void> {
   }
 }
 
+// Check if an IP is localhost or private network
+export function isLocalhostIP(ip: string): boolean {
+  if (ip === 'unknown') return true;
+  if (ip === '::1') return true; // IPv6 localhost
+  if (ip === '127.0.0.1') return true; // IPv4 localhost
+  if (ip.startsWith('127.')) return true;
+  if (ip.startsWith('192.168.')) return true; // Private network
+  if (ip.startsWith('10.')) return true; // Private network
+  if (ip.startsWith('172.')) return true; // Private network (172.16.0.0 - 172.31.255.255)
+  if (ip.startsWith('::ffff:127.')) return true; // IPv4-mapped IPv6 localhost
+  if (ip.startsWith('::ffff:192.168.')) return true;
+  if (ip.startsWith('::ffff:10.')) return true;
+  if (ip.startsWith('::ffff:172.')) return true;
+  return false;
+}
+
 // Get client IP address from request
 export function getClientIP(request: Request): string {
   // Check various headers for IP address
@@ -159,7 +175,13 @@ export async function addVisit(
   timezone?: string,
   providedLatitude?: number,
   providedLongitude?: number
-): Promise<VisitData> {
+): Promise<VisitData | null> {
+  // Skip tracking for localhost/private IPs
+  if (isLocalhostIP(ip)) {
+    console.log('Skipping localhost visit:', ip);
+    return null;
+  }
+  
   const visits = await loadAnalytics();
   
   // Get geolocation from IP if coordinates not provided
@@ -346,10 +368,12 @@ export async function getInsights(
 ): Promise<AnalyticsInsights> {
   const visits = await loadAnalytics();
   
+  // Filter out localhost/private IP visits
+  let filteredVisits = visits.filter(visit => !isLocalhostIP(visit.ip));
+  
   // Filter by date range if provided
-  let filteredVisits = visits;
   if (startDate || endDate) {
-    filteredVisits = visits.filter(visit => {
+    filteredVisits = filteredVisits.filter(visit => {
       if (startDate && visit.timestamp < startDate) return false;
       if (endDate && visit.timestamp > endDate) return false;
       return true;

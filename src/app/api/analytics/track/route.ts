@@ -34,6 +34,15 @@ export async function POST(request: Request) {
       longitude
     );
 
+    // If visit is null, it was localhost and skipped
+    if (!visit) {
+      return NextResponse.json({ 
+        success: true, 
+        skipped: true,
+        message: 'Localhost visit skipped' 
+      });
+    }
+
     console.log('Visit tracked successfully:', visit.id);
 
     return NextResponse.json({ 
@@ -77,6 +86,15 @@ export async function GET(request: Request) {
       latitude,
       longitude
     );
+
+    // If visit is null, it was localhost and skipped
+    if (!visit) {
+      return NextResponse.json({ 
+        success: true, 
+        skipped: true,
+        message: 'Localhost visit skipped' 
+      });
+    }
 
     return NextResponse.json({ 
       success: true, 

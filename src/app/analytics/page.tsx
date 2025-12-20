@@ -107,6 +107,21 @@ function AnalyticsContent() {
     });
   };
 
+  const formatDateTime = (timestamp: number) => {
+    const date = new Date(timestamp);
+    const dateStr = date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric',
+      year: 'numeric'
+    });
+    const timeStr = date.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+    return `${dateStr}, ${timeStr}`;
+  };
+
   if (unauthorized) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
@@ -314,9 +329,6 @@ function AnalyticsContent() {
                       <div>
                         <span className="text-white/50">IP: </span>
                         <span className="font-mono text-white/70">{visit.ip || 'Unknown'}</span>
-                        {(visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.')) && (
-                          <span className="ml-2 text-white/30 text-xs">(Localhost)</span>
-                        )}
                       </div>
                       <div>
                         {(() => {
@@ -381,9 +393,6 @@ function AnalyticsContent() {
                           
                           // If no location data
                           if (parts.length === 0) {
-                            if (visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.')) {
-                              return 'Localhost (cannot geolocate)';
-                            }
                             return 'Unknown Location';
                           }
                           
@@ -401,7 +410,7 @@ function AnalyticsContent() {
                     </div>
                   </div>
                   <div className="text-white/30 text-xs ml-4 whitespace-nowrap">
-                    {formatDate(visit.timestamp)}
+                    {formatDateTime(visit.timestamp)}
                   </div>
                 </div>
               ))
@@ -489,7 +498,7 @@ function AnalyticsContent() {
                           <div className="text-white/50 text-xs line-clamp-2">A: {query.response.substring(0, 150)}...</div>
                         </div>
                         <div className="text-white/30 text-xs ml-4 whitespace-nowrap">
-                          {formatDate(query.timestamp)}
+                          {formatDateTime(query.timestamp)}
                         </div>
                       </div>
                       <div className="text-white/30 text-xs mt-2 space-y-0.5">
