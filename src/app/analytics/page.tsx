@@ -320,22 +320,63 @@ function AnalyticsContent() {
                       </div>
                       <div>
                         {(() => {
-                          // Format location: region (if major city), city/district, country
+                          // Format location: district, street, house number, city, region, country
                           const parts: string[] = [];
                           
-                          // For Seoul, show region first if it's a major city
-                          if (visit.region && (visit.region.includes('Seoul') || visit.region.includes('서울'))) {
-                            parts.push(visit.region);
-                          }
-                          
-                          // Add city/district
-                          if (visit.city) {
-                            parts.push(visit.city);
-                          }
-                          
-                          // Add country
-                          if (visit.country) {
-                            parts.push(visit.country);
+                          // For Korean addresses, show detailed address: district street houseNumber
+                          if (visit.country === 'South Korea') {
+                            // Add district (구) first
+                            if (visit.district) {
+                              parts.push(visit.district);
+                            }
+                            
+                            // Add street and house number if available (e.g., "674-5")
+                            if (visit.street && visit.houseNumber) {
+                              parts.push(`${visit.street} ${visit.houseNumber}`);
+                            } else if (visit.houseNumber) {
+                              parts.push(visit.houseNumber);
+                            } else if (visit.street) {
+                              parts.push(visit.street);
+                            }
+                            
+                            // Add city if not already included
+                            if (visit.city && !parts.includes(visit.city)) {
+                              parts.push(visit.city);
+                            }
+                            
+                            // Add country
+                            if (visit.country) {
+                              parts.push(visit.country);
+                            }
+                          } else {
+                            // For other countries
+                            if (visit.district) {
+                              parts.push(visit.district);
+                            }
+                            
+                            // Add street and house number
+                            if (visit.street && visit.houseNumber) {
+                              parts.push(`${visit.street} ${visit.houseNumber}`);
+                            } else if (visit.houseNumber) {
+                              parts.push(visit.houseNumber);
+                            } else if (visit.street) {
+                              parts.push(visit.street);
+                            }
+                            
+                            // For Seoul, show region first if it's a major city
+                            if (visit.region && (visit.region.includes('Seoul') || visit.region.includes('서울'))) {
+                              parts.push(visit.region);
+                            }
+                            
+                            // Add city (if not already shown as district)
+                            if (visit.city && (!visit.district || visit.city !== visit.district)) {
+                              parts.push(visit.city);
+                            }
+                            
+                            // Add country
+                            if (visit.country) {
+                              parts.push(visit.country);
+                            }
                           }
                           
                           // If no location data

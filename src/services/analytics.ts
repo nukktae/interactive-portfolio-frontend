@@ -49,6 +49,9 @@ async function getGeolocation(ip: string): Promise<{
   country?: string;
   city?: string;
   region?: string;
+  district?: string;
+  street?: string;
+  houseNumber?: string;
   latitude?: number;
   longitude?: number;
 }> {
@@ -80,20 +83,22 @@ async function getGeolocation(ip: string): Promise<{
       
       // Check if we got valid data
       if (data.latitude && data.longitude) {
-        // For Korean addresses, improve the city/region handling
+        // For Korean addresses, improve the city/region/district handling
         let city = data.city;
         let region = data.region;
+        let district: string | undefined;
         
         // Handle Korean addresses - districts end with -gu
         if (data.country_code === 'KR' && city) {
-          // If city is a district (ends with -gu), it's likely in Seoul
+          // If city is a district (ends with -gu), extract it as district
           // Common Seoul districts: Yangcheon-gu, Gangnam-gu, etc.
-          if (city.endsWith('-gu')) {
+          if (city.endsWith('-gu') || city.endsWith('구')) {
+            district = city;
             // Set region to Seoul if not already set
             if (!region || region === '') {
               region = 'Seoul';
             }
-            // Keep the district name as city
+            city = 'Seoul'; // Set city to Seoul since district is the specific area
           }
           // If region contains Seoul but city doesn't, keep both
           else if (region && (region.includes('Seoul') || region.includes('서울'))) {
@@ -105,6 +110,7 @@ async function getGeolocation(ip: string): Promise<{
           country: data.country_name || data.country_code,
           city: city,
           region: region || data.region_code,
+          district: district,
           latitude: data.latitude,
           longitude: data.longitude
         };
@@ -116,10 +122,20 @@ async function getGeolocation(ip: string): Promise<{
     if (fallbackResponse.ok) {
       const fallbackData = await fallbackResponse.json();
       if (fallbackData.status === 'success' && fallbackData.lat && fallbackData.lon) {
+        let district: string | undefined;
+        let city = fallbackData.city;
+        
+        // Check if city is a Korean district
+        if (fallbackData.country === 'South Korea' && city && (city.endsWith('-gu') || city.endsWith('구'))) {
+          district = city;
+          city = 'Seoul';
+        }
+        
         return {
           country: fallbackData.country,
-          city: fallbackData.city,
+          city: city,
           region: fallbackData.regionName,
+          district: district,
           latitude: fallbackData.lat,
           longitude: fallbackData.lon
         };
@@ -151,33 +167,105 @@ export async function addVisit(
     country?: string;
     city?: string;
     region?: string;
+    district?: string;
+    street?: string;
+    houseNumber?: string;
     latitude?: number;
     longitude?: number;
   } = {};
   
   if (providedLatitude != null && providedLongitude != null) {
     // Use provided coordinates and reverse geocode to get location details
+    // Use OpenStreetMap Nominatim for better precision, especially for Korean districts
     try {
-      const reverseGeoResponse = await fetch(
-        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${providedLatitude}&longitude=${providedLongitude}&localityLanguage=en`
+      // Try OpenStreetMap Nominatim first (better for Korean districts/구)
+      const nominatimResponse = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${providedLatitude}&lon=${providedLongitude}&zoom=18&addressdetails=1`,
+        {
+          headers: {
+            'User-Agent': 'Portfolio Analytics App'
+          }
+        }
       );
-      if (reverseGeoResponse.ok) {
-        const reverseData = await reverseGeoResponse.json();
+      
+      if (nominatimResponse.ok) {
+        const nominatimData = await nominatimResponse.json();
+        const address = nominatimData.address || {};
+        
+        // Extract location details
+        let country = address.country;
+        let city = address.city || address.town || address.village || address.municipality;
+        let region = address.state || address.province || address.region;
+        let district: string | undefined;
+        let street: string | undefined;
+        let houseNumber: string | undefined;
+        
+        // Extract street and house number (available for all addresses)
+        street = address.road || address.street || address.pedestrian || address.path;
+        houseNumber = address.house_number || address.house_name;
+        
+        // For Korean addresses, extract district (구)
+        if (address.country_code === 'kr' || address.country_code === 'KR') {
+          // Korean addresses: district is often in 'city_district' or 'suburb'
+          district = address.city_district || address.suburb || address.neighbourhood;
+          
+          // If district ends with '구', it's a district
+          if (district && district.endsWith('구')) {
+            // Keep district as is
+          } else if (city && city.endsWith('구')) {
+            // City might actually be the district
+            district = city;
+            city = address.state || 'Seoul'; // Seoul or other major city
+          }
+          
+          // If we have coordinates in Seoul area, try to get better city info
+          if (!city || city === 'Seoul') {
+            city = 'Seoul';
+          }
+          
+          // For Korean addresses, also check neighbourhood for street-level detail
+          if (!street && address.neighbourhood) {
+            street = address.neighbourhood;
+          }
+        } else {
+          // For non-Korean addresses, district might be in suburb or city_district
+          district = address.city_district || address.suburb;
+        }
+        
         geo = {
-          country: reverseData.countryName,
-          city: reverseData.city || reverseData.locality,
-          region: reverseData.principalSubdivision,
+          country: country || nominatimData.address?.country,
+          city: city,
+          region: region,
+          district: district,
+          street: street,
+          houseNumber: houseNumber,
           latitude: providedLatitude,
           longitude: providedLongitude
         };
       } else {
-        // Fallback: use coordinates but no location details
-        geo = {
-          latitude: providedLatitude,
-          longitude: providedLongitude
-        };
+        // Fallback to bigdatacloud
+        const reverseGeoResponse = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${providedLatitude}&longitude=${providedLongitude}&localityLanguage=en`
+        );
+        if (reverseGeoResponse.ok) {
+          const reverseData = await reverseGeoResponse.json();
+          geo = {
+            country: reverseData.countryName,
+            city: reverseData.city || reverseData.locality,
+            region: reverseData.principalSubdivision,
+            latitude: providedLatitude,
+            longitude: providedLongitude
+          };
+        } else {
+          // Fallback: use coordinates but no location details
+          geo = {
+            latitude: providedLatitude,
+            longitude: providedLongitude
+          };
+        }
       }
     } catch (error) {
+      console.error('Error in reverse geocoding:', error);
       // Fallback: use coordinates but no location details
       geo = {
         latitude: providedLatitude,
@@ -187,6 +275,39 @@ export async function addVisit(
   } else {
     // Fall back to IP-based geolocation
     geo = await getGeolocation(ip);
+    
+    // If we got coordinates from IP geolocation, try to enhance with reverse geocoding for Korean addresses
+    if (geo.latitude && geo.longitude && geo.country === 'South Korea') {
+      try {
+        const nominatimResponse = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${geo.latitude}&lon=${geo.longitude}&zoom=18&addressdetails=1`,
+          {
+            headers: {
+              'User-Agent': 'Portfolio Analytics App'
+            }
+          }
+        );
+        
+        if (nominatimResponse.ok) {
+          const nominatimData = await nominatimResponse.json();
+          const address = nominatimData.address || {};
+          
+          // Extract district, street, and house number for Korean addresses
+          if (address.country_code === 'kr' || address.country_code === 'KR') {
+            const district = address.city_district || address.suburb || address.neighbourhood;
+            if (district && (district.endsWith('구') || district.includes('gu'))) {
+              geo.district = district;
+            }
+            
+            // Extract street and house number
+            geo.street = address.road || address.street || address.pedestrian || address.path;
+            geo.houseNumber = address.house_number || address.house_name;
+          }
+        }
+      } catch (error) {
+        // Silently fail - we already have basic location data
+      }
+    }
   }
   
   const visit: VisitData = {
@@ -196,6 +317,9 @@ export async function addVisit(
     country: geo.country,
     city: geo.city,
     region: geo.region,
+    district: geo.district,
+    street: geo.street,
+    houseNumber: geo.houseNumber,
     latitude: geo.latitude,
     longitude: geo.longitude,
     referrer: referrer || 'direct',

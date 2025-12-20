@@ -5,6 +5,9 @@ export interface VisitData {
   country?: string;
   city?: string;
   region?: string;
+  district?: string; // District/구 for Korean addresses
+  street?: string; // Street name
+  houseNumber?: string; // Building/house number (e.g., "674-5")
   latitude?: number;
   longitude?: number;
   referrer?: string;
