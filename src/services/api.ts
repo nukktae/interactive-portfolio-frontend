@@ -1,69 +1,59 @@
-import axios from 'axios';
-
-// Determine API URL - prioritize environment variable, then use production domain
+// Use Next.js API route to proxy requests to backend (avoids CORS issues)
 const getApiUrl = () => {
-  // For local development
-  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+  // Always use the Next.js API route (same origin, no CORS issues)
+  if (typeof window !== 'undefined') {
+    return '/api/chat';
   }
-  
-  // Check if environment variable is set
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    const envUrl = process.env.NEXT_PUBLIC_API_URL;
-    // Ignore old deployment URLs (they change with each deploy)
-    if (envUrl.includes('anu-portfolio-backend-iequx7uxi') || 
-        envUrl.includes('anu-portfolio-backend-') && envUrl.includes('-anu-bilegdemberels-projects')) {
-      console.warn('⚠️ Ignoring old deployment URL from environment variable. Using production domain instead.');
-      return 'https://anu-portfolio-backend.vercel.app';
-    }
-    // Use the environment variable if it's a valid production URL
-    return envUrl;
-  }
-  
-  // Production - use the stable Vercel domain
-  return 'https://anu-portfolio-backend.vercel.app';
+  // Server-side: use environment variable or default to localhost backend
+  return process.env.BACKEND_URL || 'http://localhost:5001';
 };
-
-const API_URL = getApiUrl();
 
 export const chatService = {
   sendMessage: async (message: string) => {
     try {
-      console.log('Sending request to:', `${API_URL}/chat`);
+      const apiUrl = getApiUrl();
+      console.log('Sending request to:', apiUrl);
       
-      const response = await fetch(`${API_URL}/chat`, {
+      const userType = typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor';
+      
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        mode: 'cors',
-        credentials: 'omit',
         body: JSON.stringify({
           message,
-          userType: typeof window !== 'undefined' ? localStorage.getItem('userType') || 'visitor' : 'visitor'
+          userType
         })
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
+        let errorMessage = `HTTP error! status: ${response.status}`;
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch {
+          try {
+            const errorText = await response.text();
+            errorMessage = errorText || errorMessage;
+          } catch {
+            // Use default error message
+          }
+        }
         console.error('API Error Response:', {
           status: response.status,
           statusText: response.statusText,
-          body: errorText
+          error: errorMessage
         });
         
-        if (response.status === 0) {
-          throw new Error('Network error - CORS issue or server unavailable');
-        }
-        
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        throw new Error(errorMessage);
       }
       
       const data = await response.json();
       return data.reply;
     } catch (error: any) {
-      console.error('Detailed error:', error);
-      throw new Error(error.message || 'Failed to get response');
+      console.error('Chat service error:', error);
+      throw new Error(error.message || 'Failed to get response from chat service');
     }
   }
 };

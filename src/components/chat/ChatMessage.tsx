@@ -105,7 +105,7 @@ export const ChatMessage = ({ message, avatarBg }: ChatMessageProps) => {
             <p className={`my-1.5 ${textColorLight}`} dangerouslySetInnerHTML={{ __html: formattedLine }} />
             <Link 
               href={`/projects/${projectSlug}`}
-              className={`inline-flex items-center gap-2 px-3 py-1.5 mt-2 ${isBot ? 'bg-black text-white hover:bg-yellow-400 hover:text-black' : 'bg-white text-black hover:bg-yellow-400 hover:text-black'} rounded-md text-xs font-medium transition-all duration-300`}
+              className={`inline-flex items-center gap-2 px-3 py-1.5 mt-2 ${isBot ? 'bg-black text-white hover:bg-gray-800 border border-black' : 'bg-white text-black hover:bg-gray-100 border border-gray-300'} rounded-md text-xs font-medium transition-all duration-300`}
             >
               <span>View Details</span>
               <FaExternalLinkAlt className="w-3 h-3" />
@@ -118,7 +118,7 @@ export const ChatMessage = ({ message, avatarBg }: ChatMessageProps) => {
       if (line.trim().startsWith('* ')) {
         return (
           <div key={index} className="flex items-start gap-2 my-1.5">
-            <span className={`w-1.5 h-1.5 ${isBot ? 'bg-yellow-400' : 'bg-yellow-400'} rounded-full mt-2 flex-shrink-0`}></span>
+            <span className={`w-1.5 h-1.5 ${isBot ? 'bg-gray-600' : 'bg-gray-400'} rounded-full mt-2 flex-shrink-0`}></span>
             <span className={textColorLight} dangerouslySetInnerHTML={{ __html: formattedLine.substring(2) }} />
           </div>
         );
@@ -151,10 +151,10 @@ export const ChatMessage = ({ message, avatarBg }: ChatMessageProps) => {
       )}
       
       <div
-        className={`px-3 py-2 rounded-lg max-w-[80%] ${
+        className={`px-3 py-2 rounded-lg max-w-[80%] border ${
           isBot 
-            ? 'bg-gray-50' 
-            : 'bg-black'
+            ? 'bg-gray-50 border-gray-200' 
+            : 'bg-black border-gray-800'
         }`}
       >
         <div className={`text-sm leading-relaxed ${isBot ? 'text-gray-900' : 'text-white'}`}>
@@ -163,8 +163,8 @@ export const ChatMessage = ({ message, avatarBg }: ChatMessageProps) => {
       </div>
       
       {!isBot && (
-        <div className={`w-6 h-6 rounded-full ${avatarBg} flex items-center justify-center flex-shrink-0`}>
-          <FiUser className="w-3.5 h-3.5 text-black" />
+        <div className={`w-6 h-6 rounded-full ${avatarBg} flex items-center justify-center flex-shrink-0 border border-gray-300`}>
+          <FiUser className="w-3.5 h-3.5 text-white" />
         </div>
       )}
     </div>

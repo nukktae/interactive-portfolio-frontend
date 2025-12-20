@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 
 export default function HeroSection() {
   
@@ -32,6 +33,22 @@ export default function HeroSection() {
             <p className="text-2xl md:text-3xl font-semibold text-foreground">Hello, I'm Anu Bilegdemberel</p>
             <p className="text-xl md:text-2xl text-foreground/80">Product Engineer (Full-Stack & Design)</p>
           </div>
+        </motion.div>
+
+        {/* Arrow Icon */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="flex justify-center w-full mt-8 mb-12"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="flex items-center justify-center"
+          >
+            <ArrowDown className="w-6 h-6 text-foreground/60" />
+          </motion.div>
         </motion.div>
       </div>
     </section>

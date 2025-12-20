@@ -7,9 +7,6 @@ import { chatService } from '@/services/api';
 import { ChatMessage } from './ChatMessage';
 import type { ChatMessage as ChatMessageType } from '@/types/chat';
 import { IoSend } from 'react-icons/io5';
-import { RiRobot2Line } from 'react-icons/ri';
-import { FiUser } from 'react-icons/fi';
-import { IoIosArrowUp } from 'react-icons/io';
 
 const FOLLOW_UP_QUESTIONS = {
   technical: [
@@ -72,16 +69,13 @@ const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string):
 const getPersonalizedGreeting = (userType: string) => {
   const greetings = {
     recruiter: {
-      message: `Hello! Ask about technical expertise, project impact, or team collaboration.`,
-      bg: 'bg-gray-50'
+      message: `Hello! Ask about technical expertise, project impact, or team collaboration.`
     },
     visitor: {
-      message: `Hello! Ask about solutions built, tech stack, or development experience.`,
-      bg: 'bg-gray-50'
+      message: `Hello! Ask about solutions built, tech stack, or development experience.`
     },
     friend: {
-      message: `Hey! Ask about projects, journey, or innovation.`,
-      bg: 'bg-gray-50'
+      message: `Hey! Ask about projects, journey, or innovation.`
     }
   };
 
@@ -116,8 +110,6 @@ export const ChatInterface = () => {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [showSuggestions, setShowSuggestions] = useState(true);
-  const [selectedEmoji, setSelectedEmoji] = useState('🤖');
-  const [selectedBg, setSelectedBg] = useState('bg-blue-500');
   const [storedPrompt, setStoredPrompt] = useState('');
   const [followUpQuestions, setFollowUpQuestions] = useState<string[]>([]);
   const [initialQuestions, setInitialQuestions] = useState<string[]>([]);
@@ -128,7 +120,7 @@ export const ChatInterface = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const userType = localStorage.getItem('userType') || 'visitor';
-      const { message, bg } = getPersonalizedGreeting(userType);
+      const { message } = getPersonalizedGreeting(userType);
       const questions = getInitialQuestions(userType);
       
       const initialMessage: ChatMessageType = {
@@ -139,7 +131,6 @@ export const ChatInterface = () => {
       };
       
       setMessages([initialMessage]);
-      setSelectedBg(bg);
       setInitialQuestions(questions);
 
       // Reset scroll position of the entire window
@@ -245,7 +236,7 @@ export const ChatInterface = () => {
             <ChatMessage
               key={message.id}
               message={message}
-              avatarBg={message.sender === 'bot' ? 'bg-black' : 'bg-yellow-400'}
+              avatarBg={message.sender === 'bot' ? 'bg-black' : 'bg-gray-800'}
             />
           ))}
         </AnimatePresence>
@@ -259,8 +250,8 @@ export const ChatInterface = () => {
             {initialQuestions.map((question, index) => (
               <button
                 key={index}
-                className="p-3 text-left rounded-lg bg-gray-50 hover:bg-gray-100 
-                         text-gray-700 hover:text-gray-900
+                className="p-3 text-left rounded-lg bg-gray-50 hover:bg-gray-200 
+                         text-gray-800 hover:text-black border border-gray-200
                          transition-colors duration-150 text-sm"
                 onClick={() => {
                   setInput(question);
@@ -277,7 +268,7 @@ export const ChatInterface = () => {
 
       {followUpQuestions.length > 0 && (
         <motion.div 
-          className="px-4 py-3 border-t border-gray-100"
+          className="px-4 py-3 border-t border-gray-200"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -285,8 +276,8 @@ export const ChatInterface = () => {
             {followUpQuestions.map((question, index) => (
               <button
                 key={index}
-                className="px-3 py-1.5 text-xs rounded-md bg-gray-50 hover:bg-black
-                         text-gray-600 hover:text-white
+                className="px-3 py-1.5 text-xs rounded-md bg-white hover:bg-black
+                         text-gray-700 hover:text-white border border-gray-300 hover:border-black
                          transition-colors duration-150"
                 onClick={() => {
                   setInput(question);
@@ -302,7 +293,7 @@ export const ChatInterface = () => {
 
       <form 
         onSubmit={handleSubmit}
-        className="p-4 border-t border-gray-100"
+        className="p-4 border-t border-gray-200"
       >
         <div className="relative flex items-center">
           <input
@@ -310,8 +301,8 @@ export const ChatInterface = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about Anu's experience..."
-            className="w-full px-4 py-2.5 bg-black rounded-lg border-0
-                     text-white text-sm focus:outline-none
+            className="w-full px-4 py-2.5 bg-white rounded-lg border border-gray-300
+                     text-black text-sm focus:outline-none focus:border-black
                      transition-all duration-200 placeholder:text-gray-500"
           />
           <button
