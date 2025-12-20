@@ -264,10 +264,17 @@ function AnalyticsContent() {
                       <div>
                         <span className="text-white/50">IP: </span>
                         <span className="font-mono text-white/70">{visit.ip || 'Unknown'}</span>
+                        {(visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.')) && (
+                          <span className="ml-2 text-white/30 text-xs">(Localhost)</span>
+                        )}
                       </div>
                       <div>
                         {visit.city && `${visit.city}, `}
-                        {visit.country || 'Unknown Location'}
+                        {visit.country || (
+                          (visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.'))
+                            ? 'Localhost (cannot geolocate)'
+                            : 'Unknown Location'
+                        )}
                         {visit.referrer && visit.referrer !== 'direct' && (() => {
                           try {
                             const url = new URL(visit.referrer);

@@ -1,50 +1,25 @@
 import type { VisitData, AnalyticsInsights } from '@/types/analytics';
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import { analyticsStorage } from './storage';
 
-// Use /tmp on Vercel (serverless), otherwise use ./data
-const DATA_DIR = process.env.VERCEL 
-  ? '/tmp/portfolio-analytics' 
-  : join(process.cwd(), 'data');
-const ANALYTICS_FILE = join(DATA_DIR, 'analytics.json');
-
-// Ensure data directory exists
-async function ensureDataDir() {
-  if (!existsSync(DATA_DIR)) {
-    await mkdir(DATA_DIR, { recursive: true });
-  }
-}
-
-// Load analytics data from file
+// Load analytics data
 async function loadAnalytics(): Promise<VisitData[]> {
   try {
-    await ensureDataDir();
-    if (!existsSync(ANALYTICS_FILE)) {
-      console.log('Analytics file does not exist, returning empty array');
-      return [];
-    }
-    const data = await readFile(ANALYTICS_FILE, 'utf-8');
-    const parsed = JSON.parse(data);
-    console.log(`Loaded ${parsed.length} analytics entries from ${ANALYTICS_FILE}`);
-    return parsed;
+    const data = await analyticsStorage.get<VisitData>();
+    console.log(`Loaded ${data.length} analytics entries`);
+    return data;
   } catch (error) {
     console.error('Error loading analytics:', error);
-    console.error('File path:', ANALYTICS_FILE);
     return [];
   }
 }
 
-// Save analytics data to file
+// Save analytics data
 async function saveAnalytics(visits: VisitData[]): Promise<void> {
   try {
-    await ensureDataDir();
-    await writeFile(ANALYTICS_FILE, JSON.stringify(visits, null, 2), 'utf-8');
-    console.log(`Saved ${visits.length} analytics entries to ${ANALYTICS_FILE}`);
+    await analyticsStorage.set(visits);
+    console.log(`Saved ${visits.length} analytics entries`);
   } catch (error) {
     console.error('Error saving analytics:', error);
-    console.error('File path:', ANALYTICS_FILE);
-    console.error('Data dir exists:', existsSync(DATA_DIR));
     throw error;
   }
 }
@@ -77,8 +52,18 @@ async function getGeolocation(ip: string): Promise<{
   latitude?: number;
   longitude?: number;
 }> {
-  // Skip for localhost/private IPs - these will rely on browser geolocation
-  if (ip === 'unknown' || ip.startsWith('127.') || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
+  // Skip for localhost/private IPs - these cannot be geolocated
+  if (ip === 'unknown' || 
+      ip === '::1' || 
+      ip === '127.0.0.1' ||
+      ip.startsWith('127.') || 
+      ip.startsWith('192.168.') || 
+      ip.startsWith('10.') || 
+      ip.startsWith('172.') ||
+      ip.startsWith('::ffff:127.') || // IPv4-mapped IPv6 localhost
+      ip.startsWith('::ffff:192.168.') ||
+      ip.startsWith('::ffff:10.') ||
+      ip.startsWith('::ffff:172.')) {
     return {};
   }
 
@@ -201,7 +186,7 @@ export async function addVisit(
   
   visits.push(visit);
   
-  // Keep only last 10,000 visits to prevent file from growing too large
+  // Keep only last 10,000 visits to prevent storage from growing too large
   const trimmedVisits = visits.slice(-10000);
   
   await saveAnalytics(trimmedVisits);

@@ -1,39 +1,21 @@
 import type { ChatLogEntry, ChatLogInsights } from '@/types/chatLog';
-import { readFile, writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
 import { getClientIP } from './analytics';
+import { chatLogStorage } from './storage';
 
-const DATA_DIR = join(process.cwd(), 'data');
-const CHAT_LOG_FILE = join(DATA_DIR, 'chat-logs.json');
-
-// Ensure data directory exists
-async function ensureDataDir() {
-  if (!existsSync(DATA_DIR)) {
-    await mkdir(DATA_DIR, { recursive: true });
-  }
-}
-
-// Load chat logs from file
+// Load chat logs
 async function loadChatLogs(): Promise<ChatLogEntry[]> {
   try {
-    await ensureDataDir();
-    if (!existsSync(CHAT_LOG_FILE)) {
-      return [];
-    }
-    const data = await readFile(CHAT_LOG_FILE, 'utf-8');
-    return JSON.parse(data);
+    return await chatLogStorage.get<ChatLogEntry>();
   } catch (error) {
     console.error('Error loading chat logs:', error);
     return [];
   }
 }
 
-// Save chat logs to file
+// Save chat logs
 async function saveChatLogs(logs: ChatLogEntry[]): Promise<void> {
   try {
-    await ensureDataDir();
-    await writeFile(CHAT_LOG_FILE, JSON.stringify(logs, null, 2), 'utf-8');
+    await chatLogStorage.set(logs);
   } catch (error) {
     console.error('Error saving chat logs:', error);
     throw error;
