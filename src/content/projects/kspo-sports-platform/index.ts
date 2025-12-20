@@ -85,7 +85,7 @@ function buildKspoSportsPlatformContent(lang: 'en' | 'ko'): ProjectDetailContent
               title: item.title,
               description: item.description,
               features: item.features,
-              userFlows: item.userFlows?.map(flow => ({
+              userFlows: (item.userFlows || []).map((flow: any) => ({
                 name: flow.name,
                 description: flow.description,
                 steps: flow.steps,
@@ -97,16 +97,16 @@ function buildKspoSportsPlatformContent(lang: 'en' | 'ko'): ProjectDetailContent
           return {
             id: section.id,
             type: section.type,
-            items: content.designSystem.items.map((item, idx) => ({
+            items: (content.designSystem.items || []).map((item: any, idx: number) => ({
               title: item.title,
               type: item.type as 'colors' | 'components',
               content: {
-                colors: item.type === 'colors' ? structure.designSystemColors.map((color, colorIdx) => ({
+                colors: item.type === 'colors' ? (structure.designSystemColors || []).map((color: any, colorIdx: number) => ({
                   name: color.name,
                   hex: color.hex,
                   usage: item.colorUsages?.[colorIdx]?.usage || ''
                 })) : undefined,
-                components: item.type === 'components' ? item.components.map(comp => ({
+                components: item.type === 'components' ? (item.components || []).map((comp: any) => ({
                   title: comp.title,
                   description: comp.description,
                   icon: getIcon((structure.iconMappings.designSystem as Record<string, string>)[comp.iconKey || comp.title])
@@ -118,10 +118,10 @@ function buildKspoSportsPlatformContent(lang: 'en' | 'ko'): ProjectDetailContent
           return {
             id: section.id,
             type: section.type,
-            categories: content.systemArchitecture.categories.map(cat => ({
+            categories: (content.systemArchitecture.categories || []).map((cat: any) => ({
               title: cat.title,
               icon: getIcon((structure.iconMappings.systemArchitecture as Record<string, string>)[cat.iconKey || cat.title]),
-              items: cat.items
+              items: cat.items || []
             }))
           };
         case 'key-features':
@@ -129,15 +129,15 @@ function buildKspoSportsPlatformContent(lang: 'en' | 'ko'): ProjectDetailContent
             id: section.id,
             type: section.type,
             metrics: content.keyFeatures.metrics,
-            userFeatures: content.keyFeatures.userFeatures.map(feature => ({
+            userFeatures: (content.keyFeatures.userFeatures || []).map((feature: any) => ({
               title: feature.title,
               icon: getIcon((structure.iconMappings.keyFeatures as Record<string, string>)[feature.iconKey || feature.title]),
-              items: feature.items
+              items: feature.items || []
             })),
-            engineeringFeatures: content.keyFeatures.engineeringFeatures.map(feature => ({
+            engineeringFeatures: (content.keyFeatures.engineeringFeatures || []).map((feature: any) => ({
               title: feature.title,
               icon: getIcon((structure.iconMappings.keyFeatures as Record<string, string>)[feature.iconKey || feature.title]),
-              items: feature.items
+              items: feature.items || []
             }))
           };
         case 'challenges':
