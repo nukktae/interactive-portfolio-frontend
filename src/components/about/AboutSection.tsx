@@ -3,10 +3,12 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-24 md:py-32 relative z-10" ref={ref}>
@@ -20,23 +22,23 @@ export default function AboutSection() {
             className="space-y-12"
           >
             <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">
-              ABOUT ME
+              {t('about.title')}
             </div>
 
             <div className="space-y-8">
               <div>
                 <div className="text-6xl md:text-7xl font-black text-foreground mb-2">3+</div>
-                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">YEARS EXPERIENCE</div>
+                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.yearsExperience')}</div>
               </div>
               
               <div>
                 <div className="text-6xl md:text-7xl font-black text-foreground mb-2">2+</div>
-                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">COMPANIES WORKED WITH</div>
+                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.companiesWorked')}</div>
               </div>
               
               <div>
                 <div className="text-6xl md:text-7xl font-black text-foreground mb-2">20+</div>
-                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">PROJECTS COMPLETED</div>
+                <div className="text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.projectsCompleted')}</div>
               </div>
             </div>
           </motion.div>
@@ -49,9 +51,9 @@ export default function AboutSection() {
             className="space-y-8"
           >
             <h2 className="text-5xl md:text-6xl font-black leading-tight text-foreground">
-              FROM BACKEND TO
+              {t('about.headline')}
               <span className="relative ml-4">
-                DESIGN
+                {t('about.headlineHighlight')}
                 <motion.div
                   className="absolute -bottom-1 left-0 w-full h-2 bg-foreground/30"
                   initial={{ scaleX: 0 }}
@@ -64,11 +66,11 @@ export default function AboutSection() {
 
             <div className="space-y-6 text-lg leading-relaxed text-foreground/80">
               <p>
-                Started in backend development, discovered my passion for creating beautiful, user-centered experiences.
+                {t('about.story1')}
               </p>
               
               <p>
-                Now I bridge design and development to deliver exceptional digital solutions.
+                {t('about.story2')}
               </p>
             </div>
 
@@ -79,8 +81,8 @@ export default function AboutSection() {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <div className="bg-foreground/10 dark:bg-white/10 backdrop-blur-sm border border-border text-foreground px-6 py-4 inline-block rounded-lg">
-                <div className="text-sm font-bold tracking-widest uppercase text-foreground/60">CURRENTLY</div>
-                <div className="font-bold text-foreground">UI/UX Designer and Frontend Developer at Bestia Group LLC.</div>
+                <div className="text-sm font-bold tracking-widest uppercase text-foreground/60">{t('about.currently')}</div>
+                <div className="font-bold text-foreground">{t('about.currentRole')}</div>
               </div>
             </motion.div>
           </motion.div>

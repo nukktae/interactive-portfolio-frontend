@@ -8,11 +8,13 @@ import { ImageWithFallback } from '../ui/ImageWithFallback';
 import { workExperience, type WorkExperienceProject } from '../../data/workExperience';
 import { competitionsProjects, type CompetitionProject } from '../../data/competitionsProjects';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ProjectsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
   const { theme } = useTheme();
+  const { t, language } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -90,7 +92,7 @@ export default function ProjectsSection() {
                     : 'bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white shadow-[0_10px_25px_-12px_rgba(59,130,246,0.55)] hover:brightness-110 border border-white/30'
                 }`}
               >
-                <span className="text-sm font-medium">Visit Site</span>
+                <span className="text-sm font-medium">{t('projects.visitSite')}</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             )}
@@ -116,7 +118,7 @@ export default function ProjectsSection() {
         <div className="flex items-center justify-between">
           <div>
             <div className="text-section-title text-foreground/60 mb-2">
-              {project.period} • {project.role}
+              {project.period} • {language === 'ko' && 'roleKo' in project && project.roleKo ? project.roleKo : project.role}
             </div>
             <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
               {project.title}
@@ -126,7 +128,7 @@ export default function ProjectsSection() {
         </div>
 
         <p className="text-lg text-foreground/80 leading-relaxed max-w-lg">
-          {project.description}
+          {language === 'ko' && 'descriptionKo' in project && project.descriptionKo ? project.descriptionKo : project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
@@ -155,10 +157,10 @@ export default function ProjectsSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="text-section-title text-foreground/60 mb-4">
-              PROFESSIONAL EXPERIENCE
+              {t('projects.workExperienceLabel')}
             </div>
             <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-foreground">
-              Work Experience
+              {t('projects.workExperience')}
             </h3>
           </motion.div>
 
@@ -176,10 +178,10 @@ export default function ProjectsSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="text-section-title text-foreground/60 mb-4">
-              PERSONAL PROJECTS & COMPETITIONS
+              {t('projects.competitionsLabel')}
             </div>
             <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-foreground">
-              Competitions & Projects
+              {t('projects.competitions')}
             </h3>
           </motion.div>
 
@@ -201,7 +203,7 @@ export default function ProjectsSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-4 text-lg font-medium text-foreground/80 hover:text-foreground border-b-2 border-transparent hover:border-foreground/30 transition-colors duration-300 group"
           >
-            <span>VIEW ALL PROJECTS</span>
+            <span>{t('projects.viewAll')}</span>
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </a>
         </motion.div>

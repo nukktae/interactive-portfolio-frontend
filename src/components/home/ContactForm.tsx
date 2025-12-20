@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight, Download } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactForm() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
+  const { t } = useLanguage();
 
   return (
     <section id="contact" className="relative z-10 py-24 md:py-32" ref={ref}>
@@ -20,11 +22,10 @@ export default function ContactForm() {
             className="mb-12"
           >
             <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
-              LET'S TALK
+              {t('contact.heading')}
             </div>
-            <h2 className="text-6xl md:text-8xl font-black leading-none mb-8 text-foreground">
-              READY TO<br />
-              CREATE?
+            <h2 className="text-6xl md:text-8xl font-black leading-none mb-8 text-foreground whitespace-pre-line">
+              {t('contact.title')}
             </h2>
           </motion.div>
 
@@ -35,8 +36,7 @@ export default function ContactForm() {
             className="space-y-8"
           >
             <p className="text-xl max-w-2xl mx-auto text-foreground/80">
-              Have a project in mind? Let's discuss how we can bring your ideas to life.
-              I'm always excited to work on new challenges.
+              {t('contact.description')}
             </p>
 
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
@@ -56,7 +56,7 @@ export default function ContactForm() {
                 className="group inline-flex items-center justify-center gap-2 rounded-lg px-6 md:px-7 py-3 border-[1.25px] border-border bg-foreground/10 dark:bg-white/10 backdrop-blur-sm text-foreground text-sm font-medium hover:bg-foreground/15 dark:hover:bg-white/15 transition-all duration-300"
               >
                 <Download className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
-                Download Resume
+                {t('contact.downloadResume')}
               </a>
             </div>
 
@@ -68,7 +68,7 @@ export default function ContactForm() {
                   rel="noopener noreferrer"
                   className="text-sm font-bold tracking-widest uppercase hover:text-foreground transition-colors duration-300"
                 >
-                  GITHUB
+                  {t('contact.github')}
                 </a>
                 <a
                   href="https://www.linkedin.com/in/anu-bilegdemberel-445366318"
@@ -76,10 +76,10 @@ export default function ContactForm() {
                   rel="noopener noreferrer"
                   className="text-sm font-bold tracking-widest uppercase hover:text-foreground transition-colors duration-300"
                 >
-                  LINKEDIN
+                  {t('contact.linkedin')}
                 </a>
                 <div className="text-sm font-bold tracking-widest uppercase">
-                  AVAILABLE FOR WORK
+                  {t('contact.available')}
                 </div>
               </div>
             </div>

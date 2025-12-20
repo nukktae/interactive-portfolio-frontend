@@ -15,6 +15,7 @@ import type { UserRole } from '@/types/role';
 import { createDefaultContext, updateContextAfterInteraction, type SessionContext } from '@/services/contextMemory';
 import { ContextPanel } from './ContextPanel';
 import { ProjectKnowledge } from '@/types/knowledge';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const FOLLOW_UP_QUESTIONS = {
   technical: [
@@ -74,45 +75,72 @@ const getFollowUpQuestions = (previousQuestion: string, previousAnswer: string):
     .slice(0, 2);
 };
 
-const getPersonalizedGreeting = (userType: string) => {
+const getPersonalizedGreeting = (userType: string, lang: 'en' | 'ko' = 'en') => {
   const greetings = {
     recruiter: {
-      message: `Hello! Ask about technical expertise, project impact, or team collaboration.`
+      en: `Hello! Ask about technical expertise, project impact, or team collaboration.`,
+      ko: `안녕하세요! 기술 전문성, 프로젝트 영향력 또는 팀 협업에 대해 물어보세요.`
     },
     visitor: {
-      message: `Hello! Ask about solutions built, tech stack, or development experience.`
+      en: `Hello! Ask about solutions built, tech stack, or development experience.`,
+      ko: `안녕하세요! 구축한 솔루션, 기술 스택 또는 개발 경험에 대해 물어보세요.`
     },
     friend: {
-      message: `Hey! Ask about projects, journey, or innovation.`
+      en: `Hey! Ask about projects, journey, or innovation.`,
+      ko: `안녕! 프로젝트, 여정 또는 혁신에 대해 물어보세요.`
     }
   };
 
-  return greetings[userType as keyof typeof greetings] || greetings.visitor;
+  const greetingSet = greetings[userType as keyof typeof greetings] || greetings.visitor;
+  return { message: greetingSet[lang] };
 };
 
-const getInitialQuestions = (userType: string) => {
+const getInitialQuestions = (userType: string, lang: 'en' | 'ko' = 'en') => {
   const questions = {
-    recruiter: [
-      "What are Anu's key achievements in full-stack development?",
-      "How does Anu approach complex technical challenges?",
-      "What's Anu's experience with scalable system architecture?"
-    ],
-    visitor: [
-      "What innovative solutions has Anu developed?",
-      "Tell me about the Rootin project architecture",
-      "How does Anu handle system optimization?"
-    ],
-    friend: [
-      "What's Anu's most impactful project?",
-      "How does Anu approach technical leadership?",
-      "What's Anu's expertise in cloud solutions?"
-    ]
+    recruiter: {
+      en: [
+        "What are Anu's key achievements in full-stack development?",
+        "How does Anu approach complex technical challenges?",
+        "What's Anu's experience with scalable system architecture?"
+      ],
+      ko: [
+        "아노의 풀스택 개발 주요 성과는 무엇인가요?",
+        "아노는 복잡한 기술적 도전을 어떻게 접근하나요?",
+        "아노의 확장 가능한 시스템 아키텍처 경험은 무엇인가요?"
+      ]
+    },
+    visitor: {
+      en: [
+        "What innovative solutions has Anu developed?",
+        "Tell me about the Rootin project architecture",
+        "How does Anu handle system optimization?"
+      ],
+      ko: [
+        "아노가 개발한 혁신적인 솔루션은 무엇인가요?",
+        "Rootin 프로젝트 아키텍처에 대해 알려주세요",
+        "아노는 시스템 최적화를 어떻게 처리하나요?"
+      ]
+    },
+    friend: {
+      en: [
+        "What's Anu's most impactful project?",
+        "How does Anu approach technical leadership?",
+        "What's Anu's expertise in cloud solutions?"
+      ],
+      ko: [
+        "아노의 가장 영향력 있는 프로젝트는 무엇인가요?",
+        "아노는 기술 리더십을 어떻게 접근하나요?",
+        "아노의 클라우드 솔루션 전문성은 무엇인가요?"
+      ]
+    }
   };
 
-  return questions[userType as keyof typeof questions] || questions.visitor;
+  const questionSet = questions[userType as keyof typeof questions] || questions.visitor;
+  return questionSet[lang];
 };
 
 export const ChatInterface = () => {
+  const { language, t } = useLanguage();
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -140,11 +168,11 @@ export const ChatInterface = () => {
     // This allows entry prompts to be the first thing users see
     if (typeof window !== 'undefined') {
       const userType = localStorage.getItem('userType') || 'visitor';
-      const questions = getInitialQuestions(userType);
+      const questions = getInitialQuestions(userType, language);
       setInitialQuestions(questions);
       window.scrollTo(0, 0);
     }
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (storedPrompt) {
@@ -199,11 +227,11 @@ export const ChatInterface = () => {
     setHasInteracted(true);
     setShowSuggestions(false);
     
-    // Create a user message based on intent
+    // Create a user message based on intent and language
     const promptMessages = {
-      hire: "Looking to hire?",
-      explore: "Want to explore my work?",
-      browse: "Just browsing?"
+      hire: language === 'ko' ? "채용을 고려 중이신가요?" : "Looking to hire?",
+      explore: language === 'ko' ? "제 작업을 탐색해보시겠어요?" : "Want to explore my work?",
+      browse: language === 'ko' ? "그냥 둘러보는 중이신가요?" : "Just browsing?"
     };
     
     const userMessage: ChatMessageType = {
@@ -247,12 +275,15 @@ export const ChatInterface = () => {
           founder_pm: 0.2,
           casual: intent === 'browse' ? 0.8 : 0.2
         },
-        sessionContext
+        sessionContext,
+        language
       );
       
       const replyContent = typeof response === 'string' 
         ? response 
-        : (response.reply || "I apologize, but I received an empty response. Please try again.");
+        : (response.reply || (language === 'ko' 
+          ? "죄송합니다. 빈 응답을 받았습니다. 다시 시도해주세요." 
+          : "I apologize, but I received an empty response. Please try again."));
       
       const botMessage: ChatMessageType = {
         id: uuidv4(),
@@ -268,27 +299,50 @@ export const ChatInterface = () => {
         setSessionContext(response.sessionContext);
       }
       
-      // Generate follow-up suggestions based on intent
+      // Generate follow-up suggestions based on intent and language
       const followUpChips = {
-        hire: [
-          { label: 'Quick overview', query: 'Give me a quick overview of your experience' },
-          { label: 'Relevant projects', query: 'Show me projects relevant for frontend roles' },
-          { label: 'Role fit', query: 'What roles are you best suited for?' }
-        ],
-        explore: [
-          { label: 'Visual projects', query: 'Show me your visual design work' },
-          { label: 'Technical depth', query: 'Show me your most technical project' },
-          { label: 'Case studies', query: 'Show me a detailed case study' }
-        ],
-        browse: [
-          { label: 'Show highlights', query: 'Show me your best work' },
-          { label: 'What I do', query: 'What do you do?' },
-          { label: 'Surprise me', query: 'Show me something interesting' }
-        ]
+        hire: {
+          en: [
+            { label: 'Quick overview', query: 'Give me a quick overview of your experience' },
+            { label: 'Relevant projects', query: 'Show me projects relevant for frontend roles' },
+            { label: 'Role fit', query: 'What roles are you best suited for?' }
+          ],
+          ko: [
+            { label: '빠른 개요', query: '경험에 대한 빠른 개요를 알려주세요' },
+            { label: '관련 프로젝트', query: '프론트엔드 역할에 관련된 프로젝트를 보여주세요' },
+            { label: '역할 적합성', query: '어떤 역할에 가장 적합한가요?' }
+          ]
+        },
+        explore: {
+          en: [
+            { label: 'Visual projects', query: 'Show me your visual design work' },
+            { label: 'Technical depth', query: 'Show me your most technical project' },
+            { label: 'Case studies', query: 'Show me a detailed case study' }
+          ],
+          ko: [
+            { label: '시각적 프로젝트', query: '시각 디자인 작업을 보여주세요' },
+            { label: '기술적 깊이', query: '가장 기술적인 프로젝트를 보여주세요' },
+            { label: '사례 연구', query: '상세한 사례 연구를 보여주세요' }
+          ]
+        },
+        browse: {
+          en: [
+            { label: 'Show highlights', query: 'Show me your best work' },
+            { label: 'What I do', query: 'What do you do?' },
+            { label: 'Surprise me', query: 'Show me something interesting' }
+          ],
+          ko: [
+            { label: '하이라이트 보기', query: '최고의 작업을 보여주세요' },
+            { label: '무엇을 하나요', query: '무엇을 하시나요?' },
+            { label: '놀라워해요', query: '흥미로운 것을 보여주세요' }
+          ]
+        }
       };
       
+      const chips = followUpChips[intent][language];
+      
       // Convert to follow-up suggestions format
-      const smartSuggestions = followUpChips[intent].map((item) => ({
+      const smartSuggestions = chips.map((item) => ({
         label: item.label,
         query: item.query,
         type: 'explore' as const,
@@ -300,7 +354,9 @@ export const ChatInterface = () => {
       console.error('Chat error:', error);
       const errorMessage: ChatMessageType = {
         id: uuidv4(),
-        content: error.message || "I apologize, but I'm having trouble connecting right now. Please try again in a moment.",
+        content: error.message || (language === 'ko' 
+          ? "죄송합니다. 지금 연결에 문제가 있습니다. 잠시 후 다시 시도해주세요." 
+          : "I apologize, but I'm having trouble connecting right now. Please try again in a moment."),
         sender: 'bot',
         timestamp: new Date()
       };
@@ -352,14 +408,17 @@ export const ChatInterface = () => {
           founder_pm: roleConfidence,
           casual: roleConfidence
         },
-        sessionContext
+        sessionContext,
+        language
       );
       console.log('Chat response:', response);
       
       // Handle both old format (string) and new format (object with reply property)
       const replyContent = typeof response === 'string' 
         ? response 
-        : (response.reply || "I apologize, but I received an empty response. Please try again.");
+        : (response.reply || (language === 'ko' 
+          ? "죄송합니다. 빈 응답을 받았습니다. 다시 시도해주세요." 
+          : "I apologize, but I received an empty response. Please try again."));
       
       // Update role detection if available
       if (typeof response === 'object' && response.roleDetection) {
@@ -439,7 +498,9 @@ export const ChatInterface = () => {
       console.error('Chat error:', error);
       const errorMessage: ChatMessageType = {
         id: uuidv4(),
-        content: error.message || "I apologize, but I'm having trouble connecting right now. Please try again in a moment.",
+        content: error.message || (language === 'ko' 
+          ? "죄송합니다. 지금 연결에 문제가 있습니다. 잠시 후 다시 시도해주세요." 
+          : "I apologize, but I'm having trouble connecting right now. Please try again in a moment."),
         sender: 'bot',
         timestamp: new Date()
       };
@@ -496,7 +557,7 @@ export const ChatInterface = () => {
                          focus:outline-none relative group"
               >
                 <span className="relative">
-                  Looking to hire?
+                  {language === 'ko' ? "채용을 고려 중이신가요?" : "Looking to hire?"}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-400 group-hover:w-full transition-all duration-200"></span>
                 </span>
               </button>
@@ -507,7 +568,7 @@ export const ChatInterface = () => {
                          focus:outline-none relative group"
               >
                 <span className="relative">
-                  Want to explore my work?
+                  {language === 'ko' ? "제 작업을 탐색해보시겠어요?" : "Want to explore my work?"}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-400 group-hover:w-full transition-all duration-200"></span>
                 </span>
               </button>
@@ -518,7 +579,7 @@ export const ChatInterface = () => {
                          focus:outline-none relative group"
               >
                 <span className="relative">
-                  Just browsing?
+                  {language === 'ko' ? "그냥 둘러보는 중이신가요?" : "Just browsing?"}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-400 group-hover:w-full transition-all duration-200"></span>
                 </span>
               </button>
@@ -637,7 +698,7 @@ export const ChatInterface = () => {
                   handleSubmit(e as any);
                 }
               }}
-              placeholder="Ask about a project"
+              placeholder={language === 'ko' ? "프로젝트에 대해 물어보세요" : "Ask about a project"}
               rows={1}
               className="w-full px-4 py-3 bg-white rounded-lg border border-gray-200
                        text-gray-900 text-sm focus:outline-none focus:border-gray-400

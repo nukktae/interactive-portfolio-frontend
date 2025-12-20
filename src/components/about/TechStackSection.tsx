@@ -4,31 +4,33 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Palette, Code, Database, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function TechStackSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
+  const { t } = useLanguage();
 
   const services = [
     {
       icon: <Palette className="w-8 h-8" />,
-      title: "BRANDING",
-      description: "Unique identity that makes brands memorable"
+      title: t('techStack.branding'),
+      description: t('techStack.brandingDesc')
     },
     {
       icon: <Code className="w-8 h-8" />,
-      title: "DESIGN",
-      description: "Beautiful interfaces that work perfectly"
+      title: t('techStack.design'),
+      description: t('techStack.designDesc')
     },
     {
       icon: <Database className="w-8 h-8" />,
-      title: "DEVELOPMENT",
-      description: "Concepts into powerful digital experiences"
+      title: t('techStack.development'),
+      description: t('techStack.developmentDesc')
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
-      title: "INNOVATION",
-      description: "Interactive elements that engage users"
+      title: t('techStack.innovation'),
+      description: t('techStack.innovationDesc')
     }
   ];
 
@@ -54,11 +56,10 @@ export default function TechStackSection() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
-                MY SERVICES
+                {t('techStack.services')}
               </div>
-              <h2 className="text-5xl md:text-6xl font-black text-foreground leading-none">
-                I CAN HELP<br />
-                YOU WITH
+              <h2 className="text-5xl md:text-6xl font-black text-foreground leading-none whitespace-pre-line">
+                {t('techStack.title')}
               </h2>
             </motion.div>
 

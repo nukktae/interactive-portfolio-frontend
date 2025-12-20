@@ -7,9 +7,11 @@ import Navbar from '@/components/layout/Navbar';
 import SpaceBackground from '@/components/visuals/SpaceBackground';
 import LightBackground from '@/components/visuals/LightBackground';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function BookACallPage() {
   const { theme } = useTheme();
+  const { t, language } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedTime, setSelectedTime] = useState<string>('');
@@ -40,7 +42,7 @@ export default function BookACallPage() {
     if (timeFormat === '12h') {
       const [hours, minutes] = time.split(':');
       const hour = parseInt(hours);
-      const ampm = hour >= 12 ? 'pm' : 'am';
+      const ampm = hour >= 12 ? (language === 'ko' ? '오후' : 'pm') : (language === 'ko' ? '오전' : 'am');
       const displayHour = hour % 12 || 12;
       return `${displayHour}:${minutes}${ampm}`;
     }
@@ -55,7 +57,7 @@ export default function BookACallPage() {
     e.preventDefault();
     
     if (!name || !email || !selectedTime) {
-      setError('Please fill in all required fields and select a time slot');
+      setError(t('bookCall.errorRequired'));
       return;
     }
 
@@ -82,7 +84,7 @@ export default function BookACallPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to book meeting');
+        throw new Error(data.error || t('bookCall.errorGeneric'));
       }
 
       setIsSuccess(true);
@@ -97,7 +99,7 @@ export default function BookACallPage() {
         setIsSuccess(false);
       }, 5000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred. Please try again.');
+      setError(err instanceof Error ? err.message : t('bookCall.errorGeneric'));
     } finally {
       setIsSubmitting(false);
     }
@@ -151,11 +153,11 @@ export default function BookACallPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <div className="text-section-title text-foreground/60 mb-4">CONTACT</div>
+            <div className="text-section-title text-foreground/60 mb-4">{t('bookCall.contact')}</div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8">
-              Let's Get{' '}
+              {t('bookCall.title')}{' '}
               <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
-                In Touch
+                {t('bookCall.titleHighlight')}
               </span>
             </h1>
             
@@ -183,22 +185,22 @@ export default function BookACallPage() {
                 <span className="text-foreground font-medium">Anu Bilegdemberel</span>
               </div>
               
-              <h2 className="text-2xl font-bold text-foreground">30 Min Meeting</h2>
+              <h2 className="text-2xl font-bold text-foreground">{t('bookCall.meetingTitle')}</h2>
               
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-foreground/70">
                   <Check className="w-4 h-4" />
-                  <span className="text-sm">Requires confirmation</span>
+                  <span className="text-sm">{t('bookCall.requiresConfirmation')}</span>
                 </div>
                 
                 <div className="flex items-center gap-2 text-foreground/70">
                   <Clock className="w-4 h-4" />
-                  <span className="text-sm">30m</span>
+                  <span className="text-sm">{t('bookCall.duration')}</span>
                 </div>
                 
                 <div className="flex items-center gap-2 text-foreground/70">
                   <Video className="w-4 h-4" />
-                  <span className="text-sm">Google Meet</span>
+                  <span className="text-sm">{t('bookCall.videoPlatform')}</span>
                 </div>
                 
                 <div className="flex items-center gap-2 text-foreground/70">
@@ -228,7 +230,7 @@ export default function BookACallPage() {
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <h3 className="text-foreground font-semibold">
-                  {selectedDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                  {selectedDate.toLocaleDateString(language === 'ko' ? 'ko-KR' : 'en-US', { month: 'long', year: 'numeric' })}
                 </h3>
                 <button
                   onClick={() => navigateMonth('next')}
@@ -239,8 +241,8 @@ export default function BookACallPage() {
               </div>
               
               <div className="grid grid-cols-7 gap-2 mb-2">
-                {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day) => (
-                  <div key={day} className="text-center text-xs text-foreground/60 font-medium py-2">
+                {t('bookCall.calendarDays').split(',').map((day, index) => (
+                  <div key={index} className="text-center text-xs text-foreground/60 font-medium py-2">
                     {day}
                   </div>
                 ))}
@@ -255,7 +257,7 @@ export default function BookACallPage() {
             <div className="bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-foreground font-semibold">
-                  {selectedDate.toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' })}
+                  {selectedDate.toLocaleDateString(language === 'ko' ? 'ko-KR' : 'en-US', { weekday: 'short', day: 'numeric' })}
                 </h3>
                 <div className="flex gap-2">
                   <button
@@ -307,7 +309,7 @@ export default function BookACallPage() {
               transition={{ duration: 0.5 }}
               className="mt-12 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-8"
             >
-              <h3 className="text-2xl font-bold text-foreground mb-6">Complete Your Booking</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">{t('bookCall.completeBooking')}</h3>
               
               {isSuccess && (
                 <motion.div
@@ -316,7 +318,7 @@ export default function BookACallPage() {
                   className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center gap-3"
                 >
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <p className="text-green-400">Booking request sent successfully! Check your email for confirmation.</p>
+                  <p className="text-green-400">{t('bookCall.successMessage')}</p>
                 </motion.div>
               )}
 
@@ -334,7 +336,7 @@ export default function BookACallPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground/70 mb-2">
-                      Name <span className="text-red-400">*</span>
+                      {t('bookCall.name')} <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="text"
@@ -343,13 +345,13 @@ export default function BookACallPage() {
                       onChange={(e) => setName(e.target.value)}
                       required
                       className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                      placeholder="Your name"
+                      placeholder={t('bookCall.namePlaceholder')}
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-foreground/70 mb-2">
-                      Email <span className="text-red-400">*</span>
+                      {t('bookCall.email')} <span className="text-red-400">*</span>
                     </label>
                     <input
                       type="email"
@@ -358,14 +360,14 @@ export default function BookACallPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors"
-                      placeholder="your.email@example.com"
+                      placeholder={t('bookCall.emailPlaceholder')}
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground/70 mb-2">
-                    Message (Optional)
+                    {t('bookCall.message')}
                   </label>
                   <textarea
                     id="message"
@@ -373,19 +375,19 @@ export default function BookACallPage() {
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
                     className="w-full px-4 py-3 bg-input border border-border rounded-lg text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
-                    placeholder="Tell me about what you'd like to discuss..."
+                    placeholder={t('bookCall.messagePlaceholder')}
                   />
                 </div>
 
                 <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="text-sm text-foreground/70 mb-2">Selected Meeting Time:</p>
+                  <p className="text-sm text-foreground/70 mb-2">{t('bookCall.selectedTime')}</p>
                   <p className="text-foreground font-medium">
-                    {selectedDate.toLocaleDateString('en-US', { 
+                    {selectedDate.toLocaleDateString(language === 'ko' ? 'ko-KR' : 'en-US', { 
                       weekday: 'long', 
                       year: 'numeric', 
                       month: 'long', 
                       day: 'numeric' 
-                    })} at {formatTime(selectedTime)} ({timezone})
+                    })} {language === 'ko' ? '에' : 'at'} {formatTime(selectedTime)} ({timezone})
                   </p>
                 </div>
 
@@ -397,12 +399,12 @@ export default function BookACallPage() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Submitting...
+                      {t('bookCall.submitting')}
                     </>
                   ) : (
                     <>
                       <Calendar className="w-5 h-5" />
-                      Confirm Booking
+                      {t('bookCall.confirmBooking')}
                     </>
                   )}
                 </button>

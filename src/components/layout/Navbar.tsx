@@ -181,28 +181,38 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="flex items-center gap-3 ml-4">
+              <div className="flex items-center gap-2 ml-4">
                 {/* Theme Toggle */}
                 <motion.button
                   onClick={toggleTheme}
-                  className="h-9 px-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 text-foreground text-sm font-medium hover:border-[#1E40AF] hover:text-[#1E40AF] transition-all duration-200"
+                  className="relative h-8 w-8 rounded-full flex items-center justify-center text-foreground/60 hover:text-foreground transition-all duration-300 group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                   aria-label="Toggle theme"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <Sun className="w-4 h-4" />}
+                  <div className="absolute inset-0 rounded-full bg-foreground/5 dark:bg-white/5 group-hover:bg-foreground/10 dark:group-hover:bg-white/10 transition-all duration-300 backdrop-blur-sm" />
+                  <div className="relative z-10">
+                    {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <Sun className="w-4 h-4" />}
+                  </div>
                 </motion.button>
                 
                 {/* Language Toggle */}
                 <motion.button
                   onClick={toggleLanguage}
-                  className="h-9 px-3 rounded-lg border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 text-foreground text-sm font-medium hover:border-[#1E40AF] hover:text-[#1E40AF] transition-all duration-200"
+                  className="relative h-8 w-8 rounded-full flex items-center justify-center text-foreground/60 hover:text-foreground transition-all duration-300 group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.55 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {language === 'en' ? '한' : 'EN'}
+                  <div className="absolute inset-0 rounded-full bg-foreground/5 dark:bg-white/5 group-hover:bg-foreground/10 dark:group-hover:bg-white/10 transition-all duration-300 backdrop-blur-sm" />
+                  <span className="relative z-10 text-xs font-medium tracking-wide">
+                    {language === 'en' ? '한' : 'EN'}
+                  </span>
                 </motion.button>
                 
                 <motion.button
@@ -289,23 +299,27 @@ export default function Navbar() {
                 ))}
                 
                 <motion.div
-                  className="pt-8 px-6 space-y-4"
+                  className="pt-8 px-6 space-y-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
                 >
                   <button
                     onClick={toggleTheme}
-                    className="w-full px-4 py-2 rounded-lg bg-black/10 dark:bg-white/10 text-foreground text-sm font-medium hover:bg-black/20 dark:hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="relative w-full px-4 py-3 rounded-xl bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:text-foreground text-sm font-medium hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden"
                   >
-                    {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <Sun className="w-4 h-4" />}
-                    <span>{mounted ? (theme === 'dark' ? 'Light Mode' : 'Dark Mode') : 'Light Mode'}</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative z-10 flex items-center gap-2">
+                      {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <Sun className="w-4 h-4" />}
+                      <span>{mounted ? (theme === 'dark' ? 'Light Mode' : 'Dark Mode') : 'Light Mode'}</span>
+                    </div>
                   </button>
                   <button
                     onClick={toggleLanguage}
-                    className="w-full px-4 py-2 rounded-lg bg-black/10 dark:bg-white/10 text-foreground text-sm font-medium hover:bg-black/20 dark:hover:bg-white/20 transition-all duration-300"
+                    className="relative w-full px-4 py-3 rounded-xl bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:text-foreground text-sm font-medium hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300 group overflow-hidden"
                   >
-                    {language === 'en' ? '한국어' : 'English'}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative z-10">{language === 'en' ? '한국어' : 'English'}</span>
                   </button>
                   <button
                     onClick={() => {

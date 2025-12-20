@@ -8,11 +8,13 @@ import TableOfContents from '@/components/projects/TableOfContents';
 import SpaceBackground from '@/components/visuals/SpaceBackground';
 import LightBackground from '@/components/visuals/LightBackground';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { projectSummaries } from '@/data/projectSummaries';
 import { getProjectDetailContent, createDefaultContent, generateSlug } from '@/content/projects';
 
 export default function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { theme } = useTheme();
+  const { language } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const { slug } = use(params);
   const project = projectSummaries.find(
@@ -31,13 +33,13 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
         <Navbar />
         <div className="relative z-10 min-h-screen flex items-center justify-center px-6">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-black text-foreground mb-4">Project Not Found</h1>
-            <p className="text-lg text-foreground/70 mb-8">The project you're looking for doesn't exist.</p>
+            <h1 className="text-4xl md:text-6xl font-black text-foreground mb-4">{language === 'ko' ? '프로젝트를 찾을 수 없습니다' : 'Project Not Found'}</h1>
+            <p className="text-lg text-foreground/70 mb-8">{language === 'ko' ? '찾고 계신 프로젝트가 존재하지 않습니다.' : "The project you're looking for doesn't exist."}</p>
             <a 
               href="/#projects" 
               className="inline-block px-6 py-3 bg-foreground/10 backdrop-blur-sm border border-border text-foreground rounded-lg hover:bg-foreground/20 transition-all duration-300"
             >
-              Back to Projects
+              {language === 'ko' ? '프로젝트로 돌아가기' : 'Back to Projects'}
             </a>
           </div>
         </div>
@@ -45,25 +47,26 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  // Get project detail content or create default
-  const detailContent = getProjectDetailContent(slug) || createDefaultContent(slug, project.title);
+  // Get project detail content or create default (with language support)
+  const detailContent = getProjectDetailContent(slug, language) || createDefaultContent(slug, project.title);
 
   // Generate sidebar navigation based on available sections
   // Concise labels optimized for Korean recruiter scanning (8-10 sections)
+  const { t } = useLanguage();
   const sectionLabels: Record<string, string> = {
-    'overview': 'Overview',
-    'my-role': 'My Role',
-    'problem': 'Problem',
-    'goals': 'Goals',
-    'research': 'Research',
-    'architecture': 'Architecture & Flows',
-    'design-system': 'Design System',
-    'system-architecture': 'System Architecture',
-    'key-features': 'Key Features',
-    'challenges': 'Challenges',
-    'results': 'Results & Impact',
-    'learnings': 'Learnings',
-    'tech-stack': 'Tech Stack'
+    'overview': t('project.overview'),
+    'my-role': t('project.myRole'),
+    'problem': t('project.problem'),
+    'goals': t('project.goals'),
+    'research': t('project.research'),
+    'architecture': t('project.architecture'),
+    'design-system': t('project.designSystem'),
+    'system-architecture': t('project.systemArchitecture'),
+    'key-features': t('project.keyFeatures'),
+    'challenges': t('project.challenges'),
+    'results': t('project.results'),
+    'learnings': t('project.learnings'),
+    'tech-stack': t('project.techStack')
   };
 
   const availableSections = detailContent.sections

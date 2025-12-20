@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import Image from 'next/image';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { useState, useEffect } from 'react';
 
 export default function HeroSection() {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -47,8 +49,9 @@ export default function HeroSection() {
           className="mb-8"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-foreground leading-tight mb-6 text-left" style={{ fontFamily: '"instrument sans"' }}>
-            I help founders turn ideas into seamless{' '}
-            <span className="italic text-left">digital</span> experiences
+            {t('hero.headlinePart1')}{' '}
+            <span className="italic text-left">{t('hero.headlineItalic')}</span>{' '}
+            {t('hero.headlinePart2')}
           </h1>
         </motion.div>
 
@@ -61,8 +64,8 @@ export default function HeroSection() {
           style={{ fontFamily: '"instrument sans"' }}
         >
           <div className="space-y-1 text-left" style={{ fontFamily: '"sans serif"' }}>
-            <p className="text-2xl md:text-3xl font-semibold text-foreground">Hello, I'm Anu Bilegdemberel</p>
-            <p className="text-xl md:text-2xl text-foreground/80">Product Engineer (Full-Stack & Design)</p>
+            <p className="text-2xl md:text-3xl font-semibold text-foreground">{t('hero.greeting')}</p>
+            <p className="text-xl md:text-2xl text-foreground/80">{t('hero.role')}</p>
           </div>
         </motion.div>
 

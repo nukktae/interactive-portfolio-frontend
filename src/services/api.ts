@@ -15,7 +15,8 @@ export const chatService = {
     message: string, 
     conversationHistory?: ConversationHistory,
     roleConfidenceScores?: any,
-    sessionContext?: any
+    sessionContext?: any,
+    language?: 'en' | 'ko'
   ) => {
     try {
       const apiUrl = getApiUrl();
@@ -33,7 +34,8 @@ export const chatService = {
           conversationHistory,
           userType, // Legacy support
           roleConfidenceScores,
-          sessionContext
+          sessionContext,
+          language: language || (typeof window !== 'undefined' ? localStorage.getItem('language') || 'en' : 'en')
         })
       });
 

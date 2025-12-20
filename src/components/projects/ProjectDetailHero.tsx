@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
 import { ProjectDetailContent } from '@/types/projectDetail';
 import { ExternalLink, Award, Calendar, Code2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ProjectDetailHeroProps {
   project: Project;
@@ -11,6 +12,8 @@ interface ProjectDetailHeroProps {
 }
 
 export default function ProjectDetailHero({ project, content }: ProjectDetailHeroProps) {
+  const { t } = useLanguage();
+  
   // Extract role summary from content or project
   const getRoleSummary = (): string => {
     if (content) {
@@ -90,7 +93,7 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2.5 bg-foreground text-background rounded-full text-sm font-semibold hover:bg-foreground/90 transition-all duration-300 shadow-sm"
               >
-                <span>View Project</span>
+                <span>{t('project.viewProject')}</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             )}
@@ -125,7 +128,7 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
           >
             <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/60">
               <Award className="w-4 h-4" />
-              Key Impact
+              {t('project.keyImpact')}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {keyMetrics.map((metric, index) => (

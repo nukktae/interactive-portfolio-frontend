@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Project } from '@/types/project';
 import { ProjectDetailContent } from '@/types/projectDetail';
 import { Github, ExternalLink, Figma, FileText, Award, BarChart3, Mail, Users, Layers, Database, Zap, Shield, Sparkles, Activity, Lock, Palette, AlertCircle, MessageSquareOff, EyeOff, RefreshCcw, TrendingDown, ArrowRight, Layout, Server, Plug, Plus, Minus } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ProjectDetailProps {
   project: Project;
@@ -72,6 +73,7 @@ const renderMetric = (metric: string) => {
 };
 
 export default function ProjectDetail({ project, content }: ProjectDetailProps) {
+  const { t } = useLanguage();
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [expandedFeatureGroups, setExpandedFeatureGroups] = useState<Record<string, boolean>>({});
@@ -123,7 +125,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             <SectionTitle id={section.id}>My Role</SectionTitle>
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10">
               {section.roles.map((role, index) => {
-                const IconComponent = role.icon;
+                const IconComponent = role.icon || Award;
                 return (
                   <motion.div
                     key={role.title}
@@ -247,7 +249,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             <SectionTitle id={section.id}>Goals & Success Metrics</SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {section.goals.map((goal, index) => {
-                const IconComponent = goal.icon;
+                const IconComponent = goal.icon || Award;
                 return (
                   <motion.div
                     key={index}
@@ -1052,18 +1054,22 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
           }),
         };
 
-        const [core, comms, infra, ...rest] = section.categories;
+        const [core, comms, infra, ...rest] = section.categories || [];
 
         // Split Core Architecture items into Runtime & Rendering and Language & API
-        const runtimeItems = core?.items.filter(item => 
-          item.name.includes('Next.js') || 
-          item.name.includes('React') || 
-          item.name.includes('Node.js runtime')
+        const runtimeItems = core?.items?.filter(item => 
+          item && item.name && (
+            item.name.includes('Next.js') || 
+            item.name.includes('React') || 
+            item.name.includes('Node.js runtime')
+          )
         ) || [];
         
-        const languageItems = core?.items.filter(item => 
-          item.name.includes('TypeScript') || 
-          item.name.includes('API Routes')
+        const languageItems = core?.items?.filter(item => 
+          item && item.name && (
+            item.name.includes('TypeScript') || 
+            item.name.includes('API Routes')
+          )
         ) || [];
 
         return (
@@ -1105,6 +1111,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       <p className="text-xs uppercase tracking-wider text-foreground/50 mb-3 font-medium">Runtime & Rendering</p>
                       <div className="flex flex-col gap-y-3">
                         {runtimeItems.map((item, idx) => {
+                          if (!item || !item.name) return null;
                           const IconComponent = item.icon || Layers;
                           return (
                             <motion.div
@@ -1131,6 +1138,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       <p className="text-xs uppercase tracking-wider text-foreground/50 mb-3 font-medium">Language & API</p>
                       <div className="flex flex-col gap-y-3">
                         {languageItems.map((item, idx) => {
+                          if (!item || !item.name) return null;
                           const IconComponent = item.icon || Layers;
                           return (
                             <motion.div
@@ -1186,7 +1194,8 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       <div className="h-px bg-black/5 dark:bg-white/5 my-3"></div>
                       
                       <div className="flex flex-col gap-y-3">
-                        {group.items.map((item, idx) => {
+                        {(group.items || []).map((item, idx) => {
+                          if (!item || !item.name) return null;
                           const ItemIcon = item.icon || Layers;
                           return (
                             <motion.div
@@ -1225,7 +1234,8 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                     >
                       <h3 className="text-lg font-semibold text-foreground mb-3">{stack.category}</h3>
                       <div className="flex flex-col gap-y-3">
-                        {stack.items.map((item) => {
+                        {(stack.items || []).map((item) => {
+                          if (!item || !item.name) return null;
                           const IconComponent = item.icon || Layers;
                           return (
                             <div key={item.name} className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/80 text-sm">
@@ -1634,7 +1644,8 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
   };
 
   // Render gallery if sections array is empty (meaning we're only rendering the gallery)
-  const shouldRenderGallery = content.sections.length === 0 && project.images && project.images.length > 0;
+  // Exclude gallery for makeeat, aws-content-moderation, and encar-track1 projects
+  const shouldRenderGallery = content.sections.length === 0 && project.images && project.images.length > 0 && content.slug !== 'makeeat' && content.slug !== 'aws-content-moderation' && content.slug !== 'encar-track1';
 
   return (
     <div className="space-y-24">

@@ -59,7 +59,8 @@ const createSystemPrompt = (
   reasoningContext?: any, 
   roleContext?: any,
   contextHints?: any,
-  primaryRoleAffinity?: any
+  primaryRoleAffinity?: any,
+  language: 'en' | 'ko' = 'en'
 ) => {
   const { projects, skills, designPhilosophy, workExperience, caseStudies, personality } = knowledgeBase;
   
@@ -100,7 +101,12 @@ const createSystemPrompt = (
     }
   }
   
+  const languageInstruction = language === 'ko' 
+    ? `\n\n## LANGUAGE INSTRUCTION\nYou MUST respond in Korean (한국어). All your responses should be in Korean. If the user asks in Korean, respond in Korean. If the user asks in English but the language setting is Korean, still respond in Korean.\n`
+    : `\n\n## LANGUAGE INSTRUCTION\nYou MUST respond in English. All your responses should be in English.\n`;
+  
   const systemPrompt = `You are an AI assistant representing Anu Bilegdemberel's professional portfolio. You have access to a STRUCTURED KNOWLEDGE BRAIN that understands work in layers, not just raw text.
+${languageInstruction}
 
 ## KNOWLEDGE STRUCTURE
 
@@ -257,12 +263,14 @@ export async function POST(request: Request) {
     const { 
       message, 
       conversationHistory,
-      sessionContext: incomingSessionContext 
+      sessionContext: incomingSessionContext,
+      language = 'en'
     } = body as { 
       message: string; 
       conversationHistory?: ConversationHistory; 
       userType?: string;
       sessionContext?: SessionContext;
+      language?: 'en' | 'ko';
     };
 
     if (!message || !message.trim()) {
@@ -430,7 +438,8 @@ export async function POST(request: Request) {
       reasoningContext, 
       roleGuidelines,
       contextHints,
-      primaryRoleAffinity
+      primaryRoleAffinity,
+      language
     );
     
     const messages = [
