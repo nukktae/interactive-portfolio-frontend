@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import type { AnalyticsInsights } from '@/types/analytics';
+import type { ChatLogInsights } from '@/types/chatLog';
 import dynamic from 'next/dynamic';
 
 // Dynamically import map to avoid SSR issues
@@ -19,6 +20,7 @@ const MapComponent = dynamic(() => import('@/components/analytics/VisitorMap'), 
 function AnalyticsContent() {
   const searchParams = useSearchParams();
   const [insights, setInsights] = useState<AnalyticsInsights | null>(null);
+  const [chatLogs, setChatLogs] = useState<ChatLogInsights | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [unauthorized, setUnauthorized] = useState(false);
@@ -37,20 +39,31 @@ function AnalyticsContent() {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(`/api/analytics/insights?key=${encodeURIComponent(key)}`);
       
-      if (response.status === 401) {
+      // Fetch both analytics and chat logs
+      const [analyticsResponse, chatLogsResponse] = await Promise.all([
+        fetch(`/api/analytics/insights?key=${encodeURIComponent(key)}`),
+        fetch(`/api/analytics/chat-logs?key=${encodeURIComponent(key)}`)
+      ]);
+      
+      if (analyticsResponse.status === 401 || chatLogsResponse.status === 401) {
         setUnauthorized(true);
         setLoading(false);
         return;
       }
       
-      if (!response.ok) {
+      if (!analyticsResponse.ok) {
         throw new Error('Failed to fetch analytics');
       }
       
-      const data = await response.json();
-      setInsights(data);
+      const analyticsData = await analyticsResponse.json();
+      setInsights(analyticsData);
+      
+      // Chat logs are optional - don't fail if they don't exist
+      if (chatLogsResponse.ok) {
+        const chatLogsData = await chatLogsResponse.json();
+        setChatLogs(chatLogsData);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
     } finally {
@@ -262,6 +275,101 @@ function AnalyticsContent() {
             )}
           </div>
         </motion.div>
+
+        {/* Chat Queries Section */}
+        {chatLogs && (
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mb-12"
+            >
+              <div className="text-xs font-semibold tracking-widest text-white/40 mb-4 uppercase">
+                AI Chatbot Queries
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+                <div className="border border-white/10 rounded-lg p-4 md:p-6 bg-white/5">
+                  <div className="text-xs text-white/40 mb-2 uppercase tracking-wider">Total Queries</div>
+                  <div className="text-2xl md:text-4xl font-bold text-white">{chatLogs.totalQueries.toLocaleString()}</div>
+                </div>
+                <div className="border border-white/10 rounded-lg p-4 md:p-6 bg-white/5">
+                  <div className="text-xs text-white/40 mb-2 uppercase tracking-wider">Unique Users</div>
+                  <div className="text-2xl md:text-4xl font-bold text-white">{chatLogs.uniqueUsers.toLocaleString()}</div>
+                </div>
+                <div className="border border-white/10 rounded-lg p-4 md:p-6 bg-white/5">
+                  <div className="text-xs text-white/40 mb-2 uppercase tracking-wider">Top Query</div>
+                  <div className="text-sm md:text-base font-semibold text-white/80 truncate">
+                    {chatLogs.topQueries.length > 0 ? chatLogs.topQueries[0].message.substring(0, 40) + '...' : 'N/A'}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Top Queries */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="border border-white/10 rounded-lg p-6 md:p-8 bg-white/5 mb-12"
+            >
+              <h2 className="text-lg md:text-xl font-bold text-white mb-6 uppercase tracking-wider">Most Asked Questions</h2>
+              <div className="space-y-4">
+                {chatLogs.topQueries.length > 0 ? (
+                  chatLogs.topQueries.slice(0, 10).map((item, index) => (
+                    <div key={index} className="flex items-start justify-between pb-4 border-b border-white/5 last:border-0">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 mb-1">
+                          <span className="text-white/20 text-sm font-mono w-6">#{index + 1}</span>
+                          <span className="text-white/80 text-sm">{item.message}</span>
+                        </div>
+                      </div>
+                      <div className="text-right ml-4">
+                        <span className="text-white font-semibold">{item.count}</span>
+                        <span className="text-white/30 text-xs ml-2">times</span>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-white/30 text-sm">No queries yet</p>
+                )}
+              </div>
+            </motion.div>
+
+            {/* Recent Chat Queries */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="border border-white/10 rounded-lg p-6 md:p-8 bg-white/5 mb-12"
+            >
+              <h2 className="text-lg md:text-xl font-bold text-white mb-6 uppercase tracking-wider">Recent Chat Queries</h2>
+              <div className="space-y-4 max-h-96 overflow-y-auto">
+                {chatLogs.recentQueries.length > 0 ? (
+                  chatLogs.recentQueries.slice(0, 20).map((query) => (
+                    <div key={query.id} className="pb-4 border-b border-white/5 last:border-0">
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex-1 min-w-0">
+                          <div className="text-white/80 text-sm mb-1 font-medium">Q: {query.message}</div>
+                          <div className="text-white/50 text-xs line-clamp-2">A: {query.response.substring(0, 150)}...</div>
+                        </div>
+                        <div className="text-white/30 text-xs ml-4 whitespace-nowrap">
+                          {formatDate(query.timestamp)}
+                        </div>
+                      </div>
+                      <div className="text-white/30 text-xs mt-2">
+                        {query.city && `${query.city}, `}
+                        {query.country || 'Unknown'} • {query.language || 'en'}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-white/30 text-sm">No recent queries</p>
+                )}
+              </div>
+            </motion.div>
+          </>
+        )}
 
         {/* Refresh Button */}
         <motion.div

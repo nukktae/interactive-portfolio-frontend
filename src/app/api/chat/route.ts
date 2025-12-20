@@ -38,6 +38,7 @@ import {
 } from '@/services/contextMemory';
 import { RESUME_DATA } from '@/data/resume-data';
 import type { ConversationHistory } from '@/types/chat';
+import { addChatLog } from '@/services/chatLog';
 
 // Initialize OpenAI client
 const getOpenAIClient = () => {
@@ -457,6 +458,23 @@ export async function POST(request: Request) {
     });
 
     const reply = completion.choices[0].message.content?.trim() || '';
+
+    // Log the chat query (non-blocking)
+    // Generate a simple session ID from context or use undefined
+    const sessionId = incomingSessionContext 
+      ? `${incomingSessionContext.totalInteractions}-${incomingSessionContext.lastInteractionTime}`
+      : undefined;
+    
+    addChatLog(
+      message.trim(),
+      reply,
+      request,
+      language,
+      sessionId
+    ).catch(error => {
+      // Silently fail - don't interrupt chat functionality
+      console.error('Failed to log chat query:', error);
+    });
 
     // Update session context after interaction
     const updatedSessionContext = updateContextAfterInteraction(sessionContext, {
