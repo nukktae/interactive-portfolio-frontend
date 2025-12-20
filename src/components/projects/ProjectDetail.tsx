@@ -1474,18 +1474,21 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5 }}
-                className="group relative w-full aspect-[16/9] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5"
+                className="group relative w-full aspect-[16/9] min-h-[200px] md:min-h-[400px] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5"
                 whileHover={{ scale: 1.01 }}
                 onClick={() => {
                   const index = project.images.indexOf(heroImage);
                   if (index !== -1) setSelectedImage(index);
                 }}
+                style={{ position: 'relative' }}
               >
                 <Image
                   src={heroImage}
                   alt={getImageCaption(heroImage)}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1300px"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
@@ -1505,15 +1508,17 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                   return (
                     <div key={index} className="space-y-3">
                       <motion.div
-                        className="group relative w-full aspect-[16/10] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
+                        className="group relative w-full aspect-[16/10] min-h-[180px] md:min-h-[300px] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
                         whileHover={{ scale: 1.01 }}
                         transition={{ duration: 0.2 }}
                         onClick={() => imgIndex !== -1 && setSelectedImage(imgIndex)}
+                        style={{ position: 'relative' }}
                       >
                         <Image
                           src={image}
                           alt={getImageCaption(image)}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 600px"
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -1541,15 +1546,17 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                   return (
                     <div key={index} className="space-y-3">
                       <motion.div
-                        className="group relative w-full aspect-[16/10] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
+                        className="group relative w-full aspect-[16/10] min-h-[180px] md:min-h-[300px] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
                         whileHover={{ scale: 1.01 }}
                         transition={{ duration: 0.2 }}
                         onClick={() => imgIndex !== -1 && setSelectedImage(imgIndex)}
+                        style={{ position: 'relative' }}
                       >
                         <Image
                           src={image}
                           alt={getImageCaption(image)}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 600px"
                           className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
