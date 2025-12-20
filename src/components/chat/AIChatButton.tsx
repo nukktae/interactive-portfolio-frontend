@@ -11,7 +11,7 @@ export default function AIChatButton() {
 
   return (
     <>
-      {/* Backdrop for mobile and desktop */}
+      {/* Backdrop only for desktop (modal view) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -19,7 +19,7 @@ export default function AIChatButton() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/5 z-[55]"
+            className="hidden md:block fixed inset-0 bg-black/5 z-[55]"
           />
         )}
       </AnimatePresence>
@@ -32,6 +32,7 @@ export default function AIChatButton() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
               className="fixed inset-0 md:fixed md:bottom-24 md:right-6 md:inset-auto md:top-auto md:left-auto w-full h-full md:w-[420px] md:h-[600px] md:max-h-[calc(100vh-8rem)] md:rounded-lg bg-white border border-gray-300 shadow-2xl overflow-hidden flex flex-col z-[60]"
+              onClick={(e) => e.stopPropagation()}
           >
               <div className="relative h-full flex flex-col min-h-0 w-full">
                 <ChatInterface onClose={() => setIsOpen(false)} />
