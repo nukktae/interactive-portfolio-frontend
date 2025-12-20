@@ -86,7 +86,7 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 9,
     title: "MakeEat",
-    role: "Full Stack Developer",
+    role: "Full Stack Developer", 
     roleKo: "풀스택 개발자",
     period: "2024",
     description: "AI-powered recipe generation app with cross-platform support",

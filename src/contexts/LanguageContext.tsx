@@ -21,9 +21,9 @@ const translations = {
     'nav.bookCall': 'Book a Call',
     
     // Hero Section
-    'hero.headlinePart1': "I help founders turn ideas into seamless",
-    'hero.headlineItalic': 'digital',
-    'hero.headlinePart2': 'experiences',
+    'hero.headlinePart1': "I design user experiences across the entire journey—from",
+    'hero.headlineItalic': 'strategy',
+    'hero.headlinePart2': 'to launch.',
     'hero.greeting': "Hello, I'm Anu Bilegdemberel",
     'hero.role': 'Product Engineer (Full-Stack & Design)',
     
