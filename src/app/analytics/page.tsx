@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { AnalyticsInsights } from '@/types/analytics';
 
-export default function AnalyticsPage() {
+function AnalyticsContent() {
   const searchParams = useSearchParams();
   const [insights, setInsights] = useState<AnalyticsInsights | null>(null);
   const [loading, setLoading] = useState(true);
@@ -248,6 +248,23 @@ export default function AnalyticsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AnalyticsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-gray-900">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+            <p className="text-gray-400">Loading...</p>
+          </div>
+        </div>
+      }
+    >
+      <AnalyticsContent />
+    </Suspense>
   );
 }
 
