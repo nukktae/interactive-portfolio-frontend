@@ -1,10 +1,81 @@
 'use client';
 
-import { useEffect, useRef, useMemo, useState, memo } from 'react';
+import { useEffect, useMemo, useState, memo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import type { VisitData } from '@/types/analytics';
+
+// Helper function to get Korean name for Korean addresses
+function getKoreanLocationName(visit: VisitData): string {
+  if (visit.country !== 'South Korea') {
+    return '';
+  }
+  
+  const parts: string[] = [];
+  
+  // Korean city/district name mappings (fallback if Nominatim doesn't provide Korean)
+  const cityMap: Record<string, string> = {
+    'Seoul': '서울',
+    'Incheon': '인천',
+    'Busan': '부산',
+    'Daegu': '대구',
+    'Daejeon': '대전',
+    'Gwangju': '광주',
+    'Ulsan': '울산'
+  };
+  
+  const districtMap: Record<string, string> = {
+    'Bupyeong-gu': '부평구',
+    'Yangcheon-gu': '양천구',
+    'Gangnam-gu': '강남구',
+    'Gangdong-gu': '강동구',
+    'Gangbuk-gu': '강북구',
+    'Gangseo-gu': '강서구',
+    'Gwanak-gu': '관악구',
+    'Gwangjin-gu': '광진구',
+    'Guro-gu': '구로구',
+    'Geumcheon-gu': '금천구',
+    'Nowon-gu': '노원구',
+    'Dobong-gu': '도봉구',
+    'Dongdaemun-gu': '동대문구',
+    'Dongjak-gu': '동작구',
+    'Mapo-gu': '마포구',
+    'Seodaemun-gu': '서대문구',
+    'Seocho-gu': '서초구',
+    'Seongdong-gu': '성동구',
+    'Seongbuk-gu': '성북구',
+    'Songpa-gu': '송파구',
+    'Yongsan-gu': '용산구',
+    'Eunpyeong-gu': '은평구',
+    'Jongno-gu': '종로구',
+    'Jung-gu': '중구',
+    'Jungnang-gu': '중랑구'
+  };
+  
+  // Check if district is already in Korean (contains 한글)
+  const hasKorean = (text: string) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
+  
+  if (visit.district) {
+    // Use Korean name if available, otherwise try to map
+    if (hasKorean(visit.district)) {
+      parts.push(visit.district);
+    } else {
+      parts.push(districtMap[visit.district] || visit.district);
+    }
+  }
+  
+  if (visit.city && !parts.includes(visit.city)) {
+    // Use Korean name if available, otherwise try to map
+    if (hasKorean(visit.city)) {
+      parts.push(visit.city);
+    } else {
+      parts.push(cityMap[visit.city] || visit.city);
+    }
+  }
+  
+  return parts.join(' ');
+}
 
 // Fix for default marker icons in Next.js
 if (typeof window !== 'undefined') {
@@ -73,27 +144,8 @@ function createGlowingIcon() {
   });
 }
 
-// Global map instance counter - only first instance renders
-let mapInstanceCount = 0;
-
-// Inner map component that only mounts once
+// Inner map component
 const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<L.Map | null>(null);
-  const instanceIdRef = useRef<number | null>(null);
-  
-  // Assign instance ID on first render - only first instance (ID 0) should render
-  if (instanceIdRef.current === null) {
-    instanceIdRef.current = mapInstanceCount++;
-  }
-  
-  // Only the first instance (ID 0) should render the map
-  const shouldRender = instanceIdRef.current === 0;
-  const [mapKey] = useState(() => {
-    const key = `map-${Date.now()}-${Math.random()}`;
-    return key;
-  });
-  
   const visitsWithCoords = useMemo(() => 
     visits.filter(
       v => v.latitude != null && v.longitude != null && 
@@ -102,7 +154,7 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
     [visits]
   );
 
-  // Calculate initial center and zoom - only once on first render
+  // Calculate initial center and zoom
   const { center, zoom } = useMemo(() => {
     if (visitsWithCoords.length === 0) {
       return { center: [0, 0] as [number, number], zoom: 2 };
@@ -118,37 +170,17 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
       center: [centerLat, centerLng] as [number, number],
       zoom: visitsWithCoords.length === 1 ? 10 : 2
     };
-  }, []); // Only calculate once on mount
-
-  // Double-check after container ref is set (in case DOM already has a map)
-  useEffect(() => {
-    if (containerRef.current && shouldRender) {
-      const hasMap = (containerRef.current as any)._leaflet_id !== undefined;
-      if (hasMap) {
-        // Map already exists - this shouldn't happen if instance ID logic works
-      }
-    }
-  }, [shouldRender]);
-
-  if (!shouldRender) {
-    return <div ref={containerRef} style={{ height: '100%', width: '100%', backgroundColor: '#000' }} />;
-  }
+  }, [visitsWithCoords.length]);
 
   return (
-    <div ref={containerRef} style={{ height: '100%', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <MapContainer
-        key={mapKey}
         center={center}
         zoom={zoom}
         style={{ height: '100%', width: '100%', backgroundColor: '#000' }}
         zoomControl={true}
         className="z-0"
         scrollWheelZoom={true}
-        ref={(map) => {
-          if (map) {
-            mapInstanceRef.current = map;
-          }
-        }}
       >
         <MapUpdater visits={visitsWithCoords} />
         <TileLayer
@@ -238,7 +270,6 @@ const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
 
 export default function VisitorMap({ visits }: VisitorMapProps) {
   const [mounted, setMounted] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -252,14 +283,6 @@ export default function VisitorMap({ visits }: VisitorMapProps) {
     ),
     [visits]
   );
-
-  // Check if wrapper already has a Leaflet map (prevents double initialization in Strict Mode)
-  // Must be called before any conditional returns to follow Rules of Hooks
-  useEffect(() => {
-    if (wrapperRef.current) {
-      const hasMap = wrapperRef.current.querySelector('.leaflet-container') !== null;
-    }
-  }, []);
 
   if (visitsWithCoords.length === 0) {
     return (
@@ -278,11 +301,7 @@ export default function VisitorMap({ visits }: VisitorMapProps) {
   }
 
   return (
-    <div 
-      ref={wrapperRef}
-      className="w-full h-full rounded-lg overflow-hidden" 
-      key="visitor-map-wrapper"
-    >
+    <div className="w-full h-full rounded-lg overflow-hidden">
       <MapInner visits={visits} />
       <style jsx global>{`
         .map-tiles {

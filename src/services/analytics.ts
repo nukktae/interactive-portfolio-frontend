@@ -107,17 +107,23 @@ async function getGeolocation(ip: string): Promise<{
         // Handle Korean addresses - districts end with -gu
         if (data.country_code === 'KR' && city) {
           // If city is a district (ends with -gu), extract it as district
-          // Common Seoul districts: Yangcheon-gu, Gangnam-gu, etc.
+          // But don't assume it's Seoul - could be Incheon, Busan, etc.
           if (city.endsWith('-gu') || city.endsWith('구')) {
             district = city;
-            // Set region to Seoul if not already set
-            if (!region || region === '') {
-              region = 'Seoul';
+            // Use region as the actual city (Incheon, Busan, Seoul, etc.)
+            // Don't default to Seoul - use what the API provides
+            if (region && (region.includes('Seoul') || region.includes('Incheon') || region.includes('Busan') || 
+                region.includes('서울') || region.includes('인천') || region.includes('부산'))) {
+              // Region contains the city name
+              city = region;
+            } else {
+              // Try to infer from region name or keep as is
+              city = region || city;
             }
-            city = 'Seoul'; // Set city to Seoul since district is the specific area
           }
-          // If region contains Seoul but city doesn't, keep both
-          else if (region && (region.includes('Seoul') || region.includes('서울'))) {
+          // If region contains a major city name, use it
+          else if (region && (region.includes('Seoul') || region.includes('Incheon') || region.includes('Busan') || 
+              region.includes('서울') || region.includes('인천') || region.includes('부산'))) {
             // City is the main city, region is the administrative region
           }
         }
@@ -144,7 +150,9 @@ async function getGeolocation(ip: string): Promise<{
         // Check if city is a Korean district
         if (fallbackData.country === 'South Korea' && city && (city.endsWith('-gu') || city.endsWith('구'))) {
           district = city;
-          city = 'Seoul';
+          // Use regionName as the actual city (Incheon, Busan, Seoul, etc.)
+          // Don't default to Seoul - use what the API provides
+          city = fallbackData.regionName || city;
         }
         
         return {
@@ -201,8 +209,9 @@ export async function addVisit(
     // Use OpenStreetMap Nominatim for better precision, especially for Korean districts
     try {
       // Try OpenStreetMap Nominatim first (better for Korean districts/구)
+      // Request Korean language for better Korean address data
       const nominatimResponse = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${providedLatitude}&lon=${providedLongitude}&zoom=18&addressdetails=1`,
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${providedLatitude}&lon=${providedLongitude}&zoom=18&addressdetails=1&accept-language=ko,en`,
         {
           headers: {
             'User-Agent': 'Portfolio Analytics App'
@@ -237,7 +246,7 @@ export async function addVisit(
         }
         houseNumber = address.house_number || address.house_name;
         
-        // For Korean addresses, extract district (구)
+        // For Korean addresses, extract district (구) and properly identify city
         if (address.country_code === 'kr' || address.country_code === 'KR') {
           // Korean addresses: district is often in 'city_district' or 'suburb'
           // But we need to be careful - only accept if it's clearly a district (ends with 구 or -gu)
@@ -247,15 +256,19 @@ export async function addVisit(
           if (potentialDistrict && (potentialDistrict.endsWith('구') || potentialDistrict.endsWith('-gu'))) {
             district = potentialDistrict;
           } else if (city && (city.endsWith('구') || city.endsWith('-gu'))) {
-            // City might actually be the district
+            // City might actually be the district - extract the real city from state/region
             district = city;
-            city = address.state || 'Seoul'; // Seoul or other major city
+            // Use state/region as the actual city (e.g., Incheon, Busan, Seoul, etc.)
+            // Don't default to Seoul - use what Nominatim provides
+            city = address.state || address.province || region || city;
           }
           // If we can't find a clear district marker, don't set district to avoid incorrect data
           
-          // If we have coordinates in Seoul area, try to get better city info
-          if (!city || city === 'Seoul') {
-            city = 'Seoul';
+          // Don't force city to Seoul - use the actual city from Nominatim
+          // Nominatim should provide the correct city (Incheon, Busan, Seoul, etc.)
+          if (!city) {
+            // Only if we truly don't have a city, try to infer from region/state
+            city = address.state || address.province || region;
           }
           
           // For Korean addresses, also check neighbourhood for street-level detail
@@ -320,7 +333,7 @@ export async function addVisit(
     if (geo.latitude && geo.longitude && geo.country === 'South Korea') {
       try {
         const nominatimResponse = await fetch(
-          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${geo.latitude}&lon=${geo.longitude}&zoom=18&addressdetails=1`,
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${geo.latitude}&lon=${geo.longitude}&zoom=18&addressdetails=1&accept-language=ko,en`,
           {
             headers: {
               'User-Agent': 'Portfolio Analytics App'

@@ -3,9 +3,80 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import type { AnalyticsInsights } from '@/types/analytics';
+import type { AnalyticsInsights, VisitData } from '@/types/analytics';
 import type { ChatLogInsights } from '@/types/chatLog';
 import dynamic from 'next/dynamic';
+
+// Helper function to get Korean name for Korean addresses
+function getKoreanLocationName(visit: VisitData): string {
+  if (visit.country !== 'South Korea') {
+    return '';
+  }
+  
+  const parts: string[] = [];
+  
+  // Korean city/district name mappings (fallback if Nominatim doesn't provide Korean)
+  const cityMap: Record<string, string> = {
+    'Seoul': '서울',
+    'Incheon': '인천',
+    'Busan': '부산',
+    'Daegu': '대구',
+    'Daejeon': '대전',
+    'Gwangju': '광주',
+    'Ulsan': '울산'
+  };
+  
+  const districtMap: Record<string, string> = {
+    'Bupyeong-gu': '부평구',
+    'Yangcheon-gu': '양천구',
+    'Gangnam-gu': '강남구',
+    'Gangdong-gu': '강동구',
+    'Gangbuk-gu': '강북구',
+    'Gangseo-gu': '강서구',
+    'Gwanak-gu': '관악구',
+    'Gwangjin-gu': '광진구',
+    'Guro-gu': '구로구',
+    'Geumcheon-gu': '금천구',
+    'Nowon-gu': '노원구',
+    'Dobong-gu': '도봉구',
+    'Dongdaemun-gu': '동대문구',
+    'Dongjak-gu': '동작구',
+    'Mapo-gu': '마포구',
+    'Seodaemun-gu': '서대문구',
+    'Seocho-gu': '서초구',
+    'Seongdong-gu': '성동구',
+    'Seongbuk-gu': '성북구',
+    'Songpa-gu': '송파구',
+    'Yongsan-gu': '용산구',
+    'Eunpyeong-gu': '은평구',
+    'Jongno-gu': '종로구',
+    'Jung-gu': '중구',
+    'Jungnang-gu': '중랑구'
+  };
+  
+  // Check if district is already in Korean (contains 한글)
+  const hasKorean = (text: string) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
+  
+  if (visit.district) {
+    // Use Korean name if available, otherwise try to map
+    if (hasKorean(visit.district)) {
+      parts.push(visit.district);
+    } else {
+      parts.push(districtMap[visit.district] || visit.district);
+    }
+  }
+  
+  if (visit.city && !parts.includes(visit.city)) {
+    // Use Korean name if available, otherwise try to map
+    if (hasKorean(visit.city)) {
+      parts.push(visit.city);
+    } else {
+      parts.push(cityMap[visit.city] || visit.city);
+    }
+  }
+  
+  return parts.join(' ');
+}
 
 // Dynamically import map to avoid SSR issues
 const MapComponent = dynamic(() => import('@/components/analytics/VisitorMap'), {
@@ -337,9 +408,18 @@ function AnalyticsContent() {
                           
                           // For Korean addresses, show detailed address: district street houseNumber
                           if (visit.country === 'South Korea') {
-                            // Add district (구) first
-                            if (visit.district) {
-                              parts.push(visit.district);
+                            // Get Korean location name
+                            const koreanLocation = getKoreanLocationName(visit);
+                            if (koreanLocation) {
+                              parts.push(koreanLocation);
+                            } else {
+                              // Fallback to English if Korean not available
+                              if (visit.district) {
+                                parts.push(visit.district);
+                              }
+                              if (visit.city && !parts.includes(visit.city)) {
+                                parts.push(visit.city);
+                              }
                             }
                             
                             // Add street and house number if available (e.g., "674-5")
@@ -351,14 +431,9 @@ function AnalyticsContent() {
                               parts.push(visit.street);
                             }
                             
-                            // Add city if not already included
-                            if (visit.city && !parts.includes(visit.city)) {
-                              parts.push(visit.city);
-                            }
-                            
-                            // Add country
+                            // Add country in Korean
                             if (visit.country) {
-                              parts.push(visit.country);
+                              parts.push('대한민국');
                             }
                           } else {
                             // For other countries
