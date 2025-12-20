@@ -64,31 +64,53 @@ async function getGeolocation(ip: string): Promise<{
   country?: string;
   city?: string;
   region?: string;
+  latitude?: number;
+  longitude?: number;
 }> {
-  // Skip for localhost/private IPs
+  // Skip for localhost/private IPs - these will rely on browser geolocation
   if (ip === 'unknown' || ip.startsWith('127.') || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
     return {};
   }
 
   try {
-    // Using ipapi.co free tier (1000 requests/day)
+    // Try ipapi.co first (free tier: 1000 requests/day)
     const response = await fetch(`https://ipapi.co/${ip}/json/`, {
       headers: {
         'User-Agent': 'Portfolio Analytics'
       }
     });
     
-    if (!response.ok) {
-      return {};
+    if (response.ok) {
+      const data = await response.json();
+      
+      // Check if we got valid data
+      if (data.latitude && data.longitude) {
+        return {
+          country: data.country_name || data.country_code,
+          city: data.city,
+          region: data.region,
+          latitude: data.latitude,
+          longitude: data.longitude
+        };
+      }
     }
     
-    const data = await response.json();
+    // Fallback to ip-api.com (free tier: 45 requests/minute)
+    const fallbackResponse = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,country,city,regionName,lat,lon`);
+    if (fallbackResponse.ok) {
+      const fallbackData = await fallbackResponse.json();
+      if (fallbackData.status === 'success' && fallbackData.lat && fallbackData.lon) {
+        return {
+          country: fallbackData.country,
+          city: fallbackData.city,
+          region: fallbackData.regionName,
+          latitude: fallbackData.lat,
+          longitude: fallbackData.lon
+        };
+      }
+    }
     
-    return {
-      country: data.country_name || data.country_code,
-      city: data.city,
-      region: data.region
-    };
+    return {};
   } catch (error) {
     console.error('Error fetching geolocation:', error);
     return {};
@@ -102,12 +124,54 @@ export async function addVisit(
   referrer?: string,
   userAgent?: string,
   language?: string,
-  timezone?: string
+  timezone?: string,
+  providedLatitude?: number,
+  providedLongitude?: number
 ): Promise<VisitData> {
   const visits = await loadAnalytics();
   
-  // Get geolocation
-  const geo = await getGeolocation(ip);
+  // Get geolocation from IP if coordinates not provided
+  let geo: {
+    country?: string;
+    city?: string;
+    region?: string;
+    latitude?: number;
+    longitude?: number;
+  } = {};
+  
+  if (providedLatitude != null && providedLongitude != null) {
+    // Use provided coordinates and reverse geocode to get location details
+    try {
+      const reverseGeoResponse = await fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${providedLatitude}&longitude=${providedLongitude}&localityLanguage=en`
+      );
+      if (reverseGeoResponse.ok) {
+        const reverseData = await reverseGeoResponse.json();
+        geo = {
+          country: reverseData.countryName,
+          city: reverseData.city || reverseData.locality,
+          region: reverseData.principalSubdivision,
+          latitude: providedLatitude,
+          longitude: providedLongitude
+        };
+      } else {
+        // Fallback: use coordinates but no location details
+        geo = {
+          latitude: providedLatitude,
+          longitude: providedLongitude
+        };
+      }
+    } catch (error) {
+      // Fallback: use coordinates but no location details
+      geo = {
+        latitude: providedLatitude,
+        longitude: providedLongitude
+      };
+    }
+  } else {
+    // Fall back to IP-based geolocation
+    geo = await getGeolocation(ip);
+  }
   
   const visit: VisitData = {
     id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
@@ -116,6 +180,8 @@ export async function addVisit(
     country: geo.country,
     city: geo.city,
     region: geo.region,
+    latitude: geo.latitude,
+    longitude: geo.longitude,
     referrer: referrer || 'direct',
     userAgent,
     page,

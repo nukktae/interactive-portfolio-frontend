@@ -5,7 +5,7 @@ import type { TrackVisitRequest } from '@/types/analytics';
 export async function POST(request: Request) {
   try {
     const body: TrackVisitRequest = await request.json();
-    const { page, referrer, language, timezone } = body;
+    const { page, referrer, language, timezone, latitude, longitude } = body;
 
     if (!page) {
       return NextResponse.json(
@@ -18,14 +18,16 @@ export async function POST(request: Request) {
     const ip = getClientIP(request);
     const userAgent = request.headers.get('user-agent') || undefined;
 
-    // Add visit to analytics
+    // Add visit to analytics (pass coordinates if provided)
     const visit = await addVisit(
       ip,
       page,
       referrer,
       userAgent,
       language,
-      timezone
+      timezone,
+      latitude,
+      longitude
     );
 
     return NextResponse.json({ 
@@ -51,6 +53,8 @@ export async function GET(request: Request) {
     const referrer = searchParams.get('referrer') || undefined;
     const language = searchParams.get('language') || undefined;
     const timezone = searchParams.get('timezone') || undefined;
+    const latitude = searchParams.get('latitude') ? parseFloat(searchParams.get('latitude')!) : undefined;
+    const longitude = searchParams.get('longitude') ? parseFloat(searchParams.get('longitude')!) : undefined;
 
     // Get client information
     const ip = getClientIP(request);
@@ -63,7 +67,9 @@ export async function GET(request: Request) {
       referrer,
       userAgent,
       language,
-      timezone
+      timezone,
+      latitude,
+      longitude
     );
 
     return NextResponse.json({ 

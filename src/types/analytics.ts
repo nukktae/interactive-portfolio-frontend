@@ -5,6 +5,8 @@ export interface VisitData {
   country?: string;
   city?: string;
   region?: string;
+  latitude?: number;
+  longitude?: number;
   referrer?: string;
   userAgent?: string;
   page: string;
@@ -35,5 +37,7 @@ export interface TrackVisitRequest {
   referrer?: string;
   language?: string;
   timezone?: string;
+  latitude?: number;
+  longitude?: number;
 }
 

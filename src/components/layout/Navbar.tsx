@@ -45,52 +45,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Debug: Check navbar positioning on mount and scroll
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    const navElement = document.querySelector('nav[style*="position: fixed"]') as HTMLElement;
-    if (navElement) {
-      const computedStyle = window.getComputedStyle(navElement);
-      const rect = navElement.getBoundingClientRect();
-      
-      console.log('🔍 Navbar Debug Info:');
-      console.log('  - Computed position:', computedStyle.position);
-      console.log('  - Computed top:', computedStyle.top);
-      console.log('  - Computed left:', computedStyle.left);
-      console.log('  - Computed right:', computedStyle.right);
-      console.log('  - Bounding rect top:', rect.top);
-      console.log('  - Bounding rect left:', rect.left);
-      console.log('  - ScrollY:', window.scrollY);
-      console.log('  - Parent element:', navElement.parentElement?.tagName, navElement.parentElement?.className);
-      
-      // Check for transform on parent
-      let parent = navElement.parentElement;
-      while (parent && parent !== document.body) {
-        const parentStyle = window.getComputedStyle(parent);
-        if (parentStyle.transform !== 'none' || parentStyle.perspective !== 'none' || 
-            parentStyle.filter !== 'none' || parentStyle.willChange !== 'auto') {
-          console.warn('⚠️ Parent element has transform/perspective/filter:', {
-            element: parent.tagName,
-            className: parent.className,
-            transform: parentStyle.transform,
-            perspective: parentStyle.perspective,
-            filter: parentStyle.filter,
-            willChange: parentStyle.willChange
-          });
-        }
-        parent = parent.parentElement;
-      }
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
-
-    const handleScrollDebug = () => {
-      if (navElement) {
-        const rect = navElement.getBoundingClientRect();
-        console.log('📜 Scroll Debug - Navbar rect.top:', rect.top, 'scrollY:', window.scrollY);
-      }
+    return () => {
+      document.body.style.overflow = '';
     };
-
-    window.addEventListener('scroll', handleScrollDebug);
-    return () => window.removeEventListener('scroll', handleScrollDebug);
-  }, [mounted]);
+  }, [isOpen]);
 
   // Handle hash navigation on page load
   useEffect(() => {
@@ -235,104 +200,138 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="md:hidden p-3 hover:bg-foreground/10 dark:hover:bg-white/10 rounded-lg transition-colors duration-300"
+              className="md:hidden relative p-2.5 rounded-lg transition-all duration-200 hover:bg-foreground/10 dark:hover:bg-white/10 active:bg-foreground/20 dark:active:bg-white/20"
               onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle menu"
             >
-              {isOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
+              <motion.div
+                animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? (
+                  <X className="w-6 h-6 text-foreground" />
+                ) : (
+                  <Menu className="w-6 h-6 text-foreground" />
+                )}
+              </motion.div>
             </motion.button>
           </div>
         </div>
         </motion.div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full Screen Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-40 md:hidden"
+            className="fixed inset-0 z-50 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
+            {/* Backdrop with blur */}
             <motion.div
-              className="absolute inset-0 bg-white/40 dark:bg-black/40 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md"
               onClick={() => setIsOpen(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
             
+            {/* Menu Panel */}
             <motion.div
-              className="absolute right-0 top-0 h-full w-80 bg-card dark:bg-[#1a1f3a] border-l border-border shadow-xl"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute inset-0 bg-gray-900/95 dark:bg-gray-950/98 backdrop-blur-xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
               <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-6 border-b border-border">
-                  <div className="text-xl font-bold text-foreground">ANU</div>
+                {/* Header */}
+                <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-800/50 dark:border-gray-700/50">
+                  <motion.div
+                    className="text-2xl font-bold text-white"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    ANU
+                  </motion.div>
                   <motion.button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 hover:bg-foreground/10 dark:hover:bg-white/10 rounded-lg transition-colors duration-300"
+                    className="p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    transition={{ delay: 0.1 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <X className="w-6 h-6 text-foreground" />
+                    <X className="w-6 h-6 text-white" />
                   </motion.button>
                 </div>
                 
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.href}
-                    onClick={() => handleNavClick(item.href)}
-                    className="px-6 py-4 text-left text-lg font-medium text-foreground/70 hover:text-foreground hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + index * 0.1 }}
-                    whileHover={{ x: 10 }}
-                  >
-                    {t(item.labelKey)}
-                  </motion.button>
-                ))}
+                {/* Navigation Items */}
+                <div className="flex-1 px-6 py-8 space-y-1">
+                  {navItems.map((item, index) => (
+                    <motion.button
+                      key={item.href}
+                      onClick={() => handleNavClick(item.href)}
+                      className="w-full text-left px-4 py-4 text-lg font-medium text-white/90 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/5 active:bg-white/10"
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.15 + index * 0.1, type: 'spring', damping: 20 }}
+                    >
+                      {t(item.labelKey)}
+                    </motion.button>
+                  ))}
+                </div>
                 
+                {/* Settings & Actions */}
                 <motion.div
-                  className="pt-8 px-6 space-y-3"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
+                  className="px-6 pb-8 space-y-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
                 >
+                  {/* Theme Toggle */}
                   <button
                     onClick={toggleTheme}
-                    className="relative w-full px-4 py-3 rounded-xl bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:text-foreground text-sm font-medium hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden"
+                    className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white/90 hover:text-white transition-all duration-200 group"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative z-10 flex items-center gap-2">
-                      {mounted ? (theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />) : <Sun className="w-4 h-4" />}
-                      <span>{mounted ? (theme === 'dark' ? 'Light Mode' : 'Dark Mode') : 'Light Mode'}</span>
+                    <div className="flex items-center justify-center w-5 h-5">
+                      {mounted ? (theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />) : <Sun className="w-5 h-5" />}
                     </div>
-                  </button>
-                  <button
-                    onClick={toggleLanguage}
-                    className="relative w-full px-4 py-3 rounded-xl bg-foreground/5 dark:bg-white/5 text-foreground/70 hover:text-foreground text-sm font-medium hover:bg-foreground/10 dark:hover:bg-white/10 transition-all duration-300 group overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-foreground/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <span className="relative z-10 flex items-center gap-2">
-                      <span className="text-lg">{language === 'en' ? '🇰🇷' : '🇺🇸'}</span>
-                      <span>{language === 'en' ? '한국어' : 'English'}</span>
+                    <span className="text-sm font-medium">
+                      {mounted ? (theme === 'dark' ? 'Light Mode' : 'Dark Mode') : 'Light Mode'}
                     </span>
                   </button>
+                  
+                  {/* Language Toggle */}
                   <button
+                    onClick={toggleLanguage}
+                    className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 text-white/90 hover:text-white transition-all duration-200"
+                  >
+                    <span className="text-xl leading-none">{language === 'en' ? '🇰🇷' : '🇺🇸'}</span>
+                    <span className="text-sm font-medium">
+                      {language === 'en' ? '한국어' : 'English'}
+                    </span>
+                  </button>
+                  
+                  {/* Book a Call Button */}
+                  <motion.button
                     onClick={() => {
                       router.push('/book-a-call');
                       setIsOpen(false);
                     }}
-                    className="w-full px-4 py-2 rounded-lg bg-black/10 dark:bg-white/10 text-foreground text-sm font-medium hover:bg-black/20 dark:hover:bg-white/20 transition-all duration-300"
+                    className="w-full px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-black/20"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {t('nav.bookCall')}
-                  </button>
+                  </motion.button>
                 </motion.div>
               </div>
             </motion.div>
