@@ -80,10 +80,31 @@ async function getGeolocation(ip: string): Promise<{
       
       // Check if we got valid data
       if (data.latitude && data.longitude) {
+        // For Korean addresses, improve the city/region handling
+        let city = data.city;
+        let region = data.region;
+        
+        // Handle Korean addresses - districts end with -gu
+        if (data.country_code === 'KR' && city) {
+          // If city is a district (ends with -gu), it's likely in Seoul
+          // Common Seoul districts: Yangcheon-gu, Gangnam-gu, etc.
+          if (city.endsWith('-gu')) {
+            // Set region to Seoul if not already set
+            if (!region || region === '') {
+              region = 'Seoul';
+            }
+            // Keep the district name as city
+          }
+          // If region contains Seoul but city doesn't, keep both
+          else if (region && (region.includes('Seoul') || region.includes('서울'))) {
+            // City is the main city, region is the administrative region
+          }
+        }
+        
         return {
           country: data.country_name || data.country_code,
-          city: data.city,
-          region: data.region,
+          city: city,
+          region: region || data.region_code,
           latitude: data.latitude,
           longitude: data.longitude
         };

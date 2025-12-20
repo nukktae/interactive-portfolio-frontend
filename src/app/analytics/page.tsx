@@ -269,12 +269,35 @@ function AnalyticsContent() {
                         )}
                       </div>
                       <div>
-                        {visit.city && `${visit.city}, `}
-                        {visit.country || (
-                          (visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.'))
-                            ? 'Localhost (cannot geolocate)'
-                            : 'Unknown Location'
-                        )}
+                        {(() => {
+                          // Format location: region (if major city), city/district, country
+                          const parts: string[] = [];
+                          
+                          // For Seoul, show region first if it's a major city
+                          if (visit.region && (visit.region.includes('Seoul') || visit.region.includes('서울'))) {
+                            parts.push(visit.region);
+                          }
+                          
+                          // Add city/district
+                          if (visit.city) {
+                            parts.push(visit.city);
+                          }
+                          
+                          // Add country
+                          if (visit.country) {
+                            parts.push(visit.country);
+                          }
+                          
+                          // If no location data
+                          if (parts.length === 0) {
+                            if (visit.ip === '::1' || visit.ip === '127.0.0.1' || visit.ip?.startsWith('192.168.') || visit.ip?.startsWith('10.') || visit.ip?.startsWith('172.')) {
+                              return 'Localhost (cannot geolocate)';
+                            }
+                            return 'Unknown Location';
+                          }
+                          
+                          return parts.join(', ');
+                        })()}
                         {visit.referrer && visit.referrer !== 'direct' && (() => {
                           try {
                             const url = new URL(visit.referrer);
@@ -384,8 +407,29 @@ function AnalyticsContent() {
                           <span className="font-mono text-white/70">{query.ip || 'Unknown'}</span>
                         </div>
                         <div>
-                          {query.city && `${query.city}, `}
-                          {query.country || 'Unknown Location'} • {query.language || 'en'}
+                          {(() => {
+                            // Format location: region (if major city), city/district, country
+                            const parts: string[] = [];
+                            
+                            // For Seoul, show region first if it's a major city
+                            if (query.country === 'South Korea' && query.city && query.city.endsWith('-gu')) {
+                              parts.push('Seoul');
+                              parts.push(query.city);
+                            } else if (query.city) {
+                              parts.push(query.city);
+                            }
+                            
+                            // Add country
+                            if (query.country) {
+                              parts.push(query.country);
+                            }
+                            
+                            if (parts.length === 0) {
+                              return 'Unknown Location';
+                            }
+                            
+                            return parts.join(', ');
+                          })()} • {query.language || 'en'}
                         </div>
                       </div>
                     </div>
