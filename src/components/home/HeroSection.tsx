@@ -22,13 +22,34 @@ export default function HeroSection() {
     : '/assets/icons/new.png';
   
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-hidden">
-      {/* Image next to hero section - changes based on theme */}
+    <section className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 relative overflow-hidden py-12 md:py-0">
+      {/* Image - Mobile: Above text, Desktop: Absolute right */}
+      {mounted && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="flex justify-center mb-6 sm:mb-8 lg:hidden w-full"
+        >
+          <div className="relative w-[140px] h-[140px] sm:w-[160px] sm:h-[160px]">
+            <Image
+              src={imageSrc}
+              alt="Hero decoration"
+              fill
+              className="object-contain"
+              priority
+              sizes="(max-width: 640px) 140px, 160px"
+            />
+          </div>
+        </motion.div>
+      )}
+
+      {/* Desktop Image - Absolute positioned (unchanged) */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.6 }}
-        className="absolute right-6 md:right-12 lg:right-20 xl:right-32 top-1/2 transform -translate-y-1/2 z-10 hidden lg:block"
+        className="hidden lg:block absolute right-6 md:right-12 lg:right-20 xl:right-32 top-1/2 transform -translate-y-1/2 z-10"
       >
         <Image
           src={imageSrc}
@@ -46,9 +67,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mb-8"
+          className="mb-6 sm:mb-8"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-foreground leading-tight mb-6 text-left" style={{ fontFamily: '"instrument sans"' }}>
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-serif text-foreground leading-tight mb-4 sm:mb-6 text-left" style={{ fontFamily: '"instrument sans"' }}>
             {t('hero.headlinePart1')}{' '}
             <span className="italic text-left">{t('hero.headlineItalic')}</span>{' '}
             {t('hero.headlinePart2')}
@@ -60,12 +81,12 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="relative flex flex-col items-start justify-start text-left gap-4 mb-12"
+          className="relative flex flex-col items-start justify-start text-left gap-3 sm:gap-4 mb-8 sm:mb-12"
           style={{ fontFamily: '"instrument sans"' }}
         >
           <div className="space-y-1 text-left" style={{ fontFamily: '"sans serif"' }}>
-            <p className="text-2xl md:text-3xl font-semibold text-foreground">{t('hero.greeting')}</p>
-            <p className="text-xl md:text-2xl text-foreground/80">{t('hero.role')}</p>
+            <p className="text-lg sm:text-xl md:text-3xl font-semibold text-foreground">{t('hero.greeting')}</p>
+            <p className="text-base sm:text-lg md:text-2xl text-foreground/80">{t('hero.role')}</p>
           </div>
         </motion.div>
 

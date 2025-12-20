@@ -1059,16 +1059,16 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
         // Split Core Architecture items into Runtime & Rendering and Language & API
         const runtimeItems = core?.items?.filter(item => 
           item && item.name && (
-            item.name.includes('Next.js') || 
-            item.name.includes('React') || 
-            item.name.includes('Node.js runtime')
+          item.name.includes('Next.js') || 
+          item.name.includes('React') || 
+          item.name.includes('Node.js runtime')
           )
         ) || [];
         
         const languageItems = core?.items?.filter(item => 
           item && item.name && (
-            item.name.includes('TypeScript') || 
-            item.name.includes('API Routes')
+          item.name.includes('TypeScript') || 
+          item.name.includes('API Routes')
           )
         ) || [];
 

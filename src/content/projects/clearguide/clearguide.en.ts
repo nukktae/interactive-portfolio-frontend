@@ -69,7 +69,7 @@ export const clearguideEN = {
     problem: {
       summary:
         'Many Korean residents struggle to understand public documents due to complex legal language and unclear instructions.',
-      content:
+          content:
         'Government-issued documents are often written using formal terminology and legal phrasing that is difficult for non-experts to interpret. This lack of clarity leads to missed deadlines, incorrect actions, and increased dependence on call centers and in-person support.',
       painPoints: [
         { description: 'Complex legal language makes documents difficult to understand' },
@@ -128,13 +128,13 @@ export const clearguideEN = {
           description:
             'ClearGuide uses a multi-stage document processing pipeline that balances accuracy, performance, and privacy.',
           features: [
-            'File validation and upload handling',
-            'OCR using GPT-4o Vision with fallback strategies',
-            'PII detection and masking before storage',
-            'AI-based parsing for summaries and action items',
-            'Hybrid entity extraction for structured data',
-            'Vector-based retrieval for chatbot grounding',
-            'Automatic document deletion via TTL policies'
+        'File validation and upload handling',
+        'OCR using GPT-4o Vision with fallback strategies',
+        'PII detection and masking before storage',
+        'AI-based parsing for summaries and action items',
+        'Hybrid entity extraction for structured data',
+        'Vector-based retrieval for chatbot grounding',
+        'Automatic document deletion via TTL policies'
           ],
           userFlows: undefined
         }

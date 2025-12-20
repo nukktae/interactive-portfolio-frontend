@@ -10,21 +10,35 @@ export default function AIChatButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <>
+      {/* Backdrop for mobile full screen */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-20 right-0 w-[400px] max-w-[calc(100vw-1.5rem)] sm:max-w-[calc(100vw-3rem)] max-h-[calc(100vh-8rem)] bg-white rounded-lg border border-gray-300 shadow-2xl overflow-hidden flex flex-col"
-          >
-            <div className="relative h-full flex flex-col min-h-0">
-              <ChatInterface />
-            </div>
-          </motion.div>
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+          />
         )}
       </AnimatePresence>
+
+      <div className="fixed bottom-6 right-6 z-50 md:z-50">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="fixed inset-0 md:absolute md:bottom-20 md:right-0 md:inset-auto w-full h-full md:w-[400px] md:max-w-[calc(100vw-3rem)] md:max-h-[calc(100vh-8rem)] md:rounded-lg bg-white border border-gray-300 shadow-2xl overflow-hidden flex flex-col z-50"
+            >
+              <div className="relative h-full flex flex-col min-h-0">
+                <ChatInterface />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
@@ -80,6 +94,7 @@ export default function AIChatButton() {
           />
         )}
       </motion.button>
-    </div>
+      </div>
+    </>
   );
 } 

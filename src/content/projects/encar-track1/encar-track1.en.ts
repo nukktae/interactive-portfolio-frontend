@@ -87,8 +87,8 @@ export const encarTrack1EN = {
       { title: 'Cross-Validation', iconKey: 'GitBranch', metric: '5-fold CV with 3 seeds per fold for robust evaluation' },
       { title: 'Production Ready', iconKey: 'BarChart3', metric: 'Complete evaluation pipeline with CSV output generation' },
       { title: 'Competition Ready', iconKey: 'Award', metric: 'Reproducible, well-documented solution meeting all requirements' }
-    ]
-  },
+      ]
+    },
     research: {
       insights: [
         {
@@ -109,9 +109,9 @@ export const encarTrack1EN = {
           'Vision-language models (CLIP) added semantic understanding not captured by pure CNNs',
           'Dual ensemble strategy (zero-shot CLIP + fine-tuned CLIP) balanced robustness and accuracy',
           'Weighted averaging (30% zero-shot, 70% fine-tuned) optimized ensemble performance'
-        ]
-      },
-      {
+          ]
+        },
+        {
         title: 'CLIP Integration Findings',
           items: [
           'Zero-shot CLIP achieved 60-80% accuracy without any training, providing strong baseline',
@@ -256,8 +256,8 @@ export const encarTrack1EN = {
           'Test-time augmentation: 8 variants per image for robust inference',
           'Image preprocessing: CLIP-specific transforms and ImageNet normalization',
           'Stratified splitting: Balanced class distribution in train/val sets'
-        ]
-      },
+      ]
+    },
       {
         title: 'Evaluation & Inference',
         iconKey: 'TrendingUp',
@@ -354,25 +354,25 @@ export const encarTrack1EN = {
         {
         challenge: 'Extremely small dataset (~100 images per class) made standard deep learning approaches prone to severe overfitting. Traditional training would fail to generalize.',
         solution: 'Implemented sophisticated regularization techniques including label smoothing, weight decay, dropout, and gradient clipping. Used transfer learning from ImageNet pre-trained models (EfficientNet, MobileNet) and CLIP. Applied advanced augmentation strategies (Mixup, CutMix, RandAugment) with epoch-based scheduling to maximize data diversity while preventing overfitting.'
-      },
-      {
+        },
+        {
         challenge: 'Need for robust performance estimation with limited data. Single train/test split would provide unreliable accuracy estimates.',
         solution: 'Designed comprehensive cross-validation pipeline with 5-fold stratified splits ensuring balanced class distribution. Trained 3 models per fold with different random seeds, creating 15 models per architecture for robust ensemble. This approach maximized data utilization while providing reliable performance estimates.'
-      },
-      {
+        },
+        {
         challenge: 'Integrating vision-language models (CLIP) required specialized training strategies different from standard CNN training.',
         solution: 'Developed two-phase CLIP training strategy: first freezing the vision encoder and training only the classifier head, then unfreezing for fine-tuning with reduced learning rate. Used CLIP-specific preprocessing and normalization. Created dual ensemble combining zero-shot CLIP (no training) with fine-tuned CLIP for best of both worlds: robustness and accuracy.'
-      },
-      {
+        },
+        {
         challenge: 'Creating production-ready evaluation pipeline that combines multiple models, handles test-time augmentation, and generates competition-ready outputs.',
         solution: 'Built modular evaluation system that automatically discovers and loads all trained checkpoints. Implemented 8-variant test-time augmentation system. Created weighted ensemble averaging across all models and TTA variants. Designed CSV output generation matching competition submission format with proper class predictions and probabilities.'
       },
       {
         challenge: 'Ensuring reproducibility and maintainability across complex training pipeline with multiple models, folds, and seeds.',
         solution: 'Implemented comprehensive seed control throughout entire pipeline (data splitting, model initialization, training). Created modular codebase with clear separation of concerns (models, datasets, training, evaluation). Built extensive logging system tracking all hyperparameters and metrics. Used checkpoint management preserving full training state for reproducibility.'
-      }
-    ]
-  },
+        }
+      ]
+    },
     results: {
       bullets: [
       '>95% validation accuracy achieved with dual ensemble + TTA',
@@ -398,18 +398,18 @@ export const encarTrack1EN = {
         title: 'Small Dataset Optimization',
         iconKey: 'Brain',
         description: 'Learned that small datasets require sophisticated regularization beyond standard techniques. Transfer learning, advanced augmentation (Mixup, CutMix), and cross-validation are essential. Epoch-based augmentation scheduling prevents overfitting while maximizing data diversity.'
-      },
-      {
+        },
+        {
         title: 'Ensemble Learning Power',
         iconKey: 'TrendingUp',
         description: 'Discovered that combining diverse architectures (EfficientNet + MobileNet) and training strategies (CNN + CLIP) significantly improves accuracy. Test-time augmentation adds 2-3% improvement. Weighted ensemble averaging is crucial for optimal performance.'
-      },
-      {
+        },
+        {
         title: 'Vision-Language Models',
         iconKey: 'Sparkles',
         description: 'Gained deep understanding of CLIP architecture and training. Zero-shot CLIP provides strong baseline without training. Two-phase fine-tuning (frozen → unfrozen) improves stability. Combining zero-shot and fine-tuned CLIP balances robustness and accuracy.'
-      },
-      {
+        },
+        {
         title: 'ML Engineering Best Practices',
         iconKey: 'Code',
         description: 'Learned importance of modular code design, comprehensive logging, and checkpoint management. Reproducibility through seed control is critical. Cross-validation with multiple seeds provides robust performance estimation and ensemble diversity.'
@@ -418,9 +418,9 @@ export const encarTrack1EN = {
         title: 'Production ML Pipelines',
         iconKey: 'Workflow',
         description: 'Understood requirements for production-ready ML systems: automatic device detection, batch processing, CSV output generation, validation evaluation, and error handling. Well-documented, maintainable code is essential for real-world deployment.'
-      }
-    ]
-  },
+        }
+      ]
+    },
     techStack: {
       frameworks: ['PyTorch', 'TorchVision', 'OpenAI CLIP', 'TIMM'],
       data: ['NumPy', 'Pandas', 'scikit-learn', 'OpenCV'],

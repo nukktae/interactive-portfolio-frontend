@@ -69,7 +69,7 @@ export const majorMatchKO = {
     problem: {
       summary:
         '많은 학생들이 전공 선택 과정에서 개인화된 정보와 실제 경험이 부족해 혼란을 겪고 있습니다.',
-      content:
+          content:
         '기존 진로 상담은 일반적인 정보 제공에 그치는 경우가 많아, 학생 개개인의 성향이나 강점을 충분히 반영하지 못합니다. 실제 전공이나 직무를 경험해보기 어려운 환경에서 중요한 결정을 내려야 하기 때문에, 전공 변경이나 진로 불만족으로 이어지는 사례도 빈번합니다.',
       painPoints: [
         { description: '일반적인 조언이 개인의 강점과 관심사를 충분히 반영하지 못함' },
@@ -120,12 +120,12 @@ export const majorMatchKO = {
           title: '풀스택 아키텍처',
           description: 'MajorMatch AI는 프론트엔드와 백엔드를 명확히 분리한 구조를 기반으로, 확장성과 유지보수를 고려한 현대적인 풀스택 아키텍처를 따릅니다.',
           features: [
-            'Express.js + TypeScript 기반 REST API',
-            'PostgreSQL 기반 관계형 데이터베이스 및 마이그레이션',
-            'Firebase Authentication을 활용한 사용자 인증',
-            'React + Redux Toolkit 기반 프론트엔드',
-            'OpenAI GPT-4 연동을 통한 AI 추천 및 상담 기능',
-            '멘토링 예약을 위한 이메일 알림 시스템'
+        'Express.js + TypeScript 기반 REST API',
+        'PostgreSQL 기반 관계형 데이터베이스 및 마이그레이션',
+        'Firebase Authentication을 활용한 사용자 인증',
+        'React + Redux Toolkit 기반 프론트엔드',
+        'OpenAI GPT-4 연동을 통한 AI 추천 및 상담 기능',
+        '멘토링 예약을 위한 이메일 알림 시스템'
           ],
           userFlows: undefined
         }

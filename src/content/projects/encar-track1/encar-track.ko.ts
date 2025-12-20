@@ -1,31 +1,31 @@
 // Korean content file: All user-facing text strings in Korean
 
 export const encarTrack1KO = {
-  overview: {
-    paragraphs: [
-      {
-        type: 'text',
+    overview: {
+      paragraphs: [
+        {
+          type: 'text',
         content:
           'Encar Track 1은 차량 이미지를 10가지 각도/뷰 카테고리(앞면, 뒷면, 왼쪽, 오른쪽, 내부, 타이어 및 그 조합)로 분류하는 딥러닝 컴퓨터 비전 공무전 프로젝트입니다. 이 프로젝트는 고급 앙상블 방법, 교차 검증 및 비전-언어 모델을 사용하여 극도로 작은 데이터셋(클래스당 ~100개 이미지)에서 **95% 이상의 정확도**를 달성했습니다.'
-      },
-      {
-        type: 'text',
-        content:
+        },
+        {
+          type: 'text',
+          content:
           '주요 과제는 정교한 딥러닝 기법을 통해 데이터셋 제약을 극복하는 것이었습니다. 전통적인 접근 방식은 이러한 작은 샘플 크기에서는 실패하며, EfficientNet, MobileNet 및 OpenAI CLIP과 같은 사전 훈련된 모델의 다중 모델 앙상블, 테스트 타임 증강 및 전이 학습을 포함한 혁신적인 솔루션이 필요합니다.'
-      },
-      {
-        type: 'text',
-        content:
+        },
+        {
+          type: 'text',
+          content:
           '이 프로젝트는 교차 검증 훈련 파이프라인, 앙상블 학습 전략, 정규화 기법 및 프로덕션 준비 평가 시스템을 포함한 고급 ML 엔지니어링 관행을 보여줍니다. 솔루션은 강력한 분류 성능을 위해 전통적인 CNN 아키텍처와 현대적인 비전-언어 모델을 모두 통합합니다.'
-      }
-    ]
-  },
-  myRole: {
-    roles: [
-      {
+        }
+      ]
+    },
+    myRole: {
+      roles: [
+        {
         title: 'ML 엔지니어 및 연구원',
         iconKey: 'Brain',
-        responsibilities: [
+          responsibilities: [
           '다중 모델 앙상블 아키텍처 설계 및 구현(EfficientNet-B0, MobileNetV3, CLIP)',
           '5-fold CV 및 폴드당 3개 시드를 사용한 교차 검증 훈련 파이프라인 개발(총 15개 모델)',
           'Mixup, CutMix 및 에포크 기반 스케줄을 포함한 고급 데이터 증강 전략 구현',
@@ -36,12 +36,12 @@ export const encarTrack1KO = {
           '극도로 작은 데이터셋(클래스당 ~100개 이미지)에서 95% 이상의 검증 정확도 달성',
           '공무전 준비 CSV 출력을 생성하는 프로덕션 준비 평가 파이프라인 구축',
           '포괄적인 로깅 및 체크포인트 관리를 포함한 재현 가능한 훈련 시스템 구축'
-        ]
-      },
-      {
-        title: '딥러닝 아키텍트',
+          ]
+        },
+        {
+          title: '딥러닝 아키텍트',
         iconKey: 'Layers',
-        responsibilities: [
+          responsibilities: [
           '모델, 데이터셋, 훈련 및 평가를 위한 별도 모듈을 포함한 모듈형 코드베이스 설계',
           '두 단계 CLIP 훈련 전략 구현(고정된 비전 인코더 → 파인튜닝)',
           '가중 평균을 사용하여 CNN 및 CLIP 모델을 결합한 이중 앙상블 시스템 설계',
@@ -52,21 +52,21 @@ export const encarTrack1KO = {
           '여러 모델 아키텍처를 지원하는 유지보수 가능하고 확장 가능한 코드베이스 제공',
           '구성 가능한 훈련 스크립트 및 하이퍼파라미터를 통한 빠른 실험 활성화',
           '시드 제어 및 포괄적인 실험 추적을 통한 재현성 보장'
-        ]
-      }
-    ]
-  },
-  problem: {
+          ]
+        }
+      ]
+    },
+    problem: {
     summary: '클래스당 ~100개 이미지만으로 차량 이미지를 10가지 각도 카테고리로 분류하는 것은 표준 접근 방식을 넘어서는 정교한 딥러닝 기법이 필요합니다.',
-    paragraphs: [
-      {
-        type: 'text',
-        content:
+      paragraphs: [
+        {
+          type: 'text',
+          content:
           'Encar Track 1 공무전은 컴퓨터 비전에서 전형적인 소규모 데이터셋 과제를 제시했습니다. 10개 카테고리(앞면, 뒷면, 왼쪽, 오른쪽, 내부, 타이어 및 조합)에 걸쳐 클래스당 약 100개 이미지만으로 전통적인 딥러닝 접근 방식은 심각하게 과적합되거나 일반화에 실패할 것입니다. 공무전은 90% 이상의 정확도를 달성해야 했으며, 이는 이러한 제한된 데이터로는 매우 어렵습니다.'
-      },
-      {
-        type: 'text',
-        content:
+        },
+        {
+          type: 'text',
+          content:
           '높은 정확도를 달성하려면 전이 학습, 강력한 정규화, 앙상블 방법 및 강력한 검증 전략이 필요했습니다.'
       }
     ],
@@ -79,7 +79,7 @@ export const encarTrack1KO = {
     ],
     whyItMatters: '작은 데이터셋은 데이터 수집이 비용이 많이 들거나 제한적인 실제 애플리케이션에서 일반적입니다. 이 과제를 성공적으로 해결하는 것은 프로덕션 ML 시스템에 필수적인 전이 학습, 앙상블 방법 및 강력한 훈련 전략을 포함한 고급 ML 엔지니어링 기술을 보여줍니다.'
   },
-  goals: {
+    goals: {
     goals: [
       { title: '정확도 목표', iconKey: 'Target', metric: '95% 이상의 검증 정확도 달성' },
       { title: '모델 다양성', iconKey: 'Brain', metric: '3개 아키텍처(EfficientNet, MobileNet, CLIP)에 걸쳐 15개 이상의 모델' },
@@ -87,11 +87,11 @@ export const encarTrack1KO = {
       { title: '교차 검증', iconKey: 'GitBranch', metric: '강력한 평가를 위한 폴드당 3개 시드를 사용한 5-fold CV' },
       { title: '프로덕션 준비', iconKey: 'BarChart3', metric: 'CSV 출력 생성을 포함한 완전한 평가 파이프라인' },
       { title: '공무전 준비', iconKey: 'Award', metric: '모든 요구사항을 충족하는 재현 가능하고 잘 문서화된 솔루션' }
-    ]
-  },
-  research: {
-    insights: [
-      {
+      ]
+    },
+    research: {
+      insights: [
+        {
         title: '소규모 데이터셋 최적화 전략',
         items: [
           'ImageNet 사전 훈련된 모델(EfficientNet-B0, MobileNetV3)의 전이 학습이 필수적임',
@@ -103,35 +103,35 @@ export const encarTrack1KO = {
       },
       {
         title: '앙상블 학습 인사이트',
-        items: [
+          items: [
           '다양한 아키텍처(EfficientNet + MobileNet) 결합이 보완적인 예측 제공',
           '이미지당 8개 변형을 사용한 테스트 타임 증강이 추론 안정성을 2-3% 개선',
           '비전-언어 모델(CLIP)이 순수 CNN으로 캡처되지 않은 의미적 이해 추가',
           '이중 앙상블 전략(제로샷 CLIP + 파인튜닝 CLIP)이 안정성과 정확도의 균형 제공',
           '가중 평균(30% 제로샷, 70% 파인튜닝)이 앙상블 성능 최적화'
-        ]
-      },
-      {
+          ]
+        },
+        {
         title: 'CLIP 통합 결과',
-        items: [
+          items: [
           '제로샷 CLIP이 훈련 없이 60-80% 정확도 달성, 강력한 기준선 제공',
           '맞춤형 분류기 헤드를 사용한 파인튜닝 CLIP이 훈련 후 85-95% 정확도 도달',
           '두 단계 훈련(고정된 비전 인코더 → 파인튜닝)이 안정성 및 수렴 개선',
           'CLIP 전처리 및 정규화가 최적 성능에 중요함',
           '제로샷 및 파인튜닝 CLIP 결합이 양쪽의 장점 제공: 안정성 및 정확도'
-        ]
-      }
-    ]
-  },
-  architecture: {
-    paragraphs: [
-      {
-        type: 'text',
-        content:
+          ]
+        }
+      ]
+    },
+    architecture: {
+      paragraphs: [
+        {
+          type: 'text',
+          content:
           '솔루션은 작은 데이터셋에서 정확도와 안정성을 극대화하기 위해 교차 검증으로 훈련된 여러 딥러닝 모델의 정교한 앙상블을 사용합니다.'
-      }
-    ],
-    bullets: [
+        }
+      ],
+      bullets: [
       'EfficientNet-B0: 5-fold CV × 3 시드로 훈련된 주요 모델 = 15개 모델',
       'MobileNetV3-Large: 아키텍처 다양성을 제공하는 보조 모델',
       'CLIP 제로샷: 훈련이 필요 없는 사전 훈련된 비전-언어 모델',
@@ -268,11 +268,11 @@ export const encarTrack1KO = {
           '검증 평가: 클래스별 정확도 추적 및 메트릭',
           '배치 처리: DataLoader를 사용한 테스트 세트의 효율적인 추론',
           '모델 로딩: 자동 체크포인트 발견 및 상태 복원'
-        ]
+      ]
       }
     ]
   },
-  keyFeatures: {
+    keyFeatures: {
     metrics: [
       { title: '검증 정확도', description: '이중 앙상블 + TTA를 사용하여 검증 세트에서 95% 이상의 정확도 달성' },
       { title: '모델 앙상블 크기', description: '총 31개 이상의 모델(15개 EfficientNet + 1개 MobileNet + 15개 CLIP 파인튜닝)' },
@@ -330,51 +330,51 @@ export const encarTrack1KO = {
         ]
       }
     ],
-    features: [
-      {
+      features: [
+        {
         title: '다중 모델 앙상블',
         description: '정확도 향상을 위해 CNN 및 비전-언어 모델을 결합합니다.'
-      },
-      {
+        },
+        {
         title: '교차 검증 훈련',
         description: '데이터 사용을 극대화하기 위해 여러 시드를 사용한 계층화된 K-fold CV를 사용합니다.'
-      },
-      {
+        },
+        {
         title: '고급 증강',
         description: 'Mixup, CutMix 및 적응형 증강 스케줄을 적용합니다.'
-      },
-      {
+        },
+        {
         title: '프로덕션 준비 평가',
         description: '재현 가능한 결과를 포함한 공무전 준비 CSV 예측을 생성합니다.'
-      }
-    ]
-  },
-  challenges: {
-    items: [
-      {
+        }
+      ]
+    },
+    challenges: {
+      items: [
+        {
         challenge: '극도로 작은 데이터셋(클래스당 ~100개 이미지)으로 인해 표준 딥러닝 접근 방식이 심각한 과적합에 취약했습니다. 전통적인 훈련은 일반화에 실패할 것입니다.',
         solution: '레이블 스무딩, 가중치 감쇠, 드롭아웃 및 그래디언트 클리핑을 포함한 정교한 정규화 기법을 구현했습니다. ImageNet 사전 훈련된 모델(EfficientNet, MobileNet) 및 CLIP의 전이 학습을 사용했습니다. 과적합을 방지하면서 데이터 다양성을 극대화하기 위해 에포크 기반 스케줄링과 함께 고급 증강 전략(Mixup, CutMix, RandAugment)을 적용했습니다.'
-      },
-      {
+        },
+        {
         challenge: '제한된 데이터로 강력한 성능 추정 필요. 단일 train/test 분할은 신뢰할 수 없는 정확도 추정을 제공할 것입니다.',
         solution: '균형 잡힌 클래스 분포를 보장하는 5-fold 계층화된 분할을 사용한 포괄적인 교차 검증 파이프라인을 설계했습니다. 폴드당 3개의 다른 랜덤 시드로 모델을 훈련하여 아키텍처당 15개 모델을 생성하여 강력한 앙상블을 만들었습니다. 이 접근 방식은 신뢰할 수 있는 성능 추정을 제공하면서 데이터 활용을 극대화했습니다.'
-      },
-      {
+        },
+        {
         challenge: '비전-언어 모델(CLIP) 통합은 표준 CNN 훈련과 다른 전문 훈련 전략이 필요했습니다.',
         solution: '두 단계 CLIP 훈련 전략을 개발했습니다: 먼저 비전 인코더를 고정하고 분류기 헤드만 훈련한 다음, 감소된 학습률로 파인튜닝을 위해 고정을 해제했습니다. CLIP 특정 전처리 및 정규화를 사용했습니다. 양쪽의 장점을 제공하기 위해 제로샷 CLIP(훈련 없음)과 파인튜닝 CLIP을 결합한 이중 앙상블을 생성했습니다: 안정성 및 정확도.'
-      },
-      {
+        },
+        {
         challenge: '여러 모델을 결합하고, 테스트 타임 증강을 처리하며, 공무전 준비 출력을 생성하는 프로덕션 준비 평가 파이프라인 생성.',
         solution: '모든 훈련된 체크포인트를 자동으로 발견하고 로드하는 모듈형 평가 시스템을 구축했습니다. 8변형 테스트 타임 증강 시스템을 구현했습니다. 모든 모델 및 TTA 변형에 걸쳐 가중 앙상블 평균을 생성했습니다. 적절한 클래스 예측 및 확률을 포함한 공무전 제출 형식과 일치하는 CSV 출력 생성을 설계했습니다.'
       },
       {
         challenge: '여러 모델, 폴드 및 시드를 가진 복잡한 훈련 파이프라인에서 재현성 및 유지보수성 보장.',
         solution: '전체 파이프라인(데이터 분할, 모델 초기화, 훈련)에 걸쳐 포괄적인 시드 제어를 구현했습니다. 관심사 분리(모델, 데이터셋, 훈련, 평가)를 가진 명확한 모듈형 코드베이스를 생성했습니다. 모든 하이퍼파라미터 및 메트릭을 추적하는 광범위한 로깅 시스템을 구축했습니다. 재현성을 위해 전체 훈련 상태를 보존하는 체크포인트 관리를 사용했습니다.'
-      }
-    ]
-  },
-  results: {
-    bullets: [
+        }
+      ]
+    },
+    results: {
+      bullets: [
       '이중 앙상블 + TTA로 95% 이상의 검증 정확도 달성',
       '3개 아키텍처(EfficientNet, MobileNet, CLIP)에 걸쳐 31개 이상의 모델 훈련',
       '강력한 평가를 위한 폴드당 3개 시드를 사용한 5-fold 교차 검증',
@@ -391,25 +391,25 @@ export const encarTrack1KO = {
       '소규모 데이터셋 과제(클래스당 ~100개 이미지) 성공적으로 극복'
     ],
     description: '이 프로젝트는 정교한 앙상블 방법을 사용하여 공무전 목표인 90% 이상의 정확도를 성공적으로 달성했으며, 95% 이상의 검증 정확도에 도달했습니다. 솔루션은 교차 검증 훈련, 앙상블 학습 및 프로덕션 준비 평가 시스템을 포함한 고급 ML 엔지니어링 관행을 보여줍니다. 주요 성과에는 전이 학습, 고급 정규화 및 다중 모델 앙상블을 통한 소규모 데이터셋 과제 극복이 포함됩니다. 비전-언어 모델(CLIP)의 통합은 순수 CNN을 넘어서는 의미적 이해 기능을 제공했으며, 포괄적인 훈련 인프라는 재현성 및 유지보수성을 보장했습니다.'
-  },
-  learnings: {
-    items: [
-      {
+    },
+    learnings: {
+      items: [
+        {
         title: '소규모 데이터셋 최적화',
         iconKey: 'Brain',
         description: '작은 데이터셋은 표준 기법을 넘어서는 정교한 정규화가 필요하다는 것을 배웠습니다. 전이 학습, 고급 증강(Mixup, CutMix) 및 교차 검증이 필수적입니다. 에포크 기반 증강 스케줄링은 데이터 다양성을 극대화하면서 과적합을 방지합니다.'
-      },
-      {
+        },
+        {
         title: '앙상블 학습의 힘',
         iconKey: 'TrendingUp',
         description: '다양한 아키텍처(EfficientNet + MobileNet) 및 훈련 전략(CNN + CLIP)을 결합하면 정확도가 크게 향상된다는 것을 발견했습니다. 테스트 타임 증강은 2-3% 개선을 추가합니다. 가중 앙상블 평균은 최적 성능에 중요합니다.'
-      },
-      {
+        },
+        {
         title: '비전-언어 모델',
         iconKey: 'Sparkles',
         description: 'CLIP 아키텍처 및 훈련에 대한 깊은 이해를 얻었습니다. 제로샷 CLIP은 훈련 없이 강력한 기준선을 제공합니다. 두 단계 파인튜닝(고정 → 고정 해제)이 안정성을 개선합니다. 제로샷 및 파인튜닝 CLIP을 결합하면 안정성과 정확도의 균형을 제공합니다.'
-      },
-      {
+        },
+        {
         title: 'ML 엔지니어링 모범 사례',
         iconKey: 'Code',
         description: '모듈형 코드 설계, 포괄적인 로깅 및 체크포인트 관리의 중요성을 배웠습니다. 시드 제어를 통한 재현성이 중요합니다. 여러 시드를 사용한 교차 검증은 강력한 성능 추정 및 앙상블 다양성을 제공합니다.'
@@ -418,13 +418,13 @@ export const encarTrack1KO = {
         title: '프로덕션 ML 파이프라인',
         iconKey: 'Workflow',
         description: '프로덕션 준비 ML 시스템의 요구사항을 이해했습니다: 자동 장치 감지, 배치 처리, CSV 출력 생성, 검증 평가 및 오류 처리. 잘 문서화되고 유지보수 가능한 코드는 실제 배포에 필수적입니다.'
-      }
-    ]
-  },
-  techStack: {
-    frameworks: ['PyTorch', 'TorchVision', 'OpenAI CLIP', 'TIMM'],
-    data: ['NumPy', 'Pandas', 'scikit-learn', 'OpenCV'],
-    tools: ['Python', 'Jupyter', 'Git']
+        }
+      ]
+    },
+    techStack: {
+      frameworks: ['PyTorch', 'TorchVision', 'OpenAI CLIP', 'TIMM'],
+      data: ['NumPy', 'Pandas', 'scikit-learn', 'OpenCV'],
+      tools: ['Python', 'Jupyter', 'Git']
   },
   links: {
     links: [
@@ -433,5 +433,6 @@ export const encarTrack1KO = {
     ],
     figmaUrl: '',
     caseStudyUrl: ''
-  }
-};
+    }
+  };
+  

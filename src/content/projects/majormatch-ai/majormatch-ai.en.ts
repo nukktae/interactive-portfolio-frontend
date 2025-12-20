@@ -69,7 +69,7 @@ export const majorMatchEN = {
     problem: {
       summary:
         'Students struggle to choose college majors due to generic guidance, limited exposure to real career paths, and lack of personalized insights.',
-      content:
+          content:
         'Traditional career guidance often relies on generalized advice and static information, leaving students to make life-impacting decisions without understanding how their interests, strengths, and learning styles align with real-world careers. Without hands-on exploration or access to industry professionals, students frequently commit to majors based on incomplete or inaccurate assumptions, leading to dissatisfaction and costly course changes.',
       painPoints: [
         { description: 'Generic career advice doesn\'t account for individual strengths and interests' },
@@ -120,12 +120,12 @@ export const majorMatchEN = {
           title: 'Full-Stack Architecture',
           description: 'MajorMatch AI follows a modern full-stack architecture with clear separation between frontend and backend, enabling scalability, maintainability, and future feature expansion.',
           features: [
-            'RESTful API built with Express.js and TypeScript',
-            'PostgreSQL database with migrations and relational schemas',
-            'Firebase Authentication for secure user identity management',
-            'React frontend with TypeScript, Redux Toolkit, and Tailwind CSS',
-            'OpenAI GPT-4 integration for AI recommendations and chat assistance',
-            'Email notification system for mentorship workflows'
+        'RESTful API built with Express.js and TypeScript',
+        'PostgreSQL database with migrations and relational schemas',
+        'Firebase Authentication for secure user identity management',
+        'React frontend with TypeScript, Redux Toolkit, and Tailwind CSS',
+        'OpenAI GPT-4 integration for AI recommendations and chat assistance',
+        'Email notification system for mentorship workflows'
           ],
           userFlows: undefined
         }
