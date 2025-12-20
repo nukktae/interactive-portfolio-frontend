@@ -208,7 +208,9 @@ export default function Navbar() {
                 <motion.button
                   onClick={() => router.push('/book-a-call')}
                   className={`ml-4 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    theme === 'dark'
+                    !mounted 
+                      ? 'bg-white text-[#0F0F12] hover:bg-white/90 shadow-[0_8px_20px_-10px_rgba(255,255,255,0.3)]'
+                      : theme === 'dark'
                       ? 'bg-white text-[#0F0F12] hover:bg-white/90 shadow-[0_8px_20px_-10px_rgba(255,255,255,0.3)]'
                       : 'bg-gradient-to-r from-indigo-500 via-blue-500 to-purple-500 text-white hover:brightness-105 shadow-[0_8px_20px_-10px_rgba(59,130,246,0.8)]'
                   }`}

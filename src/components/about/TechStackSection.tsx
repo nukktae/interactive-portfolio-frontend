@@ -38,7 +38,7 @@ export default function TechStackSection() {
         {/* Large Background Text */}
         <div className="relative">
           <motion.div
-            className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-black text-foreground/5 text-center mb-16 overflow-hidden leading-none"
+            className="text-[3rem] md:text-[5rem] lg:text-[7rem] font-black text-foreground/5 text-center mb-16 overflow-hidden leading-none"
             initial={{ opacity: 0, y: 100 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}

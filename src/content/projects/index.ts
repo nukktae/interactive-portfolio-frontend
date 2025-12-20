@@ -10,10 +10,15 @@ import { majorMatchAiContent } from './major-match-ai';
 import { moveparkContent } from './movepark';
 import { makeeatContent } from './makeaat';
 import { clearguideContent } from './clearguide';
+import { rootinContent } from './rootin';
 
 // Helper function to generate slug from project title
 export function generateSlug(title: string): string {
-  return title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+  return title.toLowerCase()
+    .replace(/\s+/g, '-')  // Replace spaces with dashes
+    .replace(/[^\w-]/g, '')  // Remove non-word characters except dashes
+    .replace(/-+/g, '-')  // Replace multiple consecutive dashes with single dash
+    .replace(/^-|-$/g, '');  // Remove leading/trailing dashes
 }
 
 // Default content generator for projects without detailed content files
@@ -43,6 +48,7 @@ const projectContentMap: Record<string, ProjectDetailContent> = {
   movepark: moveparkContent,
   makeeat: makeeatContent,
   clearguide: clearguideContent,
+  rootin: rootinContent,
   // Add other projects here as they are created
 };
 

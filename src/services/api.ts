@@ -1,3 +1,5 @@
+import type { ConversationHistory, ChatResponse } from '@/types/chat';
+
 // Use Next.js API route to proxy requests to backend (avoids CORS issues)
 const getApiUrl = () => {
   // Always use the Next.js API route (same origin, no CORS issues)
@@ -9,7 +11,12 @@ const getApiUrl = () => {
 };
 
 export const chatService = {
-  sendMessage: async (message: string) => {
+  sendMessage: async (
+    message: string, 
+    conversationHistory?: ConversationHistory,
+    roleConfidenceScores?: any,
+    sessionContext?: any
+  ) => {
     try {
       const apiUrl = getApiUrl();
       console.log('Sending request to:', apiUrl);
@@ -23,7 +30,10 @@ export const chatService = {
         },
         body: JSON.stringify({
           message,
-          userType
+          conversationHistory,
+          userType, // Legacy support
+          roleConfidenceScores,
+          sessionContext
         })
       });
 
@@ -49,8 +59,9 @@ export const chatService = {
         throw new Error(errorMessage);
       }
       
-      const data = await response.json();
-      return data.reply;
+      const data: ChatResponse = await response.json();
+      // Return full response object for role detection metadata
+      return data;
     } catch (error: any) {
       console.error('Chat service error:', error);
       throw new Error(error.message || 'Failed to get response from chat service');
