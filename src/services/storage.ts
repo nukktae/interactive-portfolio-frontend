@@ -3,7 +3,10 @@ import { join } from 'path';
 import { existsSync } from 'fs';
 
 // Check if Upstash Redis is configured
-const USE_REDIS = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN;
+// Vercel/Upstash uses KV_* prefix for environment variables
+const REST_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const REST_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const USE_REDIS = REST_URL && REST_TOKEN;
 
 // Lazy load Redis to avoid errors if not configured
 let redis: any = null;
@@ -13,8 +16,8 @@ async function getRedis() {
   try {
     const { Redis } = await import('@upstash/redis');
     redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL!,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+      url: REST_URL!,
+      token: REST_TOKEN!,
     });
     return redis;
   } catch (error) {

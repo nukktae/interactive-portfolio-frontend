@@ -21,20 +21,23 @@ Your analytics system uses **Upstash Redis** for persistent storage in productio
 ### 2. Environment Variables
 
 After creating the database, Vercel will automatically add these environment variables to your project:
-- `UPSTASH_REDIS_REST_URL` - Your Redis REST API URL
-- `UPSTASH_REDIS_REST_TOKEN` - Your Redis REST API token
+- `KV_REST_API_URL` - Your Redis REST API URL
+- `KV_REST_API_TOKEN` - Your Redis REST API token
+- `KV_REST_API_READ_ONLY_TOKEN` - Read-only token (optional)
 
 These are automatically available in your Vercel deployments.
 
 **For local development**, add these to your `.env.local` file:
 ```env
-UPSTASH_REDIS_REST_URL=your-rest-url-here
-UPSTASH_REDIS_REST_TOKEN=your-token-here
+KV_REST_API_URL=your-rest-url-here
+KV_REST_API_TOKEN=your-token-here
 ```
 
 You can find these values in:
 - Vercel Dashboard → Your Project → Storage → Your Redis Database → Settings
 - Or in the Upstash Console
+
+**Note:** The code supports both `KV_*` (Vercel default) and `UPSTASH_REDIS_*` naming conventions.
 
 ### 3. Deploy
 
