@@ -7,6 +7,8 @@ export async function POST(request: Request) {
     const body: TrackVisitRequest = await request.json();
     const { page, referrer, language, timezone, latitude, longitude } = body;
 
+    console.log('Analytics track request received:', { page, referrer, language, timezone });
+
     if (!page) {
       return NextResponse.json(
         { error: 'Page is required' },
@@ -17,6 +19,8 @@ export async function POST(request: Request) {
     // Get client information
     const ip = getClientIP(request);
     const userAgent = request.headers.get('user-agent') || undefined;
+
+    console.log('Tracking visit:', { ip, page, referrer });
 
     // Add visit to analytics (pass coordinates if provided)
     const visit = await addVisit(
@@ -29,6 +33,8 @@ export async function POST(request: Request) {
       latitude,
       longitude
     );
+
+    console.log('Visit tracked successfully:', visit.id);
 
     return NextResponse.json({ 
       success: true, 

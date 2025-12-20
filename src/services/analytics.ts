@@ -3,7 +3,10 @@ import { readFile, writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
 
-const DATA_DIR = join(process.cwd(), 'data');
+// Use /tmp on Vercel (serverless), otherwise use ./data
+const DATA_DIR = process.env.VERCEL 
+  ? '/tmp/portfolio-analytics' 
+  : join(process.cwd(), 'data');
 const ANALYTICS_FILE = join(DATA_DIR, 'analytics.json');
 
 // Ensure data directory exists
@@ -18,12 +21,16 @@ async function loadAnalytics(): Promise<VisitData[]> {
   try {
     await ensureDataDir();
     if (!existsSync(ANALYTICS_FILE)) {
+      console.log('Analytics file does not exist, returning empty array');
       return [];
     }
     const data = await readFile(ANALYTICS_FILE, 'utf-8');
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    console.log(`Loaded ${parsed.length} analytics entries from ${ANALYTICS_FILE}`);
+    return parsed;
   } catch (error) {
     console.error('Error loading analytics:', error);
+    console.error('File path:', ANALYTICS_FILE);
     return [];
   }
 }
@@ -33,8 +40,11 @@ async function saveAnalytics(visits: VisitData[]): Promise<void> {
   try {
     await ensureDataDir();
     await writeFile(ANALYTICS_FILE, JSON.stringify(visits, null, 2), 'utf-8');
+    console.log(`Saved ${visits.length} analytics entries to ${ANALYTICS_FILE}`);
   } catch (error) {
     console.error('Error saving analytics:', error);
+    console.error('File path:', ANALYTICS_FILE);
+    console.error('Data dir exists:', existsSync(DATA_DIR));
     throw error;
   }
 }

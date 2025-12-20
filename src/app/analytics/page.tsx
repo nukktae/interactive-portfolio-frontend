@@ -260,9 +260,23 @@ function AnalyticsContent() {
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-white/60 font-mono text-xs truncate">{visit.page}</span>
                     </div>
-                    <div className="text-white/40 text-xs">
-                      {visit.city && `${visit.city}, `}
-                      {visit.country || 'Unknown'}
+                    <div className="text-white/40 text-xs space-y-0.5">
+                      <div>
+                        <span className="text-white/50">IP: </span>
+                        <span className="font-mono text-white/70">{visit.ip || 'Unknown'}</span>
+                      </div>
+                      <div>
+                        {visit.city && `${visit.city}, `}
+                        {visit.country || 'Unknown Location'}
+                        {visit.referrer && visit.referrer !== 'direct' && (() => {
+                          try {
+                            const url = new URL(visit.referrer);
+                            return <span className="ml-2 text-white/30">• {url.hostname}</span>;
+                          } catch {
+                            return <span className="ml-2 text-white/30">• {visit.referrer}</span>;
+                          }
+                        })()}
+                      </div>
                     </div>
                   </div>
                   <div className="text-white/30 text-xs ml-4 whitespace-nowrap">
@@ -357,9 +371,15 @@ function AnalyticsContent() {
                           {formatDate(query.timestamp)}
                         </div>
                       </div>
-                      <div className="text-white/30 text-xs mt-2">
-                        {query.city && `${query.city}, `}
-                        {query.country || 'Unknown'} • {query.language || 'en'}
+                      <div className="text-white/30 text-xs mt-2 space-y-0.5">
+                        <div>
+                          <span className="text-white/50">IP: </span>
+                          <span className="font-mono text-white/70">{query.ip || 'Unknown'}</span>
+                        </div>
+                        <div>
+                          {query.city && `${query.city}, `}
+                          {query.country || 'Unknown Location'} • {query.language || 'en'}
+                        </div>
                       </div>
                     </div>
                   ))
