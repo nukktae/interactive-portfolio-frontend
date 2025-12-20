@@ -8,41 +8,41 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function ContactForm() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-200px" });
+  const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="relative z-10 py-24 md:py-32" ref={ref}>
-      <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto">
+    <section id="contact" className="relative z-10 py-16 md:py-24 lg:py-32 pb-24 md:pb-32" ref={ref}>
+      <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto w-full">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
             <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
               {t('contact.heading')}
             </div>
-            <h2 className="text-6xl md:text-8xl font-black leading-none mb-8 text-foreground whitespace-pre-line">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-tight md:leading-none mb-6 md:mb-8 text-foreground whitespace-pre-line">
               {t('contact.title')}
             </h2>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-8"
           >
-            <p className="text-xl max-w-2xl mx-auto text-foreground/80">
+            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-foreground/80 px-2">
               {t('contact.description')}
             </p>
 
             <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
               <a
                 href="mailto:anu.bn@yahoo.com"
-                className="group inline-flex items-center gap-4 text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground hover:text-foreground/80 transition-colors duration-300"
+                className="group inline-flex items-center gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-tight text-foreground hover:text-foreground/80 transition-colors duration-300 break-all sm:break-normal"
               >
                 <span>anu.bn@yahoo.com</span>
                 <ArrowUpRight className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
