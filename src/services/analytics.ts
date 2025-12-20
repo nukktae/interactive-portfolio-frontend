@@ -223,22 +223,35 @@ export async function addVisit(
         let houseNumber: string | undefined;
         
         // Extract street and house number (available for all addresses)
-        street = address.road || address.street || address.pedestrian || address.path;
+        // Prefer actual roads/streets over paths/pedestrian areas
+        street = address.road || address.street;
+        // Only use pedestrian/path if no road/street is available
+        // And avoid using path names that might be misleading (like park walking paths)
+        if (!street && (address.pedestrian || address.path)) {
+          const pathName = address.pedestrian || address.path;
+          // Skip path names that contain park names or walking paths (산책로)
+          // These are not actual street addresses
+          if (pathName && !pathName.includes('산책로') && !pathName.includes('공원')) {
+            street = pathName;
+          }
+        }
         houseNumber = address.house_number || address.house_name;
         
         // For Korean addresses, extract district (구)
         if (address.country_code === 'kr' || address.country_code === 'KR') {
           // Korean addresses: district is often in 'city_district' or 'suburb'
-          district = address.city_district || address.suburb || address.neighbourhood;
+          // But we need to be careful - only accept if it's clearly a district (ends with 구 or -gu)
+          const potentialDistrict = address.city_district || address.suburb || address.neighbourhood;
           
-          // If district ends with '구', it's a district
-          if (district && district.endsWith('구')) {
-            // Keep district as is
-          } else if (city && city.endsWith('구')) {
+          // Only accept as district if it clearly ends with '구' or '-gu' (Korean district marker)
+          if (potentialDistrict && (potentialDistrict.endsWith('구') || potentialDistrict.endsWith('-gu'))) {
+            district = potentialDistrict;
+          } else if (city && (city.endsWith('구') || city.endsWith('-gu'))) {
             // City might actually be the district
             district = city;
             city = address.state || 'Seoul'; // Seoul or other major city
           }
+          // If we can't find a clear district marker, don't set district to avoid incorrect data
           
           // If we have coordinates in Seoul area, try to get better city info
           if (!city || city === 'Seoul') {
@@ -246,8 +259,13 @@ export async function addVisit(
           }
           
           // For Korean addresses, also check neighbourhood for street-level detail
+          // But only if it's not a district (doesn't end with 구 or -gu)
           if (!street && address.neighbourhood) {
-            street = address.neighbourhood;
+            const neighbourhood = address.neighbourhood;
+            // Only use as street if it's not a district
+            if (!neighbourhood.endsWith('구') && !neighbourhood.endsWith('-gu')) {
+              street = neighbourhood;
+            }
           }
         } else {
           // For non-Korean addresses, district might be in suburb or city_district
@@ -316,13 +334,25 @@ export async function addVisit(
           
           // Extract district, street, and house number for Korean addresses
           if (address.country_code === 'kr' || address.country_code === 'KR') {
-            const district = address.city_district || address.suburb || address.neighbourhood;
-            if (district && (district.endsWith('구') || district.includes('gu'))) {
-              geo.district = district;
+            // Only accept district if it clearly ends with '구' or '-gu'
+            const potentialDistrict = address.city_district || address.suburb || address.neighbourhood;
+            if (potentialDistrict && (potentialDistrict.endsWith('구') || potentialDistrict.endsWith('-gu'))) {
+              geo.district = potentialDistrict;
             }
             
             // Extract street and house number
-            geo.street = address.road || address.street || address.pedestrian || address.path;
+            // But avoid using path/pedestrian names that might be misleading
+            const potentialStreet = address.road || address.street;
+            if (potentialStreet) {
+              geo.street = potentialStreet;
+            } else if (address.pedestrian || address.path) {
+              // Only use pedestrian/path if no road/street is available
+              // And only if it doesn't look like a district
+              const pathName = address.pedestrian || address.path;
+              if (pathName && !pathName.endsWith('구') && !pathName.endsWith('-gu')) {
+                geo.street = pathName;
+              }
+            }
             geo.houseNumber = address.house_number || address.house_name;
           }
         }
