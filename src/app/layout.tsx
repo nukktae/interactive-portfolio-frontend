@@ -4,6 +4,7 @@ import './globals.css';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import AIChatButton from '@/components/chat/AIChatButton';
+import PageViewTracker from '@/components/analytics/PageViewTracker';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <LanguageProvider>
+            <PageViewTracker />
             {children}
             <AIChatButton />
           </LanguageProvider>
