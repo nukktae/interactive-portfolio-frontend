@@ -2,20 +2,23 @@ import { readFile, writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
 
-// Check if we're on Vercel and have KV configured
-const USE_KV = process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN;
+// Check if Upstash Redis is configured
+const USE_REDIS = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN;
 
-// Lazy load KV to avoid errors if not configured
-let kv: any = null;
-async function getKV() {
-  if (!USE_KV) return null;
-  if (kv) return kv;
+// Lazy load Redis to avoid errors if not configured
+let redis: any = null;
+async function getRedis() {
+  if (!USE_REDIS) return null;
+  if (redis) return redis;
   try {
-    const { kv: kvClient } = await import('@vercel/kv');
-    kv = kvClient;
-    return kv;
+    const { Redis } = await import('@upstash/redis');
+    redis = new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    });
+    return redis;
   } catch (error) {
-    console.warn('Vercel KV not available, falling back to file storage:', error);
+    console.warn('Upstash Redis not available, falling back to file storage:', error);
     return null;
   }
 }
@@ -40,13 +43,13 @@ export class Storage {
   }
 
   async get<T>(): Promise<T[]> {
-    const kvClient = await getKV();
-    if (kvClient) {
+    const redisClient = await getRedis();
+    if (redisClient) {
       try {
-        const data = await kvClient.get(this.key) as T[] | null;
+        const data = await redisClient.get(this.key) as T[] | null;
         return data || [];
       } catch (error) {
-        console.error(`Error reading from KV (${this.key}):`, error);
+        console.error(`Error reading from Redis (${this.key}):`, error);
         return [];
       }
     } else {
@@ -66,12 +69,12 @@ export class Storage {
   }
 
   async set<T>(data: T[]): Promise<void> {
-    const kvClient = await getKV();
-    if (kvClient) {
+    const redisClient = await getRedis();
+    if (redisClient) {
       try {
-        await kvClient.set(this.key, data);
+        await redisClient.set(this.key, data);
       } catch (error) {
-        console.error(`Error writing to KV (${this.key}):`, error);
+        console.error(`Error writing to Redis (${this.key}):`, error);
         throw error;
       }
     } else {
