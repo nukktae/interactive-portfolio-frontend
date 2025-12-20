@@ -5,6 +5,25 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     
+    // Validate API key
+    const providedKey = searchParams.get('key');
+    const secretKey = process.env.ANALYTICS_SECRET_KEY;
+    
+    if (!secretKey) {
+      console.error('ANALYTICS_SECRET_KEY environment variable is not set');
+      return NextResponse.json(
+        { error: 'Analytics service not configured' },
+        { status: 500 }
+      );
+    }
+    
+    if (!providedKey || providedKey !== secretKey) {
+      return NextResponse.json(
+        { error: 'Unauthorized: Invalid or missing access key' },
+        { status: 401 }
+      );
+    }
+    
     // Optional date range filters
     const startDate = searchParams.get('startDate');
     const endDate = searchParams.get('endDate');

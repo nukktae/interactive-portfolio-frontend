@@ -1,22 +1,37 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { AnalyticsInsights } from '@/types/analytics';
 
 export default function AnalyticsPage() {
+  const searchParams = useSearchParams();
   const [insights, setInsights] = useState<AnalyticsInsights | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [unauthorized, setUnauthorized] = useState(false);
 
   useEffect(() => {
-    fetchInsights();
-  }, []);
+    const key = searchParams.get('key');
+    if (!key) {
+      setUnauthorized(true);
+      setLoading(false);
+      return;
+    }
+    fetchInsights(key);
+  }, [searchParams]);
 
-  const fetchInsights = async () => {
+  const fetchInsights = async (key: string) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch('/api/analytics/insights');
+      const response = await fetch(`/api/analytics/insights?key=${encodeURIComponent(key)}`);
+      
+      if (response.status === 401) {
+        setUnauthorized(true);
+        setLoading(false);
+        return;
+      }
       
       if (!response.ok) {
         throw new Error('Failed to fetch analytics');
@@ -39,6 +54,18 @@ export default function AnalyticsPage() {
     return `${value.toFixed(1)}%`;
   };
 
+  if (unauthorized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Unauthorized Access</h1>
+          <p className="text-gray-400 mb-2">This page requires a valid access key.</p>
+          <p className="text-gray-500 text-sm">Please provide the key as a URL parameter: ?key=YOUR_KEY</p>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -56,7 +83,10 @@ export default function AnalyticsPage() {
         <div className="text-center">
           <p className="text-red-500 mb-4">Error: {error}</p>
           <button
-            onClick={fetchInsights}
+            onClick={() => {
+              const key = searchParams.get('key');
+              if (key) fetchInsights(key);
+            }}
             className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           >
             Retry
@@ -205,7 +235,12 @@ export default function AnalyticsPage() {
         {/* Refresh Button */}
         <div className="mt-8 text-center">
           <button
-            onClick={fetchInsights}
+            onClick={() => {
+              const key = searchParams.get('key');
+              if (key) {
+                fetchInsights(key);
+              }
+            }}
             className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
           >
             Refresh Data
