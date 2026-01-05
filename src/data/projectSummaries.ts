@@ -1745,6 +1745,165 @@ export const projectSummaries: Project[] = [
         description: "Server routes and email system development"
       }
     ]
+  },
+  {
+    title: "COCO",
+    description: "AI companion robot for education & stress support (Phase 3 in progress) combining ESP32 embedded systems, ESP32-CAM facial recognition, voice interaction, cloud AI, and web platform integration.",
+    detailedDescription: "COCO is a cute, interactive AI companion robot currently in Phase 3 of development, designed to support learning, emotional regulation, and stress relief, especially for students and young users. It combines embedded systems (ESP32), ESP32-CAM with OV2640 camera for facial expression recognition, voice-based interaction, and cloud-based AI (OpenAI + Next.js platform) to create a warm, responsive, and educational assistant. COCO is not just a robot — it's a gentle presence that listens, sees, speaks, displays emotions, and connects to a web platform for extended intelligence and personalization. The project is actively being developed and demonstrates expertise in embedded systems, computer vision, hardware prototyping, IoT communication, full-stack development, AI integration, and human-centered product design.",
+    image: "/assets/images/coco/cococover.png",
+    images: [
+      "/assets/images/coco/car2.png",
+      "/assets/images/coco/oled.jpg",
+      "/assets/images/coco/strctutre.jpg"
+    ],
+    imageDescriptions: [
+      {
+        title: "4WD Robot Chassis",
+        text: "COCO's mobile base with L298N motor driver, enabling movement and positioning for interactive engagement."
+      },
+      {
+        title: "OLED Display with Facial Expressions",
+        text: "0.96\" OLED display showing COCO's emotional expressions and status indicators, creating a warm, readable interface."
+      },
+      {
+        title: "System Architecture",
+        text: "Complete hardware-to-software architecture diagram showing ESP32 integration with sensors, actuators, camera, and cloud AI platform."
+      }
+    ],
+    technologies: [
+      "ESP32",
+      "ESP32-CAM (OV2640 Camera)",
+      "INMP441 I2S Microphone",
+      "PAM8403 Amplifier",
+      "OLED Display (I2C)",
+      "HC-SR04P Ultrasonic Sensor",
+      "SG-90 Servo Motors",
+      "L298N Motor Driver",
+      "Next.js",
+      "OpenAI GPT",
+      "I2S Protocol",
+      "Computer Vision",
+      "Wi-Fi Communication",
+      "RESTful APIs",
+      "Hardware Prototyping",
+      "Embedded Systems"
+    ],
+    tools: [
+      "Arduino IDE",
+      "ESP32 Development Board",
+      "Breadboard",
+      "Multimeter",
+      "Oscilloscope",
+      "Next.js",
+      "VS Code",
+      "Git & GitHub",
+      "Figma",
+      "3D Printing (Future)"
+    ],
+    hardSkills: [
+      "Embedded Systems Development",
+      "Hardware Prototyping",
+      "Computer Vision",
+      "I2S Audio Processing",
+      "ESP32 Programming",
+      "Camera Integration",
+      "Sensor Integration",
+      "Robotics (Servos, Motors)",
+      "Full-Stack Development",
+      "AI Integration",
+      "Real-time Communication",
+      "Hardware-Software Integration",
+      "Circuit Design",
+      "Power Management"
+    ],
+    softSkills: [
+      "Hardware Debugging",
+      "System Architecture Design",
+      "Problem Solving",
+      "User-Centered Design",
+      "Technical Documentation",
+      "Iterative Prototyping",
+      "Cross-Domain Integration"
+    ],
+    features: [
+      "Voice input via INMP441 digital I2S microphone",
+      "Facial expression recognition with ESP32-CAM (OV2640 camera) for emotional awareness",
+      "AI voice output through PAM8403 amplifier and speaker",
+      "Visual feedback with 0.96\" OLED display showing facial expressions",
+      "Environmental awareness with HC-SR04P ultrasonic distance sensor",
+      "Cloud-connected intelligence via Next.js web platform",
+      "OpenAI LLM integration for natural language understanding",
+      "Expressive movement with SG-90 servo motors for head/body gestures",
+      "4WD robot chassis with L298N motor driver for mobility",
+      "Wi-Fi communication between ESP32 and web backend",
+      "Real-time audio streaming and processing",
+      "Emotional display system with OLED animations",
+      "Proximity-based wake-up and interaction"
+    ],
+    metrics: [
+      "Phase 3: Hardware-to-software system integration in progress (9+ components)",
+      "Real-time voice processing pipeline implemented with I2S protocol",
+      "Cloud AI response latency <2 seconds achieved",
+      "OLED display system designed with 30 FPS animations",
+      "Distance detection range: 2cm - 400cm implemented",
+      "Wi-Fi connectivity with automatic reconnection implemented",
+      "Multi-component hardware system (9+ components) being integrated",
+      "Full-stack architecture from embedded to cloud in development"
+    ],
+    highlights: [
+      "Building hardware-to-software AI companion system (Phase 3)",
+      "Integrating ESP32 with multiple sensors and actuators",
+      "Developing cloud-based AI brain using Next.js and OpenAI",
+      "Creating emotional display system with OLED facial expressions",
+      "Implementing real-time voice interaction pipeline",
+      "Designing companion-focused AI personality for education and stress support",
+      "Working on seamless hardware-software communication",
+      "Demonstrating full-stack capabilities from embedded systems to web platform"
+    ],
+    challenges: [
+      "Integrating multiple hardware components (microphone, display, sensors, motors)",
+      "Real-time audio processing and streaming to cloud",
+      "Managing power consumption across multiple components",
+      "Synchronizing hardware responses with cloud AI latency",
+      "Creating expressive animations on small OLED display",
+      "Hardware debugging without proper test equipment",
+      "Balancing functionality with physical size constraints",
+      "Ensuring reliable Wi-Fi communication in various network conditions"
+    ],
+    solutions: [
+      "Designed modular hardware architecture with clear component separation",
+      "Implemented efficient I2S audio buffering and chunked transmission",
+      "Used power management strategies including sleep modes and component gating",
+      "Created async communication pattern with status indicators during AI processing",
+      "Developed compact animation system using bitmap patterns and state machines",
+      "Built comprehensive logging and serial debugging system",
+      "Designed compact form factor with strategic component placement",
+      "Implemented robust Wi-Fi reconnection logic with exponential backoff"
+    ],
+    github: "",
+    liveUrl: "",
+    roles: [
+      {
+        area: "Embedded Systems Engineer",
+        percentage: 100,
+        description: "Designed and implemented ESP32 firmware, hardware integration, sensor communication, and motor control"
+      },
+      {
+        area: "Backend Developer",
+        percentage: 100,
+        description: "Built Next.js web platform for AI processing, user profiles, conversation history, and API endpoints"
+      },
+      {
+        area: "Frontend Developer",
+        percentage: 80,
+        description: "Developed web interface for COCO management, user profiles, and conversation history"
+      },
+      {
+        area: "UI/UX Designer",
+        percentage: 70,
+        description: "Designed companion personality, emotional expressions, interaction flows, and user experience"
+      }
+    ]
   }
 ];
 

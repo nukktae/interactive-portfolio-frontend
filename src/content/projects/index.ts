@@ -12,6 +12,7 @@ import { getMakeeatContent } from './makeeat/index';
 import { getClearguideContent } from './clearguide/index';
 import { getRootinContent } from './rootin/index';
 import { getEncarTrack1Content } from './encar-track1/index';
+import { getCocoContent } from './coco/index';
 
 type Language = 'en' | 'ko';
 
@@ -128,6 +129,9 @@ export function getProjectDetailContent(slug: string, language: Language = 'en')
   if (slug === 'encar-track1' || slug === 'encar-track-1') {
     return getEncarTrack1Content(language);
   }
+  if (slug === 'coco') {
+    return getCocoContent(language);
+  }
   
   // Handle other projects with old structure (if any remain)
   const content = projectContentMap[slug] || null;
@@ -153,6 +157,7 @@ export const allProjectContent: ProjectDetailContent[] = [
   getClearguideContent('en'),
   getRootinContent('en'),
   getEncarTrack1Content('en'),
+  getCocoContent('en'),
   ...Object.values(projectContentMap)
 ];
 

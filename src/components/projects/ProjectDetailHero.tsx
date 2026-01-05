@@ -5,6 +5,7 @@ import { Project } from '@/types/project';
 import { ProjectDetailContent } from '@/types/projectDetail';
 import { ExternalLink, Award, Calendar, Code2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { competitionsProjects } from '@/data/competitionsProjects';
 
 interface ProjectDetailHeroProps {
   project: Project;
@@ -56,8 +57,15 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
   };
   const valueStatement = getValueStatement();
 
-  // Get timeline (placeholder for now - can be enhanced with project data)
-  const timeline = "2025.08 – 2025.12"; // TODO: Extract from project data if available
+  // Get timeline from competitionsProjects by matching title
+  const getTimeline = (): string => {
+    const competitionProject = competitionsProjects.find(cp => cp.title === project.title);
+    if (competitionProject && competitionProject.period) {
+      return competitionProject.period;
+    }
+    return "2025.08 – 2025.12"; // Fallback
+  };
+  const timeline = getTimeline();
 
   const roleSummary = getRoleSummary();
   const keyMetrics = getKeyMetrics();
@@ -82,9 +90,6 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight">
               {project.title}
             </h1>
-              <p className="text-lg md:text-xl text-foreground/70 font-semibold">
-                CRM Platform for Real Estate Teams
-              </p>
             </div>
             {(project.liveUrl || project.github) && (
               <a

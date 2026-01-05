@@ -1238,9 +1238,9 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                           if (!item || !item.name) return null;
                           const IconComponent = item.icon || Layers;
                           return (
-                            <div key={item.name} className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/80 text-sm">
+                            <div key={item.name} className="flex items-center gap-2 rounded-lg bg-[#f9f9f9] dark:bg-foreground/[0.05] px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-gray-700 dark:text-foreground/90 text-sm">
                               <div className="flex h-6 w-6 items-center justify-center flex-shrink-0">
-                                <IconComponent className="h-4 w-4 text-foreground/70" />
+                                <IconComponent className="h-4 w-4 text-gray-600 dark:text-foreground/70" />
                               </div>
                               <span>{item.name}</span>
                             </div>
@@ -1411,7 +1411,10 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
 
     const displayImages = getDisplayImages();
     
-    // Structure: hero image (first), then two rows of 2 images each
+    // Special layout for COCO: all images in one row
+    const isCoco = content.slug === 'coco';
+    
+    // Structure: hero image (first), then two rows of 2 images each (unless COCO)
     const heroImage = displayImages[0];
     const row1Images = displayImages.slice(1, 3);
     const row2Images = displayImages.slice(3, 5);
@@ -1467,8 +1470,46 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
 
           {/* Gallery Layout */}
           <div className="space-y-6">
-            {/* Hero Image */}
-            {heroImage && (
+            {/* COCO: All images in one row */}
+            {isCoco && displayImages.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
+                {displayImages.map((image, index) => {
+                  const imgIndex = project.images.indexOf(image);
+                  return (
+                    <div key={index} className="space-y-3">
+                      <motion.div
+                        className="group relative w-full aspect-[16/10] min-h-[180px] md:min-h-[300px] rounded-2xl overflow-hidden cursor-zoom-in shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] border border-black/5 dark:border-white/5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
+                        whileHover={{ scale: 1.01 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={() => imgIndex !== -1 && setSelectedImage(imgIndex)}
+                        style={{ position: 'relative' }}
+                      >
+                        <Image
+                          src={image}
+                          alt={getImageCaption(image)}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </motion.div>
+                      <p className="text-xs text-foreground/60 text-center">
+                        {getImageCaption(image)}
+                      </p>
+                    </div>
+                  );
+                })}
+              </motion.div>
+            )}
+
+            {/* Default Layout: Hero Image */}
+            {!isCoco && heroImage && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1495,7 +1536,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             )}
 
             {/* Row 1: Two medium-width screenshots */}
-            {row1Images.length > 0 && (
+            {!isCoco && row1Images.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1533,7 +1574,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             )}
 
             {/* Row 2: Two medium-width screenshots */}
-            {row2Images.length > 0 && (
+            {!isCoco && row2Images.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1571,7 +1612,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             )}
 
             {/* Remaining images in a grid (if more than 5) */}
-            {displayImages.length > 5 && (
+            {!isCoco && displayImages.length > 5 && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

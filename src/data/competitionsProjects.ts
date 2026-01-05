@@ -31,6 +31,19 @@ export const competitionsProjects: CompetitionProject[] = [
     featured: true
   },
   {
+    id: 15,
+    title: "COCO",
+    role: "Full-Stack Developer (Hardware + Backend + Frontend + UI/UX)",
+    roleKo: "풀스택 개발자 (하드웨어 + 백엔드 + 프론트엔드 + UI/UX)",
+    period: "2025.12 - Present",
+    description: "AI companion robot for education & stress support combining ESP32 embedded systems, voice interaction, cloud AI, and web platform integration",
+    descriptionKo: "ESP32 임베디드 시스템, 음성 상호작용, 클라우드 AI 및 웹 플랫폼 통합을 결합한 교육 및 스트레스 지원을 위한 AI 동반자 로봇",
+    tags: ["ESP32", "Embedded Systems", "IoT", "OpenAI", "Next.js", "I2S", "Hardware"],
+    image: "/assets/images/coco/cococover.png",
+    githubUrl: "",
+    featured: true
+  },
+  {
     id: 5,
     title: "Rootin",
     role: "Frontend Developer",
