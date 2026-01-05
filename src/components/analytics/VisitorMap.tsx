@@ -1,327 +1,268 @@
 'use client';
 
-import { useEffect, useMemo, useState, memo } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 import type { VisitData } from '@/types/analytics';
-
-// Helper function to get Korean name for Korean addresses
-function getKoreanLocationName(visit: VisitData): string {
-  if (visit.country !== 'South Korea') {
-    return '';
-  }
-  
-  const parts: string[] = [];
-  
-  // Korean city/district name mappings (fallback if Nominatim doesn't provide Korean)
-  const cityMap: Record<string, string> = {
-    'Seoul': '서울',
-    'Incheon': '인천',
-    'Busan': '부산',
-    'Daegu': '대구',
-    'Daejeon': '대전',
-    'Gwangju': '광주',
-    'Ulsan': '울산'
-  };
-  
-  const districtMap: Record<string, string> = {
-    'Bupyeong-gu': '부평구',
-    'Yangcheon-gu': '양천구',
-    'Gangnam-gu': '강남구',
-    'Gangdong-gu': '강동구',
-    'Gangbuk-gu': '강북구',
-    'Gangseo-gu': '강서구',
-    'Gwanak-gu': '관악구',
-    'Gwangjin-gu': '광진구',
-    'Guro-gu': '구로구',
-    'Geumcheon-gu': '금천구',
-    'Nowon-gu': '노원구',
-    'Dobong-gu': '도봉구',
-    'Dongdaemun-gu': '동대문구',
-    'Dongjak-gu': '동작구',
-    'Mapo-gu': '마포구',
-    'Seodaemun-gu': '서대문구',
-    'Seocho-gu': '서초구',
-    'Seongdong-gu': '성동구',
-    'Seongbuk-gu': '성북구',
-    'Songpa-gu': '송파구',
-    'Yongsan-gu': '용산구',
-    'Eunpyeong-gu': '은평구',
-    'Jongno-gu': '종로구',
-    'Jung-gu': '중구',
-    'Jungnang-gu': '중랑구'
-  };
-  
-  // Check if district is already in Korean (contains 한글)
-  const hasKorean = (text: string) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(text);
-  
-  if (visit.district) {
-    // Use Korean name if available, otherwise try to map
-    if (hasKorean(visit.district)) {
-      parts.push(visit.district);
-    } else {
-      parts.push(districtMap[visit.district] || visit.district);
-    }
-  }
-  
-  if (visit.city && !parts.includes(visit.city)) {
-    // Use Korean name if available, otherwise try to map
-    if (hasKorean(visit.city)) {
-      parts.push(visit.city);
-    } else {
-      parts.push(cityMap[visit.city] || visit.city);
-    }
-  }
-  
-  return parts.join(' ');
-}
+import 'leaflet/dist/leaflet.css';
 
 // Fix for default marker icons in Next.js
 if (typeof window !== 'undefined') {
   delete (L.Icon.Default.prototype as any)._getIconUrl;
   L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
   });
+}
+
+// Custom dark marker icon
+const createCustomIcon = (color: string = '#ffffff') => {
+  return L.divIcon({
+    className: 'custom-marker',
+    html: `
+      <div style="
+        width: 12px;
+        height: 12px;
+        background-color: ${color};
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      "></div>
+    `,
+    iconSize: [12, 12],
+    iconAnchor: [6, 6],
+  });
+};
+
+// Component to fit map bounds to markers
+function FitBounds({ positions }: { positions: [number, number][] }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    if (positions.length > 0) {
+      const bounds = L.latLngBounds(positions);
+      map.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
+    } else {
+      // Default to world view
+      map.setView([20, 0], 2);
+    }
+  }, [map, positions]);
+  
+  return null;
 }
 
 interface VisitorMapProps {
   visits: VisitData[];
 }
 
-// Component to update map bounds when visits change
-function MapUpdater({ visits }: { visits: VisitData[] }) {
-  const map = useMap();
-  const visitsWithCoords = visits.filter(
-    v => v.latitude != null && v.longitude != null && 
-    !isNaN(v.latitude) && !isNaN(v.longitude)
-  );
-
-  useEffect(() => {
-    if (visitsWithCoords.length === 0) return;
-    
-    const lats = visitsWithCoords.map(v => v.latitude!);
-    const lngs = visitsWithCoords.map(v => v.longitude!);
-    
-    if (visitsWithCoords.length === 1) {
-      map.setView([lats[0], lngs[0]], 10);
-    } else {
-      const bounds = L.latLngBounds(
-        [Math.min(...lats), Math.min(...lngs)],
-        [Math.max(...lats), Math.max(...lngs)]
-      );
-      map.fitBounds(bounds, { padding: [50, 50] });
-    }
-  }, [visitsWithCoords.length, map]);
-
-  return null;
-}
-
-// Custom glowing marker icon
-function createGlowingIcon() {
-  return L.divIcon({
-    className: 'glowing-marker',
-    html: `
-      <div style="
-        width: 12px;
-        height: 12px;
-        background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 100%);
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.4);
-        animation: pulse 2s ease-in-out infinite;
-      "></div>
-      <style>
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.3); opacity: 0.7; }
-        }
-      </style>
-    `,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-  });
-}
-
-// Inner map component
-const MapInner = memo(function MapInner({ visits }: { visits: VisitData[] }) {
-  const visitsWithCoords = useMemo(() => 
-    visits.filter(
-      v => v.latitude != null && v.longitude != null && 
-      !isNaN(v.latitude) && !isNaN(v.longitude)
-    ),
-    [visits]
-  );
-
-  // Calculate initial center and zoom
-  const { center, zoom } = useMemo(() => {
-    if (visitsWithCoords.length === 0) {
-      return { center: [0, 0] as [number, number], zoom: 2 };
-    }
-
-    const lats = visitsWithCoords.map(v => v.latitude!);
-    const lngs = visitsWithCoords.map(v => v.longitude!);
-    
-    const centerLat = (Math.min(...lats) + Math.max(...lats)) / 2;
-    const centerLng = (Math.min(...lngs) + Math.max(...lngs)) / 2;
-    
-    return {
-      center: [centerLat, centerLng] as [number, number],
-      zoom: visitsWithCoords.length === 1 ? 10 : 2
-    };
-  }, [visitsWithCoords.length]);
-
-  return (
-    <div style={{ height: '100%', width: '100%' }}>
-      <MapContainer
-        center={center}
-        zoom={zoom}
-        style={{ height: '100%', width: '100%', backgroundColor: '#000' }}
-        zoomControl={true}
-        className="z-0"
-        scrollWheelZoom={true}
-      >
-        <MapUpdater visits={visitsWithCoords} />
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          className="map-tiles"
-        />
-        {visitsWithCoords.map((visit) => (
-          <Marker
-            key={visit.id}
-            position={[visit.latitude!, visit.longitude!]}
-            icon={createGlowingIcon()}
-          >
-            <Popup>
-              <div className="text-black text-xs">
-                <p className="font-semibold">
-                  {(() => {
-                    // Format location: district, street, house number, city, country
-                    const parts: string[] = [];
-                    
-                    // For Korean addresses, show detailed address: district street houseNumber
-                    if (visit.country === 'South Korea') {
-                      if (visit.district) {
-                        parts.push(visit.district);
-                      }
-                      // Add street and house number if available (e.g., "674-5")
-                      if (visit.street && visit.houseNumber) {
-                        parts.push(`${visit.street} ${visit.houseNumber}`);
-                      } else if (visit.houseNumber) {
-                        parts.push(visit.houseNumber);
-                      } else if (visit.street) {
-                        parts.push(visit.street);
-                      }
-                      if (visit.city && !parts.includes(visit.city)) {
-                        parts.push(visit.city);
-                      }
-                      if (visit.country) {
-                        parts.push(visit.country);
-                      }
-                    } else {
-                      // For other countries
-                      if (visit.district) {
-                        parts.push(visit.district);
-                      }
-                      if (visit.street && visit.houseNumber) {
-                        parts.push(`${visit.street} ${visit.houseNumber}`);
-                      } else if (visit.houseNumber) {
-                        parts.push(visit.houseNumber);
-                      } else if (visit.street) {
-                        parts.push(visit.street);
-                      }
-                      if (visit.city) {
-                        parts.push(visit.city);
-                      }
-                      if (visit.country) {
-                        parts.push(visit.country);
-                      }
-                    }
-                    
-                    return parts.length > 0 ? parts.join(', ') : 'Unknown';
-                  })()}
-                </p>
-                <p className="text-gray-600">
-                  {new Date(visit.timestamp).toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric',
-                    year: 'numeric'
-                  })}, {new Date(visit.timestamp).toLocaleTimeString('en-US', {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                    hour12: true
-                  })}
-                </p>
-                <p className="text-gray-500">{visit.page}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
-  );
-}, (prevProps, nextProps) => {
-  // Only re-render if visits length changes significantly
-  // This prevents unnecessary re-renders that cause map re-initialization
-  return prevProps.visits.length === nextProps.visits.length;
-});
-
 export default function VisitorMap({ visits }: VisitorMapProps) {
   const [mounted, setMounted] = useState(false);
+  const [mapKey, setMapKey] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Only initialize once
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      setMounted(true);
+      // Generate unique key only once on mount
+      setMapKey(`visitor-map-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+    }
+    
+    return () => {
+      // Cleanup: remove any existing map instances from the container
+      if (containerRef.current) {
+        const container = containerRef.current as any;
+        // Remove all Leaflet map instances
+        if (container._leaflet_id) {
+          delete container._leaflet_id;
+        }
+      }
+    };
   }, []);
 
-  // Filter visits with valid coordinates
-  const visitsWithCoords = useMemo(() => 
-    visits.filter(
-      v => v.latitude != null && v.longitude != null && 
-      !isNaN(v.latitude) && !isNaN(v.longitude)
-    ),
-    [visits]
+  // Filter visits with valid coordinates and group by location
+  const markers = useMemo(() => {
+    const validVisits = visits.filter(
+      (visit) => visit.latitude != null && visit.longitude != null
+    );
+
+    // Group visits by location (same lat/lng) to show count
+    const locationMap = new Map<string, { position: [number, number]; visits: VisitData[] }>();
+    
+    validVisits.forEach((visit) => {
+      const key = `${visit.latitude?.toFixed(4)},${visit.longitude?.toFixed(4)}`;
+      if (!locationMap.has(key)) {
+        locationMap.set(key, {
+          position: [visit.latitude!, visit.longitude!],
+          visits: [],
+        });
+      }
+      locationMap.get(key)!.visits.push(visit);
+    });
+
+    return Array.from(locationMap.values());
+  }, [visits]);
+
+  const positions = useMemo(
+    () => markers.map((marker) => marker.position as [number, number]),
+    [markers]
   );
 
-  if (visitsWithCoords.length === 0) {
+  const formatDate = (timestamp: number) => {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  };
+
+  const formatLocation = (visit: VisitData): string => {
+    const parts: string[] = [];
+    
+    if (visit.district) parts.push(visit.district);
+    if (visit.city && !parts.includes(visit.city)) parts.push(visit.city);
+    if (visit.region && !parts.includes(visit.region)) parts.push(visit.region);
+    if (visit.country) parts.push(visit.country);
+    
+    return parts.length > 0 ? parts.join(', ') : 'Unknown Location';
+  };
+
+  if (markers.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-black/20 rounded-lg">
+      <div className="w-full h-full flex items-center justify-center bg-black/20">
         <p className="text-white/40 text-sm">No location data available</p>
       </div>
     );
   }
 
-  if (!mounted) {
+  // Don't render map until mounted and key is generated
+  if (!mounted || !mapKey) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-black/20 rounded-lg">
+      <div className="w-full h-full flex items-center justify-center bg-black/20">
         <div className="animate-spin rounded-full h-8 w-8 border-2 border-white/20 border-t-white/60"></div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full rounded-lg overflow-hidden">
-      <MapInner visits={visits} />
+    <div ref={containerRef} className="w-full h-full relative">
+      <MapContainer
+        key={mapKey}
+        center={[20, 0]}
+        zoom={2}
+        style={{ height: '100%', width: '100%', zIndex: 0 }}
+        zoomControl={true}
+        scrollWheelZoom={true}
+      >
+        {/* Dark theme tile layer */}
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          className="map-tiles"
+        />
+        
+        {/* Alternative: Dark theme tiles (uncomment to use) */}
+        {/* <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+        /> */}
+
+        {/* Fit bounds to markers */}
+        <FitBounds positions={positions} />
+
+        {/* Render markers */}
+        {markers.map((marker, index) => {
+          const visitCount = marker.visits.length;
+          const latestVisit = marker.visits.sort((a, b) => b.timestamp - a.timestamp)[0];
+          const location = formatLocation(latestVisit);
+          
+          // Color based on visit count (more visits = brighter)
+          const intensity = Math.min(visitCount / 10, 1);
+          const color = `rgba(255, 255, 255, ${0.5 + intensity * 0.5})`;
+          
+          return (
+            <Marker
+              key={index}
+              position={marker.position}
+              icon={createCustomIcon(color)}
+            >
+              <Popup className="custom-popup">
+                <div className="text-black text-sm space-y-1 min-w-[200px]">
+                  <div className="font-semibold text-base mb-2 border-b pb-1">
+                    {location}
+                  </div>
+                  <div className="space-y-1">
+                    <div>
+                      <span className="text-gray-600">Visits: </span>
+                      <span className="font-medium">{visitCount}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-600">Latest: </span>
+                      <span className="font-medium">{formatDate(latestVisit.timestamp)}</span>
+                    </div>
+                    {latestVisit.page && (
+                      <div>
+                        <span className="text-gray-600">Page: </span>
+                        <span className="font-mono text-xs">{latestVisit.page}</span>
+                      </div>
+                    )}
+                    {latestVisit.ip && (
+                      <div>
+                        <span className="text-gray-600">IP: </span>
+                        <span className="font-mono text-xs">{latestVisit.ip}</span>
+                      </div>
+                    )}
+                  </div>
+                  {marker.visits.length > 1 && (
+                    <div className="mt-2 pt-2 border-t text-xs text-gray-500">
+                      {marker.visits.length - 1} more visit{marker.visits.length - 1 > 1 ? 's' : ''} from this location
+                    </div>
+                  )}
+                </div>
+              </Popup>
+            </Marker>
+          );
+        })}
+      </MapContainer>
+      
       <style jsx global>{`
-        .map-tiles {
-          filter: brightness(0.6) invert(1) hue-rotate(180deg) contrast(1.2);
-        }
         .leaflet-container {
-          background-color: #000 !important;
+          background: #1a1a1a;
         }
         .leaflet-popup-content-wrapper {
           background: white;
           border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-        .glowing-marker {
-          background: transparent !important;
-          border: none !important;
+        .leaflet-popup-tip {
+          background: white;
+        }
+        .leaflet-control-zoom {
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          background: rgba(0, 0, 0, 0.6) !important;
+        }
+        .leaflet-control-zoom a {
+          background-color: rgba(0, 0, 0, 0.6) !important;
+          color: rgba(255, 255, 255, 0.8) !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        }
+        .leaflet-control-zoom a:hover {
+          background-color: rgba(0, 0, 0, 0.8) !important;
+          color: white !important;
+        }
+        .leaflet-bar-part {
+          border-radius: 0 !important;
+        }
+        .map-tiles {
+          filter: brightness(0.6) contrast(1.2) saturate(0.8);
         }
       `}</style>
     </div>
   );
 }
-
-
 

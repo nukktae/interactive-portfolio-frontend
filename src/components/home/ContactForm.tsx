@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowUpRight, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Image from 'next/image';
 
 export default function ContactForm() {
   const ref = useRef(null);
@@ -66,21 +67,32 @@ export default function ContactForm() {
                   href="https://github.com/nukktae"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-widest uppercase hover:text-foreground transition-colors duration-300"
+                  className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
                 >
-                  {t('contact.github')}
+                  <Image
+                    src="/assets/images/stack/github.png"
+                    alt="GitHub"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                  />
+                  <span className="text-sm font-bold tracking-widest uppercase">{t('contact.github')}</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/anu-bilegdemberel-445366318"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold tracking-widest uppercase hover:text-foreground transition-colors duration-300"
+                  className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
                 >
-                  {t('contact.linkedin')}
+                  <Image
+                    src="/assets/images/stack/linkedin.webp"
+                    alt="LinkedIn"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                  />
+                  <span className="text-sm font-bold tracking-widest uppercase">{t('contact.linkedin')}</span>
                 </a>
-                <div className="text-sm font-bold tracking-widest uppercase">
-                  {t('contact.available')}
-                </div>
               </div>
             </div>
           </motion.div>

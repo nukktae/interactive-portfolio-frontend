@@ -21,9 +21,10 @@ const translations = {
     'nav.bookCall': 'Book a Call',
     
     // Hero Section
-    'hero.headlinePart1': "I design user experiences across the entire journey—from",
-    'hero.headlineItalic': 'strategy',
-    'hero.headlinePart2': 'to launch.',
+    'hero.headlinePart1': "I design user experiences across the entire journey—",
+    'hero.headlineItalic': '',
+    'hero.headlinePart2': '',
+    'hero.headlinePart3': 'from strategy to launch.',
     'hero.greeting': "Hello, I'm Anu Bilegdemberel",
     'hero.role': 'Product Engineer (Full-Stack & Design)',
     
@@ -118,13 +119,14 @@ const translations = {
     'nav.work': '작업',
     'nav.about': '소개',
     'nav.contact': '연락처',
-    'nav.bookCall': '통화 예약',
+    'nav.bookCall': '미팅 예약',
     
     // Hero Section
     'hero.headlinePart1': '기획부터',
     'hero.headlineItalic': '런칭까지,',
-    'hero.headlinePart2': '전 과정에서 사용자 경험을 설계합니다.',
-    'hero.greeting': '아노 빌렉뎀베렐',
+    'hero.headlinePart2': '전 과정에서',
+    'hero.headlinePart3': '사용자 경험을 설계합니다.',
+    'hero.greeting': '아노',
     'hero.role': '프로덕트 엔지니어 (풀스택 & 디자인)',
     
     // Projects Section

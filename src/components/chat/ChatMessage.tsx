@@ -18,11 +18,11 @@ export const ChatMessage = ({ message, avatarBg }: ChatMessageProps) => {
   const isBot = message.sender === 'bot';
   
   // Premium styling: no hard borders, linear comment thread style
-  const textColor = isBot ? 'text-gray-900' : 'text-white';
-  const textColorLight = isBot ? 'text-gray-700' : 'text-white';
-  const textColorHeader = isBot ? 'text-gray-900' : 'text-white';
-  const textColorSubheader = isBot ? 'text-gray-800' : 'text-white';
-  const borderColor = isBot ? 'border-gray-200' : 'border-gray-700';
+  const textColor = isBot ? 'text-gray-900' : 'text-gray-900';
+  const textColorLight = isBot ? 'text-gray-700' : 'text-gray-700';
+  const textColorHeader = isBot ? 'text-gray-900' : 'text-gray-900';
+  const textColorSubheader = isBot ? 'text-gray-800' : 'text-gray-800';
+  const borderColor = isBot ? 'border-gray-200' : 'border-gray-300';
   
   // Comprehensive HTML and markdown processor
   const processHtmlAndMarkdown = (text: string): string => {

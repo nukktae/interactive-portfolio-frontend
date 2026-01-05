@@ -5,7 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import type { AnalyticsInsights, VisitData } from '@/types/analytics';
 import type { ChatLogInsights } from '@/types/chatLog';
-import dynamic from 'next/dynamic';
 
 // Helper function to get Korean name for Korean addresses
 function getKoreanLocationName(visit: VisitData): string {
@@ -77,16 +76,6 @@ function getKoreanLocationName(visit: VisitData): string {
   
   return parts.join(' ');
 }
-
-// Dynamically import map to avoid SSR issues
-const MapComponent = dynamic(() => import('@/components/analytics/VisitorMap'), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full flex items-center justify-center bg-black/20 rounded-lg">
-      <div className="animate-spin rounded-full h-8 w-8 border-2 border-white/20 border-t-white/60"></div>
-    </div>
-  ),
-});
 
 function AnalyticsContent() {
   const searchParams = useSearchParams();
@@ -300,21 +289,6 @@ function AnalyticsContent() {
           <div className="border border-white/10 rounded-lg p-4 md:p-6 bg-white/5">
             <div className="text-xs text-white/40 mb-2 uppercase tracking-wider">Pages</div>
             <div className="text-2xl md:text-4xl font-bold text-white">{Object.keys(insights.visitsByPage).length}</div>
-          </div>
-        </motion.div>
-
-        {/* Map Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 md:mb-16"
-        >
-          <div className="text-xs font-semibold tracking-widest text-white/40 mb-4 uppercase">
-            Visitor Locations
-          </div>
-          <div className="border border-white/10 rounded-lg overflow-hidden bg-black/50" style={{ height: '500px' }}>
-            <MapComponent visits={insights.recentVisits} />
           </div>
         </motion.div>
 

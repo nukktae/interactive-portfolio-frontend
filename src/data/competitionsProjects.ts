@@ -93,7 +93,8 @@ export const competitionsProjects: CompetitionProject[] = [
     descriptionKo: "크로스 플랫폼 지원을 갖춘 AI 기반 레시피 생성 앱",
     tags: ["Flutter", "AI", "OpenAI", "Firebase"],
     image: "/assets/images/projects/makeeat.png",
-    githubUrl: "https://github.com/nukktae"
+    githubUrl: "https://github.com/nukktae",
+    hidden: true // Hidden from display
   },
   {
     id: 12,
@@ -144,7 +145,8 @@ export const competitionsProjects: CompetitionProject[] = [
     descriptionKo: "앙상블 방법과 CLIP을 사용하여 소규모 데이터셋에서 >90% 정확도를 달성한 컴퓨터 비전 분류",
     tags: ["PyTorch", "CLIP", "Computer Vision", "Deep Learning", "Ensemble Learning"],
     image: "/assets/images/encar.png",
-    githubUrl: ""
+    githubUrl: "",
+    hidden: true // Hidden from display
   },
   {
     id: 3,

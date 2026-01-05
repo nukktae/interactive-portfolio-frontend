@@ -573,7 +573,10 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
               className="w-full max-w-xs space-y-4"
             >
               <button
-                onClick={() => handleEntryPrompt('hire')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEntryPrompt('hire');
+                }}
                 className="w-full px-0 py-2 text-left text-base font-normal text-gray-900
                          hover:bg-gray-50 transition-all duration-200
                          focus:outline-none relative group"
@@ -584,7 +587,10 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
                 </span>
               </button>
               <button
-                onClick={() => handleEntryPrompt('explore')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEntryPrompt('explore');
+                }}
                 className="w-full px-0 py-2 text-left text-base font-normal text-gray-900
                          hover:bg-gray-50 transition-all duration-200
                          focus:outline-none relative group"
@@ -595,7 +601,10 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
                 </span>
               </button>
               <button
-                onClick={() => handleEntryPrompt('browse')}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEntryPrompt('browse');
+                }}
                 className="w-full px-0 py-2 text-left text-base font-normal text-gray-900
                          hover:bg-gray-50 transition-all duration-200
                          focus:outline-none relative group"
@@ -690,7 +699,8 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
                   className="px-3 py-1.5 text-xs text-gray-500 hover:text-gray-700
                            hover:bg-gray-50 transition-all duration-150 font-normal
                            focus:outline-none"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setInput(suggestion.query);
                     setFollowUpSuggestions([]);
                     handleSubmit(new Event('submit') as any);
@@ -706,6 +716,8 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
         {/* Input Field - Always visible, visually stronger, subtle border */}
         <form 
           onSubmit={handleSubmit}
+          onClick={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
           className="p-4 bg-white relative z-10"
         >
           <div className="relative flex items-end">
@@ -714,6 +726,8 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps = {}) => {
               onChange={(e) => setInput(e.target.value)}
               onFocus={() => setInputFocused(true)}
               onBlur={() => setInputFocused(false)}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                   e.preventDefault();
