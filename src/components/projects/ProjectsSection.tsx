@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight, MapPin } from 'lucide-react';
 import { ImageWithFallback } from '../ui/ImageWithFallback';
 import { workExperience, type WorkExperienceProject } from '../../data/workExperience';
 import { competitionsProjects, type CompetitionProject } from '../../data/competitionsProjects';
@@ -123,6 +123,12 @@ export default function ProjectsSection() {
             <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
               {project.title}
             </h3>
+            {project.address && (
+              <div className="flex items-center gap-2 mt-2 text-sm text-foreground/60">
+                <MapPin className="w-4 h-4" />
+                <span>{project.address}</span>
+              </div>
+            )}
           </div>
           <ArrowUpRight className="w-6 h-6 text-foreground/60 group-hover:text-foreground group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
         </div>

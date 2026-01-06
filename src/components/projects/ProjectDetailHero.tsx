@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
 import { ProjectDetailContent } from '@/types/projectDetail';
-import { ExternalLink, Award, Calendar, Code2 } from 'lucide-react';
+import { ExternalLink, Award, Calendar, Code2, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { competitionsProjects } from '@/data/competitionsProjects';
 
@@ -110,7 +110,7 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
             </p>
           )}
 
-          {/* Role + Timeline row */}
+          {/* Role + Timeline + Address row */}
           <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-foreground/80">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm">
               <Code2 className="w-4 h-4" />
@@ -120,6 +120,12 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
               <Calendar className="w-4 h-4" />
               {timeline}
             </span>
+            {project.address && (
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm">
+                <MapPin className="w-4 h-4" />
+                {project.address}
+              </span>
+            )}
           </div>
         </motion.div>
 

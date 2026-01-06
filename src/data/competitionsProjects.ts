@@ -13,6 +13,7 @@ export interface CompetitionProject {
   liveUrl?: string;
   featured?: boolean;
   hidden?: boolean; // Hide project from display without deleting
+  address?: string; // Project location/address
 }
 
 export const competitionsProjects: CompetitionProject[] = [
@@ -28,6 +29,7 @@ export const competitionsProjects: CompetitionProject[] = [
     image: "/assets/images/friendly/coverfriendly.png",
     githubUrl: "",
     liveUrl: "https://www.friendlykr.com",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -41,6 +43,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["ESP32", "Embedded Systems", "IoT", "OpenAI", "Next.js", "I2S", "Hardware"],
     image: "/assets/images/coco/cococover.png",
     githubUrl: "",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -53,7 +56,8 @@ export const competitionsProjects: CompetitionProject[] = [
     descriptionKo: "IoT 센서 통신을 위한 BLE 프로토콜 통합 Flutter 애플리케이션",
     tags: ["Flutter", "BLE", "Firebase", "IoT"],
     image: "/assets/images/projects/rootin.png",
-    githubUrl: "https://github.com/nukktae/rootin"
+    githubUrl: "https://github.com/nukktae/rootin",
+    address: "Irvine, California"
   },
   {
     id: 8,
@@ -67,6 +71,7 @@ export const competitionsProjects: CompetitionProject[] = [
     image: "/assets/images/clearguide/coverclearguide.png",
     githubUrl: "",
     liveUrl: "https://clearguide.vercel.app",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -80,6 +85,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["React", "Express.js", "OpenAI", "Playwright", "Web Scraping", "AI/ML"],
     image: "/assets/images/amora-agent/amoragentcover.png",
     githubUrl: "",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -94,6 +100,7 @@ export const competitionsProjects: CompetitionProject[] = [
     image: "/assets/images/sports/sportscover.png",
     githubUrl: "",
     liveUrl: "https://frontend-ruby-xi-69.vercel.app/home",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -120,6 +127,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["AWS CDK", "AWS Lambda", "Amazon Rekognition", "Kinesis", "DynamoDB", "Serverless"],
     image: "/assets/images/aws-architecture.png",
     githubUrl: "https://github.com/2024PBL-AWS-project/ContentModeration",
+    address: "Irvine, California",
     featured: true
   },
   {
@@ -133,6 +141,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["React", "TypeScript", "Express.js", "PostgreSQL", "OpenAI GPT-4", "Firebase"],
     image: "/assets/images/majorai/majoraicover.png",
     githubUrl: "https://github.com/nukktae/major-match-ai",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -146,6 +155,7 @@ export const competitionsProjects: CompetitionProject[] = [
     tags: ["Next.js 16", "TypeScript", "Leaflet", "Public Data APIs", "Geospatial", "Real-time Data"],
     image: "/assets/images/movepark/map.png",
     githubUrl: "",
+    address: "Seoul, South Korea",
     featured: true
   },
   {
@@ -173,6 +183,7 @@ export const competitionsProjects: CompetitionProject[] = [
     image: "/assets/images/projects/childnet.png",
     coverVideo: "/assets/images/childnetcover.mp4",
     githubUrl: "https://github.com/nukktae/childnet.git",
+    address: "Seoul, South Korea",
     featured: true
   },
   {

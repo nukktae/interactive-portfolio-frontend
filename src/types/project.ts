@@ -16,6 +16,7 @@ export interface Project {
   solutions: string[];
   github: string;
   liveUrl: string;
+  address?: string; // Project location/address
   imageDescriptions?: {
     title: string;
     text: string;

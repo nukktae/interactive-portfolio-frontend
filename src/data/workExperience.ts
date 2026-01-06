@@ -12,6 +12,7 @@ export interface WorkExperienceProject {
   githubUrl: string;
   liveUrl?: string;
   featured: boolean;
+  address?: string; // Project location/address
 }
 
 export const workExperience: WorkExperienceProject[] = [
@@ -26,6 +27,7 @@ export const workExperience: WorkExperienceProject[] = [
     tags: ["React", "Next.js", "Figma", "CRM", "UI/UX", "Postman", "HTML", "LLM Model", "Twilio"],
     image: "/assets/images/projects/Bestia/bestia1.png",
     githubUrl: "",
+    address: "Manhattan Beach, California",
     featured: true
   },
   {
@@ -40,6 +42,7 @@ export const workExperience: WorkExperienceProject[] = [
     image: "/assets/images/projects/handiers.png",
     githubUrl: "",
     liveUrl: "https://handiers.com",
+    address: "Torrance, California",
     featured: true
   }
 ];

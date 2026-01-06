@@ -125,6 +125,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Manhattan Beach, California",
     roles: [
       {
         area: "UI/UX Design",
@@ -246,6 +247,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/childnet.git",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Architecture & Security",
@@ -359,6 +361,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "https://frontend-ruby-xi-69.vercel.app/home",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Development",
@@ -467,6 +470,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Development",
@@ -565,6 +569,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "https://handiers.com",
+    address: "Torrance, California",
     roles: [
       {
         area: "UI/UX Design",
@@ -668,6 +673,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/rootin",
     liveUrl: "https://plant-care-demo.vercel.app",
+    address: "Irvine, California",
     roles: [
       {
         area: "UI/UX Design",
@@ -787,6 +793,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/2024PBL-AWS-project/ContentModeration",
     liveUrl: "",
+    address: "Irvine, California",
     roles: [
       {
         area: "Backend & Infrastructure Engineer",
@@ -893,6 +900,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Developer",
@@ -995,6 +1003,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Developer",
@@ -1090,6 +1099,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/VoriReborn-Frontend",
     liveUrl: "https://vori-demo.vercel.app",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full Stack Development",
@@ -1186,6 +1196,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/ai-job-parser",
     liveUrl: "https://job-parser-demo.vercel.app",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Backend Development",
@@ -1294,6 +1305,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Deep Learning",
@@ -1422,6 +1434,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/friendly",
     liveUrl: "https://friendlykr.com",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Development",
@@ -1552,6 +1565,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "https://clearguide.vercel.app",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Full-Stack Development",
@@ -1611,6 +1625,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/llm-recipe-generator",
     liveUrl: "https://recipe-gen-demo.vercel.app",
+    address: "Seoul, South Korea",
     hardSkills: [
       "LLM Integration",
       "Frontend Development",
@@ -1728,6 +1743,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "https://github.com/nukktae/kmu-global-campus",
     liveUrl: "https://kmu-global.vercel.app",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Frontend Development",
@@ -1882,6 +1898,7 @@ export const projectSummaries: Project[] = [
     ],
     github: "",
     liveUrl: "",
+    address: "Seoul, South Korea",
     roles: [
       {
         area: "Embedded Systems Engineer",
