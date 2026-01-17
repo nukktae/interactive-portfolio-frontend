@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -43,8 +43,12 @@ export default function RootLayout({
                   const theme = localStorage.getItem('theme');
                   if (theme === 'light' || theme === 'dark') {
                     document.documentElement.setAttribute('data-theme', theme);
+                  } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
                   }
-                } catch (e) {}
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'light');
+                }
               })();
             `,
           }}

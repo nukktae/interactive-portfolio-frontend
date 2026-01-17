@@ -11,22 +11,26 @@ const caseStudies = [
   {
     slug: 'bestia',
     title: 'Bestia',
-    image: '/assets/images/projects/Bestia/bestia1.png',
+    fullTitle: 'Bestia — Engineering the Future of Real Estate Intelligence',
+    image: '/assets/images/case-study/bestia2.png',
   },
   {
     slug: 'handiers-inc',
     title: 'Handiers',
-    image: '/assets/images/projects/handiers.png',
+    fullTitle: 'Handiers — Designing Trust in the American Service Economy',
+    image: '/assets/images/case-study/handiers2.png',
   },
   {
     slug: 'friendly',
     title: 'Friendly',
-    image: '/assets/images/friendly/coverfriendly.png',
+    fullTitle: 'Friendly — Architecting a High-Intelligence Academic Ecosystem',
+    image: '/assets/images/case-study/friendly2.png',
   },
   {
     slug: 'rootin',
     title: 'Rootin',
-    image: '/assets/images/rootin.jpeg',
+    fullTitle: 'Rootin — Engineering the Future of IoT-Driven Plant Intelligence',
+    image: '/assets/images/case-study/rootin2.png',
   },
 ];
 
@@ -63,29 +67,34 @@ export default function CaseStudiesSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {caseStudies.map((project, index) => (
               <motion.div
                 key={project.slug}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="group relative cursor-pointer"
-                onClick={() => router.push(`/projects/${project.slug}`)}
+                className="group cursor-pointer"
+                onClick={() => router.push(`/casestudy/${project.slug}`)}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg mb-2">
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                     fill
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white z-10">
+                </div>
+                <div className="space-y-2 pt-1">
+                  <div className="space-y-1.5">
+                    <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground leading-[1.2] group-hover:text-foreground/90 transition-colors duration-300">
                       {project.title}
                     </h3>
+                    <p className="text-sm md:text-base font-normal text-foreground/70 leading-relaxed tracking-wide group-hover:text-foreground/80 transition-colors duration-300">
+                      {project.fullTitle.split('—')[1]?.trim() || ''}
+                    </p>
                   </div>
+                  <div className="h-px w-0 bg-foreground/20 group-hover:w-full transition-all duration-500 ease-out"></div>
                 </div>
               </motion.div>
             ))}

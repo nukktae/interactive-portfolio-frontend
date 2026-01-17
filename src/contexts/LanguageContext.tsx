@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-type Language = 'en' | 'ko';
+export type Language = 'en' | 'ko';
 
 interface LanguageContextType {
   language: Language;
@@ -102,7 +102,7 @@ const translations = {
     // Book a Call Page
     'bookCall.contact': 'CONTACT',
     'bookCall.title': "Let's Grab",
-    'bookCall.titleHighlight': 'Coffee ☕',
+    'bookCall.titleHighlight': 'Coffee ☕️',
     'bookCall.meetingTitle': '30 Min Meeting',
     'bookCall.requiresConfirmation': 'Requires confirmation',
     'bookCall.duration': '30m',
@@ -211,7 +211,7 @@ const translations = {
     // Book a Call Page
     'bookCall.contact': '연락처',
     'bookCall.title': '커피 한 잔',
-    'bookCall.titleHighlight': '어떠세요? ☕',
+    'bookCall.titleHighlight': '어떠세요? ☕️',
     'bookCall.meetingTitle': '30분 미팅',
     'bookCall.requiresConfirmation': '확인 필요',
     'bookCall.duration': '30분',

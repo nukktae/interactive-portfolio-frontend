@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  // Initialize theme from localStorage or default to 'dark'
+  // Initialize theme from localStorage or default to 'light'
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') as Theme;
@@ -20,7 +20,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         return savedTheme;
       }
     }
-    return 'dark';
+    return 'light';
   });
   const [mounted, setMounted] = useState(false);
 
