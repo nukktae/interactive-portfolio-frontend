@@ -12,25 +12,36 @@ const caseStudies = [
     slug: 'bestia',
     title: 'Bestia',
     fullTitle: 'Bestia — Engineering the Future of Real Estate Intelligence',
+    fullTitleKo: 'Bestia — 부동산 인텔리전스의 미래를 엔지니어링하다',
     image: '/assets/images/case-study/bestia2.png',
   },
   {
     slug: 'handiers-inc',
     title: 'Handiers',
     fullTitle: 'Handiers — Designing Trust in the American Service Economy',
+    fullTitleKo: 'Handiers — 미국 서비스 경제에서 신뢰 설계',
     image: '/assets/images/case-study/handiers2.png',
   },
   {
     slug: 'friendly',
     title: 'Friendly',
     fullTitle: 'Friendly — Architecting a High-Intelligence Academic Ecosystem',
+    fullTitleKo: 'Friendly — 고지능 학사 에코시스템 설계',
     image: '/assets/images/case-study/friendly2.png',
   },
   {
     slug: 'rootin',
     title: 'Rootin',
     fullTitle: 'Rootin — Engineering the Future of IoT-Driven Plant Intelligence',
+    fullTitleKo: 'Rootin — IoT 기반 식물 인텔리전스의 미래를 엔지니어링하다',
     image: '/assets/images/case-study/rootin2.png',
+  },
+  {
+    slug: 'shinhan',
+    title: 'Shinhan',
+    fullTitle: 'Shinhan — Modernizing Legacy Systems through Strategic Product Leadership',
+    fullTitleKo: '신한장학재단 — 레거시 시스템 현대화를 통한 전략적 제품 리더십',
+    image: '/assets/images/case-study/shinhan.png',
   },
 ];
 
@@ -38,7 +49,7 @@ export default function CaseStudiesSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-200px" });
   const router = useRouter();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="case-studies" className="py-24 md:py-32 relative z-10" ref={ref}>
@@ -88,10 +99,14 @@ export default function CaseStudiesSection() {
                 <div className="space-y-2 pt-1">
                   <div className="space-y-1.5">
                     <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground leading-[1.2] group-hover:text-foreground/90 transition-colors duration-300">
-                      {project.title}
+                      {language === 'ko' && 'fullTitleKo' in project && project.fullTitleKo
+                        ? project.fullTitleKo.split('—')[0]?.trim() || project.title
+                        : project.title}
                     </h3>
                     <p className="text-sm md:text-base font-normal text-foreground/70 leading-relaxed tracking-wide group-hover:text-foreground/80 transition-colors duration-300">
-                      {project.fullTitle.split('—')[1]?.trim() || ''}
+                      {language === 'ko' && 'fullTitleKo' in project && project.fullTitleKo
+                        ? project.fullTitleKo.split('—')[1]?.trim() || ''
+                        : project.fullTitle.split('—')[1]?.trim() || ''}
                     </p>
                   </div>
                   <div className="h-px w-0 bg-foreground/20 group-hover:w-full transition-all duration-500 ease-out"></div>

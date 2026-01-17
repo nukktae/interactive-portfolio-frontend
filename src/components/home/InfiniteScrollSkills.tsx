@@ -40,22 +40,24 @@ const row2Skills = skills.slice(Math.ceil(skills.length / 2));
 
 const ScrollRow = ({ skills: rowSkills, reverse = false }: { skills: SkillItem[]; reverse?: boolean }) => {
   return (
-    <div className={`flex ${reverse ? 'animate-scroll-reverse' : 'animate-scroll'} gap-4 items-center`}>
+    <div className={`flex ${reverse ? 'animate-scroll-reverse' : 'animate-scroll'} gap-2 sm:gap-4 items-center`}>
       {rowSkills.map((skill, index) => (
         <div
           key={`${skill.content}-${index}`}
-          className="flex-shrink-0 px-4 py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm text-sm font-semibold text-foreground/80 whitespace-nowrap flex items-center gap-2 h-10"
+          className="flex-shrink-0 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm text-xs sm:text-sm font-semibold text-foreground/80 whitespace-nowrap flex items-center gap-1.5 sm:gap-2 h-8 sm:h-10"
         >
           {skill.type === 'image' && skill.imagePath ? (
             <>
-              <Image
-                src={skill.imagePath}
-                alt={skill.content}
-                width={20}
-                height={20}
-                className="object-contain"
-                unoptimized
-              />
+              <div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">
+                <Image
+                  src={skill.imagePath}
+                  alt={skill.content}
+                  width={20}
+                  height={20}
+                  className="object-contain w-full h-full"
+                  unoptimized
+                />
+              </div>
               <span>{skill.content}</span>
             </>
           ) : (
@@ -67,18 +69,20 @@ const ScrollRow = ({ skills: rowSkills, reverse = false }: { skills: SkillItem[]
       {rowSkills.map((skill, index) => (
         <div
           key={`${skill.content}-dup-${index}`}
-          className="flex-shrink-0 px-4 py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm text-sm font-semibold text-foreground/80 whitespace-nowrap flex items-center gap-2 h-10"
+          className="flex-shrink-0 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm text-xs sm:text-sm font-semibold text-foreground/80 whitespace-nowrap flex items-center gap-1.5 sm:gap-2 h-8 sm:h-10"
         >
           {skill.type === 'image' && skill.imagePath ? (
             <>
-              <Image
-                src={skill.imagePath}
-                alt={skill.content}
-                width={20}
-                height={20}
-                className="object-contain"
-                unoptimized
-              />
+              <div className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0">
+                <Image
+                  src={skill.imagePath}
+                  alt={skill.content}
+                  width={20}
+                  height={20}
+                  className="object-contain w-full h-full"
+                  unoptimized
+                />
+              </div>
               <span>{skill.content}</span>
             </>
           ) : (
@@ -96,9 +100,9 @@ export default function InfiniteScrollSkills() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1.0 }}
-      className="w-screen mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-14 overflow-hidden relative z-10 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-20 xl:-mx-32"
+      className="w-full md:w-screen mt-4 sm:mt-6 md:mt-10 lg:mt-12 xl:mt-14 overflow-hidden relative z-10 md:-mx-12 lg:-mx-20 xl:-mx-32"
     >
-      <div className="relative w-full space-y-4">
+      <div className="relative w-full space-y-3 sm:space-y-4">
         {/* First Row */}
         <div className="relative w-full overflow-hidden">
           <ScrollRow skills={row1Skills} />

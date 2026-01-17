@@ -3,6 +3,7 @@ import { getBestiaCaseStudy } from './bestia';
 import { getHandiersCaseStudy } from './handiers-inc';
 import { getFriendlyCaseStudy } from './friendly';
 import { getRootinCaseStudy } from './rootin';
+import { getShinhanCaseStudy } from './shinhan';
 
 export interface CaseStudyContent {
   slug: string;
@@ -30,6 +31,8 @@ export function getCaseStudyContent(slug: string, language: Language = 'en'): Ca
       return getFriendlyCaseStudy(language);
     case 'rootin':
       return getRootinCaseStudy(language);
+    case 'shinhan':
+      return getShinhanCaseStudy(language);
     default:
       return null;
   }

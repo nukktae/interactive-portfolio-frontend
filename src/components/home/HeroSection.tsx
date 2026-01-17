@@ -50,11 +50,11 @@ export default function HeroSection() {
     : '/assets/icons/new.png';
   
   return (
-    <section className={`min-h-screen flex flex-col ${language === 'ko' ? 'justify-start pt-16 sm:pt-20 md:pt-24 lg:pt-32' : 'justify-center'} items-start px-3 sm:px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-24 relative overflow-hidden py-8 sm:py-12 md:py-0`}>
+    <section className={`min-h-screen flex flex-col ${language === 'ko' ? 'justify-start pt-12 sm:pt-16 md:pt-24 lg:pt-32' : 'justify-center'} items-start px-4 sm:px-4 md:px-8 lg:px-12 xl:px-16 2xl:px-24 relative overflow-hidden py-6 sm:py-12 md:py-0`}>
       {/* Content Container */}
       <div className="w-full relative z-10 max-w-7xl mx-auto">
         {/* Headline, Introduction, and Image Container - Responsive Layout */}
-        <div className="w-full flex flex-col md:flex-row md:items-end gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-16 mb-4 sm:mb-6 md:mb-8">
+        <div className="w-full flex flex-col md:flex-row md:items-end gap-3 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 2xl:gap-16 mb-3 sm:mb-6 md:mb-8">
           {/* Text Content - Headline and Introduction */}
           <div className="flex-1 text-left min-w-0 w-full md:w-auto">
             {/* Main Headline */}
@@ -62,27 +62,29 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="mb-4 sm:mb-6 md:mb-8"
+              className="mb-3 sm:mb-6 md:mb-8"
             >
               <h1 
-                className="font-serif text-foreground leading-[1.15] sm:leading-[1.2] md:leading-[1.25] lg:leading-[1.3] text-left break-words" 
+                className={`font-serif text-foreground leading-[1.2] sm:leading-[1.2] md:leading-[1.25] lg:leading-[1.3] text-left ${language === 'ko' ? '' : 'break-words'}`}
                 style={{ 
                   fontFamily: '"instrument sans"',
-                  fontSize: 'clamp(1.125rem, 2.5vw + 0.5rem, 3.5rem)'
+                  fontSize: language === 'ko' 
+                    ? 'clamp(1rem, 3vw + 0.5rem, 2.5rem)'
+                    : 'clamp(1.25rem, 4vw + 0.5rem, 3.5rem)'
                 }}
               >
                 {language === 'ko' ? (
                   <div className="space-y-0.5 sm:space-y-1 md:space-y-1.5 lg:space-y-2">
                     {/* Row 1: 기획부터 런칭까지, */}
-                    <div className="block break-words">{t('hero.headlinePart1')}</div>
+                    <div className="block">{t('hero.headlinePart1')}</div>
                     {/* Row 2: 데이터와 속도를 기반으로 제품 전 과정을 */}
-                    <div className="block break-words">
-                      <span className="italic">{t('hero.headlineItalic')}</span>
+                    <div className="block">
+                      <span>{t('hero.headlineItalic')}</span>
                       {' '}
                       {t('hero.headlinePart2')}
                     </div>
                     {/* Row 3: 설계·구현하는 글로벌 프로덕트 엔지니어입니다. */}
-                    <div className="block break-words">{t('hero.headlinePart3')}</div>
+                    <div className="block">{t('hero.headlinePart3')}</div>
                   </div>
                 ) : (
                   <>
@@ -93,7 +95,7 @@ export default function HeroSection() {
                         return italic && italic.trim() !== '' && italic !== 'hero.headlineItalic' ? (
                           <>
                             {' '}
-                            <span className="italic text-left">{italic}</span>
+                            <span className="text-left">{italic}</span>
                           </>
                         ) : null;
                       })()}
@@ -127,13 +129,13 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="relative flex flex-col items-start justify-start text-left gap-1.5 sm:gap-2 md:gap-3"
+              className="relative flex flex-col items-start justify-start text-left gap-1 sm:gap-2 md:gap-3"
               style={{ fontFamily: '"instrument sans"' }}
             >
               <div className="space-y-0.5 sm:space-y-1 text-left" style={{ fontFamily: '"sans serif"' }}>
                 <p 
-                  className="font-semibold text-foreground flex items-center gap-2 flex-wrap"
-                  style={{ fontSize: 'clamp(0.875rem, 1.5vw + 0.25rem, 1.875rem)' }}
+                  className="font-semibold text-foreground flex items-center gap-1.5 sm:gap-2 flex-wrap"
+                  style={{ fontSize: 'clamp(0.9375rem, 2vw + 0.25rem, 1.875rem)' }}
                 >
                   <span>{t('hero.greeting')}</span>
                   <span className="flex items-center gap-1.5 text-base sm:text-lg md:text-xl lg:text-2xl">
@@ -159,7 +161,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="mt-4 sm:mt-6 md:mt-8 relative"
+              className="mt-3 sm:mt-6 md:mt-8 relative"
             >
               <div 
                 className="relative inline-block"
@@ -168,13 +170,13 @@ export default function HeroSection() {
               >
                 <motion.button
                   ref={resumeButtonRef}
-                  className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full border-[1.5px] border-foreground/20 bg-foreground/5 dark:bg-white/5 backdrop-blur-sm text-foreground text-sm sm:text-base font-medium hover:bg-foreground/10 dark:hover:bg-white/10 hover:border-foreground/30 transition-all duration-300"
+                  className="group inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-6 sm:py-3 rounded-full border-[1.5px] border-foreground/20 bg-foreground/5 dark:bg-white/5 backdrop-blur-sm text-foreground text-xs sm:text-base font-medium hover:bg-foreground/10 dark:hover:bg-white/10 hover:border-foreground/30 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   style={{ fontFamily: '"instrument sans"' }}
                 >
-                  <Download className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-y-0.5" />
-                  <span>{t('contact.downloadResume')}</span>
+                  <Download className="w-3.5 h-3.5 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-y-0.5" />
+                  <span className="whitespace-nowrap">{t('contact.downloadResume')}</span>
                 </motion.button>
 
                 {/* Hover Panel */}
@@ -244,10 +246,10 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="flex-shrink-0 self-center md:self-end"
+              className="flex-shrink-0 self-center md:self-end mx-auto md:mx-0"
               style={{
-                width: 'clamp(80px, 15vw, 280px)',
-                height: 'clamp(80px, 15vw, 280px)'
+                width: 'clamp(100px, 20vw, 280px)',
+                height: 'clamp(100px, 20vw, 280px)'
               }}
             >
               <div 
@@ -275,7 +277,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}

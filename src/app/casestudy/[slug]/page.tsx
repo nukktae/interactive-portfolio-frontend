@@ -11,7 +11,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getCaseStudyContent, createDefaultCaseStudyContent } from '@/content/casestudies';
 
 // Case study slugs mapping
-const caseStudySlugs = ['bestia', 'handiers-inc', 'friendly', 'rootin'];
+const caseStudySlugs = ['bestia', 'handiers-inc', 'friendly', 'rootin', 'shinhan'];
 
 // Helper function to format slug to title
 function formatSlugToTitle(slug: string): string {
@@ -19,7 +19,8 @@ function formatSlugToTitle(slug: string): string {
     'bestia': 'Bestia',
     'handiers-inc': 'Handiers',
     'friendly': 'Friendly',
-    'rootin': 'Rootin'
+    'rootin': 'Rootin',
+    'shinhan': 'Shinhan'
   };
   return titleMap[slug] || slug.charAt(0).toUpperCase() + slug.slice(1).replace(/-/g, ' ');
 }

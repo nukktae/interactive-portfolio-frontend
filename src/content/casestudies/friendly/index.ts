@@ -13,28 +13,28 @@ function buildOverviewContent(): React.ReactNode {
       React.createElement(
         'p',
         { className: 'text-foreground/80 text-lg leading-relaxed mb-4' },
-        'Engineered a unified, AI-native "Operating System for Students" that automates administrative complexity. Successfully generated a 120-user waitlist and achieved App Store deployment, validating product-market fit within a high-stakes academic environment.'
+        'Engineered a unified, AI-powered ecosystem that automates the "Administrative Tax" of being a student. Successfully deployed a cross-platform solution (iOS, Android, Web) that secured a 120-user waitlist pre-launch.'
       ),
       React.createElement(
         'div',
-        { className: 'grid grid-cols-1 md:grid-cols-3 gap-4 mt-6' },
+        { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6' },
         React.createElement(
           'div',
           { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
           React.createElement('p', { className: 'text-sm opacity-70 mb-1' }, 'Role'),
-          React.createElement('p', { className: 'text-base font-semibold' }, 'Lead Product Architect & Full-Stack Engineer')
+          React.createElement('p', { className: 'text-base font-semibold' }, 'Lead Product Engineer & Full-Stack Developer')
         ),
         React.createElement(
           'div',
           { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-          React.createElement('p', { className: 'text-sm opacity-70 mb-1' }, 'Specialty'),
-          React.createElement('p', { className: 'text-base font-semibold' }, 'AI Orchestration, Distributed Systems, Cross-Platform Engineering')
+          React.createElement('p', { className: 'text-sm opacity-70 mb-1' }, 'Focus'),
+          React.createElement('p', { className: 'text-base font-semibold' }, 'Product Strategy, AI System Design, Cross-Platform Engineering (React Native/Expo), Backend Architecture (Node.js/Express)')
         ),
         React.createElement(
           'div',
           { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
           React.createElement('p', { className: 'text-sm opacity-70 mb-1' }, 'Impact'),
-          React.createElement('p', { className: 'text-base font-semibold' }, '124+ API Endpoints, 98% Market Validation, App Store Deployment')
+          React.createElement('p', { className: 'text-base font-semibold' }, '120+ User Waitlist, 124+ API Endpoints, App Store Deployment')
         )
       )
     )
@@ -45,82 +45,268 @@ function buildOverviewContent(): React.ReactNode {
 function buildProblemContent(): React.ReactNode {
   return React.createElement(
     'div',
-    { className: 'space-y-4' },
+    { className: 'space-y-6' },
     React.createElement(
       'p',
       { className: 'text-foreground/80 text-lg leading-relaxed' },
-      'In the modern university landscape, students suffer from "Platform Fatigue"—juggling disconnected tools for credits, lectures, and community. Executed a rigorous research initiative involving ~80 in-depth student interviews, revealing a staggering 98% friction rate in credit planning and time management.'
+      'University students, especially those with complex double majors or international requirements, struggle with fragmented tools for credit planning and time management.'
     ),
     React.createElement(
       'div',
-      { className: 'mt-6 space-y-3' },
+      { className: 'mt-6 space-y-4' },
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'The Academic Fragmentation Crisis'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Discovery'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          'The mission was to engineer a unified, AI-native "Operating System for Students" that automates administrative complexity, solving the "Administrative Tax" of double majors and international requirements.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Conducted in-depth interviews and surveys with ', React.createElement('strong', null, '~80 students'), ', confirming that ', React.createElement('strong', null, '~98%'), ' struggled with credit planning and academic organization.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Mission'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Build a unified, AI-powered ecosystem that automates the "Administrative Tax" of being a student.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Result'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Successfully deployed a cross-platform solution (iOS, Android, Web) that secured a ', React.createElement('strong', null, '120-user waitlist'), ' pre-launch.'
         )
       )
     )
   );
 }
 
-// Helper function to build solution content
-function buildSolutionContent(): React.ReactNode {
+// Helper function to build product strategy content
+function buildProductStrategyContent(): React.ReactNode {
+  return React.createElement(
+    'div',
+    { className: 'space-y-6' },
+    React.createElement(
+      'p',
+      { className: 'text-foreground/80 text-lg leading-relaxed' },
+      'I led the product lifecycle from initial SWOT analysis to final App Store submission.'
+    ),
+    React.createElement(
+      'div',
+      { className: 'space-y-4' },
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'User-Centric Scope'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Used research findings to define a core MVP focusing on three pillars: ', React.createElement('strong', null, 'AI Transcription'), ', ', React.createElement('strong', null, 'Smart Scheduling'), ', and ', React.createElement('strong', null, 'Document Intelligence'), '.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Strategic Roadmap'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Developed high-fidelity wireframes and a phased rollout plan, ensuring each feature solved a validated student pain point.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Market Validation'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'Launched a high-conversion landing page that effectively communicated the "Friendly" value proposition, driving early adoption.'
+        )
+      )
+    )
+  );
+}
+
+// Helper function to build full-stack engineering content
+function buildFullStackEngineeringContent(): React.ReactNode {
+  return React.createElement(
+    'div',
+    { className: 'space-y-8' },
+    React.createElement(
+      'p',
+      { className: 'text-foreground/80 text-lg leading-relaxed' },
+      'I architected and implemented the entire technical stack, ensuring high performance and data reliability.'
+    ),
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'A. Cross-Platform Frontend (React Native & Expo)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-4' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Unified Experience'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Engineered a single codebase using ', React.createElement('strong', null, 'Expo and React Native'), ' that delivers a native experience across iOS, Android, and Web.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'UI/UX Excellence'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Built a custom library of ', React.createElement('strong', null, '50+ reusable components'), ' using ', React.createElement('strong', null, 'NativeWind (Tailwind CSS)'), ', prioritizing accessibility and intuitive navigation.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Feature Highlights'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Developed a drag-and-drop calendar interface and a high-performance PDF viewer with real-time AI annotation.'
+          )
+        )
+      )
+    ),
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'B. Scalable Backend Architecture (Node.js & Express)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-4' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'API Mastery'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Designed and implemented a robust RESTful API with ', React.createElement('strong', null, '124+ endpoints'), ', handling everything from user authentication to complex AI processing.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Real-Time Data'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Leveraged ', React.createElement('strong', null, 'Firebase/Firestore'), ' for instantaneous data synchronization across devices.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Infrastructure'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Managed production servers using ', React.createElement('strong', null, 'PM2'), ', implementing an automated ', React.createElement('strong', null, 'Google Drive backup system'), ' (running daily at 3 AM) to ensure 100% data durability.'
+          )
+        )
+      )
+    )
+  );
+}
+
+// Helper function to build technical deep dive content
+function buildTechnicalDeepDiveContent(): React.ReactNode {
   return React.createElement(
     'div',
     { className: 'space-y-8' },
     React.createElement(
       'div',
       null,
-      React.createElement('h3', { className: 'text-xl font-semibold text-foreground mb-4' }, 'The Intelligence Layer: AI Orchestration'),
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'A. Multimodal AI Pipeline (OpenAI GPT-4o & Whisper)'),
       React.createElement(
-        'p',
-        { className: 'text-foreground/80 leading-relaxed mb-4' },
-        'Engineered a sophisticated orchestration layer integrating 4 OpenAI models (Whisper, GPT-4o, GPT-4o-mini, Vision). Developed a low-latency audio streaming pipeline that converts live lectures into structured, searchable knowledge bases. Architected a proprietary OCR-to-JSON pipeline using GPT-4o Vision to automate schedule extraction from images, reducing manual input by 70%.'
+        'div',
+        { className: 'space-y-3' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Challenge'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Providing accurate, real-time lecture transcription and schedule extraction.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Solution'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Integrated ', React.createElement('strong', null, 'Whisper API'), ' for low-latency audio processing and ', React.createElement('strong', null, 'GPT-4o Vision'), ' for extracting structured data from schedule images.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Result'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Reduced manual schedule entry time by ', React.createElement('strong', null, '70%'), ' and provided students with "Lecture-Aware" AI summaries.'
+          )
+        )
       )
     ),
     React.createElement(
       'div',
       null,
-      React.createElement('h3', { className: 'text-xl font-semibold text-foreground mb-4' }, 'The Backend Core: Distributed API Design'),
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'B. Document Intelligence (PDF-Parse & GPT-4o-mini)'),
       React.createElement(
-        'p',
-        { className: 'text-foreground/80 leading-relaxed mb-4' },
-        'Designed and deployed a high-performance RESTful API with 124+ endpoints using Node.js and Express. Leveraged Firebase/Firestore for distributed state management, ensuring sub-100ms data synchronization across iOS, Android, and Web. Managed production environments using PM2, featuring a self-healing Google Drive Cloud Backup system that ensures 100% data durability with zero manual intervention.'
-      )
-    ),
-    React.createElement(
-      'div',
-      null,
-      React.createElement('h3', { className: 'text-xl font-semibold text-foreground mb-4' }, 'The Academic Graph Challenge'),
-      React.createElement(
-        'p',
-        { className: 'text-foreground/80 leading-relaxed mb-4' },
-        'Engineered a flexible Academic Logic Engine that fine-tunes AI models to interpret diverse credit structures and provide accurate, real-time graduation guidance for double majors and minors.'
-      )
-    ),
-    React.createElement(
-      'div',
-      null,
-      React.createElement('h3', { className: 'text-xl font-semibold text-foreground mb-4' }, 'High-Performance Document Analysis'),
-      React.createElement(
-        'p',
-        { className: 'text-foreground/80 leading-relaxed mb-4' },
-        'Built a server-side PDF-to-Context pipeline that extracts, cleans, and indexes document data, enabling a "PDF-Aware" chatbot with deep contextual memory for processing large-scale academic PDFs on resource-constrained mobile devices.'
-      )
-    ),
-    React.createElement(
-      'div',
-      null,
-      React.createElement('h3', { className: 'text-xl font-semibold text-foreground mb-4' }, 'Product Strategy & Market Validation'),
-      React.createElement(
-        'p',
-        { className: 'text-foreground/80 leading-relaxed mb-4' },
-        'Leveraged SWOT analysis and competitive benchmarking to define a high-impact MVP. Translated complex user requirements into high-fidelity wireframes and a scalable UX architecture, ensuring seamless transition from design to full-stack deployment.'
+        'div',
+        { className: 'space-y-3' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Challenge'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Analyzing large academic PDFs without degrading mobile performance.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Solution'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Built a service-layer extraction pipeline that parses text and feeds it into a ', React.createElement('strong', null, 'fine-tuned AI model'), ' for page-level analysis and chatbot assistance.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'Result'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            'Students can "chat" with their textbooks, extracting key concepts in seconds.'
+          )
+        )
       )
     )
   );
@@ -180,58 +366,34 @@ function buildResultsContent(): React.ReactNode {
     { className: 'space-y-6' },
     React.createElement(
       'div',
-      { className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' },
+      { className: 'grid grid-cols-1 md:grid-cols-2 gap-6' },
       React.createElement(
         'div',
-        { className: 'p-6 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'text-3xl font-black mb-2' }, '124+'),
-        React.createElement('p', { className: 'text-sm opacity-90' }, 'API Endpoints'),
-        React.createElement('p', { className: 'text-xs opacity-70 mt-2' }, '100% type safety and error resilience')
+        { className: 'p-6 rounded-xl bg-black dark:bg-white text-white dark:text-black' },
+        React.createElement('p', { className: 'text-sm opacity-70 mb-2 uppercase tracking-wider' }, 'API Complexity'),
+        React.createElement('p', { className: 'text-2xl font-black mb-2' }, '124+ RESTful endpoints'),
+        React.createElement('p', { className: 'text-sm opacity-90' }, 'With consistent contracts and error handling')
       ),
       React.createElement(
         'div',
-        { className: 'p-6 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'text-3xl font-black mb-2' }, '98%'),
-        React.createElement('p', { className: 'text-sm opacity-90' }, 'Market Validation'),
-        React.createElement('p', { className: 'text-xs opacity-70 mt-2' }, 'Problem confirmation from 80+ students')
+        { className: 'p-6 rounded-xl bg-black dark:bg-white text-white dark:text-black' },
+        React.createElement('p', { className: 'text-sm opacity-70 mb-2 uppercase tracking-wider' }, 'AI Integration'),
+        React.createElement('p', { className: 'text-2xl font-black mb-2' }, '4 distinct OpenAI models'),
+        React.createElement('p', { className: 'text-sm opacity-90' }, 'Orchestrated Whisper, Vision, GPT-4o, GPT-3.5')
       ),
       React.createElement(
         'div',
-        { className: 'p-6 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'text-3xl font-black mb-2' }, '120+'),
-        React.createElement('p', { className: 'text-sm opacity-90' }, 'User Waitlist'),
-        React.createElement('p', { className: 'text-xs opacity-70 mt-2' }, 'Generated before launch')
+        { className: 'p-6 rounded-xl bg-black dark:bg-white text-white dark:text-black' },
+        React.createElement('p', { className: 'text-sm opacity-70 mb-2 uppercase tracking-wider' }, 'Performance'),
+        React.createElement('p', { className: 'text-2xl font-black mb-2' }, 'Sub-200ms API response'),
+        React.createElement('p', { className: 'text-sm opacity-90' }, 'For core academic workflows')
       ),
       React.createElement(
         'div',
-        { className: 'p-6 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'text-3xl font-black mb-2' }, '100%'),
-        React.createElement('p', { className: 'text-sm opacity-90' }, 'Data Integrity'),
-        React.createElement('p', { className: 'text-xs opacity-70 mt-2' }, 'Zero data loss architecture')
-      )
-    ),
-    React.createElement(
-      'div',
-      { className: 'mt-8 space-y-4' },
-      React.createElement(
-        'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'System Complexity'),
-        React.createElement(
-          'p',
-          { className: 'text-sm opacity-90' },
-          '124+ Production API Endpoints with 100% type safety and error resilience. Architected a robust, distributed system designed for high availability and real-time synchronization.'
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'Deployment Velocity'),
-        React.createElement(
-          'p',
-          { className: 'text-sm opacity-90' },
-          'From Research to App Store in a single, high-intensity development cycle. Successfully achieved App Store deployment, validating the product-market fit within a high-stakes academic environment.'
-        )
+        { className: 'p-6 rounded-xl bg-black dark:bg-white text-white dark:text-black' },
+        React.createElement('p', { className: 'text-sm opacity-70 mb-2 uppercase tracking-wider' }, 'Reliability'),
+        React.createElement('p', { className: 'text-2xl font-black mb-2' }, '100% data recovery'),
+        React.createElement('p', { className: 'text-sm opacity-90' }, 'Via automated daily cloud backups')
       )
     )
   );
@@ -245,39 +407,29 @@ function buildLearningsContent(): React.ReactNode {
     React.createElement(
       'p',
       { className: 'text-foreground/80 text-lg leading-relaxed' },
-      'This project is a testament to the ability to operate as a Full-Cycle Architect—one who can identify a deep market pain point, design a sophisticated solution, and engineer the full-stack infrastructure to bring it to life.'
+      'This project showcases my ability to operate as a Full-Cycle Product Engineer—identifying a market need, architecting the solution, and delivering a production-ready product.'
     ),
     React.createElement(
       'div',
       { className: 'mt-6 space-y-4' },
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'The Full-Cycle Architect'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'The Takeaway'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          'By combining Data-Driven Product Strategy with Cutting-Edge AI Engineering, I built a platform that transforms the student experience from "Surviving" to "Thriving." The takeaway: combining architectural framing with founder mindset creates solutions that solve deep market pain points.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'By combining ', React.createElement('strong', null, 'Deep User Research'), ' with ', React.createElement('strong', null, 'Sophisticated Full-Stack Engineering'), ', I built a platform that doesn\'t just manage tasks—it empowers students to focus on what matters: ', React.createElement('em', null, 'Learning.'), ''
         )
       ),
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'Architectural Framing'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'The Result'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          'Used terms like "Distributed State Management," "AI Orchestration," and "Self-Healing Infrastructure" to signal senior-level expertise. The 124+ API endpoints and 4-model AI pipeline provide concrete proof of ability to handle large-scale technical challenges.'
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, 'Founder Mindset'),
-        React.createElement(
-          'p',
-          { className: 'text-sm opacity-90' },
-          'Highlighted the ability to lead Product Strategy and Market Validation, from rigorous research with 80+ student interviews to App Store deployment. This makes the approach attractive for Lead or Founding Engineer roles.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'A successful App Store launch and a growing community of early adopters.'
         )
       )
     )
@@ -326,23 +478,265 @@ function buildOverviewContentKO(): React.ReactNode {
 function buildProblemContentKO(): React.ReactNode {
   return React.createElement(
     'div',
-    { className: 'space-y-4' },
+    { className: 'space-y-6' },
     React.createElement(
       'p',
       { className: 'text-foreground/80 text-lg leading-relaxed' },
-      '현대 대학 환경에서 학생들은 학점, 강의, 일정, 커뮤니티를 위해 서로 단절된 수많은 플랫폼을 동시에 사용하며 극심한 Platform Fatigue를 겪고 있습니다. 약 80명의 학생 대상 심층 인터뷰를 기반으로 한 조사에서 학점 설계 및 시간 관리 과정에서 98%의 마찰(Friction) 발생을 확인했습니다.'
+      '대학생들, 특히 복수전공이나 국제 요건이 복잡한 학생들은 학점 설계와 시간 관리를 위한 단편적인 도구들로 어려움을 겪고 있습니다.'
     ),
     React.createElement(
       'div',
-      { className: 'mt-6 space-y-3' },
+      { className: 'mt-6 space-y-4' },
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, '학사 파편화(Academic Fragmentation) 위기'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Discovery'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          '행정적 복잡성을 자동화하는 AI-네이티브 \'학생을 위한 운영체제(Operating System for Students)\'를 구축하는 것이 미션이었습니다. 복수전공, 다전공, 국제학생 요건에서 발생하는 \'행정 세금(Administrative Tax)\'을 핵심 문제로 설정했습니다.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          React.createElement('strong', null, '~80명의 학생'), '을 대상으로 심층 인터뷰와 설문을 실시하여 ', React.createElement('strong', null, '~98%'), '가 학점 설계와 학업 조직화에 어려움을 겪고 있음을 확인했습니다.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Mission'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          '학생의 "행정 세금"을 자동화하는 통합 AI 기반 에코시스템을 구축합니다.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2 text-lg' }, 'The Result'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          'iOS, Android, Web을 지원하는 크로스플랫폼 솔루션을 성공적으로 배포하여 출시 전 ', React.createElement('strong', null, '120명의 사용자 대기자'), '를 확보했습니다.'
+        )
+      )
+    )
+  );
+}
+
+// Korean helper functions for separate sections
+function buildProductStrategyContentKO(): React.ReactNode {
+  return React.createElement(
+    'div',
+    { className: 'space-y-6' },
+    React.createElement(
+      'p',
+      { className: 'text-foreground/80 text-lg leading-relaxed' },
+      '초기 SWOT 분석부터 최종 App Store 제출까지 제품 생명주기를 주도했습니다.'
+    ),
+    React.createElement(
+      'div',
+      { className: 'space-y-4' },
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '사용자 중심 범위'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          '연구 결과를 활용하여 ', React.createElement('strong', null, 'AI 전사'), ', ', React.createElement('strong', null, '스마트 스케줄링'), ', ', React.createElement('strong', null, '문서 인텔리전스'), ' 세 가지 기둥에 초점을 맞춘 핵심 MVP를 정의했습니다.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '전략적 로드맵'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          '고정밀 와이어프레임과 단계별 출시 계획을 개발하여 각 기능이 검증된 학생 고통 포인트를 해결하도록 했습니다.'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '시장 검증'),
+        React.createElement(
+          'p',
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          '"Friendly" 가치 제안을 효과적으로 전달하는 고전환 랜딩 페이지를 출시하여 초기 채택을 유도했습니다.'
+        )
+      )
+    )
+  );
+}
+
+function buildFullStackEngineeringContentKO(): React.ReactNode {
+  return React.createElement(
+    'div',
+    { className: 'space-y-8' },
+    React.createElement(
+      'p',
+      { className: 'text-foreground/80 text-lg leading-relaxed' },
+      '전체 기술 스택을 설계하고 구현하여 고성능과 데이터 신뢰성을 보장했습니다.'
+    ),
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'A. 크로스플랫폼 프론트엔드 (React Native & Expo)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-4' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '통합 경험'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            React.createElement('strong', null, 'Expo와 React Native'), '를 사용하여 iOS, Android, Web 전반에 네이티브 경험을 제공하는 단일 코드베이스를 설계했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'UI/UX 우수성'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            React.createElement('strong', null, 'NativeWind (Tailwind CSS)'), '를 사용하여 접근성과 직관적인 네비게이션을 우선시하는 ', React.createElement('strong', null, '50+ 재사용 가능한 컴포넌트'), '의 커스텀 라이브러리를 구축했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '기능 하이라이트'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '드래그 앤 드롭 캘린더 인터페이스와 실시간 AI 주석이 있는 고성능 PDF 뷰어를 개발했습니다.'
+          )
+        )
+      )
+    ),
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'B. 확장 가능한 백엔드 아키텍처 (Node.js & Express)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-4' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, 'API 숙련도'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '사용자 인증부터 복잡한 AI 처리까지 모든 것을 처리하는 ', React.createElement('strong', null, '124+ 엔드포인트'), '를 가진 강력한 RESTful API를 설계하고 구현했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '실시간 데이터'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '디바이스 전반에 즉각적인 데이터 동기화를 위해 ', React.createElement('strong', null, 'Firebase/Firestore'), '를 활용했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '인프라'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            React.createElement('strong', null, 'PM2'), '를 사용하여 프로덕션 서버를 관리하고, 100% 데이터 내구성을 보장하기 위해 자동화된 ', React.createElement('strong', null, 'Google Drive 백업 시스템'), ' (매일 오전 3시 실행)을 구현했습니다.'
+          )
+        )
+      )
+    )
+  );
+}
+
+function buildTechnicalDeepDiveContentKO(): React.ReactNode {
+  return React.createElement(
+    'div',
+    { className: 'space-y-8' },
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'A. 멀티모달 AI 파이프라인 (OpenAI GPT-4o & Whisper)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-3' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '도전 과제'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '정확하고 실시간인 강의 전사 및 스케줄 추출 제공.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '솔루션'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '저지연 오디오 처리를 위해 ', React.createElement('strong', null, 'Whisper API'), '를 통합하고, 스케줄 이미지에서 구조화된 데이터를 추출하기 위해 ', React.createElement('strong', null, 'GPT-4o Vision'), '를 활용했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '결과'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '수동 스케줄 입력 시간을 ', React.createElement('strong', null, '70%'), ' 줄이고 학생들에게 "강의 인식" AI 요약을 제공했습니다.'
+          )
+        )
+      )
+    ),
+    React.createElement(
+      'div',
+      null,
+      React.createElement('h3', { className: 'text-xl font-bold text-foreground mb-4' }, 'B. 문서 인텔리전스 (PDF-Parse & GPT-4o-mini)'),
+      React.createElement(
+        'div',
+        { className: 'space-y-3' },
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '도전 과제'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '모바일 성능을 저하시키지 않고 대규모 학술 PDF 분석.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '솔루션'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '텍스트를 파싱하고 페이지 수준 분석 및 챗봇 지원을 위해 ', React.createElement('strong', null, '파인튜닝된 AI 모델'), '에 공급하는 서비스 레이어 추출 파이프라인을 구축했습니다.'
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'p-5 rounded-xl bg-card/50 dark:bg-card/60 border border-border/40' },
+          React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '결과'),
+          React.createElement(
+            'p',
+            { className: 'text-sm text-foreground/80 leading-relaxed' },
+            '학생들이 교과서와 "채팅"하여 몇 초 만에 핵심 개념을 추출할 수 있습니다.'
+          )
         )
       )
     )
@@ -522,39 +916,29 @@ function buildLearningsContentKO(): React.ReactNode {
     React.createElement(
       'p',
       { className: 'text-foreground/80 text-lg leading-relaxed' },
-      '이 프로젝트는 깊은 시장 문제를 발견하고, 고도화된 해법을 설계하며, 풀스택 인프라까지 완성할 수 있는 \'Full-Cycle Architect\' 역량을 증명합니다.'
+      '이 프로젝트는 시장 필요를 식별하고, 솔루션을 설계하며, 프로덕션 준비 제품을 제공하는 풀 사이클 제품 엔지니어로서의 능력을 보여줍니다.'
     ),
     React.createElement(
       'div',
       { className: 'mt-6 space-y-4' },
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, '풀사이클 아키텍트'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '핵심 교훈'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          '데이터 기반 프로덕트 전략과 최첨단 AI 엔지니어링을 결합함으로써 학생 경험을 \'버티는 것\'에서 \'성장하는 것\'으로 전환하는 플랫폼을 구축했습니다. 핵심 인사이트: 아키텍처 프레이밍과 파운더 마인드셋을 결합하면 깊은 시장 문제를 해결하는 솔루션을 만들 수 있습니다.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          React.createElement('strong', null, '심층 사용자 연구'), '와 ', React.createElement('strong', null, '정교한 풀스택 엔지니어링'), '을 결합하여 작업만 관리하는 것이 아니라 학생들이 중요한 것에 집중할 수 있도록 하는 플랫폼을 구축했습니다: ', React.createElement('em', null, '학습.'), ''
         )
       ),
       React.createElement(
         'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, '아키텍처 프레이밍'),
+        { className: 'p-5 rounded-xl bg-card/60 dark:bg-card/70 border border-border/50 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)]' },
+        React.createElement('p', { className: 'font-semibold text-foreground mb-2' }, '결과'),
         React.createElement(
           'p',
-          { className: 'text-sm opacity-90' },
-          '\'분산 상태 관리\', \'AI 오케스트레이션\', \'Self-Healing 인프라\'와 같은 용어를 사용하여 시니어 레벨의 전문성을 보여줍니다. 124+ API 엔드포인트와 4모델 AI 파이프라인은 대규모 기술적 도전을 처리할 수 있는 구체적인 증거를 제공합니다.'
-        )
-      ),
-      React.createElement(
-        'div',
-        { className: 'p-4 rounded-lg bg-black dark:bg-white text-white dark:text-black' },
-        React.createElement('p', { className: 'font-semibold mb-2' }, '파운더 마인드셋'),
-        React.createElement(
-          'p',
-          { className: 'text-sm opacity-90' },
-          '약 80명의 학생 대상 심층 인터뷰를 기반으로 한 정량·정성 조사에서 App Store 배포까지 프로덕트 전략과 시장 검증을 리드할 수 있는 역량을 강조했습니다. 이는 Lead 또는 Founding Engineer 역할에 매력적인 접근 방식입니다.'
+          { className: 'text-sm text-foreground/80 leading-relaxed' },
+          '성공적인 App Store 출시와 성장하는 초기 채택자 커뮤니티.'
         )
       )
     )
@@ -575,33 +959,45 @@ export function getFriendlyCaseStudy(language: Language = 'en'): CaseStudyConten
           content: buildOverviewContentKO()
         },
         {
-          id: 'problem',
+          id: 'academic-friction-challenge',
           type: 'problem',
-          title: '도전 과제',
+          title: 'The "Academic Friction" Challenge: Identifying the Gap',
+          titleKo: '"학업 마찰" 도전: 격차 식별',
           content: buildProblemContentKO()
         },
         {
-          id: 'solution',
+          id: 'product-strategy',
           type: 'solution',
-          title: '엔지니어링 솔루션',
-          content: buildSolutionContentKO()
+          title: 'Product Strategy: From Data to Deployment',
+          titleKo: '제품 전략: 데이터에서 배포까지',
+          content: buildProductStrategyContentKO()
         },
         {
-          id: 'process',
-          type: 'process',
-          title: '프로세스',
-          content: buildProcessContentKO()
+          id: 'full-stack-engineering',
+          type: 'solution',
+          title: 'Full-Stack Engineering: Building the Academic Engine',
+          titleKo: '풀스택 엔지니어링: 학업 엔진 구축',
+          content: buildFullStackEngineeringContentKO()
         },
         {
-          id: 'results',
+          id: 'technical-deep-dive',
+          type: 'solution',
+          title: 'Technical Deep Dive: AI & System Integration',
+          titleKo: '기술 심화: AI 및 시스템 통합',
+          content: buildTechnicalDeepDiveContentKO()
+        },
+        {
+          id: 'key-metrics',
           type: 'results',
-          title: '결과 및 임팩트',
+          title: 'Key Metrics & Engineering Wins',
+          titleKo: '주요 지표 및 엔지니어링 성과',
           content: buildResultsContentKO()
         },
         {
-          id: 'learnings',
+          id: 'executive-reflection',
           type: 'learnings',
-          title: '핵심 인사이트',
+          title: 'Executive Reflection: The Full-Cycle Engineer',
+          titleKo: '경영진 성찰: 풀 사이클 엔지니어',
           content: buildLearningsContentKO()
         }
       ]
@@ -612,43 +1008,56 @@ export function getFriendlyCaseStudy(language: Language = 'en'): CaseStudyConten
     slug: 'friendly',
     title: 'Friendly — Architecting a High-Intelligence Academic Ecosystem',
     description: 'Lead Product Architect & Full-Stack Engineer building an AI-native "Operating System for Students" with 124+ API endpoints, achieving 98% market validation and App Store deployment.',
-    sections: [
-      {
-        id: 'overview',
-        type: 'overview',
-        title: 'Overview',
-        content: buildOverviewContent()
-      },
-      {
-        id: 'problem',
-        type: 'problem',
-        title: 'The Challenge',
-        content: buildProblemContent()
-      },
-      {
-        id: 'solution',
-        type: 'solution',
-        title: 'Engineering Solutions',
-        content: buildSolutionContent()
-      },
-      {
-        id: 'process',
-        type: 'process',
-        title: 'Process',
-        content: buildProcessContent()
-      },
-      {
-        id: 'results',
-        type: 'results',
-        title: 'Results & Impact',
-        content: buildResultsContent()
-      },
-      {
-        id: 'learnings',
-        type: 'learnings',
-        title: 'Key Learnings',
-        content: buildLearningsContent()
-      }
-    ]
+      sections: [
+        {
+          id: 'overview',
+          type: 'overview',
+          title: 'Overview',
+          titleKo: '개요',
+          content: buildOverviewContent()
+        },
+        {
+          id: 'academic-friction-challenge',
+          type: 'problem',
+          title: 'The "Academic Friction" Challenge: Identifying the Gap',
+          titleKo: '"학업 마찰" 도전: 격차 식별',
+          content: buildProblemContent()
+        },
+        {
+          id: 'product-strategy',
+          type: 'solution',
+          title: 'Product Strategy: From Data to Deployment',
+          titleKo: '제품 전략: 데이터에서 배포까지',
+          content: buildProductStrategyContent()
+        },
+        {
+          id: 'full-stack-engineering',
+          type: 'solution',
+          title: 'Full-Stack Engineering: Building the Academic Engine',
+          titleKo: '풀스택 엔지니어링: 학업 엔진 구축',
+          content: buildFullStackEngineeringContent()
+        },
+        {
+          id: 'technical-deep-dive',
+          type: 'solution',
+          title: 'Technical Deep Dive: AI & System Integration',
+          titleKo: '기술 심화: AI 및 시스템 통합',
+          content: buildTechnicalDeepDiveContent()
+        },
+        {
+          id: 'key-metrics',
+          type: 'results',
+          title: 'Key Metrics & Engineering Wins',
+          titleKo: '주요 지표 및 엔지니어링 성과',
+          content: buildResultsContent()
+        },
+        {
+          id: 'executive-reflection',
+          type: 'learnings',
+          title: 'Executive Reflection: The Full-Cycle Engineer',
+          titleKo: '경영진 성찰: 풀 사이클 엔지니어',
+          content: buildLearningsContent()
+        }
+      ]
   };
 }

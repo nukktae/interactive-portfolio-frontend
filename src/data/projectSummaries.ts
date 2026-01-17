@@ -1921,6 +1921,112 @@ export const projectSummaries: Project[] = [
         description: "Designed companion personality, emotional expressions, interaction flows, and user experience"
       }
     ]
+  },
+  {
+    title: "Shinhan Scholarship Foundation",
+    titleKo: "신한장학재단 프로젝트",
+    description: "Led a client-facing product project to resolve manual monthly student report submissions, reducing operational burden while increasing platform engagement and brand usage.",
+    descriptionKo: "수동 월간 학생 보고서 제출 문제를 해결하기 위한 클라이언트 대면 제품 프로젝트를 주도하여 운영 부담을 줄이면서 플랫폼 참여도와 브랜드 사용량을 증가시킴",
+    detailedDescription: "As Product Engineer at Shinhan Scholarship Foundation, I led a client-facing product project that transformed the reporting workflow from manual monthly submissions to an automated, engaging platform experience. Conducted constraint-aware user research using web crawling, secondary data analysis, and data visualization due to interview sensitivity. Drove ideation using SCAMPER method to generate innovative solutions. Designed student-facing features including community, networking, and recurring activity reporting, alongside a lightweight admin CRM dashboard for faster student management and oversight. Collaborated across frontend and backend teams to deploy and iterate a PWA, integrating client feedback post-launch and achieving approximately 3 hours of backend processing time savings.",
+    detailedDescriptionKo: "신한장학재단에서 프로덕트 엔지니어로 근무하며, 수동 월간 제출에서 자동화된 참여형 플랫폼 경험으로 보고 워크플로우를 전환한 클라이언트 대면 제품 프로젝트를 주도했습니다. 인터뷰 민감도로 인해 웹 크롤링, 2차 데이터 분석 및 데이터 시각화를 사용한 제약 인식 사용자 연구를 수행했습니다. SCAMPER 방법을 사용하여 혁신적인 솔루션을 생성하는 아이디어를 추진했습니다. 커뮤니티, 네트워킹 및 반복 활동 보고를 포함한 학생 대면 기능과 더 빠른 학생 관리 및 감독을 위한 경량 관리자 CRM 대시보드를 설계했습니다. 프론트엔드 및 백엔드 팀과 협력하여 PWA를 배포하고 반복했으며, 출시 후 클라이언트 피드백을 통합하고 약 3시간의 백엔드 처리 시간 절감을 달성했습니다.",
+    image: "/assets/images/shinhan.png",
+    images: [],
+    technologies: [
+      "PWA",
+      "Web Technologies",
+      "Responsive Design",
+      "CRM",
+      "Data Visualization",
+      "Web Crawling",
+      "Data Analysis"
+    ],
+    tools: [
+      "Product Management",
+      "User Research",
+      "SCAMPER",
+      "Data Visualization Tools",
+      "Web Crawling Tools",
+      "Collaboration Tools"
+    ],
+    hardSkills: [
+      "Product Management",
+      "User Research",
+      "Data Analysis",
+      "Web Crawling",
+      "SCAMPER Ideation",
+      "PWA Development",
+      "CRM Design",
+      "Client-Facing Project Leadership"
+    ],
+    softSkills: [
+      "Client Communication",
+      "Cross-Functional Collaboration",
+      "Problem Solving",
+      "Constraint-Aware Research",
+      "Stakeholder Management"
+    ],
+    features: [
+      "Automated recurring activity reporting system",
+      "Student community platform with networking capabilities",
+      "Lightweight admin CRM dashboard for student management",
+      "Backend processing optimization achieving ~3 hours time savings",
+      "Progressive Web App (PWA) with dual interfaces",
+      "Constraint-aware user research using web crawling and data visualization",
+      "SCAMPER method-driven ideation and solution design"
+    ],
+    metrics: [
+      "~3 hours of backend processing time savings per cycle",
+      "Eliminated manual monthly report submissions",
+      "Increased platform engagement and brand usage",
+      "Dual-interface PWA (student and admin)",
+      "Automated reporting workflow implementation"
+    ],
+    highlights: [
+      "Led client-facing product project from research to deployment",
+      "Conducted constraint-aware user research using alternative methods",
+      "Applied SCAMPER method for innovative ideation",
+      "Designed and deployed dual-interface PWA solution",
+      "Achieved significant operational efficiency improvements"
+    ],
+    challenges: [
+      "Conducting user research with interview sensitivity constraints",
+      "Balancing student engagement features with operational efficiency",
+      "Designing dual interfaces for students and admins",
+      "Optimizing backend processing time",
+      "Integrating client feedback post-launch"
+    ],
+    solutions: [
+      "Developed constraint-aware research approach using web crawling, secondary data analysis, and data visualization",
+      "Used SCAMPER method for ideation to generate solutions addressing both user needs and operational requirements",
+      "Architected separate but integrated interfaces within single PWA",
+      "Automated manual workflows and streamlined data processing",
+      "Established iterative development process with client collaboration"
+    ],
+    github: "",
+    liveUrl: "",
+    address: "Seoul, South Korea",
+    roles: [
+      {
+        area: "Product Engineering",
+        percentage: 100,
+        description: "Led client-facing product project from research to deployment, conducting constraint-aware user research and driving ideation using SCAMPER method"
+      },
+      {
+        area: "User Research",
+        percentage: 90,
+        description: "Conducted user research using web crawling, secondary data analysis, and data visualization due to interview sensitivity constraints"
+      },
+      {
+        area: "Product Design",
+        percentage: 85,
+        description: "Designed student-facing features (community, networking, reporting) and lightweight admin CRM dashboard"
+      },
+      {
+        area: "Full-Stack Development",
+        percentage: 80,
+        description: "Collaborated across frontend and backend teams to deploy and iterate PWA with dual interfaces"
+      }
+    ]
   }
 ];
 

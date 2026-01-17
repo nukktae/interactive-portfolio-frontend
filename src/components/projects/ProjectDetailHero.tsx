@@ -13,7 +13,7 @@ interface ProjectDetailHeroProps {
 }
 
 export default function ProjectDetailHero({ project, content }: ProjectDetailHeroProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   // Extract role summary from content or project
   const getRoleSummary = (): string => {
@@ -46,6 +46,15 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
 
   // Get 1-line value statement (prefer description, fallback to first sentence of detailedDescription)
   const getValueStatement = (): string => {
+    if (language === 'ko') {
+      if (project.descriptionKo && project.descriptionKo.length < 200) {
+        return project.descriptionKo;
+      }
+      if (project.detailedDescriptionKo) {
+        const firstSentence = project.detailedDescriptionKo.split('.')[0];
+        return firstSentence.length > 0 ? firstSentence + '.' : project.detailedDescriptionKo;
+      }
+    }
     if (project.description && project.description.length < 200) {
       return project.description;
     }
@@ -59,11 +68,11 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
 
   // Get timeline from competitionsProjects by matching title
   const getTimeline = (): string => {
-    const competitionProject = competitionsProjects.find(cp => cp.title === project.title);
+    const competitionProject = competitionsProjects.find(cp => cp.title === project.title || cp.titleKo === project.titleKo);
     if (competitionProject && competitionProject.period) {
-      return competitionProject.period;
+      return language === 'ko' ? competitionProject.period.replace(/Present/g, '현재') : competitionProject.period;
     }
-    return "2025.08 – 2025.12"; // Fallback
+    return language === 'ko' ? "2025.08 – 2025.12" : "2025.08 – 2025.12"; // Fallback
   };
   const timeline = getTimeline();
 
@@ -88,7 +97,7 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="space-y-3">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight">
-              {project.title}
+              {language === 'ko' && project.titleKo ? project.titleKo : project.title}
             </h1>
             </div>
             {(project.liveUrl || project.github) && (

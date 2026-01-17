@@ -1,6 +1,7 @@
 export interface WorkExperienceProject {
   id: number;
   title: string;
+  titleKo?: string;
   role: string;
   roleKo?: string;
   period: string;

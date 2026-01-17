@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { CaseStudyContent } from '@/content/casestudies';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CaseStudySlidesProps {
   content: CaseStudyContent;
@@ -23,10 +24,25 @@ const illustrations = [
 export default function CaseStudySlides({ content }: CaseStudySlidesProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { language } = useLanguage();
   
   // Get illustration for a section index (deterministic assignment)
   const getIllustration = (index: number): string => {
     return illustrations[index % illustrations.length];
+  };
+
+  // Get title based on language
+  const getSectionTitle = (section: CaseStudyContent['sections'][0]): string => {
+    if (language === 'ko' && 'titleKo' in section && section.titleKo) {
+      return section.titleKo;
+    }
+    return section.title || section.id;
+  };
+
+  // Calculate responsive font size based on title length
+  const getTitleSize = (title: string): string => {
+    // All headers use the same smaller size for consistency
+    return 'text-2xl md:text-3xl lg:text-4xl';
   };
 
   useEffect(() => {
@@ -122,16 +138,32 @@ export default function CaseStudySlides({ content }: CaseStudySlidesProps) {
                   className="space-y-8"
                 >
                   {/* Title */}
-                  <h2
-                    className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-orange-600 dark:text-orange-500"
-                    style={{
-                      writingMode: 'horizontal-tb',
-                      textTransform: 'uppercase',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {section.title || section.id}
-                  </h2>
+                  {(() => {
+                    const title = getSectionTitle(section);
+                    // Split title at colon if present to allow 2-row layout
+                    const hasColon = title.includes(':');
+                    const parts = hasColon ? title.split(':') : [title];
+                    
+                    return (
+                      <h2
+                        className={`${getTitleSize(title)} font-black leading-tight text-orange-600 dark:text-orange-500`}
+                        style={{
+                          writingMode: 'horizontal-tb',
+                          textTransform: 'uppercase',
+                          letterSpacing: '-0.02em',
+                        }}
+                      >
+                        {hasColon ? (
+                          <>
+                            {parts[0].trim()}:<br />
+                            {parts.slice(1).join(':').trim()}
+                          </>
+                        ) : (
+                          title
+                        )}
+                      </h2>
+                    );
+                  })()}
 
                   {/* Illustration */}
                   {getIllustration(index) && (

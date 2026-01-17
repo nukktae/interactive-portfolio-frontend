@@ -1,7 +1,10 @@
 export interface Project {
   title: string;
+  titleKo?: string;
   description: string;
+  descriptionKo?: string;
   detailedDescription: string;
+  detailedDescriptionKo?: string;
   image: string;
   coverVideo?: string; // Optional video cover (mp4, webm, etc.)
   images: string[];

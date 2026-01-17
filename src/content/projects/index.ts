@@ -13,6 +13,7 @@ import { getClearguideContent } from './clearguide/index';
 import { getRootinContent } from './rootin/index';
 import { getEncarTrack1Content } from './encar-track1/index';
 import { getCocoContent } from './coco/index';
+import { getShinhanContent } from './shinhan/index';
 
 type Language = 'en' | 'ko';
 
@@ -132,6 +133,9 @@ export function getProjectDetailContent(slug: string, language: Language = 'en')
   if (slug === 'coco') {
     return getCocoContent(language);
   }
+  if (slug === 'shinhan-scholarship-foundation' || slug === 'shinhan') {
+    return getShinhanContent(language);
+  }
   
   // Handle other projects with old structure (if any remain)
   const content = projectContentMap[slug] || null;
@@ -158,6 +162,7 @@ export const allProjectContent: ProjectDetailContent[] = [
   getRootinContent('en'),
   getEncarTrack1Content('en'),
   getCocoContent('en'),
+  getShinhanContent('en'),
   ...Object.values(projectContentMap)
 ];
 

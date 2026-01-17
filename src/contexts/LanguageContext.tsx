@@ -67,7 +67,7 @@ const translations = {
     
     // Contact Section
     'contact.heading': "LET'S CHAT",
-    'contact.title': '커피 한 잔\n어떠세요?',
+    'contact.title': 'How about a cup\nof coffee?',
     'contact.description': "Want to grab a coffee and chat? Whether it's about tech, projects, or just life—I'm always up for a good conversation. No pressure, just good vibes.",
     'contact.downloadResume': 'Download Resume',
     'contact.selectResumeLanguage': 'Select Resume Language',

@@ -1,6 +1,7 @@
 export interface CompetitionProject {
   id: number;
   title: string;
+  titleKo?: string;
   role: string;
   roleKo?: string;
   period: string;
@@ -17,6 +18,21 @@ export interface CompetitionProject {
 }
 
 export const competitionsProjects: CompetitionProject[] = [
+  {
+    id: 16,
+    title: "Shinhan Scholarship Foundation",
+    titleKo: "신한장학재단 프로젝트",
+    role: "Product Engineer",
+    roleKo: "프로덕트 엔지니어",
+    period: "2026.01 - Present",
+    description: "Led a client-facing product project to resolve manual monthly student report submissions, reducing operational burden while increasing platform engagement and brand usage",
+    descriptionKo: "수동 월간 학생 보고서 제출 문제를 해결하기 위한 클라이언트 대면 제품 프로젝트를 주도하여 운영 부담을 줄이면서 플랫폼 참여도와 브랜드 사용량을 증가시킴",
+    tags: ["Product Management", "User Research", "Web Crawling", "Data Visualization", "PWA", "CRM", "SCAMPER"],
+    image: "/assets/images/shinhan.png",
+    githubUrl: "",
+    address: "Seoul, South Korea",
+    featured: true
+  },
   {
     id: 7,
     title: "Friendly",

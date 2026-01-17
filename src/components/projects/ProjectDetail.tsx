@@ -123,7 +123,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             {...sectionAnimation}
           >
             <SectionTitle id={section.id}>My Role</SectionTitle>
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {section.roles.map((role, index) => {
                 const IconComponent = role.icon || Award;
                 return (
@@ -134,44 +134,45 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       ...sectionAnimation.transition,
                       delay: index * 0.1,
                     }}
-                    className="relative overflow-hidden rounded-2xl bg-card/20 dark:bg-card/30 p-6 md:p-7 shadow-[0_18px_50px_-32px_rgba(15,23,42,0.35)] dark:shadow-[0_18px_50px_-32px_rgba(0,0,0,0.5)] backdrop-blur"
+                    className="relative overflow-hidden rounded-2xl bg-card/40 dark:bg-card/50 p-6 md:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] backdrop-blur-sm border border-border/50"
                   >
-                    <span className="absolute left-0 top-6 bottom-6 w-[3px] rounded-full bg-gradient-to-b from-indigo-500 via-blue-500 to-sky-400" />
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 shadow-inner">
-                        <IconComponent className="w-5 h-5" />
+                    <span className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full bg-gradient-to-b from-indigo-500 via-blue-500 to-sky-400" />
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 shadow-inner flex-shrink-0">
+                        <IconComponent className="w-6 h-6" />
                       </div>
-                      <div>
-                        <p className="text-sm uppercase tracking-[0.18em] text-foreground/60">My Role</p>
-                        <h3 className="text-xl font-semibold text-foreground leading-tight">{role.title}</h3>
-                        {role.subtitle && <p className="text-sm text-foreground/70">{role.subtitle}</p>}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-xl font-bold text-foreground leading-tight mb-1">{role.title}</h3>
+                        {role.subtitle && <p className="text-sm text-foreground/60 leading-relaxed">{role.subtitle}</p>}
                       </div>
                     </div>
 
                     <div className="space-y-6">
                       <div className="space-y-3">
-                        <p className="text-sm font-semibold text-foreground">Responsibilities</p>
-                        <ul className="space-y-2 text-foreground/80">
+                        <p className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/50 mb-3">Responsibilities</p>
+                        <ul className="space-y-3 text-foreground/80">
                           {role.responsibilities.map((item) => (
-                            <li key={item} className="flex gap-2">
-                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-foreground/40" />
-                              <span className="leading-relaxed">{item}</span>
+                            <li key={item} className="flex gap-3">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
+                              <span className="leading-relaxed text-sm">{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="space-y-3">
-                        <p className="text-sm font-semibold text-foreground">Impact Highlights</p>
-                        <ul className="space-y-2 text-foreground/80">
+                      {role.impacts && role.impacts.length > 0 && (
+                        <div className="space-y-3 pt-4 border-t border-border/30">
+                          <p className="text-xs font-semibold uppercase tracking-[0.1em] text-foreground/50 mb-3">Impact Highlights</p>
+                          <ul className="space-y-3 text-foreground/80">
                           {role.impacts.map((impact) => (
-                            <li key={impact} className="flex gap-2">
-                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500/80" />
-                              <span className="leading-relaxed">{impact}</span>
+                              <li key={impact} className="flex gap-3">
+                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                                <span className="leading-relaxed text-sm">{impact}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
+                      )}
                     </div>
                   </motion.div>
                 );
@@ -189,44 +190,44 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
           >
             <SectionTitle id={section.id}>Problem</SectionTitle>
 
-            <div className="relative overflow-hidden rounded-2xl bg-card dark:bg-card/80 shadow-[0_4px_16px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_16px_rgba(0,0,0,0.3)] ring-1 ring-border/50">
-              <div className="absolute left-0 top-6 bottom-6 w-[5px] rounded-full bg-gradient-to-b from-blue-500 to-sky-400" />
-              <div className="relative grid grid-cols-1 lg:grid-cols-[0.42fr_0.58fr] gap-8 md:gap-10 px-6 md:px-10 py-10 md:py-12">
-                <div className="space-y-6">
-                  <div className="space-y-3">
-                    <p className="text-xs uppercase tracking-[0.18em] text-foreground/50">The Industry Problem</p>
+            <div className="relative overflow-hidden rounded-2xl bg-card/60 dark:bg-card/70 shadow-[0_4px_20px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] border border-border/50">
+              <div className="absolute left-0 top-0 bottom-0 w-1 rounded-r-full bg-gradient-to-b from-blue-500 via-blue-400 to-sky-400" />
+              <div className="relative grid grid-cols-1 lg:grid-cols-[0.45fr_0.55fr] gap-8 md:gap-12 px-6 md:px-10 py-8 md:py-12">
+                <div className="space-y-8">
+                  <div className="space-y-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/50">The Industry Problem</p>
                     {section.summary ? (
-                      <p className="text-lg text-foreground/80 leading-relaxed">{section.summary}</p>
+                      <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">{section.summary}</p>
                     ) : typeof section.content === 'string' ? (
-                      <p className="text-lg text-foreground/80 leading-relaxed">{section.content}</p>
+                      <p className="text-lg md:text-xl text-foreground leading-relaxed font-medium">{section.content}</p>
                     ) : (
-                      <div className="text-lg text-foreground/80 leading-relaxed space-y-4">{section.content}</div>
+                      <div className="text-lg md:text-xl text-foreground leading-relaxed space-y-4 font-medium">{section.content}</div>
                     )}
                   </div>
 
                   {section.whyItMatters && (
-                    <div className="space-y-2">
-                      <p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Why it matters</p>
-                      <p className="text-base text-foreground/80 leading-relaxed font-medium">{section.whyItMatters}</p>
+                    <div className="space-y-3 pt-6 border-t border-border/30">
+                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/50">Why it matters</p>
+                      <p className="text-base md:text-lg text-foreground/90 leading-relaxed">{section.whyItMatters}</p>
                     </div>
                   )}
                 </div>
 
                 {section.painPoints && section.painPoints.length > 0 && (
-                  <div className="space-y-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-foreground/50">Pain Points</p>
-                    <div className="space-y-3.5">
+                  <div className="space-y-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/50">Pain Points</p>
+                    <div className="space-y-3">
                       {section.painPoints.map((point, idx) => {
                         const iconSet = [AlertCircle, MessageSquareOff, EyeOff, RefreshCcw, TrendingDown];
                         const IconComponent = (point.icon as React.ElementType) || iconSet[idx % iconSet.length];
                         return (
-                          <div key={idx} className="group flex items-start gap-3 rounded-xl bg-card/60 dark:bg-card/40 px-3.5 py-3 shadow-[0_1px_6px_rgba(0,0,0,0.04)] dark:shadow-[0_1px_6px_rgba(0,0,0,0.2)] ring-1 ring-border/50">
-                            <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-lg bg-muted dark:bg-muted/80 text-muted-foreground shadow-inner">
-                              <IconComponent className="h-4 w-4" />
+                          <div key={idx} className="group flex items-start gap-4 rounded-xl bg-card/40 dark:bg-card/50 px-4 py-4 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] border border-border/40 hover:border-border/60 transition-colors">
+                            <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 shadow-inner flex-shrink-0">
+                              <IconComponent className="h-5 w-5" />
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-1.5 flex-1 min-w-0">
                               {point.title && <p className="text-sm font-semibold text-foreground leading-tight">{point.title}</p>}
-                              <p className="text-sm text-foreground/75 leading-snug">{point.description}</p>
+                              <p className="text-sm text-foreground/75 leading-relaxed">{point.description}</p>
                             </div>
                           </div>
                         );
@@ -337,19 +338,18 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                       transition={{ ...sectionAnimation.transition, delay: index * 0.1 }}
                       className="space-y-6"
                     >
-                      <div className="space-y-2">
-                        <p className="text-sm uppercase tracking-[0.18em] text-foreground/60">Architecture</p>
-                        <h3 className="text-2xl font-semibold text-foreground">{item.title}</h3>
+                      <div className="space-y-3 mb-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-foreground/50">Architecture</p>
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground">{item.title}</h3>
                         {item.description && (
-                          <p className="text-foreground/80 leading-relaxed">{item.description}</p>
+                          <p className="text-foreground/80 leading-relaxed text-base md:text-lg max-w-3xl">{item.description}</p>
                         )}
                       </div>
-                      <div className="h-px bg-foreground/10" />
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {item.features.map((feature) => (
                           <div
                             key={feature}
-                            className="rounded-full bg-foreground/[0.03] px-4 py-3 text-sm font-medium text-foreground/80 shadow-[0_6px_20px_-12px_rgba(15,23,42,0.4)]"
+                            className="rounded-xl bg-card/50 dark:bg-card/60 px-5 py-4 text-sm font-medium text-foreground/90 shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] border border-border/40 hover:border-border/60 hover:bg-card/60 dark:hover:bg-card/70 transition-all"
                           >
                             {feature}
                           </div>
@@ -1056,6 +1056,10 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
 
         const [core, comms, infra, ...rest] = section.categories || [];
 
+        // Check if this is Shinhan project (simpler tech stack display)
+        const isShinhan = project.title === 'Shinhan Scholarship Foundation' || project.titleKo === '신한장학재단 프로젝트';
+        const shinhanCategories = isShinhan ? [core, comms, infra].filter(Boolean) : [];
+
         // Split Core Architecture items into Runtime & Rendering and Language & API
         const runtimeItems = core?.items?.filter(item => 
           item && item.name && (
@@ -1081,7 +1085,63 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
             <SectionTitle id={section.id}>Tech Stack</SectionTitle>
 
             <div className="relative">
-              {/* 3-Column Grid: Core Architecture | Communication & AI | Infrastructure & DevOps */}
+              {isShinhan ? (
+                /* Simple 3-column grid for Shinhan */
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-7">
+                  {shinhanCategories.map((category, index) => {
+                    if (!category) return null;
+                    const icons = [Layers, Palette, Users];
+                    const IconComponent = icons[index] || Layers;
+                    return (
+                      <motion.div
+                        key={category.category}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: '-80px' }}
+                        custom={index}
+                        className="rounded-2xl backdrop-blur-sm shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_10px_rgba(0,0,0,0.2)] py-6 px-7 bg-card/80 dark:bg-card/65 border border-border/60"
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 shadow-inner">
+                            <IconComponent className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-foreground leading-tight">{category.category}</h3>
+                          </div>
+                        </div>
+                        
+                        <div className="h-px bg-black/5 dark:bg-white/5 my-3"></div>
+                        
+                        <div className="flex flex-col gap-y-3">
+                          {(category.items || []).map((item, idx) => {
+                            if (!item || !item.name) return null;
+                            const ItemIcon = item.icon || Layers;
+                            return (
+                              <motion.div
+                                key={item.name}
+                                variants={fadeInUp}
+                                custom={idx}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: '-60px' }}
+                                className="flex items-center gap-2 rounded-lg bg-foreground/5 dark:bg-foreground/10 px-3 py-2 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)] text-foreground/85 text-sm border border-border/60 dark:border-border/40"
+                              >
+                                <div className="flex h-6 w-6 items-center justify-center flex-shrink-0">
+                                  <ItemIcon className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                                </div>
+                                <span className="leading-snug">{item.name}</span>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <>
+                  {/* Original 3-Column Grid: Core Architecture | Communication & AI | Infrastructure & DevOps */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-7">
                 {/* Core Architecture Column */}
                 {core && (
@@ -1221,7 +1281,7 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
               </div>
 
               {rest.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
                   {rest.map((stack, index) => (
                     <motion.div
                       key={stack.category}
@@ -1250,6 +1310,8 @@ export default function ProjectDetail({ project, content }: ProjectDetailProps) 
                     </motion.div>
                   ))}
                 </div>
+                  )}
+                </>
               )}
             </div>
           </motion.section>

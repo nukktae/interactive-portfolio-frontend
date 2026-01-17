@@ -49,19 +49,19 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="relative z-10 py-16 md:py-24 lg:py-32 pb-24 md:pb-32" ref={ref}>
-      <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto w-full">
+    <section id="contact" className="relative z-10 py-12 sm:py-16 md:py-24 lg:py-32 pb-16 sm:pb-24 md:pb-32" ref={ref}>
+      <div className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto w-full">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12"
+            className="mb-8 sm:mb-10 md:mb-12"
           >
-            <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
+            <div className="text-xs sm:text-sm font-bold tracking-widest text-foreground/60 mb-4 sm:mb-5 md:mb-6 uppercase">
               {t('contact.heading')}
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-tight md:leading-none mb-6 md:mb-8 text-foreground whitespace-pre-line">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-black leading-tight md:leading-none mb-4 sm:mb-6 md:mb-8 text-foreground whitespace-pre-line">
               {t('contact.title')}
             </h2>
           </motion.div>
@@ -70,26 +70,26 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
-            <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto text-foreground/80 px-2 whitespace-pre-line">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto text-foreground/80 px-2 sm:px-4 whitespace-pre-line leading-relaxed">
               {t('contact.description')}
             </p>
 
-            <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center">
               <a
                 href="mailto:anu.bn@yahoo.com"
-                className="group inline-flex items-center gap-2 sm:gap-4 text-lg sm:text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-tight text-foreground hover:text-foreground/80 transition-colors duration-300 break-all sm:break-normal"
+                className="group inline-flex items-center gap-2 sm:gap-3 md:gap-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl font-black uppercase tracking-tight text-foreground hover:text-foreground/80 transition-colors duration-300 break-all sm:break-normal"
               >
                 <span>anu.bn@yahoo.com</span>
-                <ArrowUpRight className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
+                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300 flex-shrink-0" />
               </a>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 relative">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-2 sm:pt-4 relative">
               <motion.button
                 onClick={() => router.push('/book-a-call')}
-                className={`w-full sm:w-auto min-w-[200px] px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 inline-flex items-center justify-center ${
+                className={`w-full sm:w-auto min-w-[180px] sm:min-w-[200px] px-5 py-2.5 sm:px-6 sm:py-3 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 inline-flex items-center justify-center ${
                   !mounted
                     ? 'bg-white text-[#0F0F12] hover:bg-white/90 shadow-[0_8px_20px_-10px_rgba(255,255,255,0.3)]'
                     : theme === 'dark'
@@ -102,18 +102,18 @@ export default function ContactForm() {
                 {t('nav.bookCall')}
               </motion.button>
               <div 
-                className="relative"
+                className="relative w-full sm:w-auto"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
                 <motion.button
                   ref={resumeButtonRef}
-                  className="group w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 border-[1.25px] border-border bg-foreground/10 dark:bg-white/10 backdrop-blur-sm text-foreground text-sm font-medium hover:bg-foreground/15 dark:hover:bg-white/15 transition-all duration-300"
+                  className="group w-full sm:w-auto min-w-[180px] sm:min-w-[200px] inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg px-5 py-2.5 sm:px-6 sm:py-3 border-[1.25px] border-border bg-foreground/10 dark:bg-white/10 backdrop-blur-sm text-foreground text-xs sm:text-sm font-medium hover:bg-foreground/15 dark:hover:bg-white/15 transition-all duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Download className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
-                  {t('contact.downloadResume')}
+                  <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-y-1" />
+                  <span className="whitespace-nowrap">{t('contact.downloadResume')}</span>
                 </motion.button>
 
                 {/* Hover Panel */}
@@ -176,37 +176,37 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="pt-8 space-y-4">
-              <div className="flex flex-col md:flex-row gap-8 justify-center items-center text-foreground/60">
+            <div className="pt-6 sm:pt-8 space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center text-foreground/60">
                 <a
                   href="https://github.com/nukktae"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                  className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity duration-300"
                 >
                   <Image
-                    src="/assets/images/stack/github.png"
+                    src={mounted && theme === 'dark' ? '/assets/images/icons/githubwhite.png' : '/assets/images/icons/github.png'}
                     alt="GitHub"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                   />
-                  <span className="text-sm font-bold tracking-widest uppercase">{t('contact.github')}</span>
+                  <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">{t('contact.github')}</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/in/anu-bilegdemberel-445366318"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                  className="flex items-center gap-1.5 sm:gap-2 hover:opacity-80 transition-opacity duration-300"
                 >
                   <Image
                     src="/assets/images/stack/linkedin.webp"
                     alt="LinkedIn"
-                    width={24}
-                    height={24}
-                    className="w-6 h-6"
+                    width={20}
+                    height={20}
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                   />
-                  <span className="text-sm font-bold tracking-widest uppercase">{t('contact.linkedin')}</span>
+                  <span className="text-xs sm:text-sm font-bold tracking-widest uppercase">{t('contact.linkedin')}</span>
                 </a>
               </div>
             </div>
