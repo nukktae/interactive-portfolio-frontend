@@ -18,7 +18,8 @@ export default function Navbar() {
 
   const navItems = [
     { href: '#projects', labelKey: 'nav.work' },
-    { href: '#about', labelKey: 'nav.about' },
+    { href: '#tech-stack', labelKey: 'nav.about' },
+    { href: '#case-studies', labelKey: 'nav.caseStudies' },
     { href: '#contact', labelKey: 'nav.contact' }
   ];
 

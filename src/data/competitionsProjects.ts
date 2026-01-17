@@ -20,8 +20,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 7,
     title: "Friendly",
-    role: "Full-Stack Developer",
-    roleKo: "풀스택 개발자",
+    role: "Product Engineer & Full Stack Developer",
+    roleKo: "프로덕트 엔지니어 & 풀스택 개발자",
     period: "2025",
     description: "Cross-platform student productivity app with AI-powered transcription, schedule management, and PDF analysis",
     descriptionKo: "AI 기반 전사, 일정 관리 및 PDF 분석 기능을 갖춘 크로스 플랫폼 학생 생산성 앱",
@@ -35,8 +35,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 15,
     title: "COCO",
-    role: "Full-Stack Developer (Hardware + Backend + Frontend + UI/UX)",
-    roleKo: "풀스택 개발자 (하드웨어 + 백엔드 + 프론트엔드 + UI/UX)",
+    role: "Product Manager & Hardware Engineer",
+    roleKo: "프로덕트 매니저 & 하드웨어 엔지니어",
     period: "2025.12 - Present",
     description: "AI companion robot for education & stress support combining ESP32 embedded systems, voice interaction, cloud AI, and web platform integration",
     descriptionKo: "ESP32 임베디드 시스템, 음성 상호작용, 클라우드 AI 및 웹 플랫폼 통합을 결합한 교육 및 스트레스 지원을 위한 AI 동반자 로봇",
@@ -49,8 +49,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 5,
     title: "Rootin",
-    role: "Frontend Developer",
-    roleKo: "프론트엔드 개발자",
+    role: "UX Engineer & Frontend Developer",
+    roleKo: "UX 엔지니어 & 프론트엔드 개발자",
     period: "2024",
     description: "Flutter application with BLE protocol integration for IoT sensor communication",
     descriptionKo: "IoT 센서 통신을 위한 BLE 프로토콜 통합 Flutter 애플리케이션",
@@ -62,8 +62,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 8,
     title: "ClearGuide",
-    role: "Full-Stack Developer",
-    roleKo: "풀스택 개발자",
+    role: "Product Manager & Full Stack Developer",
+    roleKo: "프로덕트 매니저 & 풀스택 개발자",
     period: "2025",
     description: "AI-powered web app helping Korean residents understand public documents with OCR, AI analysis, and chatbot",
     descriptionKo: "OCR, AI 분석 및 챗봇을 통해 한국 주민들이 공공 문서를 이해할 수 있도록 돕는 AI 기반 웹 앱",
@@ -77,8 +77,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 11,
     title: "AMORE Agent 05",
-    role: "Full-Stack Developer & Product Engineer",
-    roleKo: "풀스택 개발자 & 제품 엔지니어",
+    role: "Product Manager & Data Engineer",
+    roleKo: "프로덕트 매니저 & 데이터 엔지니어",
     period: "2025",
     description: "Intelligent e-commerce analytics platform for Shopee product analysis with AI-powered insights, automated monitoring, and multi-mode data ingestion",
     descriptionKo: "AI 기반 인사이트, 자동화된 모니터링 및 다중 모드 데이터 수집을 갖춘 Shopee 제품 분석을 위한 지능형 전자상거래 분석 플랫폼",
@@ -119,8 +119,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 12,
     title: "AWS Content Moderation",
-    role: "Backend & Infrastructure Engineer",
-    roleKo: "백엔드 & 인프라 엔지니어",
+    role: "AWS Solution Architect & Product Engineer",
+    roleKo: "AWS 솔루션 아키텍트 & 프로덕트 엔지니어",
     period: "2024",
     description: "Real-time video content moderation platform powered by AWS Rekognition with <200ms latency, automated alerting, and comprehensive monitoring",
     descriptionKo: "AWS Rekognition 기반 실시간 비디오 콘텐츠 조정 플랫폼으로 <200ms 지연 시간, 자동 알림 및 포괄적인 모니터링 제공",
@@ -133,8 +133,8 @@ export const competitionsProjects: CompetitionProject[] = [
   {
     id: 13,
     title: "MajorMatch AI",
-    role: "Full-Stack Developer",
-    roleKo: "풀스택 개발자",
+    role: "Product Manager & Full Stack Developer",
+    roleKo: "프로덕트 매니저 & 풀스택 개발자",
     period: "2024",
     description: "Intelligent career guidance platform with AI-powered assessments, interactive challenges across 6 fields, and mentorship booking system",
     descriptionKo: "AI 기반 평가, 6개 분야의 인터랙티브 챌린지 및 멘토십 예약 시스템을 갖춘 지능형 진로 안내 플랫폼",
@@ -184,7 +184,8 @@ export const competitionsProjects: CompetitionProject[] = [
     coverVideo: "/assets/images/childnetcover.mp4",
     githubUrl: "https://github.com/nukktae/childnet.git",
     address: "Seoul, South Korea",
-    featured: true
+    featured: true,
+    hidden: true
   },
   {
     id: 10,

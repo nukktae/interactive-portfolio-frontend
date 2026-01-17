@@ -118,7 +118,7 @@ export default function ProjectsSection() {
         <div className="flex items-center justify-between">
           <div>
             <div className="text-section-title text-foreground/60 mb-2">
-              {project.period} • {language === 'ko' && 'roleKo' in project && project.roleKo ? project.roleKo : project.role}
+              {language === 'ko' ? project.period.replace(/Present/g, '현재') : project.period} • {language === 'ko' && 'roleKo' in project && project.roleKo ? project.roleKo : project.role}
             </div>
             <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
               {project.title}

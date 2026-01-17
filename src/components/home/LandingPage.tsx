@@ -6,7 +6,7 @@ import Navbar from '../layout/Navbar';
 import HeroSection from './HeroSection';
 import ProjectsSection from '../projects/ProjectsSection';
 import TechStackSection from '../about/TechStackSection';
-import AboutSection from '../about/AboutSection';
+import CaseStudiesSection from '../about/CaseStudiesSection';
 import ContactForm from './ContactForm';
 import SpaceBackground from '../visuals/SpaceBackground';
 import LightBackground from '../visuals/LightBackground';
@@ -61,8 +61,8 @@ export default function LandingPage() {
           <TechStackSection />
         </section>
 
-        <section id="about">
-          <AboutSection />
+        <section id="case-studies">
+          <CaseStudiesSection />
         </section>
 
         <ContactForm />

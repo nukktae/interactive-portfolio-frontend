@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Palette, Code, Database, Sparkles } from 'lucide-react';
+import { Briefcase, Code, Database, Globe } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function TechStackSection() {
@@ -13,9 +13,9 @@ export default function TechStackSection() {
 
   const services = [
     {
-      icon: <Palette className="w-8 h-8" />,
-      title: t('techStack.branding'),
-      description: t('techStack.brandingDesc')
+      icon: <Briefcase className="w-8 h-8" />,
+      title: t('techStack.productManagement'),
+      description: t('techStack.productManagementDesc')
     },
     {
       icon: <Code className="w-8 h-8" />,
@@ -28,39 +28,50 @@ export default function TechStackSection() {
       description: t('techStack.developmentDesc')
     },
     {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: t('techStack.innovation'),
-      description: t('techStack.innovationDesc')
+      icon: <Globe className="w-8 h-8" />,
+      title: t('techStack.globalExpansion'),
+      description: t('techStack.globalExpansionDesc')
     }
   ];
 
   return (
     <section id="tech-stack" className="relative z-10 py-24 md:py-32" ref={ref}>
       <div className="px-6 md:px-12 lg:px-20 xl:px-32 max-w-[1800px] mx-auto">
-        {/* Large Background Text */}
         <div className="relative">
-          <motion.div
-            className="text-[3rem] md:text-[5rem] lg:text-[7rem] font-black text-foreground/5 text-center mb-16 overflow-hidden leading-none"
-            initial={{ opacity: 0, y: 100 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.2 }}
-          >
-            ANU
-          </motion.div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
-            {/* Left Side - Title */}
+            {/* Left Side - Title & Stats */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-12"
             >
-              <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
-                {t('techStack.services')}
+              <div>
+                <div className="text-sm font-bold tracking-widest text-foreground/60 mb-6 uppercase">
+                  {t('techStack.services')}
+                </div>
+                <h2 className="text-5xl md:text-6xl font-black text-foreground leading-none whitespace-pre-line">
+                  {t('techStack.title')}
+                </h2>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black text-foreground leading-none whitespace-pre-line">
-                {t('techStack.title')}
-              </h2>
+              
+              {/* Stats */}
+              <div className="flex flex-col sm:flex-row gap-8 md:gap-12 pt-8 border-t border-border/50">
+                <div className="flex-1">
+                  <div className="text-5xl md:text-6xl font-black text-foreground mb-2">3+</div>
+                  <div className="text-xs md:text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.yearsExperience')}</div>
+                </div>
+                
+                <div className="flex-1">
+                  <div className="text-5xl md:text-6xl font-black text-foreground mb-2">2+</div>
+                  <div className="text-xs md:text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.companiesWorked')}</div>
+                </div>
+                
+                <div className="flex-1">
+                  <div className="text-5xl md:text-6xl font-black text-foreground mb-2">20+</div>
+                  <div className="text-xs md:text-sm font-bold tracking-widest text-foreground/60 uppercase">{t('about.projectsCompleted')}</div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Right Side - Services Grid */}

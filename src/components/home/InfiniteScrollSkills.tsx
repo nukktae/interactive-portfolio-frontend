@@ -96,7 +96,7 @@ export default function InfiniteScrollSkills() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1.0 }}
-      className="w-screen mt-16 sm:mt-20 md:mt-24 lg:mt-32 xl:mt-40 overflow-hidden relative z-10 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-20 xl:-mx-32"
+      className="w-screen mt-6 sm:mt-8 md:mt-10 lg:mt-12 xl:mt-14 overflow-hidden relative z-10 -mx-4 sm:-mx-6 md:-mx-12 lg:-mx-20 xl:-mx-32"
     >
       <div className="relative w-full space-y-4">
         {/* First Row */}
