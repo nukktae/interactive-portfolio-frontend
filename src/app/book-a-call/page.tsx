@@ -10,7 +10,11 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Calendly event URL with customization options
-const CALENDLY_EVENT_URL = 'https://calendly.com/amis9n?hide_event_type_details=1&hide_gdpr_banner=1';
+// IMPORTANT: Make sure your Calendly calendar is published and accessible
+// If you see "calendar unavailable", try using a specific event type URL like:
+// 'https://calendly.com/amis9n/30min?hide_gdpr_banner=1'
+// Or check your Calendly account settings to ensure the calendar is published
+const CALENDLY_EVENT_URL = 'https://calendly.com/amis9n?hide_gdpr_banner=1';
 
 export default function BookACallPage() {
   const { theme } = useTheme();
