@@ -18,7 +18,7 @@ export const projectSummaries: Project[] = [
     title: "Bestia",
     description: "CRM tech for real estate agents that revolutionizes workflow efficiency, reducing manual work and enabling agents to handle significantly more leads.",
     detailedDescription: "Bestia is a cutting-edge CRM platform designed specifically for real estate agents. As the designer and frontend developer, I led the design and frontend integration, working closely with real estate agents weekly for design feedback. The platform was showcased at LA Tech Week, where it generated 300 real estate agents on the waiting list through compelling design and seamless frontend integration. The system dramatically improves agent productivity by automating workflows and eliminating manual data entry.",
-    image: "/assets/images/projects/Bestia/bestia1.png",
+    image: "",
     images: [],
     technologies: [
       "Next.js 15.4.6",

@@ -9,13 +9,6 @@ import { ImageWithFallback } from '../ui/ImageWithFallback';
 
 const caseStudies = [
   {
-    slug: 'bestia',
-    title: 'Bestia',
-    fullTitle: 'Bestia — Engineering the Future of Real Estate Intelligence',
-    fullTitleKo: 'Bestia — 부동산 인텔리전스의 미래를 엔지니어링하다',
-    image: '/assets/images/case-study/bestia2.png',
-  },
-  {
     slug: 'handiers-inc',
     title: 'Handiers',
     fullTitle: 'Handiers — Designing Trust in the American Service Economy',

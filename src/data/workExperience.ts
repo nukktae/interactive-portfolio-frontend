@@ -26,7 +26,7 @@ export const workExperience: WorkExperienceProject[] = [
     description: "CRM tech for real estate agents that saves 2.5-4 hours per day and enables handling 2-3× more leads",
     descriptionKo: "부동산 중개사를 위한 CRM 기술로 하루 2.5-4시간을 절약하고 2-3배 더 많은 리드를 처리할 수 있게 합니다",
     tags: ["React", "Next.js", "Figma", "CRM", "UI/UX", "Postman", "HTML", "LLM Model", "Twilio"],
-    image: "/assets/images/projects/Bestia/bestia1.png",
+    image: "",
     githubUrl: "",
     address: "Manhattan Beach, California",
     featured: true

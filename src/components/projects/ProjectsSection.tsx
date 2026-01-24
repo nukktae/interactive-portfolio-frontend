@@ -22,16 +22,20 @@ export default function ProjectsSection() {
   }, []);
 
   // Helper component to render project cards
-  const renderProjectCard = (project: WorkExperienceProject | CompetitionProject, index: number) => (
+  const renderProjectCard = (project: WorkExperienceProject | CompetitionProject, index: number) => {
+    const isBestia = project.title.toLowerCase() === 'bestia';
+    return (
     <motion.div
       key={project.id}
-      className={`grid grid-cols-1 ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-3 sm:gap-4 md:gap-6 lg:gap-16 items-center group cursor-pointer`}
+      className={`grid grid-cols-1 ${project.featured ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-3 sm:gap-4 md:gap-6 lg:gap-16 items-center group ${isBestia ? 'cursor-default' : 'cursor-pointer'}`}
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
       onClick={() => {
-        const slug = project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-        window.location.href = `/projects/${slug}`;
+        if (!isBestia) {
+          const slug = project.title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+          window.location.href = `/projects/${slug}`;
+        }
       }}
     >
       {/* Project Image/Video */}
@@ -65,15 +69,27 @@ export default function ProjectsSection() {
                 fill
               />
             </>
+          ) : project.image ? (
+            <>
+              <ImageWithFallback
+                src={project.image}
+                alt={`${project.title} - ${project.role}`}
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                fill
+              />
+              <div className="absolute inset-0 bg-white/20 dark:bg-black/20 group-hover:bg-transparent transition-all duration-700" />
+            </>
           ) : (
-            <ImageWithFallback
-              src={project.image}
-              alt={`${project.title} - ${project.role}`}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              fill
-            />
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+              <div className="text-center space-y-2">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-lg bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           )}
-          <div className="absolute inset-0 bg-white/20 dark:bg-black/20 group-hover:bg-transparent transition-all duration-700" />
           
           {/* Action Buttons Container */}
           <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex gap-1 sm:gap-2 z-20">
@@ -149,7 +165,8 @@ export default function ProjectsSection() {
         </div>
       </div>
     </motion.div>
-  );
+    );
+  };
 
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-24 lg:py-32 relative z-10" ref={ref}>
