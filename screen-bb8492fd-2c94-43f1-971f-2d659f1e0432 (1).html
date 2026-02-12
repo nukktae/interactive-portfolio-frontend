@@ -1,0 +1,250 @@
+<html>
+        <head>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4" crossorigin="anonymous"></script>
+            <style> * { font-family: 'Pretendard', sans-serif; } </style>
+        </head>
+
+        
+<div class="ui-screen">
+    <div id="app" class="relative w-[1440px] min-h-[1024px] bg-white text-[#111111]">
+    <!-- Navigation -->
+    <nav id="header" class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 px-20 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#6C6FF2] rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold">V</span>
+            </div>
+            <span class="font-bold text-xl tracking-tight">Vinsign.</span>
+        </div>
+        <div class="flex items-center gap-12 text-sm font-medium">
+            <a href="#" class="hover:text-[#6C6FF2] transition-colors">Work</a>
+            <a href="#" class="hover:text-[#6C6FF2] transition-colors">Experience</a>
+            <a href="#" class="hover:text-[#6C6FF2] transition-colors">About</a>
+            <a href="#" class="bg-[#111111] text-white px-6 py-2.5 rounded-full hover:bg-[#6C6FF2] transition-all">Get in touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="px-20 pt-24 pb-16">
+        <div class="max-w-4xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6C6FF2]/10 text-[#6C6FF2] text-xs font-bold uppercase tracking-wider mb-6">
+                <i class="fa-solid fa-bolt-lightning"></i>
+                Full Stack & Product Management
+            </div>
+            <h1 class="text-7xl font-bold leading-[1.1] mb-8">
+                Nexus: AI-Driven <br/>Supply Chain Orchestrator
+            </h1>
+            <p class="text-xl text-gray-500 leading-relaxed max-w-2xl mb-12">
+                A comprehensive enterprise platform designed to automate logistics workflows, integrating real-time IoT data with predictive analytics to optimize global distribution.
+            </h1p>
+        </div>
+
+        <div class="grid grid-cols-4 gap-8 py-10 border-t border-gray-100">
+            <div id="meta-role">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">My Role</p>
+                <p class="text-lg font-medium">Lead Product Engineer</p>
+            </div>
+            <div id="meta-stack">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Core Stack</p>
+                <p class="text-lg font-medium">Next.js, Go, PostgreSQL</p>
+            </div>
+            <div id="meta-timeline">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Timeline</p>
+                <p class="text-lg font-medium">2025.01 — 2025.04</p>
+            </div>
+            <div id="meta-link">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Live Project</p>
+                <a href="#" class="text-lg font-medium flex items-center gap-2 hover:text-[#6C6FF2] transition-colors">
+                    nexus-supply.io <i class="fa-solid fa-arrow-up-right-from-square text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cover Image -->
+    <section id="project-cover" class="px-20 pb-24">
+        <div class="w-full h-[720px] rounded-3xl overflow-hidden bg-gray-50">
+            <div class="relative w-full h-full">  <img class="w-full h-full object-cover" src="https://gmcnqdpighpxhzpesqwf.supabase.co/storage/v1/object/public/generated-images/image-4a3a4925-34c9-4b0f-a222-73b85c8f917c.jpg" alt="Sleek enterprise dashboard showing supply chain analytics with dark mode UI elements and vibrant data visualizations" /></div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="overview" class="px-20 py-24 grid grid-cols-12 gap-12 border-t border-gray-50">
+        <div class="col-span-4">
+            <h2 class="text-3xl font-bold">The Challenge</h2>
+        </div>
+        <div class="col-span-8">
+            <p class="text-xl text-gray-600 leading-relaxed">
+                Modern logistics suffer from fragmented data silos. As the lead engineer and product manager, I was tasked with building a unified system that could ingest millions of events from GPS trackers, warehouse sensors, and ERP systems to provide a "Single Source of Truth" for global operations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section id="architecture" class="px-20 py-24 bg-[#fafafa]">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">System Architecture</h2>
+                <p class="text-gray-500 max-w-md">Bridging the gap between high-performance backend systems and intuitive user interfaces.</p>
+            </div>
+            <div class="flex gap-4">
+                <div class="px-6 py-3 bg-white border border-gray-200 rounded-xl flex items-center gap-3 shadow-sm">
+                    <i class="fa-solid fa-code text-[#6C6FF2]"></i>
+                    <span class="font-medium">Frontend</span>
+                </div>
+                <div class="px-6 py-3 bg-white border border-gray-200 rounded-xl flex items-center gap-3 shadow-sm">
+                    <i class="fa-solid fa-server text-[#6C6FF2]"></i>
+                    <span class="font-medium">Backend</span>
+                </div>
+                <div class="px-6 py-3 bg-white border border-gray-200 rounded-xl flex items-center gap-3 shadow-sm">
+                    <i class="fa-solid fa-cloud text-[#6C6FF2]"></i>
+                    <span class="font-medium">DevOps</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-8">
+            <div id="fe-card" class="p-10 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Frontend Engineering</h3>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>React with Server Components for 40% faster initial load times.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Custom WebGL-based map visualization for 10k+ concurrent assets.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>State management using TanStack Query for real-time synchronization.</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="be-card" class="p-10 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Backend Infrastructure</h3>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Go microservices handling 50k requests/sec with sub-50ms latency.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Redis-based message broker for real-time IoT event processing.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>PostgreSQL with TimescaleDB extension for time-series data.</span>
+                    </li>
+                </ul>
+            </div>
+            <div id="pm-card" class="p-10 bg-white rounded-3xl border border-gray-100 shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Product Strategy</h3>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Defined MVP scope through 20+ stakeholder interviews.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Designed data-driven roadmap based on supply chain bottlenecks.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-[#6C6FF2] mt-1"></i>
+                        <span>Iterative UX testing to reduce warehouse operator task time by 30%.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Mockups -->
+    <section id="features" class="px-20 py-32">
+        <div class="grid grid-cols-2 gap-24 items-center mb-32">
+            <div id="feature-1-img" class="rounded-3xl overflow-hidden bg-gray-100 aspect-square">
+                <div class="relative w-full h-full">  <img class="w-full h-full object-cover" src="https://gmcnqdpighpxhzpesqwf.supabase.co/storage/v1/object/public/generated-images/image-81266bb5-b269-4085-b1aa-5435db51fa75.jpg" alt="Detailed view of a logistics tracking dashboard with interactive charts and status indicators" /></div>
+            </div>
+            <div id="feature-1-text">
+                <span class="text-[#6C6FF2] font-bold text-sm tracking-widest uppercase mb-4 block">Feature 01</span>
+                <h2 class="text-4xl font-bold mb-6">Real-time Asset Monitoring</h2>
+                <p class="text-lg text-gray-500 leading-relaxed mb-8">
+                    Implemented a live-tracking system using WebSockets and GeoJSON, allowing logistics managers to see exact fleet locations and environmental conditions (temperature, humidity) in real-time.
+                </p>
+                <div class="flex gap-4">
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium">WebSockets</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium">Mapbox GL</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-24 items-center">
+            <div id="feature-2-text" class="order-1">
+                <span class="text-[#6C6FF2] font-bold text-sm tracking-widest uppercase mb-4 block">Feature 02</span>
+                <h2 class="text-4xl font-bold mb-6">Predictive Delays Engine</h2>
+                <p class="text-lg text-gray-500 leading-relaxed mb-8">
+                    Developed a machine learning pipeline that analyzes historical traffic, weather patterns, and port congestion to predict delivery delays before they happen, suggesting alternative routes automatically.
+                </p>
+                <div class="flex gap-4">
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium">Python</span>
+                    <span class="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium">TensorFlow</span>
+                </div>
+            </div>
+            <div id="feature-2-img" class="order-2 rounded-3xl overflow-hidden bg-gray-100 aspect-square">
+                <div class="relative w-full h-full">  <img class="w-full h-full object-cover" src="https://gmcnqdpighpxhzpesqwf.supabase.co/storage/v1/object/public/generated-images/image-ca4ed12a-3e11-451f-85ba-8c7011733f9a.jpg" alt="Predictive analytics interface showing route optimization and delivery probability heatmaps" /></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact & Results -->
+    <section id="impact" class="px-20 py-24 bg-[#111111] text-white rounded-[48px] mx-10 mb-24">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold mb-4">Project Impact</h2>
+            <p class="text-gray-400">Measurable results delivered through engineering excellence.</p>
+        </div>
+        <div class="grid grid-cols-3 gap-12 text-center">
+            <div id="stat-1">
+                <p class="text-6xl font-bold text-[#6C6FF2] mb-4">24%</p>
+                <p class="text-gray-400 uppercase tracking-widest text-sm">Reduction in fuel costs</p>
+            </div>
+            <div id="stat-2">
+                <p class="text-6xl font-bold text-[#6C6FF2] mb-4">15k+</p>
+                <p class="text-gray-400 uppercase tracking-widest text-sm">Active daily shipments</p>
+            </div>
+            <div id="stat-3">
+                <p class="text-6xl font-bold text-[#6C6FF2] mb-4">99.9%</p>
+                <p class="text-gray-400 uppercase tracking-widest text-sm">System Uptime (SLA)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Project / Footer -->
+    <footer id="footer" class="px-20 py-24 border-t border-gray-100">
+        <div class="flex justify-between items-center">
+            <div>
+                <p class="text-gray-400 mb-2">Next Project</p>
+                <h3 class="text-4xl font-bold hover:text-[#6C6FF2] transition-colors cursor-pointer">
+                    FinFlow: DeFi Dashboard <i class="fa-solid fa-arrow-right ml-4"></i>
+                </h3>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white transition-all">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white transition-all">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white transition-all">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="mt-24 pt-8 border-t border-gray-100 flex justify-between text-gray-400 text-sm">
+            <p>© 2025 Vinsign. Built with precision.</p>
+            <p>Designed for Excellence</p>
+        </div>
+    </footer>
+</div>
+</div>
+
+</html>

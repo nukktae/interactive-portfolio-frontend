@@ -2027,6 +2027,110 @@ export const projectSummaries: Project[] = [
         description: "Collaborated across frontend and backend teams to deploy and iterate PWA with dual interfaces"
       }
     ]
+  },
+  {
+    title: "SolStudy",
+    description: "Full-stack mentoring and study platform with role-based student/mentor flows, task management, AI-powered goals and study plans, calendar, chat, and JWT-based auth with RS256.",
+    detailedDescription: "SolStudy is a full-stack mentoring and study platform that connects students with mentors through structured tasks, submissions, and feedback. The system implements role-based access with JWT (RS256), dual interfaces for students (planner, calendar, task detail with study timer and photo verification) and mentors (dashboard, task creation, student detail with submission review and feedback). Features include Supabase Storage for attachments, AI dashboard with subject-wise analytics, goal recommendation, study plans, and test question suggestions. Built with FastAPI backend and Next.js frontend, with middleware-based role routing and multipart file uploads for tasks and submissions.",
+    image: "/assets/images/solstudy.png",
+    images: [],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "Supabase Storage",
+      "JWT (RS256)",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Multipart File Upload",
+      "Role-Based Access Control",
+      "PWA-ready"
+    ],
+    tools: [
+      "Next.js",
+      "FastAPI",
+      "Supabase",
+      "VS Code",
+      "Git & GitHub",
+      "Postman",
+      "jose (JWT)"
+    ],
+    hardSkills: [
+      "Full-Stack Development",
+      "Role-Based Authentication",
+      "JWT RS256 Implementation",
+      "RESTful API Design",
+      "File Upload & Storage",
+      "Middleware & Routing",
+      "State Management",
+      "Responsive UI"
+    ],
+    softSkills: [
+      "System Architecture Design",
+      "User Flow Design",
+      "Cross-Functional Coordination",
+      "Technical Documentation",
+      "Constraint-Aware Implementation"
+    ],
+    features: [
+      "Dual role flows: student (planner, calendar, task submit) and mentor (dashboard, task creation, submission review)",
+      "JWT RS256 auth with public-key verification and role-based redirects",
+      "Task creation with subject, due date, attachments (Supabase Storage); one submission per task per student",
+      "Student planner with weekly view, subject icons, completion/feedback state, Zoom schedule, Pomodoro timer",
+      "Task detail: study timer, study time slider, learning verification photos (camera/gallery), multipart submit",
+      "Mentor submission list with filters, sort, search, pagination; student detail with SubmissionReview and FeedbackPanel",
+      "AI dashboard: 60-day subject-wise submission and study time aggregation, goal recommendation, study plan, test questions",
+      "Calendar (student: assignments per date; mentor: student/date view), chat list and thread UI, notifications",
+      "Profile and settings for student and mentor; CORS and health endpoint on backend"
+    ],
+    metrics: [
+      "Dual-interface app (student and mentor) with middleware-enforced role routing",
+      "Multipart uploads: mentor tasks (up to 5 files, 10MB), student submissions (up to 10 files, 10MB)",
+      "JWT 7-day expiry with cookie + localStorage sync for returning users",
+      "ASCII-only storage paths for Supabase to avoid filename issues",
+      "Comprehensive task and submission APIs with role-scoped access"
+    ],
+    highlights: [
+      "Designed and implemented full student/mentor lifecycle: signup, login, tasks, submissions, feedback",
+      "Built RS256 JWT auth with backend signing and frontend public-key verification",
+      "Integrated Supabase Storage for task attachments and submission files with size and count limits",
+      "Implemented role-based middleware routing (student vs mentor routes) and API guards",
+      "Delivered planner, calendar, AI dashboard, chat UI, and profile/settings in design system"
+    ],
+    challenges: [
+      "Validating JWT on frontend without Supabase Auth (solved with RS256 and public-key endpoint)",
+      "Supabase Storage rejecting non-ASCII filenames (solved with UUID-based paths)",
+      "Keeping task list in sync with backend while supporting offline/development (solved with store + fetch on login)",
+      "Mentor feedback persistence (structured for future backend feedback API)"
+    ],
+    solutions: [
+      "Used jose for RS256 signing/verification and GET /api/auth/public-key for frontend verification",
+      "Standardized storage keys as attachments/{uuid}.{ext} and submissions/{task_id}/{uuid}.{ext}",
+      "Centralized useMentorTasksStore with GET /api/tasks on login and POST response merge",
+      "Designed feedback UI and local save hooks ready for feedback_per_task and daily_summary API"
+    ],
+    github: "",
+    liveUrl: "",
+    address: "Seoul, South Korea",
+    roles: [
+      {
+        area: "Full-Stack Development",
+        percentage: 100,
+        description: "Implemented FastAPI backend and Next.js frontend with auth, tasks, submissions, and file storage"
+      },
+      {
+        area: "Authentication & Security",
+        percentage: 95,
+        description: "JWT RS256 auth, role-based middleware, and API guards for student/mentor separation"
+      },
+      {
+        area: "Product & UX",
+        percentage: 85,
+        description: "Student planner, mentor dashboard, calendar, AI dashboard, and profile/settings flows"
+      }
+    ]
   }
 ];
 

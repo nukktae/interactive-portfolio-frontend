@@ -1,19 +1,72 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { projectSummaries } from '@/data/projectSummaries';
 import ProjectExpandedView from './ProjectExpandedView';
 import { Project } from '@/types/project';
+
+function TiltCard({
+  children,
+  isInteractive,
+  className,
+}: {
+  children: React.ReactNode;
+  isInteractive: boolean;
+  className: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const springConfig = { damping: 25, stiffness: 300 };
+  const rotateXSource = useMotionValue(0);
+  const rotateYSource = useMotionValue(0);
+  const rotateX = useSpring(rotateXSource, springConfig);
+  const rotateY = useSpring(rotateYSource, springConfig);
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current || !isInteractive) return;
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const relX = (e.clientX - centerX) / (rect.width / 2);
+    const relY = (e.clientY - centerY) / (rect.height / 2);
+    const tiltMax = 8;
+    rotateXSource.set(-relY * tiltMax);
+    rotateYSource.set(relX * tiltMax);
+  };
+
+  const handleLeave = () => {
+    rotateXSource.set(0);
+    rotateYSource.set(0);
+  };
+
+  const transform = useMotionTemplate`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+  return (
+    <motion.div
+      ref={ref}
+      className={className}
+      style={{
+        transform,
+        transformStyle: 'preserve-3d',
+      }}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function ProjectCards() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projectSummaries.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [perspective:1000px]">
+        {projectSummaries.map((project, index) => {
+          const isClickable = project.title.toLowerCase() !== 'bestia';
+          return (
           <motion.div
             key={project.title}
             initial={{ opacity: 0, y: 30 }}
@@ -21,16 +74,18 @@ export default function ProjectCards() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             onClick={() => {
-              if (project.title.toLowerCase() !== 'bestia') {
+              if (isClickable) {
                 setSelectedProject(project);
               }
             }}
+            className="[perspective:1000px]"
           >
-            <motion.div
+            <TiltCard
+              isInteractive={isClickable}
               className={`group relative bg-white rounded-2xl overflow-hidden 
-                       shadow-lg hover:shadow-2xl transition-all duration-500
-                       border border-[#DDCCD0]/20 hover:border-[#498FD8]/30 ${project.title.toLowerCase() !== 'bestia' ? 'cursor-pointer' : 'cursor-default'}`}
-              whileHover={project.title.toLowerCase() !== 'bestia' ? { y: -5, scale: 1.02 } : {}}
+                       shadow-lg hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] transition-shadow duration-500
+                       border border-[#DDCCD0]/20 hover:border-[#498FD8]/30 ${isClickable ? 'cursor-pointer' : 'cursor-default'}
+                       ${isClickable ? 'hover:-translate-y-1 hover:scale-[1.02]' : ''}`}
             >
               <div className="relative h-56 overflow-hidden">
                 {project.image ? (
@@ -91,9 +146,10 @@ export default function ProjectCards() {
                   )}
                 </div>
               </motion.div>
-            </motion.div>
+            </TiltCard>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {selectedProject && (

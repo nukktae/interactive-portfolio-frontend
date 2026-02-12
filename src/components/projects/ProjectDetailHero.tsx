@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Project } from '@/types/project';
 import { ProjectDetailContent } from '@/types/projectDetail';
 import { ExternalLink, Award, Calendar, Code2, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { competitionsProjects } from '@/data/competitionsProjects';
+import styles from '@/styles/floating.module.css';
 
 interface ProjectDetailHeroProps {
   project: Project;
@@ -14,8 +16,7 @@ interface ProjectDetailHeroProps {
 
 export default function ProjectDetailHero({ project, content }: ProjectDetailHeroProps) {
   const { t, language } = useLanguage();
-  
-  // Extract role summary from content or project
+
   const getRoleSummary = (): string => {
     if (content) {
       const roleSection = content.sections.find(s => s.id === 'my-role' && s.type === 'role');
@@ -30,7 +31,6 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
     return 'Full-stack Engineering + UI/UX Design';
   };
 
-  // Extract key impact metrics (top 3 strongest)
   const getKeyMetrics = (): string[] => {
     if (content) {
       const resultsSection = content.sections.find(s => s.id === 'results' && s.type === 'results');
@@ -44,7 +44,6 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
     return [];
   };
 
-  // Get 1-line value statement (prefer description, fallback to first sentence of detailedDescription)
   const getValueStatement = (): string => {
     if (language === 'ko') {
       if (project.descriptionKo && project.descriptionKo.length < 200) {
@@ -66,28 +65,24 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
   };
   const valueStatement = getValueStatement();
 
-  // Get timeline from competitionsProjects by matching title
   const getTimeline = (): string => {
     const competitionProject = competitionsProjects.find(cp => cp.title === project.title || cp.titleKo === project.titleKo);
     if (competitionProject && competitionProject.period) {
       return language === 'ko' ? competitionProject.period.replace(/Present/g, '현재') : competitionProject.period;
     }
-    return language === 'ko' ? "2025.08 – 2025.12" : "2025.08 – 2025.12"; // Fallback
+    return language === 'ko' ? "2025.08 – 2025.12" : "2025.08 – 2025.12";
   };
   const timeline = getTimeline();
 
   const roleSummary = getRoleSummary();
   const keyMetrics = getKeyMetrics();
 
-  return (
-    <section className="relative z-10 pt-32 pb-24 px-6 md:px-12 lg:px-20 xl:px-32 overflow-hidden">
-      {/* Subtle radial focal glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-16 h-96 w-96 -translate-x-1/2 rounded-full bg-gradient-to-br from-primary/20 via-foreground/10 to-transparent blur-3xl opacity-70" />
-      </div>
+  const previewImage = project.image || (project.images && project.images[0]) || '';
 
-      <div className="max-w-5xl mx-auto relative space-y-12">
-        {/* Statement area */}
+  return (
+    <section className="relative z-10 pt-28 pb-20 px-6 md:px-12 lg:px-20 xl:px-32 overflow-hidden">
+      <div className="max-w-6xl mx-auto relative space-y-16">
+        {/* Statement + meta block */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -96,9 +91,9 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
         >
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="space-y-3">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-tight">
-              {language === 'ko' && project.titleKo ? project.titleKo : project.title}
-            </h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight">
+                {language === 'ko' && project.titleKo ? project.titleKo : project.title}
+              </h1>
             </div>
             {(project.liveUrl || project.github) && (
               <a
@@ -114,12 +109,11 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
           </div>
 
           {valueStatement && (
-            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed max-w-3xl">
+            <p className="text-lg md:text-xl text-foreground/90 leading-relaxed max-w-3xl">
               {valueStatement}
             </p>
           )}
 
-          {/* Role + Timeline + Address row */}
           <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-foreground/80">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/80 bg-transparent backdrop-blur-sm">
               <Code2 className="w-4 h-4" />
@@ -138,7 +132,7 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
           </div>
         </motion.div>
 
-        {/* Key Impact - text only, bigger and airy */}
+        {/* Key Impact */}
         {keyMetrics.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,19 +144,39 @@ export default function ProjectDetailHero({ project, content }: ProjectDetailHer
               <Award className="w-4 h-4" />
               {t('project.keyImpact')}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {keyMetrics.map((metric, index) => (
-                <p
-                key={index}
-                  className="text-2xl md:text-3xl font-extrabold text-foreground leading-tight"
-              >
+                <p key={index} className="text-xl md:text-2xl font-extrabold text-foreground leading-tight">
                   {metric}
                 </p>
-            ))}
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Floating display: 3D card with project preview */}
+        {previewImage && (
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className={styles.scene}
+          >
+            <div className={styles.card} style={{ width: 'min(900px, 100%)', aspectRatio: '16/10', margin: '0 auto' }}>
+              <div className={styles.cardInner} style={{ width: '100%', height: '100%' }}>
+                <Image
+                  src={previewImage}
+                  alt={language === 'ko' && project.titleKo ? project.titleKo : project.title}
+                  fill
+                  className={styles.image}
+                  sizes="(max-width: 1024px) 100vw, 900px"
+                  priority
+                />
+              </div>
             </div>
           </motion.div>
         )}
       </div>
     </section>
   );
-} 
+}

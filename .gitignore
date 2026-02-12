@@ -44,3 +44,7 @@ next-env.d.ts
 # analytics data
 /data
 chat-logs.json
+
+# nested git repos (avoid embedded-repo warnings)
+solstudy-new/solstudy-back
+solstudy-new/solstudy-front

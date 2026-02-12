@@ -34,6 +34,21 @@ export const competitionsProjects: CompetitionProject[] = [
     featured: true
   },
   {
+    id: 17,
+    title: "SolStudy",
+    titleKo: "솔스터디",
+    role: "Full-Stack Developer & Product Engineer",
+    roleKo: "풀스택 개발자 & 프로덕트 엔지니어",
+    period: "2025",
+    description: "Full-stack mentoring and study platform with role-based student/mentor flows, task management, AI-powered goals and study plans, calendar, and JWT RS256 auth",
+    descriptionKo: "역할 기반 학생/멘토 플로우, 과제 관리, AI 기반 목표 및 학습 계획, 캘린더, JWT RS256 인증을 갖춘 풀스택 멘토링·학습 플랫폼",
+    tags: ["Next.js", "FastAPI", "Supabase", "JWT RS256", "TypeScript", "Role-Based Access", "AI Dashboard"],
+    image: "/assets/images/solstudy.png",
+    githubUrl: "",
+    address: "Seoul, South Korea",
+    featured: true
+  },
+  {
     id: 7,
     title: "Friendly",
     role: "Product Engineer & Full Stack Developer",
