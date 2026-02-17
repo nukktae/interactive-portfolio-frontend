@@ -7,16 +7,19 @@ export function Hero() {
       <div className="inline-block px-4 py-1 border border-black rounded-full text-xs font-bold mb-6 md:mb-8">
         SOFTWARE ENGINEERING & MARKETING DOUBLE MAJOR
       </div>
-      <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[120px] font-black leading-[0.9] tracking-tighter mb-8 md:mb-12">
+      <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[120px] font-black leading-[0.9] tracking-tighter mb-4 md:mb-6">
         ARCHITECTING
         <br />
         <span className="text-[#6C6FF2]">DIGITAL</span> LOGIC.
       </h1>
+      <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 md:mb-12">
+        From Idea to Live Product in Hours.
+      </p>
       <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-end gap-8">
         <p className="max-w-xl text-lg md:text-xl text-gray-500 leading-relaxed">
-          A multi-disciplinary creator blending the precision of software
-          engineering with the strategic psychology of marketing. Lived in 4
-          countries, building global solutions.
+          Product-driven Software Engineer blending AI, UI/UX, and Full-Stack
+          development to turn ideas into shipped experiences—delivering
+          production-ready products in hours, not weeks.
         </p>
         <div className="flex gap-4">
           <a

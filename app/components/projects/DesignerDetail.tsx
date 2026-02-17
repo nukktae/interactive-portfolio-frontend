@@ -89,7 +89,6 @@ export function DesignerDetail({ project }: DesignerDetailProps) {
         tag={c.tag ?? project.category}
         title={project.title}
         subtitle={c.subtitle ?? ""}
-        audience={c.audience}
       />
 
       <div className="px-6 md:px-12 lg:px-20">

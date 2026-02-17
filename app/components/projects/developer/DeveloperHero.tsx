@@ -2,11 +2,9 @@ interface DeveloperHeroProps {
   tag: string;
   title: string;
   subtitle: string;
-  /** Who it's for (Overview) — optional */
-  audience?: string;
 }
 
-export function DeveloperHero({ tag, title, subtitle, audience }: DeveloperHeroProps) {
+export function DeveloperHero({ tag, title, subtitle }: DeveloperHeroProps) {
   return (
     <section className="px-6 md:px-12 lg:px-20 pt-12 md:pt-24 pb-10 md:pb-16">
       <div className="max-w-4xl">
@@ -17,15 +15,9 @@ export function DeveloperHero({ tag, title, subtitle, audience }: DeveloperHeroP
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 md:mb-8 text-[#111111]">
           {title}
         </h1>
-        <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mb-4 md:mb-6">
+        <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mb-8 md:mb-12">
           {subtitle}
         </p>
-        {audience && (
-          <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-2xl mb-8 md:mb-12">
-            <span className="font-medium text-gray-600">Who it's for:</span> {audience}
-          </p>
-        )}
-        {!audience && <div className="mb-8 md:mb-12" />}
       </div>
     </section>
   );

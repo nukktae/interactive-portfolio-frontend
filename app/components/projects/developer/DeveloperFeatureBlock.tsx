@@ -57,7 +57,7 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
   const imageContent =
     multiImages && feature.images ? (
       <div className="relative w-full rounded-3xl overflow-hidden bg-gray-100">
-        <div className={`grid gap-2 md:gap-4 p-2 md:p-4 aspect-16/10 min-h-[200px] ${feature.images.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
+        <div className={`grid gap-2 md:gap-4 p-2 md:p-4 min-h-[200px] ${feature.images.length === 4 ? "grid-cols-2 aspect-4/3" : feature.images.length === 2 ? "grid-cols-2 aspect-16/10" : "grid-cols-3 aspect-16/10"}`}>
           {feature.images.map((src, i) => (
             <button
               key={i}

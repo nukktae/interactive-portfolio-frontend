@@ -15,7 +15,7 @@ export const CASE_STUDIES: CaseStudyCard[] = [
     id: "shinhan",
     slug: "shinhan",
     title: "Shinhan Scholarship Foundation",
-    subtitle: "Fullstack • PWA • 2025.02",
+    subtitle: "Fullstack • PWA • 2026.01 — 2026.02",
     image: "https://placehold.co/1200x800/6C6FF2/f8f8ff?text=Shinhan+PWA",
     imageAlt:
       "Shinhan Scholarship Foundation PWA — student reporting, community, admin CRM",

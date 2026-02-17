@@ -450,7 +450,7 @@ const FULLSTACK_CONTENT: Record<string, FullstackCaseStudyContent> = {
     meta: {
       role: "UI/UX, Frontend (all 5 roles), OB · Mentor · Admin backend",
       stack: "Next.js, React, PWA (hyphens-shinhan), FastAPI (plimate-server), Supabase",
-      timeline: "2025.02",
+      timeline: "2026.01 — 2026.02",
     },
     audience: "Shinhan Scholarship Foundation staff (admin, processing) and scholarship participants: YB (장학생), mentors, and OB (동문)—each with role-specific PWA and admin needs.",
     challengeSections: [
@@ -521,58 +521,45 @@ const FULLSTACK_CONTENT: Record<string, FullstackCaseStudyContent> = {
     features: [
       {
         id: "1",
-        label: "Role 01 — YB (장학생)",
-        title: "Scholar experience: maintenance, community, mentoring",
+        label: "YB (장학생)",
+        title: "Scholar experience",
         description:
-          "YB users get home (gradient, shortcuts), scholarship (mandatory goals, maintenance review, reports), community (feed, notices, events, groups), network (mentors, map), mentor matching (survey, recommendations, apply), and mypage (profile, settings). Maintenance replaces manual monthly reports with structured submissions and review flow.",
+          "Home with gradient and shortcuts, scholarship maintenance and reports, community feed and notices, and mentor matching. Structured submissions replace manual monthly reporting.",
         tags: ["PWA", "Maintenance", "Community", "Mentor matching"],
-        image: "https://placehold.co/800x600/0046FF/f0f4ff?text=YB+Scholar",
-        imageAlt: "YB scholar — maintenance, community, mentor matching",
+        image: "/assets/images/projects/shinhan/ybhome.png",
+        imageAlt: "YB scholar — home, activity, community, mentor match",
         imageRight: false,
+        images: [
+          "/assets/images/projects/shinhan/ybhome.png",
+          "/assets/images/projects/shinhan/activity.png",
+          "/assets/images/projects/shinhan/community.png",
+          "/assets/images/projects/shinhan/mentormatch.png",
+        ],
+        imageAlts: [
+          "YB home",
+          "YB activity",
+          "YB community",
+          "YB mentor match",
+        ],
       },
       {
         id: "2",
-        label: "Role 02 — Mentor",
-        title: "Mentor dashboard: calendar, mentees, applications",
+        label: "Admin",
+        title: "Admin CRM",
         description:
-          "Mentors land on a dedicated dashboard (mentor home, calendar, mentees, applications). Request management (pending/accepted), scheduling, and mentee list with profile links. Role-based redirect from main app so mentors skip YB tabs and go straight to mentor flows.",
-        tags: ["PWA", "Mentor dashboard", "Calendar", "Requests"],
-        image: "https://placehold.co/800x600/2E67FF/f0f4ff?text=Mentor+Dashboard",
-        imageAlt: "Mentor dashboard — calendar and mentees",
-        imageRight: true,
-      },
-      {
-        id: "3",
-        label: "Role 03 — OB (동문)",
-        title: "Alumni experience with scoped visibility",
-        description:
-          "OB members use the same PWA with scholarship (장학) tab hidden and redirect from scholarship routes to home. Enables alumni to stay connected (community, network) without access to active scholar reporting flows.",
-        tags: ["PWA", "OB", "Role-based visibility"],
-        image: "https://placehold.co/800x600/6AA3FF/f0f4ff?text=OB+Alumni",
-        imageAlt: "OB alumni — scoped PWA experience",
-        imageRight: false,
-      },
-      {
-        id: "4",
-        label: "Role 04 — Admin",
-        title: "Admin CRM: scholars, scholarships, content, reports",
-        description:
-          "Full admin (hyphens-frontend): scholars (list, detail, profile edit, community boards, PC applications), scholarships (grants, tuition), enrollment (leave/return), programs, content (notices, resources, gallery, press, foundation), system (admins, settings, codes, schools), communication (SMS), reports and statistics. Command palette for quick navigation; task center for pending actions.",
+          "Dashboard, student management, and messaging. Scholars, scholarships, content, and system settings in one place with command palette and task center.",
         tags: ["Next.js", "Admin", "Supabase", "74+ pages"],
-        image: "https://placehold.co/800x600/1e3a5f/f0f4ff?text=Admin+CRM",
-        imageAlt: "Admin CRM — scholars, scholarships, content",
+        image: "/assets/images/projects/shinhan/admindashboard.png",
+        imageAlt: "Admin dashboard and student management",
         imageRight: true,
-      },
-      {
-        id: "5",
-        label: "Role 05 — Backend & design system",
-        title: "Backend APIs and token-based design system",
-        description:
-          "FastAPI (plimate-server) serves all roles: users/me, mentoring, activities, reports, mandatory, chats, notifications, etc. Design system: tokens.json → variables.css, One Shinhan font, shared components (Button, Tab, StatusTag, InfoTag, BottomNav). Clean separation of PWA vs admin with shared design language.",
-        tags: ["FastAPI", "Supabase", "Design tokens", "Components"],
-        image: "https://placehold.co/800x600/64748b/f8f8f8?text=Backend+%26+DS",
-        imageAlt: "Backend and design system",
-        imageRight: false,
+        images: [
+          "/assets/images/projects/shinhan/admindashboard.png",
+          "/assets/images/projects/shinhan/admin-messege-studentmanagement.png",
+        ],
+        imageAlts: [
+          "Admin dashboard",
+          "Admin message and student management",
+        ],
       },
     ],
     impactTitle: "Project impact",

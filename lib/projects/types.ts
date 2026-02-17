@@ -32,6 +32,8 @@ export interface Project {
   filter: ProjectFilterId | ProjectFilterId[];
   /** Optional badge label (e.g. "Work experience") shown on the project card */
   badge?: string;
+  /** Optional short list of core stacks (3–4) for card preview */
+  stackPreview?: string[];
 }
 
 export type ProjectFilterId = "ui" | "backend" | "hardware" | "fullstack" | "other";

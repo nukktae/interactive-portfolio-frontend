@@ -98,13 +98,25 @@ export function SelectedWorks() {
               />
             </div>
             <div className="flex justify-between items-start gap-4">
-              <div>
+              <div className="min-w-0">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#6C6FF2] mb-2 block">
                   {project.category} • {project.date}
                 </span>
                 <h3 className="text-xl md:text-2xl font-bold group-hover:underline decoration-2 underline-offset-4">
                   {project.title}
                 </h3>
+                {project.stackPreview && project.stackPreview.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {project.stackPreview.map((stack) => (
+                      <span
+                        key={stack}
+                        className="text-[11px] font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded"
+                      >
+                        {stack}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
               <i
                 className="fa-solid fa-arrow-up-right-from-square text-xl shrink-0 mt-1"

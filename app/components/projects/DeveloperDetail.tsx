@@ -27,7 +27,6 @@ export function DeveloperDetail({ project }: DeveloperDetailProps) {
         tag={c.tag ?? project.category}
         title={project.title}
         subtitle={c.subtitle ?? ""}
-        audience={c.audience}
       />
 
       {c.meta && (

@@ -36,6 +36,7 @@ export const PROJECTS: Project[] = [
     detailType: "designer",
     filter: "ui",
     badge: "Work experience",
+    stackPreview: ["Figma", "React", "Firebase"],
   },
   {
     id: "handiers",
@@ -49,6 +50,21 @@ export const PROJECTS: Project[] = [
     detailType: "designer",
     filter: "ui",
     badge: "Work experience",
+    stackPreview: ["Flutter", "Kotlin", "Vertex AI", "Stripe"],
+  },
+  {
+    id: "shinhan",
+    slug: "shinhan-scholarship-foundation",
+    title: "Shinhan Scholarship Foundation",
+    category: "Fullstack",
+    date: "2026.01 — 2026.02",
+    image: "/assets/images/projects/shinhan/shinhan.png",
+    imageAlt:
+      "Shinhan Scholarship Foundation: multi-role PWA (YB, Mentor, OB), admin CRM, and backend—student reporting, community, mentoring, 74+ admin pages",
+    detailType: "fullstack",
+    filter: "fullstack",
+    badge: "Featured",
+    stackPreview: ["Next.js", "React", "FastAPI", "Supabase"],
   },
   {
     id: "friendly",
@@ -61,6 +77,7 @@ export const PROJECTS: Project[] = [
       "Friendly — AI-powered student productivity app: lecture transcription, schedule management, PDF analysis, GPA tracking",
     detailType: "fullstack",
     filter: "fullstack",
+    stackPreview: ["React Native", "Node.js", "Firebase", "OpenAI"],
   },
   {
     id: "rivalq",
@@ -73,6 +90,7 @@ export const PROJECTS: Project[] = [
       "RivalQ — AI-powered competitive intelligence platform with n8n workflows and 5 specialized agents",
     detailType: "fullstack",
     filter: "fullstack",
+    stackPreview: ["Next.js", "n8n", "OpenRouter", "Firecrawl"],
   },
   {
     id: "jobja",
@@ -85,6 +103,7 @@ export const PROJECTS: Project[] = [
       "Jobja (잡자) — career dashboard: job search, resume optimization, application tracking, and AI prepare tools",
     detailType: "fullstack",
     filter: "fullstack",
+    stackPreview: ["Next.js", "Supabase", "Radix UI", "Onewave"],
   },
   {
     id: "1",
@@ -97,18 +116,7 @@ export const PROJECTS: Project[] = [
       "AI-powered plant care companion app with IoT soil sensors and real-time monitoring",
     detailType: "designer",
     filter: "ui",
-  },
-  {
-    id: "shinhan",
-    slug: "shinhan-scholarship-foundation",
-    title: "Shinhan Scholarship Foundation",
-    category: "Fullstack",
-    date: "2025.02",
-    image: "/assets/images/projects/shinhan/shinhan.png",
-    imageAlt:
-      "Shinhan Scholarship Foundation: multi-role PWA (YB, Mentor, OB), admin CRM, and backend—student reporting, community, mentoring, 74+ admin pages",
-    detailType: "fullstack",
-    filter: "fullstack",
+    stackPreview: ["Flutter", "Firebase", "TensorFlow Lite"],
   },
   {
     id: "onward",
@@ -121,6 +129,7 @@ export const PROJECTS: Project[] = [
       "Onward — mentoring platform: AI 맞춤 학습, tasks, feedback, student & mentor roles, Next.js + FastAPI + Supabase",
     detailType: "fullstack",
     filter: "fullstack",
+    stackPreview: ["Next.js", "FastAPI", "Supabase", "Zustand"],
   },
   {
     id: "coco",
@@ -133,6 +142,7 @@ export const PROJECTS: Project[] = [
       "COCO — interactive AI companion robot with ESP32, voice, OLED expressions, and cloud AI",
     detailType: "developer",
     filter: "hardware",
+    stackPreview: ["ESP32", "Next.js", "OpenAI"],
   },
   {
     id: "aws-content-moderation",
@@ -145,6 +155,7 @@ export const PROJECTS: Project[] = [
       "Real-time video content moderation platform powered by AWS Rekognition with serverless architecture",
     detailType: "developer",
     filter: "backend",
+    stackPreview: ["AWS CDK", "Lambda", "Rekognition", "Flask"],
   },
 ];
 

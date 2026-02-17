@@ -484,7 +484,7 @@ const DESIGNER_CONTENT: Record<string, DesignerCaseStudyContent> = {
       "A client-facing product that transformed manual monthly student report submissions into an automated PWA with community features, student networking, and a lightweight admin CRM dashboard—achieving ~3 hours of backend processing time savings.",
     heroImage: "",
     role: "Product Engineer",
-    timeline: "Client project\n(2025)",
+    timeline: "Client project\n(2026.01 — 2026.02)",
     tools: "PWA, Web stack,\nUser research, SCAMPER",
     deliverables: "Student & Admin PWA,\nAutomated reporting, CRM dashboard",
     audience: "Shinhan Scholarship Foundation staff (admin, processing) and scholarship students (YB, mentors, alumni/OB) who need automated reporting, community, and a single place to manage activity.",
