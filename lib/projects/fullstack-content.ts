@@ -50,7 +50,7 @@ const FULLSTACK_CONTENT: Record<string, FullstackCaseStudyContent> = {
     meta: {
       role: "Backend & Frontend Developer",
       stack: "React Native, Expo, Node.js, Express, Firebase, OpenAI",
-      timeline: "2024 — 2025",
+      timeline: "2025.09 — 2025.12",
       liveUrl: "https://friendlykr.com",
       liveLabel: "friendlykr.com",
     },
@@ -299,7 +299,7 @@ const FULLSTACK_CONTENT: Record<string, FullstackCaseStudyContent> = {
     meta: {
       role: "UI/UX & Fullstack",
       stack: "Next.js 16, React 19, Supabase, Radix UI, Tailwind 4, Onewave API",
-      timeline: "2025 — 2026",
+      timeline: "2026.02",
     },
     audience: "Korean job seekers who want one place to search, save, track applications, and prepare (resume, cover letter, interview) with AI assistance.",
     challengeSections: [
@@ -591,7 +591,7 @@ const FULLSTACK_CONTENT: Record<string, FullstackCaseStudyContent> = {
     meta: {
       role: "UI/UX, Fullstack & AI",
       stack: "Next.js 16, React 19, FastAPI, Supabase, Zustand, Tailwind 4",
-      timeline: "2025",
+      timeline: "2026.02",
     },
     audience: "Students who want AI-guided recommendations, a clear plan and dashboard, and one place for tasks and feedback; mentors who need a dashboard, task creation, and daily feedback per student.",
     challengeSections: [

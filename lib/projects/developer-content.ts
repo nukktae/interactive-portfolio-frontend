@@ -78,7 +78,7 @@ const DEVELOPER_CONTENT: Record<string, DeveloperCaseStudyContent> = {
     meta: {
       role: "Embedded Systems, Backend & Frontend",
       stack: "ESP32, Arduino, Next.js, TypeScript, OpenAI",
-      timeline: "2024 — Present",
+      timeline: "2025.11 — Present",
     },
     audience: "Students and young users who want a warm, physical AI companion for learning, emotional regulation, and stress relief—not just a screen-based chatbot.",
     challengeSections: [
@@ -140,25 +140,36 @@ const DEVELOPER_CONTENT: Record<string, DeveloperCaseStudyContent> = {
     features: [
       {
         id: "1",
-        label: "Feature 01",
-        title: "Voice interaction & cloud intelligence",
+        label: "Screen 01",
+        title: "COCO Live",
         description:
-          "Real-time voice I/O via I2S mic and amplifier; OpenAI GPT for natural language and supportive, educational responses. Achieved under-2s latency from speech to AI output with conversation history and scalable multi-device support.",
-        tags: ["OpenAI", "Whisper", "Next.js", "I2S"],
-        image: "https://placehold.co/800x600/6366f1/faf5ff?text=Voice+%26+AI",
-        imageAlt: "Voice interaction and cloud AI pipeline",
+          "The real-time emotional interface where users talk to COCO and see its live state (listening, thinking, speaking). Makes the robot feel present, responsive, and alive through voice interaction and synced expressions.",
+        tags: ["Voice", "OLED expressions", "Real-time state"],
+        image: "/assets/images/projects/coco/robotspeaking.png",
+        imageAlt: "COCO Live — real-time emotional interface, listening, thinking, speaking",
         imageRight: false,
       },
       {
         id: "2",
-        label: "Feature 02",
-        title: "Emotional display & physical interaction",
+        label: "Screen 02",
+        title: "Insights & Control",
         description:
-          "OLED facial expressions (10+ patterns) with status indicators (listening, thinking, speaking). Ultrasonic proximity detection triggers wake-up and engagement; servo animations and 4WD movement for expressive, companion-focused interaction.",
-        tags: ["OLED", "ESP32-CAM", "Servos", "HC-SR04P"],
-        image: "https://placehold.co/800x600/8b5cf6/faf5ff?text=Expressions+%26+Movement",
-        imageAlt: "Emotional display and physical interaction",
+          "Usage insights, conversation history, and device controls so users can understand and manage COCO’s behavior. Provides intelligence, transparency, and system-level control behind the companion experience.",
+        tags: ["Insights", "History", "Device controls"],
+        image: "/assets/images/projects/coco/insight.png",
+        imageAlt: "Insights & Control — usage, conversation history, device controls",
         imageRight: true,
+      },
+      {
+        id: "3",
+        label: "Hardware",
+        title: "System structure",
+        description:
+          "ESP32-based hardware layout: mic, speaker, OLED, sensors, servos, and 4WD. Central to voice I/O, expression feedback, and physical interaction.",
+        tags: ["ESP32", "I2S", "OLED", "Servos"],
+        image: "/assets/images/projects/coco/strctutre.jpg",
+        imageAlt: "COCO system structure and hardware layout",
+        imageRight: false,
       },
     ],
     impactTitle: "Project impact",
@@ -191,7 +202,7 @@ const DEVELOPER_CONTENT: Record<string, DeveloperCaseStudyContent> = {
     meta: {
       role: "Backend & Infrastructure Engineer",
       stack: "AWS CDK, Lambda, Rekognition, Flask, Python, Node.js",
-      timeline: "2024.08 — 2024.11",
+      timeline: "2024.11 — 2025.01",
       liveUrl: "https://github.com/2024PBL-AWS-project/ContentModeration",
       liveLabel: "GitHub",
     },

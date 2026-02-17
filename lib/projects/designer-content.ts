@@ -84,7 +84,7 @@ const DESIGNER_CONTENT: Record<string, DesignerCaseStudyContent> = {
     heroImageAlt:
       "Rootin plant care app with real-time soil moisture and plant health monitoring",
     role: "UI/UX Designer\n& Frontend Developer",
-    timeline: "4 Months\n(Sep 2024 - Dec 2024)",
+    timeline: "2024.09 — 2024.12",
     tools: "Flutter, Dart, Firebase,\nFigma, GitHub",
     deliverables: "iOS & Android App, BLE Integration,\nAI Plant ID, Design System",
     audience: "Plant owners and indoor gardeners who want data-driven care instead of guesswork, and anyone using BLE soil sensors for real-time moisture tracking.",
@@ -201,7 +201,7 @@ const DESIGNER_CONTENT: Record<string, DesignerCaseStudyContent> = {
     heroImageAlt:
       "Bestia CRM — leads list, property detail, multi-channel communication, and analytics",
     role: "UI/UX Designer & Frontend Developer",
-    timeline: "2024",
+    timeline: "2025.09 — 2026.01",
     tools: "Next.js 15, React 19, TypeScript, Figma, Tailwind 4, Recharts, dnd-kit",
     deliverables: "Leads list & property detail, 50+ components, API integration, LA Tech Week",
     audience: "Real estate agents and teams who manage leads, properties, and client communication and need one workspace instead of spreadsheets and multiple tools.",
@@ -353,7 +353,7 @@ const DESIGNER_CONTENT: Record<string, DesignerCaseStudyContent> = {
     heroImageAlt:
       "Handiers — consumer and pro apps, AI analysis, smart logistics, Stripe payments",
     role: "Flutter Engineering\n& UI/UX Design",
-    timeline: "2024",
+    timeline: "2025.03 — 2025.09",
     tools: "Flutter, Dart, Kotlin, gRPC,\nVertex AI, Stripe, Firestore",
     deliverables: "Consumer + Pro Apps, AI Pipeline,\nMarketing Site, Design System",
     audience: "Consumers who need vetted, nearby service pros, and local pros who want relevant job leads and reliable payouts—both sides of a smart service marketplace.",
