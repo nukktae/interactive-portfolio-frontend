@@ -1,58 +1,54 @@
-import Image from "next/image";
+import type { SeasonCardProps } from "./SeasonalHoverCards";
+import { SeasonalHoverCards } from "./SeasonalHoverCards";
 
-const FISHING_IMAGE =
-  "https://gmcnqdpighpxhzpesqwf.supabase.co/storage/v1/object/public/generated-images/image-18839399-5b84-49a1-ba3e-5a36ffe52b6d.jpg";
-const CITIES_IMAGE =
-  "https://gmcnqdpighpxhzpesqwf.supabase.co/storage/v1/object/public/generated-images/image-7fe66716-9202-46bf-9db9-b09f47f6eac0.jpg";
-const BOOKS_IMAGE =
-  "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80";
-const LANGUAGES_IMAGE =
-  "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=80";
-const PHOTOGRAPHY_IMAGE =
-  "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80";
+const FISHING_IMAGE = "/assets/images/other/fish.jpg";
+const TRAVEL_IMAGE = "/assets/images/other/travel.jpg";
+const BOOKS_IMAGE = "/assets/images/other/book.jpg";
+const LANGUAGES_IMAGE = "/assets/images/other/language.jpg";
+const PHOTOGRAPHY_IMAGE = "/assets/images/other/photo.jpg";
 
-const CARDS = [
+const CARDS: SeasonCardProps[] = [
   {
-    id: "patience",
-    image: FISHING_IMAGE,
-    imageAlt: "Calm lake at dawn with a minimalist fishing setup",
     title: "The Art of Patience",
+    subtitle: "Timing + Long-term",
     description:
       "Fishing trains patience and timing—skills I apply to product decisions and long-term building.",
+    imageSrc: FISHING_IMAGE,
+    imageAlt: "Calm lake at dawn with a minimalist fishing setup",
   },
   {
-    id: "countries",
-    image: CITIES_IMAGE,
-    imageAlt: "Cityscapes representing global living",
-    title: "Living Across Continents",
+    title: "Travelling",
+    subtitle: "Hot Envo + Vacations",
     description:
       "A cross-cultural lens that shapes how I design for diverse users and contexts.",
+    imageSrc: TRAVEL_IMAGE,
+    imageAlt: "Cityscapes representing global living",
   },
   {
-    id: "books",
-    image: BOOKS_IMAGE,
-    imageAlt: "Books and reading",
-    title: "Reading & Book Notes",
+    title: "Reading books",
+    subtitle: "Design + Philosophy",
     description:
       "Design, product, and philosophy—I use reading to sharpen judgment and long-term thinking.",
+    imageSrc: BOOKS_IMAGE,
+    imageAlt: "Books and reading",
   },
   {
-    id: "languages",
-    image: LANGUAGES_IMAGE,
-    imageAlt: "Learning languages and study",
     title: "Learning Languages",
+    subtitle: "Thinking + Communication",
     description:
       "New languages rewire how I think and communicate—useful for product and collaboration.",
+    imageSrc: LANGUAGES_IMAGE,
+    imageAlt: "Learning languages and study",
   },
   {
-    id: "photography",
-    image: PHOTOGRAPHY_IMAGE,
-    imageAlt: "Street photography",
     title: "Street Photography",
+    subtitle: "Composition + Storytelling",
     description:
       "Composition and narrative in chaos—skills that transfer to layout, hierarchy, and storytelling in design.",
+    imageSrc: PHOTOGRAPHY_IMAGE,
+    imageAlt: "Street photography",
   },
-] as const;
+];
 
 export function About() {
   return (
@@ -73,37 +69,10 @@ export function About() {
         </p>
       </div>
 
-      {/* Horizontal scrollable cards — Instagram / Discover briefings style */}
+      {/* Seasonal hover cards — expand on hover, description reveals */}
       <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-20 lg:px-20">
-        <div className="flex gap-6 md:gap-8 min-w-max lg:min-w-0 lg:grid lg:grid-cols-5 lg:max-w-7xl lg:mx-auto">
-          {CARDS.map((card) => (
-            <article
-              key={card.id}
-              className="w-[280px] md:w-[320px] shrink-0 rounded-2xl bg-white shadow-lg overflow-hidden snap-center snap-always group lg:shrink lg:w-full"
-            >
-              {/* Image with title overlay */}
-              <div className="relative w-full aspect-4/5 min-h-[280px] overflow-hidden">
-                <Image
-                  src={card.image}
-                  alt={card.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 280px, 320px"
-                />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center transition-opacity group-hover:bg-black/40">
-                  <h3 className="text-white text-xl md:text-2xl font-bold text-center px-4">
-                    {card.title}
-                  </h3>
-                </div>
-              </div>
-              {/* Why I love it — short description */}
-              <div className="bg-white px-5 py-4 border-t border-gray-100">
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            </article>
-          ))}
+        <div className="min-w-max lg:min-w-0 lg:max-w-7xl lg:mx-auto">
+          <SeasonalHoverCards cards={CARDS} className="px-0!" />
         </div>
       </div>
     </section>
