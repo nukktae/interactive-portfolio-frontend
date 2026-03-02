@@ -9,16 +9,16 @@ export interface ExperienceItem {
 
 const EXPERIENCE: ExperienceItem[] = [
   {
-    period: "2025.03 — Present",
+    period: "2025.03 — 2025.09",
     location: "Torrance, CA",
-    title: "Full Stack Developer",
+    title: "UI/UX Designer",
     description:
       "Designed and developed the frontend for two mobile apps and a marketing website, delivering consistent UI across platforms. Led major UX redesigns (chat, booking, and quote request), enhancing clarity and conversion through data-backed decisions. Built intuitive, responsive interfaces using Figma and Flutter, collaborating with backend and CEO to ship real-time features like camera input and AI estimation.",
     tags: ["Figma", "Flutter", "React", "TypeScript"],
     company: "Handiers Inc.",
   },
   {
-    period: "2024 — 2025",
+    period: "2025.09 — 2026.01",
     location: "Los Angeles, CA",
     title: "UI/UX Designer & Frontend Developer",
     description:
@@ -41,7 +41,7 @@ export function Experience() {
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2">Experience</h2>
         </div>
-        <div className="text-gray-400 text-sm">2024 — Present</div>
+        <div className="text-gray-400 text-sm">2024 — 2026</div>
       </div>
 
       <div className="space-y-0">
