@@ -127,8 +127,8 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center mb-16 md:mb-32 last:mb-0">
-      <div className={isImageRight ? "order-2" : "order-1"}>{imageContent}</div>
-      <div className={`${isImageRight ? "order-1" : "order-2"} min-w-0`}>
+      <div className={isImageRight ? "order-2 lg:order-2" : "order-2 lg:order-1"}>{imageContent}</div>
+      <div className={`order-1 min-w-0 ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
         <span className="text-[#6C6FF2] font-bold text-xs md:text-sm tracking-widest uppercase mb-2 md:mb-4 block">
           {feature.label}
         </span>

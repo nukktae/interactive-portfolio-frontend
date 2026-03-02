@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProjectBySlug } from "@/lib/projects";
 import { Header } from "@/app/components/Header";
+import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { DesignerDetail } from "@/app/components/projects/DesignerDetail";
 import { DeveloperDetail } from "@/app/components/projects/DeveloperDetail";
 import { FullstackDetail } from "@/app/components/projects/FullstackDetail";
@@ -19,6 +20,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      <ScrollToTop />
       <Header />
       {project.detailType === "designer" && (
         <DesignerDetail project={project} />
