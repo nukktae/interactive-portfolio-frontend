@@ -28,7 +28,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const ACCENT = "#6C6FF2";
-const iconCls = "w-4 h-4 shrink-0";
+const iconCls = "w-3.5 h-3.5 md:w-4 md:h-4 shrink-0";
 
 const categories = [
   {
@@ -110,7 +110,7 @@ function ToolChip({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700"
+      className="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-100 rounded-full text-xs md:text-sm font-medium text-gray-700"
       title={label}
     >
       {icon && (
@@ -127,7 +127,7 @@ function ToolChip({
 
 function TextChip({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-700">
+    <span className="inline-flex items-center px-3 py-1.5 md:px-4 md:py-2 bg-gray-100 rounded-full text-xs md:text-sm font-medium text-gray-700">
       {label}
     </span>
   );
@@ -137,18 +137,18 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="w-full py-16 md:py-24 px-6 md:px-20 bg-gray-50"
+      className="w-full py-12 md:py-24 px-4 md:px-20 bg-gray-50"
     >
-      <div className="flex flex-col sm:flex-row justify-between items-end gap-4 mb-12 md:mb-16">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 md:gap-4 mb-8 md:mb-16">
         <div>
-          <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-sm">
+          <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-xs md:text-sm">
             Stack
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2">
+          <h2 className="text-2xl md:text-4xl font-bold mt-1 md:mt-2">
             The toolkit
           </h2>
         </div>
-        <p className="text-gray-400 text-sm md:text-base">
+        <p className="text-gray-400 text-xs md:text-base max-w-md">
           Technologies I use to ship products.
         </p>
       </div>
@@ -157,14 +157,14 @@ export function TechStack() {
         {categories.map((cat, index) => (
           <div
             key={cat.id}
-            className={`group flex flex-col lg:flex-row items-start py-8 md:py-12 border-t border-gray-200 hover:bg-white transition-all px-4 md:px-8 -mx-4 md:-mx-8 rounded-lg ${index === categories.length - 1 ? "border-b border-gray-200" : ""}`}
+            className={`group flex flex-col lg:flex-row items-start py-6 md:py-12 border-t border-gray-200 hover:bg-white transition-all px-2 md:px-8 -mx-2 md:-mx-8 rounded-lg ${index === categories.length - 1 ? "border-b border-gray-200" : ""}`}
           >
-            <div className="w-full lg:w-1/4 mb-4 lg:mb-0 flex items-center">
-              <span className="text-base md:text-lg font-semibold">
+            <div className="w-full lg:w-1/4 mb-3 lg:mb-0 flex items-center shrink-0">
+              <span className="text-sm md:text-lg font-semibold">
                 {cat.label}
               </span>
             </div>
-            <div className="w-full lg:w-3/4 flex flex-wrap gap-2 md:gap-3">
+            <div className="w-full lg:w-3/4 flex flex-wrap gap-1.5 md:gap-3">
               {cat.items.map((item) =>
                 typeof item === "string" ? (
                   <TextChip key={item} label={item} />

@@ -62,51 +62,51 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="w-full py-20 md:py-40 px-6 md:px-12 bg-white"
+      className="w-full py-12 md:py-40 px-4 md:px-12 bg-white"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
         {/* Left: Headline + contact info + 3D scene */}
-        <div className="space-y-8 md:space-y-10">
+        <div className="space-y-6 md:space-y-10">
           <div>
-            <h2 className="text-[48px] sm:text-[64px] md:text-[80px] font-black leading-none tracking-tighter mb-8 md:mb-12">
+            <h2 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[80px] font-black leading-none tracking-tighter mb-6 md:mb-12">
               LET&apos;S
               <br />
               BUILD
               <br />
               NEXT.
             </h2>
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <a
                 href="mailto:anu.bn@yahoo.com"
-                className="flex items-center gap-6 group cursor-pointer w-fit"
+                className="flex items-center gap-4 md:gap-6 group cursor-pointer w-fit"
               >
-                <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
-                  <i className="fa-solid fa-envelope" aria-hidden />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
+                  <i className="fa-solid fa-envelope text-sm md:text-base" aria-hidden />
                 </div>
-                <span className="text-lg md:text-xl font-bold">
+                <span className="text-base md:text-xl font-bold break-all">
                   anu.bn@yahoo.com
                 </span>
               </a>
-              <div className="flex items-center gap-6 group cursor-pointer w-fit">
-                <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
-                  <i className="fa-solid fa-location-dot" aria-hidden />
+              <div className="flex items-center gap-4 md:gap-6 group cursor-pointer w-fit">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
+                  <i className="fa-solid fa-location-dot text-sm md:text-base" aria-hidden />
                 </div>
-                <span className="text-lg md:text-xl font-bold">
+                <span className="text-base md:text-xl font-bold">
                   Available Globally
                 </span>
               </div>
             </div>
           </div>
-          <div className="w-full h-[280px] sm:h-[320px] rounded-2xl overflow-hidden">
+          <div className="w-full h-[220px] sm:h-[280px] md:h-[320px] rounded-xl md:rounded-2xl overflow-hidden">
             <SplineScene embedded scene="/bigball.splinecode" />
           </div>
         </div>
 
         {/* Right: Form or Calendly inline */}
-        <div className="bg-gray-50 p-8 md:p-12 rounded-[40px]">
+        <div className="bg-gray-50 p-5 md:p-12 rounded-2xl md:rounded-[40px]">
           {showCalendar ? (
             <>
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
                 <button
                   type="button"
                   onClick={() => setShowCalendar(false)}
@@ -117,21 +117,21 @@ export function Contact() {
               </p>
               {calendlyUrl ? (
                 <div
-                  className="calendly-inline-widget w-full"
+                  className="calendly-inline-widget w-full min-w-0"
                   data-url={calendlyUrl}
                   style={{
-                    minWidth: "320px",
+                    minWidth: "280px",
                     height: "630px",
                     background: "transparent",
                   }}
                 />
               ) : (
-                <div className="py-16 text-center">
-                  <p className="text-gray-500 font-medium mb-2">
+                <div className="py-10 md:py-16 text-center">
+                  <p className="text-gray-500 font-medium text-sm md:text-base mb-2">
                     Set your Calendly link to enable booking.
                   </p>
-                  <p className="text-sm text-gray-400 mb-6">
-                    Add <code className="bg-gray-200 px-2 py-1 rounded text-xs">NEXT_PUBLIC_CALENDAR_BOOKING_URL</code> to .env.local
+                  <p className="text-xs md:text-sm text-gray-400 mb-4 md:mb-6 px-1">
+                    Add <code className="bg-gray-200 px-1.5 py-0.5 md:px-2 md:py-1 rounded text-[10px] md:text-xs break-all">NEXT_PUBLIC_CALENDAR_BOOKING_URL</code> to .env.local
                   </p>
                   <button
                     type="button"
@@ -145,7 +145,7 @@ export function Contact() {
             </>
           ) : (
             <>
-              <p className="text-sm text-gray-500 mb-6">
+              <p className="text-xs md:text-sm text-gray-500 mb-4 md:mb-6">
                 Prefer to pick a time?{" "}
                 <button
                   type="button"
@@ -156,13 +156,13 @@ export function Contact() {
                 </button>
               </p>
               <form
-                className="space-y-6 md:space-y-8"
+                className="space-y-4 md:space-y-8"
                 onSubmit={(e) => e.preventDefault()}
               >
-                <div className="space-y-2">
+                <div className="space-y-1.5 md:space-y-2">
                   <label
                     htmlFor="contact-name"
-                    className="text-xs font-bold uppercase tracking-widest text-gray-400 block"
+                    className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 block"
                   >
                     Your Name
                   </label>
@@ -170,13 +170,13 @@ export function Contact() {
                     id="contact-name"
                     type="text"
                     placeholder="John Doe"
-                    className="w-full bg-transparent border-b border-gray-200 py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors placeholder:text-gray-400"
+                    className="w-full bg-transparent border-b border-gray-200 py-3 md:py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors placeholder:text-gray-400 text-base"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 md:space-y-2">
                   <label
                     htmlFor="contact-email"
-                    className="text-xs font-bold uppercase tracking-widest text-gray-400 block"
+                    className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 block"
                   >
                     Email Address
                   </label>
@@ -184,26 +184,26 @@ export function Contact() {
                     id="contact-email"
                     type="email"
                     placeholder="john@example.com"
-                    className="w-full bg-transparent border-b border-gray-200 py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors placeholder:text-gray-400"
+                    className="w-full bg-transparent border-b border-gray-200 py-3 md:py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors placeholder:text-gray-400 text-base"
                   />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-1.5 md:space-y-2">
                   <label
                     htmlFor="contact-details"
-                    className="text-xs font-bold uppercase tracking-widest text-gray-400 block"
+                    className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 block"
                   >
                     Project Details
                   </label>
                   <textarea
                     id="contact-details"
-                    rows={4}
+                    rows={3}
                     placeholder="Tell me about your vision..."
-                    className="w-full bg-transparent border-b border-gray-200 py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors resize-none placeholder:text-gray-400"
+                    className="w-full bg-transparent border-b border-gray-200 py-3 md:py-4 focus:outline-none focus:border-[#6C6FF2] transition-colors resize-none placeholder:text-gray-400 text-base min-h-[80px] md:min-h-0"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-6 bg-[#6C6FF2] text-white font-black rounded-2xl hover:bg-black transition-all transform hover:-translate-y-1"
+                  className="w-full py-4 md:py-6 bg-[#6C6FF2] text-white font-black rounded-xl md:rounded-2xl hover:bg-black transition-all transform hover:-translate-y-1 text-sm md:text-base"
                 >
                   SEND MESSAGE
                 </button>
@@ -214,7 +214,7 @@ export function Contact() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-16 md:mt-20 pt-8 md:pt-12 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-bold text-gray-400 tracking-[0.2em] uppercase">
+      <footer className="mt-10 md:mt-20 pt-6 md:pt-12 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-3 md:gap-4 text-[10px] md:text-xs font-bold text-gray-400 tracking-[0.15em] md:tracking-[0.2em] uppercase text-center sm:text-left">
         <div>© 2025 ANU. ALL RIGHTS RESERVED.</div>
         <div>DESIGNED WITH LOGIC & HEART.</div>
       </footer>

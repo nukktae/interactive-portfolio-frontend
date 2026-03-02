@@ -50,28 +50,28 @@ export function Hero() {
       </div>
 
       {/* Global Experience Banner */}
-      <div className="w-full mt-12 md:mt-[204px] py-8 md:py-12 border-y border-gray-100 flex flex-wrap justify-around items-center gap-8">
+      <div className="w-full mt-12 md:mt-[204px] py-6 md:py-12 border-y border-gray-100 grid grid-cols-2 md:flex md:flex-wrap md:justify-around md:items-center gap-6 md:gap-8">
         <div className="text-center">
-          <div className="text-3xl md:text-4xl font-black">04</div>
-          <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">
+          <div className="text-2xl md:text-4xl font-black">04</div>
+          <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest mt-1 md:mt-2">
             Countries Lived
           </div>
         </div>
         <div className="text-center">
-          <div className="text-3xl md:text-4xl font-black">03+</div>
-          <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">
+          <div className="text-2xl md:text-4xl font-black">03+</div>
+          <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest mt-1 md:mt-2">
             Core Disciplines
           </div>
         </div>
         <div className="text-center">
-          <div className="text-3xl md:text-4xl font-black">30+</div>
-          <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">
+          <div className="text-2xl md:text-4xl font-black">30+</div>
+          <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest mt-1 md:mt-2">
             Projects Shipped
           </div>
         </div>
         <div className="text-center">
-          <div className="text-3xl md:text-4xl font-black text-[#6C6FF2]">∞</div>
-          <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">
+          <div className="text-2xl md:text-4xl font-black text-[#6C6FF2]">∞</div>
+          <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest mt-1 md:mt-2">
             Curiosity
           </div>
         </div>

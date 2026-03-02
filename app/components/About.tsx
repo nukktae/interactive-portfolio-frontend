@@ -54,23 +54,23 @@ export function About() {
   return (
     <section
       id="about"
-      className="w-full py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20 bg-gray-100"
+      className="w-full py-12 md:py-24 lg:py-32 px-4 md:px-12 lg:px-20 bg-gray-100"
     >
       {/* Section header — same style as Selected Works (centered, label + title) */}
-      <div className="flex flex-col items-center mb-12 md:mb-16">
-        <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-sm mb-4">
+      <div className="flex flex-col items-center mb-8 md:mb-16">
+        <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-xs md:text-sm mb-2 md:mb-4">
           Beyond the pixels
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 md:mb-8 text-[#111111]">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8 text-[#111111]">
           Offline Flow
         </h2>
-        <p className="text-gray-500 text-center max-w-2xl mx-auto">
+        <p className="text-gray-500 text-center max-w-2xl mx-auto text-sm md:text-base px-1">
           Where patience meets precision. Beyond the pixels across 4 continents.
         </p>
       </div>
 
       {/* Seasonal hover cards — expand on hover, description reveals */}
-      <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-20 lg:px-20">
+      <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 md:-mx-12 md:px-12 lg:-mx-20 lg:px-20">
         <div className="min-w-max lg:min-w-0 lg:max-w-7xl lg:mx-auto">
           <SeasonalHoverCards cards={CARDS} className="px-0!" />
         </div>

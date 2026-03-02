@@ -9,7 +9,7 @@ export function Header() {
       <Link href="/" className="text-[24px] font-black tracking-tighter">
         ANU<span className="text-[#6C6FF2]">.</span>
       </Link>
-      <nav className="flex gap-4 md:gap-8 lg:gap-[40px] text-[14px] md:text-[15px] font-medium flex-wrap justify-end">
+      <nav className="hidden md:flex gap-4 md:gap-8 lg:gap-[40px] text-[14px] md:text-[15px] font-medium flex-wrap justify-end">
         <Link href="/#hero" className="hover:text-[#6C6FF2] transition-colors">
           Home
         </Link>
