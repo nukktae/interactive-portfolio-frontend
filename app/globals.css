@@ -36,3 +36,15 @@ body {
   color: var(--foreground);
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
+/* Hide Spline watermark (link/overlay injected by runtime) */
+.spline-scene-wrapper a[href*="spline"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.spline-scene-wrapper img[src*="watermark"],
+.spline-scene-wrapper [class*="watermark"],
+.spline-scene-wrapper [id*="watermark"] {
+  display: none !important;
+}

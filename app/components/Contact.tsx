@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SplineScene } from "@/app/components/SplineScene";
 
 const CALENDLY_CSS = "https://assets.calendly.com/assets/external/widget.css";
 const CALENDLY_SCRIPT = "https://assets.calendly.com/assets/external/widget.js";
@@ -64,35 +65,40 @@ export function Contact() {
       className="w-full py-20 md:py-40 px-6 md:px-12 bg-white"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Left: Headline + contact info */}
-        <div>
-          <h2 className="text-[48px] sm:text-[64px] md:text-[80px] font-black leading-none tracking-tighter mb-8 md:mb-12">
-            LET&apos;S
-            <br />
-            BUILD
-            <br />
-            NEXT.
-          </h2>
-          <div className="space-y-6">
-            <a
-              href="mailto:anu.bn@yahoo.com"
-              className="flex items-center gap-6 group cursor-pointer w-fit"
-            >
-              <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
-                <i className="fa-solid fa-envelope" aria-hidden />
+        {/* Left: Headline + contact info + 3D scene */}
+        <div className="space-y-8 md:space-y-10">
+          <div>
+            <h2 className="text-[48px] sm:text-[64px] md:text-[80px] font-black leading-none tracking-tighter mb-8 md:mb-12">
+              LET&apos;S
+              <br />
+              BUILD
+              <br />
+              NEXT.
+            </h2>
+            <div className="space-y-6">
+              <a
+                href="mailto:anu.bn@yahoo.com"
+                className="flex items-center gap-6 group cursor-pointer w-fit"
+              >
+                <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
+                  <i className="fa-solid fa-envelope" aria-hidden />
+                </div>
+                <span className="text-lg md:text-xl font-bold">
+                  anu.bn@yahoo.com
+                </span>
+              </a>
+              <div className="flex items-center gap-6 group cursor-pointer w-fit">
+                <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
+                  <i className="fa-solid fa-location-dot" aria-hidden />
+                </div>
+                <span className="text-lg md:text-xl font-bold">
+                  Available Globally
+                </span>
               </div>
-              <span className="text-lg md:text-xl font-bold">
-                anu.bn@yahoo.com
-              </span>
-            </a>
-            <div className="flex items-center gap-6 group cursor-pointer w-fit">
-              <div className="w-12 h-12 rounded-full border border-black flex items-center justify-center shrink-0 group-hover:bg-black group-hover:text-white transition-all">
-                <i className="fa-solid fa-location-dot" aria-hidden />
-              </div>
-              <span className="text-lg md:text-xl font-bold">
-                Available Globally
-              </span>
             </div>
+          </div>
+          <div className="w-full h-[280px] sm:h-[320px] rounded-2xl overflow-hidden">
+            <SplineScene embedded scene="/bigball.splinecode" />
           </div>
         </div>
 

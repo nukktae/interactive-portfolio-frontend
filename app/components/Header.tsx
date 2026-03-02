@@ -29,12 +29,32 @@ export function Header() {
           Contact
         </Link>
       </nav>
-      <Link
-        href="/#contact"
-        className="bg-black text-white px-5 py-3 md:px-[24px] md:py-[12px] rounded-full text-[14px] font-semibold hover:bg-[#6C6FF2] transition-all"
-      >
-        Let&apos;s Talk
-      </Link>
+      <div className="flex items-center gap-2 md:gap-3">
+        <a
+          href="https://github.com/nukktae"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-black text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[18px] hover:bg-[#6C6FF2] transition-all shrink-0"
+          aria-label="GitHub"
+        >
+          <i className="fa-brands fa-github" aria-hidden />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/anu-bilegdemberel-445366318/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-black text-white w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[18px] hover:bg-[#6C6FF2] transition-all shrink-0"
+          aria-label="LinkedIn"
+        >
+          <i className="fa-brands fa-linkedin-in" aria-hidden />
+        </a>
+        <Link
+          href="/#contact"
+          className="bg-black text-white px-5 py-3 md:px-[24px] md:py-[12px] rounded-full text-[14px] font-semibold hover:bg-[#6C6FF2] transition-all shrink-0"
+        >
+          Let&apos;s Talk
+        </Link>
+      </div>
     </header>
   );
 }
