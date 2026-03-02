@@ -9,6 +9,16 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
+@keyframes blink-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
 
 /* Scale site so 100% browser zoom looks like your preferred 80% view.
    zoom (Chrome/Edge/Safari) scales everything; font-size fallback for Firefox. */

@@ -1,3 +1,7 @@
+"use client";
+
+import { TypingAnimation } from "@/app/components/ui/typing-animation";
+
 export function Hero() {
   return (
     <section
@@ -8,18 +12,32 @@ export function Hero() {
         SOFTWARE ENGINEERING & MARKETING DOUBLE MAJOR
       </div>
       <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] xl:text-[120px] font-black leading-[0.9] tracking-tighter mb-4 md:mb-6">
-        ARCHITECTING
-        <br />
-        <span className="text-[#6C6FF2]">DIGITAL</span> LOGIC.
+        <TypingAnimation
+          words={[
+            "Architecting digital logic.",
+            "From idea to live product.",
+            "Building what actually ships.",
+          ]}
+          as="span"
+          className="block"
+          typeSpeed={80}
+          deleteSpeed={40}
+          pauseDelay={1800}
+          loop
+          startOnView
+          showCursor
+          blinkCursor
+          cursorStyle="block"
+        />
       </h1>
       <p className="text-xl md:text-2xl text-gray-600 font-medium mb-8 md:mb-12">
-        From Idea to Live Product in Hours.
+        AI, UI/UX & full-stack—shipped.
       </p>
       <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-end gap-8">
-        <p className="max-w-xl text-lg md:text-xl text-gray-500 leading-relaxed">
+        <p className="max-w-2xl text-lg md:text-xl text-gray-500 leading-relaxed">
           Product-driven Software Engineer blending AI, UI/UX, and Full-Stack
-          development to turn ideas into shipped experiences—delivering
-          production-ready products in hours, not weeks.
+          development—turning ideas into shipped experiences in hours, not
+          weeks.
         </p>
         <div className="flex gap-4">
           <a
@@ -44,7 +62,7 @@ export function Hero() {
       </div>
 
       {/* Global Experience Banner */}
-      <div className="w-full mt-12 md:mt-16 py-8 md:py-12 border-y border-gray-100 flex flex-wrap justify-around items-center gap-8">
+      <div className="w-full mt-12 md:mt-[204px] py-8 md:py-12 border-y border-gray-100 flex flex-wrap justify-around items-center gap-8">
         <div className="text-center">
           <div className="text-3xl md:text-4xl font-black">04</div>
           <div className="text-xs text-gray-400 uppercase tracking-widest mt-2">

@@ -159,13 +159,7 @@ export function TechStack() {
             key={cat.id}
             className={`group flex flex-col lg:flex-row items-start py-8 md:py-12 border-t border-gray-200 hover:bg-white transition-all px-4 md:px-8 -mx-4 md:-mx-8 rounded-lg ${index === categories.length - 1 ? "border-b border-gray-200" : ""}`}
           >
-            <div className="w-full lg:w-1/4 mb-4 lg:mb-0 flex items-center gap-3">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-white shrink-0"
-                style={{ backgroundColor: cat.accent }}
-              >
-                <FontAwesomeIcon icon={cat.icon} className="w-4 h-4" />
-              </div>
+            <div className="w-full lg:w-1/4 mb-4 lg:mb-0 flex items-center">
               <span className="text-base md:text-lg font-semibold">
                 {cat.label}
               </span>
