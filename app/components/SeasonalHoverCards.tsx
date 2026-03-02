@@ -29,7 +29,7 @@ const SeasonCard = ({
   return (
     <div
       className={cn(
-        "group relative flex flex-col justify-end p-4 md:p-6 w-full md:w-1/3 h-[280px] md:h-[350px] lg:h-[450px] bg-black rounded-lg overflow-hidden shadow-lg transition-all duration-500 hover:w-2/3 min-w-[260px] md:min-w-0 shrink-0 md:shrink snap-start",
+        "group relative flex flex-col justify-end p-4 md:p-6 w-[82vw] min-w-[240px] max-w-[340px] md:w-1/3 md:min-w-0 md:max-w-none h-[280px] md:h-[350px] lg:h-[450px] bg-black rounded-xl md:rounded-lg overflow-hidden shadow-lg transition-all duration-500 hover:w-2/3 shrink-0 snap-start",
         className
       )}
     >
@@ -37,8 +37,10 @@ const SeasonCard = ({
         src={imageSrc}
         alt={imageAlt || title}
         fill
-        sizes="(max-width: 768px) 100vw, 33vw"
+        sizes="(max-width: 768px) 85vw, 33vw"
         className="object-cover object-center z-0"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 z-1 bg-black/60" />
       {/* Single content stack at bottom — fixed heights so title/subtitle align across all cards */}
@@ -66,9 +68,10 @@ export function SeasonalHoverCards({
   return (
     <div
       className={cn(
-        "flex flex-nowrap md:flex-nowrap gap-3 md:gap-4 w-full px-0 md:px-4 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory",
+        "flex flex-nowrap gap-3 md:gap-4 w-full px-0 md:px-4 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory min-h-0",
         className
       )}
+      style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
     >
       {cards.map((card, index) => (
         <SeasonCard

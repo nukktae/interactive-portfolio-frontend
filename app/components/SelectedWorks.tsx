@@ -71,13 +71,13 @@ export function SelectedWorks() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
-        {filteredProjects.map((project) => (
+        {filteredProjects.map((project, index) => (
           <Link
             key={project.id}
             href={`/projects/${project.slug}`}
             className="group cursor-pointer block"
           >
-            <div className="relative aspect-[16/10] bg-gray-100 overflow-hidden mb-3 md:mb-4 rounded-lg">
+            <div className="relative aspect-16/10 bg-gray-100 overflow-hidden mb-3 md:mb-4 rounded-lg">
               {project.badge && (
                 <span className="absolute top-2 right-2 md:top-3 md:right-3 z-10 px-2 py-0.5 md:px-2.5 md:py-1 rounded-md bg-white/95 text-[9px] md:text-[10px] font-semibold uppercase tracking-wider text-gray-700 shadow-sm">
                   {project.badge}
@@ -90,6 +90,9 @@ export function SelectedWorks() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={index === 0}
+                  loading={index === 0 ? undefined : "lazy"}
+                  decoding="async"
                 />
               </div>
               <div

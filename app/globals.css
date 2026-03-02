@@ -34,6 +34,17 @@
   animation: fade-in-hint 0.5s ease-out 0.8s forwards;
 }
 
+/* Smooth scrolling for anchor links and overall scroll feel */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Scale site so 100% browser zoom looks like your preferred 80% view.
    zoom (Chrome/Edge/Safari) scales everything; font-size fallback for Firefox. */
 html {
@@ -49,6 +60,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Improve scroll performance: momentum on iOS, contain paint for long sections */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
 }
 
 /* Hide Spline watermark (link/overlay injected by runtime) */

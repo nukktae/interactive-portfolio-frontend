@@ -16,8 +16,25 @@ function getCalendlyUrl() {
 export function Contact() {
   const [showCalendar, setShowCalendar] = useState(true);
   const [calendlyLoading, setCalendlyLoading] = useState(true);
+  const [contactInView, setContactInView] = useState(false);
   const calendlyContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const calendlyUrl = getCalendlyUrl();
+
+  // Load Calendly only when Contact section is in (or near) view — keeps initial load lighter
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) setContactInView(true);
+      },
+      { rootMargin: "200px", threshold: 0 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   // Reset loading when switching to calendar view and we have a URL
   useEffect(() => {
@@ -46,10 +63,8 @@ export function Contact() {
     });
     observer.observe(container, { childList: true, subtree: true });
 
-    // Fallback: assume loaded after a delay (script might not inject iframe immediately)
     const fallback = window.setTimeout(() => setCalendlyLoading(false), 4000);
 
-    // Initial check in case iframe is already there
     if (checkForIframe()) {
       observer.disconnect();
       clearTimeout(fallback);
@@ -61,8 +76,9 @@ export function Contact() {
     };
   }, [showCalendar, calendlyUrl]);
 
+  // Inject Calendly assets only when section is in view and user chose calendar (deferred for performance)
   useEffect(() => {
-    if (!showCalendar) return;
+    if (!showCalendar || !contactInView) return;
 
     const link = document.createElement("link");
     link.href = CALENDLY_CSS;
@@ -102,10 +118,11 @@ export function Contact() {
       );
       if (customStyle) document.head.removeChild(customStyle);
     };
-  }, [showCalendar]);
+  }, [showCalendar, contactInView]);
 
   return (
     <section
+      ref={sectionRef}
       id="contact"
       className="w-full py-12 md:py-40 px-4 md:px-12 bg-white"
     >

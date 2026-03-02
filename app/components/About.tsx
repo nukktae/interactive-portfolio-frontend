@@ -69,9 +69,9 @@ export function About() {
         </p>
       </div>
 
-      {/* Seasonal hover cards — expand on hover, description reveals */}
-      <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 md:-mx-12 md:px-12 lg:-mx-20 lg:px-20">
-        <div className="min-w-max lg:min-w-0 lg:max-w-7xl lg:mx-auto">
+      {/* Seasonal hover cards — on mobile: narrow cards, swipe left/right; desktop: grid-style */}
+      <div className="overflow-x-auto overflow-y-hidden pb-4 -mx-4 px-4 md:-mx-12 md:px-12 lg:-mx-20 lg:px-20 touch-pan-x">
+        <div className="min-w-max lg:min-w-0 lg:max-w-7xl lg:mx-auto pr-4 md:pr-0">
           <SeasonalHoverCards cards={CARDS} className="px-0!" />
         </div>
       </div>
