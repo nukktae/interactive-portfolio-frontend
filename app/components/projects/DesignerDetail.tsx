@@ -148,6 +148,7 @@ export function DesignerDetail({ project }: DesignerDetailProps) {
       <DeveloperFooter
         nextProjectTitle={c.nextProjectTitle}
         nextProjectSlug={c.nextProjectSlug}
+        stack={meta.stack}
       />
     </article>
   );

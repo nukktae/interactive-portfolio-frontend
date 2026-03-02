@@ -53,32 +53,69 @@ export function DesignerDesignSystem({
 
   const hasImages = image || image2 || image3;
 
+  // Make description scannable: split on ": " for intro + list, or ", " for bullet list
+  const colonIdx = description.indexOf(": ");
+  const intro = colonIdx >= 0 ? description.slice(0, colonIdx).trim() : null;
+  const afterColon = colonIdx >= 0 ? description.slice(colonIdx + 2).trim() : description;
+  const points = afterColon.split(/,\s*/).map((s) => s.trim()).filter(Boolean);
+  const maxChipLength = 36; // only show short items as chips; long sentences stay as text
+  const chipPoints = points.filter((p) => p.length <= maxChipLength);
+  const longPoints = points.filter((p) => p.length > maxChipLength);
+  const useList = points.length >= 2 && (points.length > 3 || colonIdx >= 0);
+
   return (
-    <section className="py-8 md:py-16 lg:py-20 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-6 lg:px-10 bg-[#fafafa] text-neutral-900 rounded-2xl md:rounded-[3rem] mb-10 md:mb-24">
-      <div className="max-w-4xl mb-6 md:mb-12">
-        <h2 className="text-xl md:text-4xl font-bold tracking-tight mb-2 md:mb-6 text-neutral-900">
+    <section className="py-6 md:py-16 lg:py-20 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-6 lg:px-10 bg-[#fafafa] text-neutral-900 rounded-xl md:rounded-[3rem] mb-8 md:mb-24">
+      <div className="mb-4 md:mb-12">
+        <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-[#6C6FF2] mb-1.5 md:mb-3">
           {title}
-        </h2>
-        <p className="text-sm md:text-lg text-neutral-600 leading-relaxed">
-          {description}
         </p>
+        {useList ? (
+          <div className="space-y-1.5 md:space-y-3">
+            {intro && (
+              <p className="text-sm md:text-lg text-neutral-800 leading-snug font-medium max-w-2xl">
+                {intro}
+              </p>
+            )}
+            {chipPoints.length > 0 && (
+              <ul className="flex flex-wrap gap-1.5 md:gap-2.5 list-none pl-0">
+                {chipPoints.map((point, i) => (
+                  <li
+                    key={i}
+                    className="text-[11px] md:text-sm text-neutral-600 bg-neutral-100/80 rounded-full px-2.5 py-1 md:px-3.5 md:py-2"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {longPoints.length > 0 && (
+              <p className="text-sm md:text-base text-neutral-600 leading-relaxed pt-1 w-full">
+                {longPoints.join(". ")}
+              </p>
+            )}
+          </div>
+        ) : (
+          <p className="text-sm md:text-base text-neutral-600 leading-relaxed max-w-2xl">
+            {description}
+          </p>
+        )}
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-        <div className="lg:col-span-4 space-y-3 md:space-y-6">
-          <div className="p-4 md:p-6 bg-white rounded-2xl border border-neutral-200">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-4">
+      <div className={`grid grid-cols-1 gap-3 md:gap-6 ${hasImages ? "lg:grid-cols-12" : ""}`}>
+        <div className={hasImages ? "lg:col-span-4 space-y-3 md:space-y-6" : "space-y-3 md:space-y-6"}>
+          <div className="p-3 md:p-6 bg-white rounded-xl md:rounded-2xl border border-neutral-200">
+            <h4 className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-neutral-500 mb-3 md:mb-4">
               Typography
             </h4>
-            <div className="space-y-3">
+            <div className="space-y-2 md:space-y-3">
               {typographyList.map((t, i) => (
                 <p
                   key={i}
                   className={
                     t.weight === "bold"
-                      ? "text-2xl md:text-4xl font-bold text-neutral-900"
+                      ? "text-xl md:text-4xl font-bold text-neutral-900"
                       : t.weight === "medium"
-                        ? "text-xl md:text-2xl font-medium text-neutral-900"
-                        : "text-base md:text-lg font-normal text-neutral-600"
+                        ? "text-lg md:text-2xl font-medium text-neutral-900"
+                        : "text-sm md:text-lg font-normal text-neutral-600"
                   }
                 >
                   {t.name}
@@ -86,22 +123,22 @@ export function DesignerDesignSystem({
               ))}
             </div>
           </div>
-          <div className="p-4 md:p-6 bg-white rounded-2xl border border-neutral-200">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-4">
+          <div className="p-3 md:p-6 bg-white rounded-xl md:rounded-2xl border border-neutral-200">
+            <h4 className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-neutral-500 mb-3 md:mb-4">
               Colors
             </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-3">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3">
               {colorList.map((c, i) => (
-                <div key={i} className="flex gap-3 items-center">
+                <div key={i} className="flex gap-2 md:gap-3 items-center min-w-0">
                   <div
-                    className="w-8 h-8 md:w-9 md:h-9 rounded-full shrink-0 border border-neutral-200"
+                    className="w-6 h-6 md:w-9 md:h-9 rounded-full shrink-0 border border-neutral-200"
                     style={{ backgroundColor: c.hex }}
                   />
                   <div className="min-w-0">
-                    <p className="font-bold text-sm text-neutral-900">
+                    <p className="font-bold text-xs md:text-sm text-neutral-900 truncate">
                       {c.name}
                     </p>
-                    <p className="text-neutral-500 text-xs mt-0.5 font-mono">
+                    <p className="text-neutral-500 text-[10px] md:text-xs mt-0.5 font-mono truncate">
                       {c.hex}
                     </p>
                   </div>
@@ -110,9 +147,9 @@ export function DesignerDesignSystem({
             </div>
           </div>
         </div>
+        {hasImages && (
         <div className="lg:col-span-8">
-          {hasImages ? (
-            <div className="grid grid-cols-2 gap-0">
+          <div className="grid grid-cols-2 gap-2 md:gap-0">
               {image && (
                 <Image
                   src={image}
@@ -144,8 +181,8 @@ export function DesignerDesignSystem({
                 />
               )}
             </div>
-          ) : null}
         </div>
+        )}
       </div>
     </section>
   );

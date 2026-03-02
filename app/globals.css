@@ -66,6 +66,15 @@ body {
 .overflow-x-auto {
   -webkit-overflow-scrolling: touch;
 }
+
+/* Hide scrollbar while keeping scroll (e.g. filter pills on mobile) */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
 section {
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;

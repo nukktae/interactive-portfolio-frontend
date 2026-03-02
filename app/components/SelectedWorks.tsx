@@ -43,16 +43,20 @@ export function SelectedWorks() {
   return (
     <section
       id="projects"
-      className="w-full py-12 md:py-24 px-4 md:px-20"
+      className="w-full py-10 md:py-24 px-4 md:px-20"
     >
-      <div className="flex flex-col items-center mb-8 md:mb-16">
-        <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-xs md:text-sm mb-2 md:mb-4">
+      <div className="flex flex-col items-center mb-6 md:mb-16">
+        <span className="text-[#6C6FF2] font-semibold tracking-widest uppercase text-[10px] md:text-sm mb-1.5 md:mb-4">
           Portfolio
         </span>
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
+        <h2 className="text-2xl md:text-5xl font-bold mb-4 md:mb-8 text-center tracking-tight">
           Selected Works
         </h2>
-        <div className="flex flex-wrap justify-center gap-2 md:gap-8 border-b border-gray-100 pb-3 md:pb-4 -mb-px w-full overflow-x-auto md:overflow-visible">
+        {/* Mobile: horizontal scroll pills; Desktop: underline tabs */}
+        <div
+          className="w-full flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-6 lg:gap-8 overflow-x-auto md:overflow-visible pb-2 md:pb-0 -mx-4 px-4 md:mx-0 md:px-0 md:border-b md:border-gray-100 md:-mb-px scrollbar-none"
+          style={{ WebkitOverflowScrolling: "touch" } as React.CSSProperties}
+        >
           {FILTERS.map(({ id, label }) => (
             <button
               key={id}
@@ -60,8 +64,8 @@ export function SelectedWorks() {
               onClick={() => setActiveFilter(id)}
               className={
                 activeFilter === id
-                  ? "text-black font-bold border-b-2 border-black pb-3 md:pb-4 -mb-[15px] md:-mb-[18px] text-xs md:text-base whitespace-nowrap"
-                  : "text-gray-400 font-medium hover:text-black transition-colors pb-3 md:pb-4 -mb-[15px] md:-mb-[18px] text-xs md:text-base whitespace-nowrap"
+                  ? "shrink-0 px-4 py-2.5 md:px-0 md:py-0 rounded-full md:rounded-none text-sm md:text-base font-semibold md:font-bold bg-[#111111] text-white md:bg-transparent md:text-black md:border-b-2 md:border-black md:pb-3 md:-mb-px transition-colors"
+                  : "shrink-0 px-4 py-2.5 md:px-0 md:py-0 rounded-full md:rounded-none text-sm md:text-base font-medium text-gray-500 md:text-gray-400 bg-gray-100 md:bg-transparent hover:bg-gray-200 md:hover:text-black md:pb-3 transition-colors whitespace-nowrap"
               }
             >
               {label}

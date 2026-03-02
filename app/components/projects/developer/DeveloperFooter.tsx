@@ -3,12 +3,19 @@ import Link from "next/link";
 interface DeveloperFooterProps {
   nextProjectTitle?: string;
   nextProjectSlug?: string;
+  /** Tech stack for this project (e.g. "Next.js, React, Supabase"); shown as tags in the footer. */
+  stack?: string;
 }
 
 export function DeveloperFooter({
   nextProjectTitle,
   nextProjectSlug,
+  stack,
 }: DeveloperFooterProps) {
+  const stackItems = stack
+    ? stack.split(",").map((s) => s.trim()).filter(Boolean)
+    : [];
+
   return (
     <footer className="py-12 md:py-24 border-t border-gray-100">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6 md:gap-8">
@@ -33,37 +40,18 @@ export function DeveloperFooter({
             </Link>
           )}
         </div>
-        <div className="flex gap-3 md:gap-6">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white hover:border-[#6C6FF2] transition-all"
-            aria-label="GitHub"
-          >
-            <i className="fa-brands fa-github text-sm md:text-base" aria-hidden />
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white hover:border-[#6C6FF2] transition-all"
-            aria-label="LinkedIn"
-          >
-            <i className="fa-brands fa-linkedin-in text-sm md:text-base" aria-hidden />
-          </a>
-          <a
-            href="mailto:anu.bn@yahoo.com"
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#6C6FF2] hover:text-white hover:border-[#6C6FF2] transition-all"
-            aria-label="Email"
-          >
-            <i className="fa-regular fa-envelope text-sm md:text-base" aria-hidden />
-          </a>
-        </div>
-      </div>
-      <div className="mt-10 md:mt-24 pt-6 md:pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between gap-3 text-gray-400 text-xs md:text-sm">
-        <p>© 2025 ANU. Built with precision.</p>
-        <p>Designed for Excellence</p>
+        {stackItems.length > 0 && (
+          <div className="flex flex-wrap gap-2 md:gap-3 justify-start">
+            {stackItems.map((item) => (
+              <span
+                key={item}
+                className="px-3 py-1.5 md:py-2 bg-gray-100 text-gray-700 text-xs md:text-sm font-medium rounded-lg"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </footer>
   );

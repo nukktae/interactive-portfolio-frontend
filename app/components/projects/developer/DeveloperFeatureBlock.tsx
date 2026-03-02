@@ -63,13 +63,13 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
               key={i}
               type="button"
               onClick={() => setModalIndex(i)}
-              className="relative w-full h-full min-h-[120px] rounded-xl overflow-hidden bg-gray-200 hover:ring-2 hover:ring-[#6C6FF2] focus:outline-none focus:ring-2 focus:ring-[#6C6FF2] transition-all"
+              className="relative w-full h-full min-h-[120px] rounded-xl overflow-hidden bg-gray-200 hover:ring-2 hover:ring-[#6C6FF2] focus:outline-none focus:ring-2 focus:ring-[#6C6FF2] transition-all touch-manipulation cursor-pointer"
             >
               <Image
                 src={src}
                 alt={alts[i] ?? feature.imageAlt}
                 fill
-                className="object-contain"
+                className="object-contain pointer-events-none select-none"
                 sizes="(max-width: 1024px) 33vw, 16vw"
               />
             </button>
@@ -77,7 +77,7 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
         </div>
         {modalIndex !== null && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/70 p-4"
             onClick={() => setModalIndex(null)}
             role="dialog"
             aria-modal="true"
@@ -85,8 +85,11 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
           >
             <button
               type="button"
-              onClick={() => setModalIndex(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-gray-800 hover:bg-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                setModalIndex(null);
+              }}
+              className="absolute top-4 right-4 z-10 min-w-[44px] min-h-[44px] w-10 h-10 rounded-full bg-white/90 flex items-center justify-center text-gray-800 hover:bg-white touch-manipulation"
               aria-label="Close"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>

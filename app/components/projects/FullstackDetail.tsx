@@ -82,6 +82,7 @@ export function FullstackDetail({ project }: FullstackDetailProps) {
       <DeveloperFooter
         nextProjectTitle={c.nextProjectTitle}
         nextProjectSlug={c.nextProjectSlug}
+        stack={c.meta?.stack}
       />
     </article>
   );

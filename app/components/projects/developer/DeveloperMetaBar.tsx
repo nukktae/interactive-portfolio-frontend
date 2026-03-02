@@ -9,27 +9,11 @@ export function DeveloperMetaBar({ meta }: DeveloperMetaBarProps) {
     { label: "My Role", value: meta.role },
     { label: "Core Stack", value: meta.stack },
     { label: "Timeline", value: meta.timeline },
-    {
-      label: "Live Project",
-      value: meta.liveUrl ? (
-        <a
-          href={meta.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium flex items-center gap-2 w-fit hover:text-[#6C6FF2] transition-colors"
-        >
-          {meta.liveLabel ?? meta.liveUrl}
-          <i className="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden />
-        </a>
-      ) : (
-        <span className="text-gray-400">—</span>
-      ),
-    },
   ];
 
   return (
     <div className="py-6 md:py-10 border-t border-gray-100">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
         {rows.map(({ label, value }) => (
           <div
             key={label}

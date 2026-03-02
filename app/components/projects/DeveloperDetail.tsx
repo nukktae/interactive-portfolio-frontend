@@ -75,6 +75,7 @@ export function DeveloperDetail({ project }: DeveloperDetailProps) {
       <DeveloperFooter
         nextProjectTitle={c.nextProjectTitle}
         nextProjectSlug={c.nextProjectSlug}
+        stack={c.meta?.stack}
       />
     </article>
   );
