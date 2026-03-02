@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { SplineScene } from "@/app/components/SplineScene";
+import MagicLoader from "@/app/components/MagicLoader";
 
 const CALENDLY_CSS = "https://assets.calendly.com/assets/external/widget.css";
 const CALENDLY_SCRIPT = "https://assets.calendly.com/assets/external/widget.js";
@@ -14,7 +15,51 @@ function getCalendlyUrl() {
 
 export function Contact() {
   const [showCalendar, setShowCalendar] = useState(true);
+  const [calendlyLoading, setCalendlyLoading] = useState(true);
+  const calendlyContainerRef = useRef<HTMLDivElement>(null);
   const calendlyUrl = getCalendlyUrl();
+
+  // Reset loading when switching to calendar view and we have a URL
+  useEffect(() => {
+    if (showCalendar && calendlyUrl) {
+      setCalendlyLoading(true);
+    } else {
+      setCalendlyLoading(false);
+    }
+  }, [showCalendar, calendlyUrl]);
+
+  // Detect when Calendly iframe is injected into the container
+  useEffect(() => {
+    if (!showCalendar || !calendlyUrl || !calendlyContainerRef.current) return;
+
+    const container = calendlyContainerRef.current;
+    const checkForIframe = () => {
+      if (container.querySelector("iframe")) {
+        setCalendlyLoading(false);
+        return true;
+      }
+      return false;
+    };
+
+    const observer = new MutationObserver(() => {
+      if (checkForIframe()) observer.disconnect();
+    });
+    observer.observe(container, { childList: true, subtree: true });
+
+    // Fallback: assume loaded after a delay (script might not inject iframe immediately)
+    const fallback = window.setTimeout(() => setCalendlyLoading(false), 4000);
+
+    // Initial check in case iframe is already there
+    if (checkForIframe()) {
+      observer.disconnect();
+      clearTimeout(fallback);
+    }
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallback);
+    };
+  }, [showCalendar, calendlyUrl]);
 
   useEffect(() => {
     if (!showCalendar) return;
@@ -103,7 +148,7 @@ export function Contact() {
         </div>
 
         {/* Right: Form or Calendly inline */}
-        <div className="bg-gray-50 p-5 md:p-12 rounded-2xl md:rounded-[40px]">
+        <div className="bg-gray-50 p-5 md:p-12 rounded-2xl md:rounded-[40px] relative min-h-[400px] md:min-h-[500px]">
           {showCalendar ? (
             <>
               <p className="text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
@@ -116,15 +161,27 @@ export function Contact() {
                 </button>
               </p>
               {calendlyUrl ? (
-                <div
-                  className="calendly-inline-widget w-full min-w-0"
-                  data-url={calendlyUrl}
-                  style={{
-                    minWidth: "280px",
-                    height: "630px",
-                    background: "transparent",
-                  }}
-                />
+                <div ref={calendlyContainerRef} className="relative w-full min-h-[500px] md:min-h-[630px]">
+                  {calendlyLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-50 rounded-xl z-10">
+                      <MagicLoader
+                        size={100}
+                        particleCount={1}
+                        speed={0.8}
+                        hueRange={[250, 280]}
+                      />
+                    </div>
+                  )}
+                  <div
+                    className="calendly-inline-widget w-full min-w-0"
+                    data-url={calendlyUrl}
+                    style={{
+                      minWidth: "280px",
+                      height: "630px",
+                      background: "transparent",
+                    }}
+                  />
+                </div>
               ) : (
                 <div className="py-10 md:py-16 text-center">
                   <p className="text-gray-500 font-medium text-sm md:text-base mb-2">

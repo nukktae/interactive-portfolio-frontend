@@ -20,6 +20,20 @@
   }
 }
 
+@keyframes fade-in-hint {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.animate-fade-in-hint {
+  animation: fade-in-hint 0.5s ease-out 0.8s forwards;
+}
+
 /* Scale site so 100% browser zoom looks like your preferred 80% view.
    zoom (Chrome/Edge/Safari) scales everything; font-size fallback for Firefox. */
 html {
