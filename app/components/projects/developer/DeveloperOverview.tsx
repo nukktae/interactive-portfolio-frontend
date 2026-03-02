@@ -16,26 +16,26 @@ export function DeveloperOverview({ title = "The Challenge", paragraph, sections
   const useSections = sections && sections.length > 0;
 
   return (
-    <section className="px-6 md:px-12 lg:px-20 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-gray-50">
+    <section className="py-10 md:py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 border-t border-gray-100">
       <div className="lg:col-span-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#111111]">
+        <h2 className="text-xl md:text-3xl font-bold text-[#111111] tracking-tight">
           {title}
         </h2>
       </div>
-      <div className="lg:col-span-8 space-y-8">
+      <div className="lg:col-span-8 space-y-6 md:space-y-8">
         {useSections ? (
           sections!.map((s, i) => (
             <div key={i}>
-              <h3 className="text-lg md:text-xl font-semibold text-[#111111] mb-2">
+              <h3 className="text-base md:text-xl font-semibold text-[#111111] mb-1.5 md:mb-2">
                 {s.heading}
               </h3>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+              <p className="text-base md:text-xl text-gray-600 leading-relaxed">
                 {s.body}
               </p>
             </div>
           ))
         ) : (
-          <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+          <p className="text-base md:text-xl text-gray-600 leading-relaxed">
             {paragraph ?? ""}
           </p>
         )}

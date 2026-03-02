@@ -123,23 +123,23 @@ export function DeveloperFeatureBlock({ feature }: DeveloperFeatureBlockProps) {
     );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center mb-24 md:mb-32 last:mb-0">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center mb-16 md:mb-32 last:mb-0">
       <div className={isImageRight ? "order-2" : "order-1"}>{imageContent}</div>
-      <div className={isImageRight ? "order-1" : "order-2"}>
-        <span className="text-[#6C6FF2] font-bold text-sm tracking-widest uppercase mb-4 block">
+      <div className={`${isImageRight ? "order-1" : "order-2"} min-w-0`}>
+        <span className="text-[#6C6FF2] font-bold text-xs md:text-sm tracking-widest uppercase mb-2 md:mb-4 block">
           {feature.label}
         </span>
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#111111]">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-[#111111] tracking-tight">
           {feature.title}
         </h2>
-        <p className="text-base md:text-lg text-gray-500 leading-relaxed mb-6 md:mb-8">
+        <p className="text-sm md:text-lg text-gray-500 leading-relaxed mb-4 md:mb-8">
           {feature.description}
         </p>
-        <div className="flex flex-wrap gap-3 md:gap-4">
+        <div className="flex flex-wrap gap-2 md:gap-4">
           {feature.tags.map((tag) => (
             <span
               key={tag}
-              className="px-4 py-2 bg-gray-100 rounded-lg text-sm font-medium"
+              className="px-3 py-1.5 md:py-2 bg-gray-100 rounded-lg text-xs md:text-sm font-medium"
             >
               {tag}
             </span>

@@ -54,17 +54,17 @@ export function DesignerDesignSystem({
   const hasImages = image || image2 || image3;
 
   return (
-    <section className="px-4 md:px-6 lg:px-10 py-10 md:py-20 bg-[#fafafa] text-neutral-900 rounded-[2rem] md:rounded-[3rem] mx-4 md:mx-10 mb-12 md:mb-24">
-      <div className="max-w-4xl mb-8 md:mb-12">
-        <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4 md:mb-6 text-neutral-900">
+    <section className="py-8 md:py-16 lg:py-20 -mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-6 lg:px-10 bg-[#fafafa] text-neutral-900 rounded-2xl md:rounded-[3rem] mb-10 md:mb-24">
+      <div className="max-w-4xl mb-6 md:mb-12">
+        <h2 className="text-xl md:text-4xl font-bold tracking-tight mb-2 md:mb-6 text-neutral-900">
           {title}
         </h2>
-        <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
+        <p className="text-sm md:text-lg text-neutral-600 leading-relaxed">
           {description}
         </p>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-        <div className="lg:col-span-4 space-y-4 md:space-y-6">
+        <div className="lg:col-span-4 space-y-3 md:space-y-6">
           <div className="p-4 md:p-6 bg-white rounded-2xl border border-neutral-200">
             <h4 className="text-sm font-bold uppercase tracking-widest text-neutral-500 mb-4">
               Typography
@@ -144,13 +144,7 @@ export function DesignerDesignSystem({
                 />
               )}
             </div>
-          ) : (
-            <div className="w-full min-h-[300px] md:min-h-[400px] flex items-center justify-center py-12">
-              <span className="text-neutral-400 text-sm">
-                Design system visual
-              </span>
-            </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>
